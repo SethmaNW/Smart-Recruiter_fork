@@ -1,0 +1,14 @@
+.sidebar {
+    background-color: rgb(158, 17, 17);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  }
+
+  .nav-link {
+    color: white; 
+  }
