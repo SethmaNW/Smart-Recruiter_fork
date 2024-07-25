@@ -1,12 +1,13 @@
 .custom-navbar {
-    height: 80px;
+    height: 70px;
     /* background-color: rgb(218, 33, 40); */
     /* background-color: rgb(170, 25, 30); */
     background-color: white;
     font-size: 15px;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    /* padding: 0 20px; */
+    border: 2px solid rgb(147, 22, 26);
 }
 
 .navbar-alignment {
@@ -14,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 
 .navbar-left {
@@ -26,6 +27,7 @@
     display: flex;
     align-items: center;
     padding-right: 30px;
+    font-weight: 450;
 }
 
 li {
@@ -38,11 +40,11 @@ li {
 }
 
 .custom-font:hover {
-    color: rgb(218, 33, 40);
+    color: rgb(147, 22, 26);
 }
 
 .custom-navbar .navbar-icon {
-    height: 90px;
+    height: 55px;
     margin-right: 10px;
     vertical-align: middle;
 }
