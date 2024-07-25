@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor() { }
+
+  logout() {
+    console.log("logout");
+  }
 }
