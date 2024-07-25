@@ -1,6 +1,31 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
+    background-image: url('/assets/images/login-background-picture.jpg');
+    background-size: cover; /* Makes the image cover the whole viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background image fixed during scrolling */
+    height: 100vh;
+    opacity: 0.5;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    opacity: 1;
+  }
+
 form{
     border: 3px;
-
 }
 
 .form-control{
@@ -28,15 +53,3 @@ form{
     cursor: pointer;
 }
 
-.container{
-    height:100vh;
-    background: url('/assets/images/login-background-picture.jpg');
-    background-size: cover;
-    background-opacity: 0.6;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 100px;
-
-
-}
