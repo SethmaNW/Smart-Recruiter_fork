@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     SidebarComponent,
     NavbarComponent,
     AdminDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
