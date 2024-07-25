@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     SidebarComponent,
     NavbarComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
