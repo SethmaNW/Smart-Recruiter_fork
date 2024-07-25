@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+  <div class="applicants">
+
+    <div>Applicants</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Resume</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let applicant of applicants">
+                <td>{{applicant.firstName}}</td>
+                <td>{{applicant.lastName}}</td>
+                <td>{{applicant.email}}</td>
+                <td>{{applicant.phone}}</td>
+                <td><a href="{{applicant.resume}}">Resume</a></td>
+                <td>
+                    <button (click)="viewApplicant(applicant.id)">View</button>
+                    <button (click)="deleteApplicant(applicant.id)">Delete</button>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+  </div>
+</div>
+
