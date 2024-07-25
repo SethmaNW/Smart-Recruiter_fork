@@ -1,0 +1,19 @@
+.applicants{
+
+}
+
+.main-container {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  app-navbar {
+    flex: 0 0 auto;
+  }
+  
