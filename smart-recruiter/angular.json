@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "smart_recruiter": {
+    "smart-recruiter": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/smart_recruiter",
+            "outputPath": "dist/smart-recruiter",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "/node_modules/primeflex/primeflex.css"
             ],
             "scripts": []
           },
@@ -65,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "smart_recruiter:build:production"
+              "browserTarget": "smart-recruiter:build:production"
             },
             "development": {
-              "browserTarget": "smart_recruiter:build:development"
+              "browserTarget": "smart-recruiter:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "smart_recruiter:build"
+            "browserTarget": "smart-recruiter:build"
           }
         },
         "test": {
