@@ -6,20 +6,29 @@
 </head>
 <body>
   <div class="login-form">
-  <form class="p-fluid" >
-    <label for="userid">User Id</label><br>
-    <input type="text"  id="userid" name="userid"> <br>
-    <label for="password" >Password</label><br>
-    <input type="text" id="password" name="password"> <br>
-    <a href="#" class="forgot-password">Forgot Password?</a><br>
-
+  <form class="p-fluid"  autocomplete="on">
+    <div class="p-field">
+      <label for="userid">User Id</label><br>
+      <input type="text"  id="userid" name="userid" placeholder="example@hSenid.com"  class="custom-input"> <br>
+      
+    </div>  
+    <div class="p-field">
+      <label for="password" >Password</label><br>
+      <input type="text" id="password" name="password" class="custom-input"> <br>
+    </div>
+    <div class="p-field">
+    <a href="#" class="forgot-password" class="for-text">Forgot Password?</a><br>
+    </div>
    
    
 
 
-
+    <div class="button">
     <button type="submit">Continue</button> <br>  
+  </div>
   </form>
 </div>
 </body>
 </html>
+
+
