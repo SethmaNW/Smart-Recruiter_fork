@@ -1,1 +1,35 @@
-@import 'node_modules/primeflex/primeflex.css';
+.custom-navbar{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    // height: 70px;
+    .navbar-icon {
+        height: 55px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}
+
+.navbar-alignment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    // padding: 0 2rem;
+    border-bottom: 2px solid #dab7b7;
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+}
+
+.profile-name{
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.custom-font:hover{
+    color: #d17070;
+}
