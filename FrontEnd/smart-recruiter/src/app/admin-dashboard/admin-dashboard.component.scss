@@ -5,3 +5,23 @@ $nav-bar-height: 55px;
     margin-top: 0px;
     width: 100%;
 }
+
+.large-font {
+    font-size: 14px; /* Adjust the font size as needed */
+}
+
+
+.custom-search-button {
+    background-color: #e14e4e; /* Custom background color */
+    color: #ffffff; /* Custom text color */
+}
+
+.custom-search-button .pi-search {
+    color: #ffffff; /* Custom icon color */
+}
+
+.custom-add-button {
+    background-color: #ee3a09 !important; /* Custom background color */
+    color: #ffffff !important; /* Custom text color */
+    border-color: #00ccff !important; /* Custom border color */
+}
