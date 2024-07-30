@@ -3,7 +3,7 @@ $nav-bar-height: 55px;
 #sidebarMenu {
   min-height: calc(100vh - #{$nav-bar-height});
     .position-sticky {
-    padding-top: 1rem;
+    padding-top: 2rem;
     background-color: rgb(218, 205, 205);
     min-height: calc(100vh - #{$nav-bar-height});
     width: 170px;
@@ -17,7 +17,7 @@ $nav-bar-height: 55px;
           margin-bottom: 0.5rem;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
   
           a {
             display: flex;
@@ -36,14 +36,14 @@ $nav-bar-height: 55px;
               width: 100%;
               display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-end;
               
             }
 
             .icon-text-container {
                 margin-top: 5px;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
                 padding: 0.5rem;
             }
