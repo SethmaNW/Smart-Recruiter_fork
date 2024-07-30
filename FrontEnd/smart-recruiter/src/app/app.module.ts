@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
+import { JobPostComponent } from './job-post/job-post.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormComponent } from './form/form.component';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    FormComponent
+    FormComponent,
+    JobPostComponent
   ],
   imports: [
     BrowserModule,
