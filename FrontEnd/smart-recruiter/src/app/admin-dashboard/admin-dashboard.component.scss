@@ -1,5 +1,7 @@
 $side-bar-width: 170px;
+$nav-bar-height: 55px;
 
-.left-m {
-    margin-left: $side-bar-width;
+.container{
+    margin-left: 2rem;
+    display: flex;
 }
