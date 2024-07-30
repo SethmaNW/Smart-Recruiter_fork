@@ -1,8 +1,11 @@
+$nav-bar-height: 55px;
+
 #sidebarMenu {
+  min-height: calc(100vh - #{$nav-bar-height});
     .position-sticky {
-    //   padding-top: 1rem;
+    padding-top: 1rem;
     background-color: rgb(218, 205, 205);
-    height: 100vh;
+    min-height: calc(100vh - #{$nav-bar-height});
     width: 170px;
   
       ul {
@@ -53,55 +56,3 @@
       }
     }
   }
-  
-
-// #sidebarMenu {
-//     background-color: rgb(218, 205, 205);
-//     .position-sticky {
-//       padding-top: 1rem;
-  
-//     //   ul {
-//     //     list-style-type: none;
-//     //     padding: 0;
-//     //     margin: 0;
-  
-//         li {
-//           margin-bottom: 0.5rem;
-//         }
-//       }
-//     }
-// //   }
-
-//     .ul {
-//         list-style-type: none;
-//         padding: 0;
-//         margin: 0;
-//   }
-
-//   .i {
-//     margin-right: 0.5rem;
-//   }
-
-//   .a {
-//     display: flex;
-//     align-items: center;
-//     text-decoration: none;
-//     padding: 0.5rem 1rem;
-//     color: #000;
-
-//     &.active {
-//       background-color: #e0e0e0;
-//     }
-
-//     &:hover {
-//       background-color: #f0f0f0;
-//     }
-//   }
-
-
-  
-// .selection{
-//     @include styleclass('p-ripple p-d-flex p-ai-center');
-// }
-
-
