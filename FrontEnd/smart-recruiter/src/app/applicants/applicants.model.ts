@@ -1,5 +1,6 @@
 export interface IApplicant {
     id: number;
+    position: string;
     name: string;
     university: string;
     degree: string; 

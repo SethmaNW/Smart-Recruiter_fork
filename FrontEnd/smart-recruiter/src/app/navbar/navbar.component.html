@@ -1,8 +1,9 @@
 <nav class="custom-navbar">
     <div class="navbar-alignment">
         <img src="/assets/images/lb_icon.png" alt="icon" class="navbar-icon">
-        <div class="navbar-right">
-            <span class="profile-name">Name</span>
+        <div class="navbar-right">    <!-- change this  -->
+        <!-- <div class="navbar-right" *ngIf="isLoggedIn()"> -->
+            <span class="profile-name">{{ getCurrentUserName() }}</span>
             <a class="custom-font" (click)="logout()">Logout</a>
         </div>
     </div>
