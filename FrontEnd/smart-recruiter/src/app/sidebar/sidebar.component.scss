@@ -3,7 +3,8 @@ $nav-bar-height: 55px;
 #sidebarMenu {
   min-height: calc(100vh - #{$nav-bar-height});
   height: 100%;
-  background-color: rgb(218, 205, 205); 
+  // background-color: var(--red-100); 
+  background-color: rgb(218, 205, 205);
     .position-sticky {
     padding-top: 2rem;
     min-height: calc(100vh - #{$nav-bar-height});

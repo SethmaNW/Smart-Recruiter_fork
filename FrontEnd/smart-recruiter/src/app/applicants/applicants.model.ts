@@ -1,11 +1,12 @@
 export interface IApplicant {
     id: number;
-  name: string;
-  country: {
     name: string;
-  };
-  representative: {
-    name: string;
-  };
-  status: string;
+    university: string;
+    degree: string; 
+    contact: string;
+    skills: string;
+    gpa: string;
+    workExperience: string;
+    cv: string;
+    status: string;
 }
