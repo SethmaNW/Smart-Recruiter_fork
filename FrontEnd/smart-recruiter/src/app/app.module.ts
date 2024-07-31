@@ -16,8 +16,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
     TagModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [provideAnimations()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
