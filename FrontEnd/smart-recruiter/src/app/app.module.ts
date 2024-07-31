@@ -16,6 +16,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DropdownModule } from 'primeng/dropdown';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    FormComponent
+    FormComponent,
+    ApplicantTableComponent
   ],
   imports: [
     BrowserModule,
