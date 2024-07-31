@@ -1,6 +1,25 @@
 <!-- Use objects to style p-cards in ng component -->
-<p-card header="{{job.title}}" [style]="p_cardStyleOBJ">
-    <p class="m-0">
-        Lorem ipsum dolor sit amet...
-    </p>
+<p-card styleClass="customized-card">
+    <div class="grid grid-custom">
+        <div class="col-12 col-12-custom">
+            <h2>{{job.title}}</h2>
+            <div class="batch">
+                <p-tag severity="success" value="Active" [hidden]="!job.active"/>
+                <p-tag severity="danger" value="Inactive" [hidden]="job.active"/>
+            </div>
+            <div class="drop-down">
+                <!-- <p-dropdown 
+                [options]="dropDownOptions"
+                name="status"
+                [(ngModel)]="selectedStatus"
+                [(ngModel)]="selectedFromDropDown" 
+                optionLabel="name" 
+                placeholder="Select a City" /> -->
+            </div>
+        </div>
+    </div>
+    <div class="location">
+        <i class="fa-solid fa-location-dot"></i>
+        <p>{{job.location}}</p>
+    </div>
 </p-card>
