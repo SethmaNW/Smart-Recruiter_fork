@@ -13,6 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
     JobPostComponent
   ],
-  providers: [],
+  providers: [provideAnimations()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
