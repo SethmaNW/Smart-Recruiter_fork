@@ -7,7 +7,7 @@ import { ApplicantsComponent } from './applicants/applicants.component';
 import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
-  {path: 'nav-bar', component: NavbarComponent},
+  // {path: 'nav-bar', component: NavbarComponent},
   {path: 'admin-dashboard', component: AdminDashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'applicants', component: ApplicantsComponent},
