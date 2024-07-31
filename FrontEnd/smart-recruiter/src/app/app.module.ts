@@ -20,13 +20,13 @@ import { JobPostComponent } from './job-post/job-post.component';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    FormComponent,
-    JobPostComponent
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ButtonModule
+    ButtonModule,
+    JobPostComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

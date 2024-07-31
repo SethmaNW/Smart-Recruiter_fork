@@ -18,8 +18,8 @@
                     </div>
                 </div>
             </div>
-            <div>
-                <app-job-post></app-job-post>
+            <div *ngFor="let job of jobs">
+                <app-job-post [job] = "job"></app-job-post>
             </div>
         </div>
     </div>
