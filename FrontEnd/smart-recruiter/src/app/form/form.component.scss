@@ -4,9 +4,15 @@
     padding-left: 200px;
     justify-content: center;
     height: 100vh;
+
+    
+
 }
 
-.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work{
+
+
+.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.Degree{
+    
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom:10px ;
@@ -15,9 +21,10 @@
     border: 1px solid #ccc;
     width: 400px;
 
+
     
 }
-.postal,.GPA{
+.postal,.GPA,.from-year,.to-year{
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom:10px ;
@@ -25,7 +32,51 @@
     border-radius: 10px;
     border: 1px solid #ccc;
     width: 200px;
+
 }
+
+h1{
+    color: crimson;
+    font-style: italic;
+    padding-left: 200px;
+}
+
+p{
+    padding-left: 200px;
+    font-size: 16px;
+}
+
+
+.custom-header{
+    background-color: white;
+    align-items: center;
+    height: 55px;
+    // height: 70px;
+    .icon {
+        height: 55px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}
+
+.p-header{
+   
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid #dab7b7;
+}
+
+.year{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.from-year{
+    margin-right: 20px;
+}
+
+
 
 
 
