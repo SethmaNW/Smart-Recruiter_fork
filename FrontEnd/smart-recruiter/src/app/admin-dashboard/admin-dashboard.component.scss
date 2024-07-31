@@ -12,7 +12,7 @@ $nav-bar-height: 55px;
 
 
 .custom-search-button {
-    background-color: #e14e4e; /* Custom background color */
+    background-color: var(--red-600); /* Custom background color */
     color: #ffffff; /* Custom text color */
 }
 
@@ -29,5 +29,5 @@ $nav-bar-height: 55px;
 ::ng-deep .p-button {
     color: #f2f4f6 !important;
     font-weight: 700;
-    background-color: #892d2d;
+    background-color: var(--red-600);
   }
