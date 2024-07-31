@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { TagModule } from 'primeng/tag';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +33,10 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     TableModule,
     DropdownModule,
-    JobPostComponent
+    JobPostComponent,
+    InputTextModule,
+    TagModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
