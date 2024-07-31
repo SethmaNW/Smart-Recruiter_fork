@@ -18,7 +18,7 @@ import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
