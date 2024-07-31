@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,7 @@ import { JobPostComponent } from './job-post/job-post.component';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    JobPostComponent
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
