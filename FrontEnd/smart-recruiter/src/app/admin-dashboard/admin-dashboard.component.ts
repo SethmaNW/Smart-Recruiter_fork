@@ -11,11 +11,16 @@ import { JobPostService } from '../services/job-post.service';
   // imports : [CommonModule]
 })
 export class AdminDashboardComponent {
+  visible : boolean = false;
 
   constructor( private jobPostSvc : JobPostService) { }
 
   get jobs(){
     return this.jobPostSvc.jobs;
+  }
+
+  showDialog(){
+    this.visible = true;
   }
 
 }
