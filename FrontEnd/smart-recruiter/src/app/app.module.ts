@@ -27,7 +27,8 @@ import { JobPostComponent } from './job-post/job-post.component';
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    JobPostComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
