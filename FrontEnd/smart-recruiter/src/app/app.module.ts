@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormComponent } from './form/form.component';
 import { JobPostComponent } from './job-post/job-post.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,15 @@ import { JobPostComponent } from './job-post/job-post.component';
     LoginComponent,
     NavbarComponent,
     SidebarComponent,
-    FormComponent,
-    JobPostComponent
+    FormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    DropdownModule,
+    JobPostComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
