@@ -1,1 +1,70 @@
-<p>applicant-table works!</p>
+<div class="w-full">
+    <p-table
+    #dt2
+    [value]="customers"
+    dataKey="id"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [globalFilterFields]="['name', 'contact', 'university', 'degree', 'skills', 'gpa', 'workExperience', 'cv', 'status', 'verified']"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    >
+
+    <ng-template pTemplate="caption">
+        <div class="flex justify-content-between items-center">
+        <div>
+            <div class="position-head">{{ customers[0]?.position }}</div>
+        </div>
+        <div>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="filterGlobal($event, 'contains')" placeholder="Search keyword" />
+            </span>
+        </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>University</th>
+            <th>Degree</th>
+            <th>Skills</th>
+            <th>GPA</th>
+            <th>Work Experience</th>
+            <th>CV</th>
+            <th>Status</th>
+            <!-- <th>Verified</th> -->
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-customer>
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.contact }}</td>
+            <td>{{ customer.university }}</td>
+            <td>{{ customer.degree }}</td>
+            <td>{{ customer.skills }}</td>
+            <td>{{ customer.gpa }}</td>
+            <td>{{ customer.workExperience }}</td>
+            <td><a href="{{ customer.cv }}" target="_blank">View CV</a></td>
+            <td>
+                <!-- <p-tag [value]="customer.status"></p-tag> -->
+            </td>
+            <!-- <td>
+                <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': customer.verified, 'text-red-500 pi-times-circle': !customer.verified }"></i>
+            </td> -->
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="10">No applicants found for this position.</td>
+        </tr>
+    </ng-template>
+    </p-table>
+</div>
