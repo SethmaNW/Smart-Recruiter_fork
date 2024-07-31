@@ -20,8 +20,14 @@ $nav-bar-height: 55px;
     color: #ffffff; /* Custom icon color */
 }
 
-.custom-add-button {
-    background-color: #ee3a09 !important; /* Custom background color */
-    color: #ffffff !important; /* Custom text color */
-    border-color: #00ccff !important; /* Custom border color */
-}
+// .custom-add-button {
+//     background-color: #ee3a09 !important; /* Custom background color */
+//     color: #ffffff !important; /* Custom text color */
+//     border-color: #00ccff !important; /* Custom border color */
+// }
+
+::ng-deep .p-button {
+    color: #f2f4f6 !important;
+    font-weight: 700;
+    background-color: #892d2d;
+  }
