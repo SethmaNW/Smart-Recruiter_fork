@@ -18,6 +18,8 @@ import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
  
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
     JobPostComponent,
     InputTextModule,
     TagModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    CardModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
