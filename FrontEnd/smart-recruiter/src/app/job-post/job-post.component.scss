@@ -43,3 +43,12 @@
     margin-bottom: -1rem;
     display: flex;
 }
+
+.no-underline {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+}
