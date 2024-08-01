@@ -18,6 +18,9 @@ import { JobPostComponent } from './job-post/job-post.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { DialogModule } from 'primeng/dialog';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
  
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
     JobPostComponent,
     InputTextModule,
     TagModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DialogModule,
+    AvatarGroupModule,
+    AvatarModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
