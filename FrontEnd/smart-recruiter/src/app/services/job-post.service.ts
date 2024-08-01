@@ -8,6 +8,7 @@ export class JobPostService {
   // These job details used until database is connected
   jobs : Job[] = [
     {
+      jobId : 1,
       title : 'Software Engineer',
       description : 'Develop software applications',
       location : 'Lagos',
@@ -15,6 +16,7 @@ export class JobPostService {
       active : true
     },
     {
+      jobId : 2,
       title : 'Product Manager',
       description : 'Manage product development',
       location : 'Lagos',
@@ -22,6 +24,7 @@ export class JobPostService {
       active : true
     },
     {
+      jobId : 3,
       title : 'Sales Manager',
       description : 'Manage sales team',
       location : 'Lagos',
