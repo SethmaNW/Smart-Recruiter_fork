@@ -1,3 +1,37 @@
 .position-head{
     font-size: 25px;
 }
+
+.status-button{
+    display: flex;
+    flex-direction: row;
+}
+
+.accept-button{
+    margin-right: 10px;
+}
+
+.remove-button{
+}
+
+.column-name{
+    width: 170px;
+}
+.column-contact{
+    width: 150px;
+}
+.column-degree {
+    width: 150px;
+}
+.column-skills {
+    width: 200px;
+}
+.column-workExperience {
+    width: 150px;
+}
+.column-cv {
+    width: 90px;
+}
+.column-status {
+    width: 150px;
+}
