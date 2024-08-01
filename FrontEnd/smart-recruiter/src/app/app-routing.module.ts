@@ -9,6 +9,7 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
 
 const routes: Routes = [
   // {path: 'nav-bar', component: NavbarComponent},
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   {path: 'admin-dashboard', component: AdminDashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'applicants', component: ApplicantsComponent},
