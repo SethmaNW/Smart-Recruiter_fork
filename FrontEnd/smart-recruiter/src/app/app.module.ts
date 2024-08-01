@@ -21,6 +21,7 @@ import { ApplicantTableComponent } from './applicant-table/applicant-table.compo
 import { DialogModule } from 'primeng/dialog';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { RouterLink } from '@angular/router';
  
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
     BrowserAnimationsModule,
     DialogModule,
     AvatarGroupModule,
-    AvatarModule
+    AvatarModule,
+    RouterLink
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
