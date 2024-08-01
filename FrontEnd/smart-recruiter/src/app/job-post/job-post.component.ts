@@ -5,6 +5,7 @@ import { Job } from '../models/job.model';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './job-post.component.html',
   styleUrls: ['./job-post.component.scss'],
   standalone : true,
-  imports: [CommonModule, CardModule, TagModule, DropdownModule, FormsModule],
+  imports: [CommonModule, CardModule, TagModule, DropdownModule, FormsModule, RouterLink],
   encapsulation: ViewEncapsulation.None
 })
 export class JobPostComponent {
