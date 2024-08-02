@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -9,6 +10,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class FormComponent {
   fileName: string | null = null;
 
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      // Handle the valid form submission
+      console.log('Form Submitted!', form.value);
+    }
+  }
+  
   onBasicUploadAuto(event: any) {
     const file = event.files[0];  // give the first selected file
 
