@@ -27,6 +27,7 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
+import { InputTextareaModule } from 'primeng/inputtextarea';
  
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MaxWordsDirective } from './directives/max-words.directive';
     FormsModule,
     CardModule,
     HttpClientModule,
-    FileUploadModule
+    FileUploadModule,
+    InputTextareaModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
