@@ -6,108 +6,7 @@
         </div>
     </div>
     
-    <div>
-<<<<<<< Updated upstream
-        <h1>Join Our Team !</h1>
-        <p>Fill the following form, and we'll inform you if you are shortlisted.</p>
-    </div>
-
-    <form  class="p-fluid" autocomplete="on" #userForm="ngForm">
-        <!-- {{ userForm.value | json }} -->
-
-        <div class="p-Name">
-            <h3>Name</h3>
-            
-            <input type="text" id="lname" name="lname" class="lname" placeholder="Full name"><br>
-        </div>
-
-        <div class="Address">
-            <h3>Address</h3>
-            <label for="Address">Address</label><br>
-            <input type="text" id="address" name="address" class="address"  ngModel><br>
-        </div>
-                
-
-        <div class="Gender">
-            <h3>Gender</h3>
-            <input type="radio" id="female" name="gender" class="female" value ="Female" ngModel>
-            <label for="female">Female</label><br>
-            <input type="radio" id="male" name="gender" class="male" value ="Male" ngModel>
-            <label for="male">Male</label><br>
-            <input type="radio" id="other" name="gender" class="other" value ="Other" ngModel>
-            <label for="other">Other</label><br>
-        </div>
-
-        <div class="Contact">
-            <div class="Contact">
-                <h3>Contact Details</h3>
-                <input type="text" id="email" name="email " class="email" placeholder="Email" ngModel><br>
-                <input type="text" id="phone" name="phone" class="phone" placeholder="Phone" ngModel><br>
-                </div>
-            </div>
-
-        <div class="Education">
-            <h3>Education Qualifications</h3><br>
-            
-            <select id="University" name="University" class="University" ngModel>
-                <option  value="University of Colombo">University of Colombo</option>
-                <option  value="University of Peradeniya">University of Peradeniya</option>
-                <option  value="University of Moratuwa">University of Moratuwa</option>
-                <option  value="University of Ruhuna">University of Ruhuna</option>
-                <option  value="SLIIT">SLIIT</option>
-                <option  value="NIBM">NIBM</option>
-                <option  value="NSBM">NSBM</option>
-                <option  value="ICBT">ICBT</option>
-            </select><br>
-
-            <label for="Other-University">Other</label><br>
-            <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list please type"><br>
-            <label for="GPA">GPA</label><br>
-            <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br> 
-        </div>
-        
-            <label for="Degree">Degree</label><br>
-            <input type="text" id =Degree name="Degree" class="Degree" ngModel><br>
-
-            <div class="year">
-
-            <label for="from-year">From</label>
-            <input type="date" id =from-year name="from-year" class="from-year" ngModel>
-
-            <label for="to-year">To</label>
-            <input type="date" id =to-year name="to-year" class="to-year" ngModel><br>
-
-            </div>
-        
-
-
-        <div class="p-work">
-            <h3>Work Experience</h3>
-            <!-- <label for="work">Work Experience</label><br> -->
-            <input type="text" id =work name="work" class="work" ngModel><br>
-        </div>
-
-        <div class="p-skills">
-            <h3>Skills</h3>
-            <!-- <label for="Skills">Skills</label><br> -->
-            <input type="text" id =skills name="skills" class="work" ngModel><br>
-        </div>
-
-        <div class="p-reason">
-            <h3>Why do you want to join LB Finance</h3>
-            <!-- <label for="reason">Message</label><br> -->
-            <input type="text" id =reason name="reason" class="reason" ngModel><br>
-        </div>
-
-       
-
-        <div class="upload-cv">
-            <h3>Upload CV</h3>
-            <label for="cv">Choose File</label><br>
-            <input type="file" id="cv" name="cv" class="cv" accept=".pdf,.doc,.docx" ngModel><br>
-        </div>
-    </form>
-=======
+    <div class="form-content">
         <div>
             <h1>Join Our Team !</h1>
             <p>Fill the following form, and we'll inform you if you are shortlisted.</p>
@@ -117,37 +16,37 @@
             <!-- {{ userForm.value | json }} -->
     
             <div class="p-Name">
-                <h3>Name</h3>
-                <input type="text" id="fname" name="fname" class="fname" placeholder="Full Name" ngModel><br>
+                <div>Name</div>
+                <input type="text" id="fname" name="fname" class="fname" placeholder="Enter full Name" ngModel><br>
                 <!-- <label for="lname">Last Name</label><br>
                 <input type="text" id="lname" name="lname" class="lname" ngModel><br> -->
             </div>
     
-            <div class="Address">
-                <h3>Address</h3>
-                <input type="text" id="address" name="address" class="address" placeholder="Address" ngModel><br>
-                <!-- <input type="text" id="address" name="city" class="address" ngModel><br>
-                <input type="text" id="postal" name="postal" class="postal" ngModel><br> -->
-            </div>
+            <!-- <div class="Address">
+                <div>Address</div>
+                <input type="text" id="address" name="address" class="address" placeholder="Enter your address" ngModel><br>
+                <input type="text" id="address" name="city" class="address" ngModel><br>
+                <input type="text" id="postal" name="postal" class="postal" ngModel><br>
+            </div> -->
                     
-            <div class="Gender">
-                <h3>Gender</h3>
+            <!-- <div class="Gender">
+                <div>Gender</div>
                 <input type="radio" id="female" name="gender" class="female" value ="Female" ngModel>
                 <label for="female">Female</label><br>
                 <input type="radio" id="male" name="gender" class="male" value ="Male" ngModel>
                 <label for="male">Male</label><br>
                 <input type="radio" id="other" name="gender" class="other" value ="Other" ngModel>
                 <label for="other">Other</label><br>
-            </div>
+            </div> -->
     
             <div class="Contact">
-                <h3>Contact Details</h3>
-                <input type="email" id="email" name="email " class="email" placeholder="Email" ngModel><br>
-                <input type="number" id="phone" name="phone" class="phone" placeholder="Contact Number" ngModel><br>
+                <div>Contact Details</div>
+                <!-- <input type="email" id="email" name="email " class="email" placeholder="Enter email" ngModel><br> -->
+                <input type="number" id="phone" name="phone" class="phone" placeholder="+94 7********" ngModel><br>
             </div>
     
             <div class="Education">
-                <h3>Education Qualifications</h3><br>
+                <div>Education Qualifications</div><br>
                 <select id="University" name="University" class="University" ngModel>
                     <option  value="University of Colombo">University of Colombo</option>
                     <option  value="University of Peradeniya">University of Peradeniya</option>
@@ -161,48 +60,65 @@
     
                 <label for="Other-University">Other</label><br>
                 <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list please type"><br>
-                <label for="GPA">GPA</label><br>
-                <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br> 
+                <!-- <label for="GPA">GPA</label><br>
+                <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
             </div>
             
                 <label for="Degree">Degree</label><br>
                 <input type="text" id =Degree name="Degree" class="Degree" ngModel><br>
     
-                <div class="year">
-    
-                <label for="from-year">From</label>
-                <input type="date" id =from-year name="from-year" class="from-year" ngModel>
-    
-                <label for="to-year">To</label>
-                <input type="date" id =to-year name="to-year" class="to-year" ngModel><br>
-    
-                </div>
+                <!-- <div class="year">
+                    <label for="from-year">From</label>
+                    <input type="date" id =from-year name="from-year" class="from-year" ngModel>
+                    <label for="to-year">To</label>
+                    <input type="date" id =to-year name="to-year" class="to-year" ngModel><br>
+                </div> -->
                 
-            <div class="p-work">
-                <h3>Work Experience</h3>
-                <!-- <label for="work">Work Experience</label><br> -->
-                <input type="text" id =work name="work" class="work" ngModel><br>
-            </div>
-    
             <div class="p-skills">
-                <h3>Skills</h3>
+                <div>Skills</div>
                 <!-- <label for="Skills">Skills</label><br> -->
                 <input type="text" id =skills name="skills" class="work" ngModel><br>
             </div>
+
+            <div class="p-work">
+                <div>Work Experience</div>
+                <!-- <label for="work">Work Experience</label><br> -->
+                <input type="text" id =work name="work" class="work" ngModel><br>
+            </div>            
     
             <div class="p-reason">
-                <h3>Why do you want to join LB Finance</h3>
+                <div>Why do you want to join LB Finance</div>
                 <!-- <label for="reason">Message</label><br> -->
                 <input type="text" id =reason name="reason" class="reason" ngModel><br>
             </div>
     
-            <div class="upload-cv">
-                <h3>Upload CV</h3>
+            <!-- <div class="upload-cv">
+                <div>Upload CV</div>
                 <label for="cv">Choose File</label><br>
                 <input type="file" id="cv" name="cv" class="cv" accept=".pdf,.doc,.docx" ngModel><br>
+            </div> -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Upload CV</h3>
+                </div>
+                <div class="card-body">
+                    <!-- <p-fileUpload name="cv" accept=".pdf" maxFileSize="1000000" customUpload="true" (uploadHandler)="onUpload($event)">
+                        <ng-template pTemplate="content">
+                            <div class="p-grid p-nogutter">
+                                <div class="p-col-12 p-md-4">
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="p-col-12 p-md-8">
+                                    <input type="file" class="custom-file-input" id="cv" name="cv" accept=".pdf" (change)="onFileSelect($event)">
+                                    <label class="custom-file-label" for="cv">Choose file</label>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-fileUpload> -->
+                </div>
             </div>
+            
         </form>
     </div>
->>>>>>> Stashed changes
     
 </div> 
