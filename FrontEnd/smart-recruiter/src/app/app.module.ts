@@ -26,6 +26,7 @@ import { CardModule } from 'primeng/card';
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import { MaxWordsDirective } from './directives/max-words.directive';
  
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
     FormComponent,
     ApplicantTableComponent,
-    ShortlistedCandidateAccountComponent
+    ShortlistedCandidateAccountComponent,
+    MaxWordsDirective
   ],
   imports: [
     BrowserModule,

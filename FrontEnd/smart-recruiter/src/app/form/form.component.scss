@@ -10,17 +10,25 @@
     font-size: 15px;
     margin-bottom: 0;
     margin-left: 6px;
+    margin-top: 15px;
 }
 
-.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.Degree,.reason{
+.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.degree,.reason{
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom:10px ;
     margin-top: 5px;
-    margin-bottom: 15px;
+    // margin-bottom: 15px;
     border-radius: 10px;
     border: 1px solid #ccc;
     width: 800px;   
+}
+
+.deg-topic{
+    font-size: 15px;
+    margin-bottom: 0;
+    // margin-left: 6px;
+    margin-top: 15px;
 }
 
 h1{
@@ -56,12 +64,15 @@ p{
     margin-right: 20px;
 }
 
-.form-content{
+.form-style{
+    padding-top: 10px;
     margin-left: 150px;
     margin-right: 150px;
-    padding: 10px;
+    padding: -2rem;
     background-color: rgb(233, 230, 225);   // rgb(222, 219, 214)
-    height: 100vh;
+    height: 130vh;
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .card-body{
@@ -74,6 +85,21 @@ p{
     padding: 50px;
     width: 800px;
     border-radius: 8px;
+}
+
+.page-content{
+    margin: 30px;
+    height: 140vh;
+}
+
+input.phone.ng-invalid.ng-dirty,
+input.phone.ng-invalid.ng-touched {
+    // border-color: red;
+}
+
+small {
+    margin-left: 10px;
+    color: red;
 }
 
 
