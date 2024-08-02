@@ -9,9 +9,24 @@
                     <p class="opacity-70 -mt-3">Here is all job list</p>
                 </div>
                 <div class="ml-auto mt-4 flex flex-row items-center">
-                    <div class="p-inputgroup mr-4 z-5" style="height: 45px;">
+                    <!-- <div class="p-inputgroup mr-4 z-5" style="height: 45px;">
                         <input type="text" pInputText placeholder="Search by Job Title" class="search-input"/>
                         <button type="button" pButton icon="pi pi-search" class="custom-search-button"></button>
+                    </div> -->
+                    <!-- <div class="flex flex-row align-items-center">
+                        <div>
+                            <span class="p-input-icon-left mr-3">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" (input)="filterGlobal($event, 'contains')" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                        <p-button label="+ Add New" severity="warning" class="add-new-button" (onClick)="showDialog()"></p-button>
+                    </div> -->
+                    <div>
+                        <span class="p-input-icon-left mr-3">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" />
+                        </span>
                     </div>
                     <div class="w-9">
                         <p-button label="+ Add New" severity="warning" (onClick)="showDialog()"></p-button>
@@ -60,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngFor="let job of jobs">
+            <div *ngFor="let job of filteredJobs">
                 <app-job-post [job] = "job"></app-job-post>
             </div>
         </div>

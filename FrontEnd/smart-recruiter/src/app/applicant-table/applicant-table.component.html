@@ -44,7 +44,10 @@
 
     <ng-template pTemplate="body" let-customer>
         <tr>
-            <td>{{ customer.name }}</td>
+            <td>
+                <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button"/>
+                {{ customer.name }}
+            </td>
             <td>{{ customer.contact }}</td>
             <td>{{ customer.degree }}</td>
             <td>{{ customer.skills }}</td>
@@ -52,7 +55,7 @@
             <td><a href="{{ customer.cv }}" target="_blank">View CV</a></td>
             <td class="status-button">
                 <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button"/>
-                <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button"/>
+                
             </td>
             <!-- <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': customer.verified, 'text-red-500 pi-times-circle': !customer.verified }"></i>
