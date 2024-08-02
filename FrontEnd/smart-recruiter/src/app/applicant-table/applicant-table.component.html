@@ -9,7 +9,9 @@
     [loading]="loading"
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['name', 'contact', 'university', 'degree', 'skills', 'gpa', 'workExperience', 'cv', 'status', 'verified']"
+    [globalFilterFields]="['name', 'contact', 'degree', 'skills', 'workExperience', 'cv', 'status', 'verified']"
+    [scrollable]="true"
+    scrollDirection="horizontal"
     [tableStyle]="{ 'min-width': '75rem' }"
     >
 
@@ -29,15 +31,13 @@
 
     <ng-template pTemplate="header">
         <tr>
-            <th>Name</th>
-            <th>Contact</th>
-            <th>University</th>
-            <th>Degree</th>
-            <th>Skills</th>
-            <th>GPA</th>
-            <th>Work Experience</th>
-            <th>CV</th>
-            <th>Status</th>
+            <th class="column-name">Name</th>
+            <th class="column-contact">Contact</th>
+            <th class="column-degree">Degree</th>
+            <th class="column-skills">Skills</th>
+            <th class="column-workExperience">Work Experience</th>
+            <th class="column-cv">CV</th>
+            <th class="column-status">Status</th>
             <!-- <th>Verified</th> -->
         </tr>
     </ng-template>
@@ -46,14 +46,13 @@
         <tr>
             <td>{{ customer.name }}</td>
             <td>{{ customer.contact }}</td>
-            <td>{{ customer.university }}</td>
             <td>{{ customer.degree }}</td>
             <td>{{ customer.skills }}</td>
-            <td>{{ customer.gpa }}</td>
             <td>{{ customer.workExperience }}</td>
             <td><a href="{{ customer.cv }}" target="_blank">View CV</a></td>
-            <td>
-                <!-- <p-tag [value]="customer.status"></p-tag> -->
+            <td class="status-button">
+                <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button"/>
+                <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button"/>
             </td>
             <!-- <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': customer.verified, 'text-red-500 pi-times-circle': !customer.verified }"></i>
