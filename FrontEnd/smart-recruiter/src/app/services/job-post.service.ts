@@ -27,7 +27,7 @@ export class JobPostService {
       jobId : 3,
       title : 'Sales Manager',
       description : 'Manage sales team',
-      location : 'Lagos',
+      location : 'Lagos (Hybrid)',
       Deparment : 'Sales',
       active : false
     }
