@@ -9,14 +9,14 @@
     <div class="form-content">
         <div>
             <h1>Join Our Team !</h1>
-            <p>Fill the following form, and we'll inform you if you are shortlisted.</p>
+            <p>Fill the following form, and we'll inform you shortly if you are shortlisted.</p>
         </div>
     
         <form  class="p-fluid" autocomplete="on" #userForm="ngForm">
             <!-- {{ userForm.value | json }} -->
     
             <div class="p-Name">
-                <div>Name</div>
+                <div class="topic">Name</div>
                 <input type="text" id="fname" name="fname" class="fname" placeholder="Enter full Name" ngModel><br>
                 <!-- <label for="lname">Last Name</label><br>
                 <input type="text" id="lname" name="lname" class="lname" ngModel><br> -->
@@ -40,13 +40,13 @@
             </div> -->
     
             <div class="Contact">
-                <div>Contact Details</div>
+                <div class="topic">Contact Details</div>
                 <!-- <input type="email" id="email" name="email " class="email" placeholder="Enter email" ngModel><br> -->
                 <input type="number" id="phone" name="phone" class="phone" placeholder="+94 7********" ngModel><br>
             </div>
     
             <div class="Education">
-                <div>Education Qualifications</div><br>
+                <div class="topic">University</div>
                 <select id="University" name="University" class="University" ngModel>
                     <option  value="University of Colombo">University of Colombo</option>
                     <option  value="University of Peradeniya">University of Peradeniya</option>
@@ -56,16 +56,17 @@
                     <option  value="NIBM">NIBM</option>
                     <option  value="NSBM">NSBM</option>
                     <option  value="ICBT">ICBT</option>
+                    <option  value="Other-University">Other</option>
                 </select><br>
     
-                <label for="Other-University">Other</label><br>
-                <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list please type"><br>
+                <label for="Other-University" class="topic">Other</label><br>
+                    <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list please type"><br>
                 <!-- <label for="GPA">GPA</label><br>
-                <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
+                    <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
             </div>
             
-                <label for="Degree">Degree</label><br>
-                <input type="text" id =Degree name="Degree" class="Degree" ngModel><br>
+                <label for="Degree" class="topic">Degree</label><br>
+                    <input type="text" id =Degree name="Degree" class="Degree" ngModel><br>
     
                 <!-- <div class="year">
                     <label for="from-year">From</label>
@@ -75,19 +76,19 @@
                 </div> -->
                 
             <div class="p-skills">
-                <div>Skills</div>
+                <div class="topic">Skills</div>
                 <!-- <label for="Skills">Skills</label><br> -->
                 <input type="text" id =skills name="skills" class="work" ngModel><br>
             </div>
 
             <div class="p-work">
-                <div>Work Experience</div>
+                <div class="topic">Work Experience</div>
                 <!-- <label for="work">Work Experience</label><br> -->
                 <input type="text" id =work name="work" class="work" ngModel><br>
             </div>            
     
             <div class="p-reason">
-                <div>Why do you want to join LB Finance</div>
+                <div class="topic">Why do you want to join LB Finance</div>
                 <!-- <label for="reason">Message</label><br> -->
                 <input type="text" id =reason name="reason" class="reason" ngModel><br>
             </div>
@@ -99,7 +100,7 @@
             </div> -->
             <div class="card">
                 <div class="card-header">
-                    <h3>Upload CV</h3>
+                    <div class="topic">Upload CV</div>
                 </div>
                 <div class="card-body">
                     <!-- <p-fileUpload name="cv" accept=".pdf" maxFileSize="1000000" customUpload="true" (uploadHandler)="onUpload($event)">
@@ -115,6 +116,19 @@
                             </div>
                         </ng-template>
                     </p-fileUpload> -->
+                    <p-fileUpload 
+                        mode="basic" 
+                        name="demo[]" 
+                        chooseIcon="pi pi-upload" 
+                        url="https://www.primefaces.org/cdn/api/upload.php" 
+                        accept=".pdf" maxFileSize="1000000" 
+                        (onUpload)="onBasicUploadAuto($event)" 
+                        [auto]="true" 
+                        chooseLabel="Browse" />
+                        <div *ngIf="fileName">
+                            <h3>Uploaded File: {{ fileName }}</h3>
+                            <p>File uploaded successfully!</p>
+                        </div>
                 </div>
             </div>
             
