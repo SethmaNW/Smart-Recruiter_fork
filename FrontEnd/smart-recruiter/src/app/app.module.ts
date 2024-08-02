@@ -24,7 +24,8 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
-
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
  
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
     AvatarGroupModule,
     AvatarModule,
     FormsModule,
-    CardModule
+    CardModule,
+    HttpClientModule,
+    FileUploadModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
