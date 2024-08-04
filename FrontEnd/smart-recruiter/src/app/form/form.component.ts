@@ -9,8 +9,13 @@ import { NgForm } from '@angular/forms';
 })
 export class FormComponent {
   fileName: string | null = null;
+  skillsTooLong = false;
+  fileUploaded: boolean = false;
 
   onSubmit(form: NgForm) {
+    // if(!this.fileUploaded){
+    //   return;
+    // }
     if (form.valid) {
       // Handle the valid form submission
       console.log('Form Submitted!', form.value);
@@ -22,7 +27,12 @@ export class FormComponent {
 
     if (file) {
       this.fileName = file.name; 
+      this.fileUploaded = true;
       // console.log('File uploaded:', file);
     }
+  }
+
+  handleWordLimitExceeded(exceeded: boolean) {
+    this.skillsTooLong = exceeded;
   }
 }
