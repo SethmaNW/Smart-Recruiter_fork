@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
+import { DividerModule } from 'primeng/divider';
  
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CandidatePersonalProfileComponent } from './candidate-personal-profile/
     CardModule,
     HttpClientModule,
     FileUploadModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DividerModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
