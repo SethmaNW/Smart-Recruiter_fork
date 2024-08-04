@@ -27,6 +27,9 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
+import { DividerModule } from 'primeng/divider';
  
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { MaxWordsDirective } from './directives/max-words.directive';
     FormComponent,
     ApplicantTableComponent,
     ShortlistedCandidateAccountComponent,
-    MaxWordsDirective
+    MaxWordsDirective,
+    CandidatePersonalProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,9 @@ import { MaxWordsDirective } from './directives/max-words.directive';
     FormsModule,
     CardModule,
     HttpClientModule,
-    FileUploadModule
+    FileUploadModule,
+    InputTextareaModule,
+    DividerModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]

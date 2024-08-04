@@ -14,6 +14,7 @@ export class AuthenticationService {
   private users : Auth[] = [
     {name: "ashan", email: "ashan.wimalasiri@gmail.com", password: "1234", role: "admin"},
     {name: "jlk", email: "lklj@gmail.com", password: "fdgdfg", role: "user"},
+    {email : "a", password : 'a', name : 'a', role : 'admin'}
   ];
 
   //methods
