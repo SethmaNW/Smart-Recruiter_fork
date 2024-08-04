@@ -28,6 +28,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
  
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     FormComponent,
     ApplicantTableComponent,
     ShortlistedCandidateAccountComponent,
-    MaxWordsDirective
+    MaxWordsDirective,
+    CandidatePersonalProfileComponent
   ],
   imports: [
     BrowserModule,
