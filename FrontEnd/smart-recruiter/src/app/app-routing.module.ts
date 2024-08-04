@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ApplicantsComponent } from './applicants/applicants.component';
 import { FormComponent } from './form/form.component';
 import { ApplicantTableComponent } from './applicant-table/applicant-table.component';
+import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
 
 const routes: Routes = [
   // {path: 'nav-bar', component: NavbarComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'applicants', component: ApplicantsComponent},
   {path: 'form', component: FormComponent},
-  {path: 'applicant-table', component: ApplicantTableComponent}
+  {path: 'applicant-table', component: ApplicantTableComponent},
+  {path: 'personal-profile', component: CandidatePersonalProfileComponent}
 ];
 
 @NgModule({
