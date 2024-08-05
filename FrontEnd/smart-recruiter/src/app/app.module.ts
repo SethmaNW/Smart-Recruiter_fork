@@ -30,6 +30,7 @@ import { MaxWordsDirective } from './directives/max-words.directive';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
 import { DividerModule } from 'primeng/divider';
+import { SlidersComponent } from './sliders/sliders.component';
  
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DividerModule } from 'primeng/divider';
     ApplicantTableComponent,
     ShortlistedCandidateAccountComponent,
     MaxWordsDirective,
-    CandidatePersonalProfileComponent
+    CandidatePersonalProfileComponent,
+    SlidersComponent
   ],
   imports: [
     BrowserModule,
