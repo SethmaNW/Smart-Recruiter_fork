@@ -31,6 +31,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
 import { DividerModule } from 'primeng/divider';
 import { SlidersComponent } from './sliders/sliders.component';
+import { PanelModule } from 'primeng/panel';
  
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SlidersComponent } from './sliders/sliders.component';
     HttpClientModule,
     FileUploadModule,
     InputTextareaModule,
-    DividerModule
+    DividerModule,
+    PanelModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
