@@ -22,6 +22,7 @@ export class FormComponent {
     }
   }
   
+  // for the cv upload
   onBasicUploadAuto(event: any) {
     const file = event.files[0];  // give the first selected file
 

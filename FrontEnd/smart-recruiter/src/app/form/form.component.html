@@ -113,7 +113,7 @@
                     
                 <!-- <div class="p-skills">
                     <div class="topic">Skills</div>
-                    <input type="text" id =skills name="skills" class="work" ngModel appMaxWords [maxWords]="50"><br>
+                    <input type="text" id =skills name="skills" class="work" ngModel appMaxWords [maxWords]="30"><br>
                 </div> -->
                 <div class="p-skills">
                     <div class="topic">Skills</div>
@@ -122,12 +122,13 @@
                         name="skills" 
                         class="work" 
                         rows="3" 
-                        cols="50" 
+                        cols="30" 
                         ngModel 
                         #skills="ngModel" required
                         appMaxWords 
-                        [maxWords]="50"
-                        placeholder="Enter your skills (max 50 words)"
+                        [maxWords]="30"
+                        (wordLimitExceeded)="handleWordLimitExceeded($event)"
+                        placeholder="Enter your skills (max 30 words)"
                     ></textarea>
                     <br>
                     <div *ngIf="userForm.submitted || skills.touched">
@@ -136,10 +137,6 @@
                     <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div>
                 </div>                
     
-                <!-- <div class="p-work">
-                    <div class="topic">Work Experience</div>
-                    <input type="text" id =work name="work" class="work" ngModel appMaxWords [maxWords]="50"><br>
-                </div>-->
                 <div class="p-work">
                     <div class="topic">Work Experience</div>
                     <textarea 
@@ -147,12 +144,12 @@
                         id="work"
                         class="work"
                         rows="4"
-                        cols="50"
+                        cols="30"
                         ngModel
                         #work="ngModel" required
                         appMaxWords
-                        [maxWords]="50"
-                        placeholder="Enter your Work Experience (max 50 words)">
+                        [maxWords]="30"
+                        placeholder="Enter your Work Experience (max 30 words)">
                         <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
                     </textarea>
                     <div *ngIf="userForm.submitted || work.touched">
@@ -167,12 +164,12 @@
                         id="reason"
                         class="reason"
                         rows="4"
-                        cols="50"
+                        cols="30"
                         ngModel
                         #reason="ngModel" required
                         appMaxWords
-                        [maxWords]="50"
-                        placeholder="Enter your message here (max 50 words)">
+                        [maxWords]="30"
+                        placeholder="Enter your message here (max 30 words)">
                         <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
                     </textarea>
                     <div *ngIf="userForm.submitted || reason.touched">

@@ -30,33 +30,59 @@
     </ng-template>
 
     <ng-template pTemplate="header">
-        <tr>
-            <th class="column-name">Name</th>
-            <th class="column-contact">Contact</th>
-            <th class="column-degree">Degree</th>
-            <th class="column-skills">Skills</th>
-            <th class="column-workExperience">Work Experience</th>
-            <th class="column-cv">CV</th>
-            <th class="column-status">Status</th>
-            <!-- <th>Verified</th> -->
+        <tr class="fixed-height-row">
+            <th class="column column-name">Name</th>
+            <th class="column column-contact">Contact</th>
+            <th class="column column-date">Available Date</th>
+            <th class="column column-degree">Degree</th>
+            <th class="column column-skills">Skills</th>
+            <th class="column column-workExperience">Work Experience</th>
+            <th class="column column-comment">Comments</th>
+            <th class="column column-action">Action</th>            
         </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-customer>
-        <tr>
-            <td>
-                <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button"/>
+        <tr class="fixed-height-row">
+            <td>                
                 {{ customer.name }}
+                <div class="view-cv">
+                    <a href="{{ customer.cv }}" target="_blank">View CV</a>
+                </div>
             </td>
             <td>{{ customer.contact }}</td>
+            <td>{{ customer.availableDate }}</td>
             <td>{{ customer.degree }}</td>
             <td>{{ customer.skills }}</td>
             <td>{{ customer.workExperience }}</td>
-            <td><a href="{{ customer.cv }}" target="_blank">View CV</a></td>
-            <td class="status-button">
-                <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button"/>
-                
+            <td>
+                <!-- {{ customer.comment }} -->
+                <div>
+                    <!-- id="comment-{{ customer.id }}" not neccessary i guess -->
+                    <textarea 
+                        id="comment-{{ customer.id }}" 
+                        name="comment" 
+                        class="comment" 
+                        rows="4" 
+                        cols="20" 
+                        [(ngModel)] = "customer.comment"
+                        #comment="ngModel" required
+                        appMaxWords 
+                        [maxWords]="2"
+                        (wordLimitExceeded)="handleWordLimitExceeded(customer.id, $event)"
+                        placeholder="Enter your comment (max 20 words)"
+                    ></textarea>
+                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" />
+                    <div *ngIf="customer.commentExceeded" class="error-message">Word limit exceeded.</div>
+                </div>
             </td>
+            <td>
+                <div class="status">{{ customer.status }}</div>
+                <div class="button-container">
+                  <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button"></p-button>
+                  <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button"></p-button>
+                </div>
+            </td>                          
             <!-- <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': customer.verified, 'text-red-500 pi-times-circle': !customer.verified }"></i>
             </td> -->
@@ -64,7 +90,7 @@
     </ng-template>
 
     <ng-template pTemplate="emptymessage">
-        <tr>
+        <tr class="fixed-height-row">
             <td colspan="10">No applicants found for this position.</td>
         </tr>
     </ng-template>
