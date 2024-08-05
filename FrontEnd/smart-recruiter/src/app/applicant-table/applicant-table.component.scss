@@ -2,16 +2,48 @@
     font-size: 25px;
 }
 
-.status-button{
+// .fixed-table{
+//     font-size: 10px;
+// }
+
+.error-message{
+    color: red;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+// .action-button{
+//     // display: flex;
+//     // flex-direction: row;
+// }
+
+.view-cv{
+    margin-top: 10px;
+}
+
+// .status{
+//     margin-bottom: 4px;
+// }
+
+.button-container{
     display: flex;
-    flex-direction: row;
 }
 
 .accept-button{
     margin-right: 10px;
 }
 
-.remove-button{
+.small-button .p-button {
+    font-size: 1rem; 
+    padding: 0.5rem 0.5rem; 
+    height: auto; 
+    width: auto; 
+}
+
+.fixed-height-row th, .fixed-height-row td {
+    height: 100%; 
+    // display: flex;
+    align-items: center;
 }
 
 .column-name{
@@ -27,11 +59,27 @@
     width: 200px;
 }
 .column-workExperience {
+    width: 180px;
+}
+.column-comment {
     width: 150px;
 }
-.column-cv {
-    width: 90px;
+.column-date {
+    width: 130px;
 }
-.column-status {
-    width: 150px;
+.column-action{
+    width: 100px;
 }
+
+// .column {
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+// }
+
+.fixed-height-row {
+    // height: 50px; 
+    font-size: 14px;
+}
+
+
