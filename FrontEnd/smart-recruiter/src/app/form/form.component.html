@@ -1,6 +1,5 @@
 <div>  
-    <div> <app-navbar></app-navbar> </div> 
-    
+    <div> <app-navbar></app-navbar> </div>     
     <div class="page-content">
         <div>
             <div >
@@ -14,14 +13,15 @@
                 <p>Fill the following form, and we'll inform you shortly if you are shortlisted.</p>
             </div>
         
-            <form  class="p-fluid" autocomplete="on" #userForm="ngForm">
+            <form (ngSubmit)="onSubmit(userForm)" class="p-fluid" autocomplete="on" #userForm="ngForm">
                 <!-- {{ userForm.value | json }} -->
         
                 <div class="p-Name">
                     <div class="topic">Name</div>
-                    <input type="text" id="fname" name="fname" class="fname" placeholder="Enter full Name" ngModel><br>
-                    <!-- <label for="lname">Last Name</label><br>
-                    <input type="text" id="lname" name="lname" class="lname" ngModel><br> -->
+                    <input type="text" id="fname" name="fname" class="fname" placeholder="Enter full Name" ngModel #name="ngModel" required><br>
+                    <div *ngIf="userForm.submitted || (name.invalid && name.touched)">
+                        <small *ngIf="name.errors?.['required']">Name is required.</small>
+                    </div>
                 </div>
         
                 <!-- <div class="Address">
@@ -57,10 +57,10 @@
                         ngModel 
                         #phone="ngModel" 
                         required 
-                        pattern="^\+94\s7\d{8}$"
+                        pattern="07\d{8}$"
                         inputmode="tel"
                     />
-                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched || userForm.submitted)">
                         <small *ngIf="phone.errors?.['required']">Phone number is required.</small>
                         <small *ngIf="phone.errors?.['pattern']">Invalid phone number format.</small>
                     </div>
@@ -69,24 +69,26 @@
         
                 <div class="Education">
                     <div class="topic">University</div>
-                    <select id="University" name="University" class="University" ngModel>
-                        <option  value="University of Colombo">University of Colombo</option>
-                        <option  value="University of Peradeniya">University of Peradeniya</option>
-                        <option  value="University of Moratuwa">University of Moratuwa</option>
-                        <option  value="University of Ruhuna">University of Ruhuna</option>
-                        <option  value="SLIIT">SLIIT</option>
-                        <option  value="NIBM">NIBM</option>
-                        <option  value="NSBM">NSBM</option>
-                        <option  value="ICBT">ICBT</option>
-                        <option  value="Other-University">Other</option>
-                    </select><br>
+                        <select id="University" name="University" class="University" ngModel #uni="ngModel" required>
+                            <option  value="University of Colombo">University of Colombo</option>
+                            <option  value="University of Peradeniya">University of Peradeniya</option>
+                            <option  value="University of Moratuwa">University of Moratuwa</option>
+                            <option  value="University of Ruhuna">University of Ruhuna</option>
+                            <option  value="SLIIT">SLIIT</option>
+                            <option  value="NIBM">NIBM</option>
+                            <option  value="NSBM">NSBM</option>
+                            <option  value="ICBT">ICBT</option>
+                            <option  value="Other-University">Other</option>
+                        </select><br>
+                        <div *ngIf="userForm.submitted || uni.touched">
+                            <small *ngIf="uni.errors?.['required']">University selection is required.</small>
+                        </div>
         
                     <div class="deg-topic">
                         <div class="topic">
                             <label for="Other-University">Other</label><br>
                         </div>
-                        
-                        <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list please type"><br>
+                        <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list, please type."><br>
                     </div>
                     <!-- <label for="GPA">GPA</label><br>
                         <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
@@ -96,7 +98,10 @@
                     <div class="topic">
                         <label for="Degree">Degree</label><br>
                     </div>
-                    <input type="text" id =Degree name="Degree" class="degree" ngModel><br>
+                    <input type="text" id =Degree name="Degree" class="degree" ngModel #degree="ngModel" required><br>
+                    <div *ngIf="userForm.submitted || degree.touched">
+                        <small *ngIf="degree.errors?.['required']">Degree is required.</small>
+                    </div>
                 </div>                    
         
                     <!-- <div class="year">
@@ -106,22 +111,73 @@
                         <input type="date" id =to-year name="to-year" class="to-year" ngModel><br>
                     </div> -->
                     
+                <!-- <div class="p-skills">
+                    <div class="topic">Skills</div>
+                    <input type="text" id =skills name="skills" class="work" ngModel appMaxWords [maxWords]="50"><br>
+                </div> -->
                 <div class="p-skills">
                     <div class="topic">Skills</div>
-                    <!-- <label for="Skills">Skills</label><br> -->
-                    <input type="text" id =skills name="skills" class="work" ngModel appMaxWords [maxWords]="50"><br>
-                </div>
+                    <textarea 
+                        id="skills" 
+                        name="skills" 
+                        class="work" 
+                        rows="3" 
+                        cols="50" 
+                        ngModel 
+                        #skills="ngModel" required
+                        appMaxWords 
+                        [maxWords]="50"
+                        placeholder="Enter your skills (max 50 words)"
+                    ></textarea>
+                    <br>
+                    <div *ngIf="userForm.submitted || skills.touched">
+                        <small *ngIf="skills.errors?.['required']">Skills field is required.</small>
+                    </div>
+                    <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div>
+                </div>                
     
+                <!-- <div class="p-work">
+                    <div class="topic">Work Experience</div>
+                    <input type="text" id =work name="work" class="work" ngModel appMaxWords [maxWords]="50"><br>
+                </div>-->
                 <div class="p-work">
                     <div class="topic">Work Experience</div>
-                    <!-- <label for="work">Work Experience</label><br> -->
-                    <input type="text" id =work name="work" class="work" ngModel appMaxWords [maxWords]="50"><br>
-                </div>            
+                    <textarea 
+                        name="work" 
+                        id="work"
+                        class="work"
+                        rows="4"
+                        cols="50"
+                        ngModel
+                        #work="ngModel" required
+                        appMaxWords
+                        [maxWords]="50"
+                        placeholder="Enter your Work Experience (max 50 words)">
+                        <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
+                    </textarea>
+                    <div *ngIf="userForm.submitted || work.touched">
+                        <small *ngIf="work.errors?.['required']">Work Experience is required.</small>
+                    </div>
+                </div>
         
                 <div class="p-reason">
                     <div class="topic">Why do you want to join LB Finance</div>
-                    <!-- <label for="reason">Message</label><br> -->
-                    <input type="text" id =reason name="reason" class="reason" ngModel appMaxWords [maxWords]="50"><br>
+                    <textarea 
+                        name="reason" 
+                        id="reason"
+                        class="reason"
+                        rows="4"
+                        cols="50"
+                        ngModel
+                        #reason="ngModel" required
+                        appMaxWords
+                        [maxWords]="50"
+                        placeholder="Enter your message here (max 50 words)">
+                        <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
+                    </textarea>
+                    <div *ngIf="userForm.submitted || reason.touched">
+                        <small *ngIf="reason.errors?.['required']">This field is required.</small>
+                    </div>
                 </div>
         
                 <!-- <div class="upload-cv">
@@ -160,8 +216,14 @@
                                 <h3>Uploaded File: {{ fileName }}</h3>
                                 <p>File uploaded successfully!</p>
                             </div>
+                            <div *ngIf="!fileUploaded && userForm.submitted">
+                                <small class="error-message">Please upload a file.</small>
+                            </div>
                     </div>
                 </div>  
+                <div class="button">
+                    <p-button label="Submit" type="submit" [disabled]="userForm.invalid"></p-button>
+                </div>
             </form>
         </div>
     </div>

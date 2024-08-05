@@ -3,7 +3,8 @@
     align-items: left;
     padding-left: 200px;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 30px;
 }
 
 .topic{
@@ -70,7 +71,7 @@ p{
     margin-right: 150px;
     padding: -2rem;
     background-color: rgb(233, 230, 225);   // rgb(222, 219, 214)
-    height: 130vh;
+    // height: 130vh;
     margin-bottom: 40px;
     margin-top: 20px;
 }
@@ -100,6 +101,15 @@ input.phone.ng-invalid.ng-touched {
 small {
     margin-left: 10px;
     color: red;
+}
+
+.button{
+    padding: 10px;
+    padding-top: 15px;
+    width: 120px;
+    display: flex;
+    margin-left: auto;
+    margin-right: 160px;
 }
 
 
