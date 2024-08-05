@@ -32,6 +32,7 @@ import { CandidatePersonalProfileComponent } from './candidate-personal-profile/
 import { DividerModule } from 'primeng/divider';
 import { SlidersComponent } from './sliders/sliders.component';
 import { PanelModule } from 'primeng/panel';
+import { SliderModule } from 'primeng/slider';
  
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { PanelModule } from 'primeng/panel';
     MaxWordsDirective,
     CandidatePersonalProfileComponent,
     SlidersComponent
+
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { PanelModule } from 'primeng/panel';
     FileUploadModule,
     InputTextareaModule,
     DividerModule,
-    PanelModule
+    PanelModule,
+    SliderModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
