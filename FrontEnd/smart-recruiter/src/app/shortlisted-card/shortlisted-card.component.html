@@ -11,9 +11,18 @@
 
             <div>
                 <div class="m-0 details">
-                    <div class="detail">{{ candidate.contact }}</div>
-                    <div class="detail">{{ candidate.email}}</div>
-                    <div class="detail">{{ candidate.testmark}}</div>
+                    <div class="detail">
+                        <div class="subtopic contact">Contact:</div>
+                        <div class="subcontent">{{ candidate.contact }}</div>
+                    </div>
+                    <div class="detail">
+                        <div class="subtopic email">Email:</div>
+                        <div class="subcontent">{{ candidate.email}}</div>
+                    </div>
+                    <div class="detail" *ngIf="candidate.status==='2nd Interview' || candidate.status === '3rd Interview'">
+                        <div class="subtopic marks">Avg marks:</div>
+                        <div class="subcontent">{{ candidate.testmark}}</div>
+                    </div>
                 </div>
                 <div class="view-cv">
                     <a href="{{ candidate.cv }}" target="_blank">View CV</a>

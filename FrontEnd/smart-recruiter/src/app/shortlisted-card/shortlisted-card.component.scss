@@ -28,8 +28,27 @@
     font-size: 12px;
 }
 
+.subtopic{
+    font-weight: 320;
+}
+.contact{
+    margin-right: 19px;
+}
+.email{
+    margin-right: 38px;
+}
+.marks{
+    margin-right: 6px;
+} 
+
+.subcontent{
+
+}
+
 .detail{
     margin-bottom: 3px;
+    display: flex;
+    flex-direction: row;
 }
 
 .row{

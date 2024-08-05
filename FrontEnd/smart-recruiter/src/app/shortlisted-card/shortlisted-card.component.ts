@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShortlistedListService } from '../services/shortlisted-list.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ShortlistedListService } from '../services/shortlisted-list.service';
   templateUrl: './shortlisted-card.component.html',
   styleUrls: ['./shortlisted-card.component.scss']
 })
-export class ShortlistedCardComponent {
+export class ShortlistedCardComponent implements OnInit {
   shortlisted: any[] = [];
   loading: boolean = true;
 
