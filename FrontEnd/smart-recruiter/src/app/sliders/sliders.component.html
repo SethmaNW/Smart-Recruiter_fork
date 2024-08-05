@@ -1,1 +1,29 @@
-<p>sliders works!</p>
+<div class="p-grid p-justify-center">
+   <div class="p-col-12 p-md-9" >
+    <h2>1 st interview Marks</h2>
+    <div class="card flex justify-content-center">
+        <p-dropdown 
+            [options]="candidate" 
+            [(ngModel)]="selectedCandidate" 
+            optionLabel="name"
+            placeholder="Select Interview Criteria" />
+
+    </div>
+        <div  class="card flex flex-column align-items-center" >
+            <input type="text" pInputText [(ngModel)]="value" class="w- mb-2"/>
+            <p-slider [(ngModel)]="value" class="w-full" /><br>
+
+            <button 
+            pButton 
+            pRipple 
+            label="Save" 
+            class="p-button-success">
+        </button>
+        </div>
+
+
+
+
+
+        
+  
