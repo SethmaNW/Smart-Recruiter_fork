@@ -7,26 +7,21 @@
 <body>
   <div class="background-image"></div>
   <div class="login-form">
-  <form class="p-fluid"  autocomplete="on">
+  <form class="p-fluid"  autocomplete="on" (ngSubmit)="onSubmit()">
     <div class="p-field">
       <label for="userid">User Id</label><br>
-      <input type="text"  id="userid" name="userid" placeholder="example@hSenid.com"  class="custom-input"> <br>
+      <input type="text"  id="userid" name="userid" placeholder="example@hSenid.com"  class="custom-input" [(ngModel)]="userId" required> <br>
       
     </div>  
     <div class="p-p-field">
       <label for="password" >Password</label><br>
-      <input type="password" id="password" name="password" class="custom-input"> <br>
+      <input type="password" id="password" name="password" class="custom-input" [(ngModel)]="password" required> <br>
     </div>
     <div class="p-field">
     <a href="#" class="forgot-password" class="for-text">Forgot Password?</a><br>
     </div>
-  
-   
-   
-
-
     <div class="button">
-      <p-button label="Submit" /> <br>  
+    <p-button label="Submit" type="submit" /> <br>  
   </div>
   </form>
 </div>

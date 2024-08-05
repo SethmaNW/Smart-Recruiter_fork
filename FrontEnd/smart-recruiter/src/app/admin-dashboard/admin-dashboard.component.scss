@@ -13,12 +13,6 @@ $nav-bar-height: 55px;
     z-index: 4;
 }
 
-
-.custom-search-button {
-    background-color: var(--red-600); 
-    color: #ffffff;
-}
-
 .custom-search-button .pi-search {
     color: #ffffff; /* Custom icon color */
 }
@@ -34,3 +28,15 @@ $nav-bar-height: 55px;
     font-weight: 700;
     background-color: var(--red-600);
   }
+
+
+.add-new-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+:ng-deep .p-dialog-header{
+    padding-bottom: 1rem;
+}

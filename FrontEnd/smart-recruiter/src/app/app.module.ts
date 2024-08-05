@@ -24,7 +24,12 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
-
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
+import { MaxWordsDirective } from './directives/max-words.directive';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
+import { DividerModule } from 'primeng/divider';
  
 @NgModule({
   declarations: [
@@ -36,7 +41,9 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
     SidebarComponent,
     FormComponent,
     ApplicantTableComponent,
-    ShortlistedCandidateAccountComponent
+    ShortlistedCandidateAccountComponent,
+    MaxWordsDirective,
+    CandidatePersonalProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,11 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
     AvatarGroupModule,
     AvatarModule,
     FormsModule,
-    CardModule
+    CardModule,
+    HttpClientModule,
+    FileUploadModule,
+    InputTextareaModule,
+    DividerModule
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
