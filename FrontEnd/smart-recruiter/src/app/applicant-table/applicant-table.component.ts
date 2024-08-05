@@ -1,15 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Table } from 'primeng/table';
 import { ApplicantsListService } from '../services/applicants-list.service';
 
 @Component({
   selector: 'app-applicant-table',
   templateUrl: './applicant-table.component.html',
-  styleUrls: ['./applicant-table.component.scss']
+  styleUrls: ['./applicant-table.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ApplicantTableComponent implements OnInit {
   customers: any[] = [];
   loading: boolean = true;
+  commentExceeded = false;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -24,4 +26,10 @@ export class ApplicantTableComponent implements OnInit {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
     this.dt2.filterGlobal(inputElement.value, matchMode);
   }
+
+  handleWordLimitExceeded(id:number, exceeded: boolean) {
+    this.applicantsListService.updateCommentExceeded(id, exceeded);
+  }
+
+  
 }
