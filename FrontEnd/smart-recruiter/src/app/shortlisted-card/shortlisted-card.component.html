@@ -1,0 +1,25 @@
+<div class="row flex flex-wrap">
+    <div class="cards">
+        <p-panel [toggleable]="true" *ngFor="let candidate of shortlisted" class="card">
+            <ng-template pTemplate="header">
+                <div class="flex align-items-center gap-2">
+                    <span class="font-bold">
+                        {{ candidate.name }} 
+                    </span>
+                </div>
+            </ng-template>
+
+            <div>
+                <div class="m-0 details">
+                    <div class="detail">{{ candidate.contact }}</div>
+                    <div class="detail">{{ candidate.email}}</div>
+                    <div class="detail">{{ candidate.testmark}}</div>
+                </div>
+                <div class="view-cv">
+                    <a href="{{ candidate.cv }}" target="_blank">View CV</a>
+                </div>
+            </div>
+
+        </p-panel>
+    </div>
+</div>
