@@ -13,78 +13,46 @@
             <div class="grid">
                 <div class="col-3">
                     <div class="column-1">Interview-1</div>
-                    <div class="cards">
-                        <p-panel [toggleable]="true">
-                            <ng-template pTemplate="header">
-                                <div class="flex align-items-center gap-2">
-                                    <span class="font-bold">
-                                        Amy Elsner
-                                    </span>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="footer">
-                                <div class="flex flex-wrap align-items-center justify-content-between gap-3">
+
+                    <div class="row flex flex-wrap">
+                        <div class="cards">
+                            <p-panel [toggleable]="true" *ngFor="let candidate of shortlisted" class="card">
+                                <ng-template pTemplate="header">
                                     <div class="flex align-items-center gap-2">
-                                        <p-button icon="pi pi-user" rounded="true" text="true" />
-                                        <p-button icon="pi pi-bookmark" severity="secondary" rounded="true" text="true" />
+                                        <span class="font-bold">
+                                            {{ candidate.name }} 
+                                        </span>
                                     </div>
-                                    <span class="p-text-secondary">
-                                        Updated 2 hours ago
-                                    </span>
+                                </ng-template>
+
+                                <div>
+                                    <div class="m-0 details">
+                                        <div class="detail">{{ candidate.contact }}</div>
+                                        <div class="detail">{{ candidate.email}}</div>
+                                        <div class="detail">{{ candidate.testmark}}</div>
+                                    </div>
+                                    <div class="view-cv">
+                                        <a href="{{ candidate.cv }}" target="_blank">View CV</a>
+                                    </div>
                                 </div>
-                            </ng-template>
-                            <ng-template pTemplate="icons">
-                                <!-- <button class="p-panel-header-icon p-link mr-2" (click)="menu.toggle($event)"> -->
-                                    <span class="pi pi-cog"></span>
-                                <!-- </button> -->
-                                <!-- <p-menu #menu id="config_menu" [model]="items" [popup]="true" /> -->
-                            </ng-template>
-                            <p class="m-0">
-                                Lorem ipsum dolor sit amet...
-                            </p>
-                        </p-panel>
+
+                            </p-panel>
+                        </div>
                     </div>
+
                 </div>
 
                 <div class="col-3">
                     <div class="column-1">Interview-2</div>
                     <div class="cards">
-                        <p-panel [toggleable]="true">
-                            <ng-template pTemplate="header">
-                                <div class="flex align-items-center gap-2">
-                                    <span class="font-bold">
-                                        Amy Elsner
-                                    </span>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="footer">
-                                <div class="flex flex-wrap align-items-center justify-content-between gap-3">
-                                    <div class="flex align-items-center gap-2">
-                                        <p-button icon="pi pi-user" rounded="true" text="true" />
-                                        <p-button icon="pi pi-bookmark" severity="secondary" rounded="true" text="true" />
-                                    </div>
-                                    <span class="p-text-secondary">
-                                        Updated 2 hours ago
-                                    </span>
-                                </div>
-                            </ng-template>
-                            <ng-template pTemplate="icons">
-                                <!-- <button class="p-panel-header-icon p-link mr-2" (click)="menu.toggle($event)"> -->
-                                    <span class="pi pi-cog"></span>
-                                <!-- </button> -->
-                                <!-- <p-menu #menu id="config_menu" [model]="items" [popup]="true" /> -->
-                            </ng-template>
-                            <p class="m-0">
-                                Lorem ipsum dolor sit amet...
-                            </p>
-                        </p-panel>
+
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="column-1">Interview-3</div>
                 </div>
-                
+
                 <div class="col-3">
                     <div class="column-1">Offered</div>
                 </div>
