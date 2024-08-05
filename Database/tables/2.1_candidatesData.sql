@@ -1,0 +1,66 @@
+USE SmartRecruiterDB;
+
+INSERT INTO [dbo].[candidates] (
+    [Name], 
+    [Contact], 
+    [Email], 
+    [CV_FilePath], 
+    [CV_FileName], 
+    [Skills], 
+    [Available_Date], 
+    [GitHub_Link], 
+    [LinkedIn], 
+    [Degree], 
+    [University], 
+    [GPA], 
+    [Experience], 
+    [Role_Id]
+) VALUES 
+(
+    'John Doe', 
+    '123-456-7890', 
+    'john.doe@example.com', 
+    'C:\\CVs\\john_doe.pdf', 
+    'john_doe.pdf', 
+    'C#, SQL, ASP.NET', 
+    '2023-10-01', 
+    'https://github.com/johndoe', 
+    'https://linkedin.com/in/johndoe', 
+    'B.Sc. Computer Science', 
+    'University of Example', 
+    3.5, 
+    5, 
+    1
+),
+(
+    'Jane Smith', 
+    '987-654-3210', 
+    'jane.smith@example.com', 
+    'C:\\CVs\\jane_smith.pdf', 
+    'jane_smith.pdf', 
+    'Java, Spring, Hibernate', 
+    '2023-11-15', 
+    'https://github.com/janesmith', 
+    'https://linkedin.com/in/janesmith', 
+    'M.Sc. Software Engineering', 
+    'Example University', 
+    3.8, 
+    3, 
+    2
+),
+(
+    'Alice Johnson', 
+    '555-123-4567', 
+    'alice.johnson@example.com', 
+    'C:\\CVs\\alice_johnson.pdf', 
+    'alice_johnson.pdf', 
+    'Python, Django, Flask', 
+    '2023-12-01', 
+    'https://github.com/alicejohnson', 
+    'https://linkedin.com/in/alicejohnson', 
+    'B.Sc. Information Technology', 
+    'Tech University', 
+    3.9, 
+    4, 
+    3
+);
