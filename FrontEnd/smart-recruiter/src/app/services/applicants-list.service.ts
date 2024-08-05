@@ -11,66 +11,6 @@ export class ApplicantsListService {
     this.loadDummyData();
   }
 
-  loadDummyData() {
-    this.customers = [
-      {
-        // representative: { name: 'Jane Smith' },
-        id: 1,
-        position: 'Software Engineer',
-        name: 'John Doe',
-        university: 'University of Colombo',
-        degree: 'BSc in Computer Science',
-        contact: '077 0089633',
-        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-        gpa: '3.5',
-        workExperience: '2 years',
-        cv: 'https://www.google.com',        
-        status: 'Active'
-      },
-      {
-        id: 2,
-        position: 'Software Engineer',
-        name: 'Keran Perera',
-        university: 'University of Colombo',
-        degree: 'BSc in Physics',
-        contact: '077 0089633',
-        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-        gpa: '3.5',
-        workExperience: '2 years',
-        cv: 'https://www.google.com',        
-        status: 'Active'
-      },
-      {
-        id: 3,
-        position: 'Software Engineer',
-        name: 'Keran Perera',
-        university: 'University of Colombo',
-        degree: 'BSc in Physics',
-        contact: '077 0089633',
-        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-        gpa: '3.5',
-        workExperience: '2 years',
-        cv: 'https://www.google.com',        
-        status: 'Active'
-      },
-      {
-        id: 4,
-        position: 'Software Engineer',
-        name: 'Keran Perera',
-        university: 'University of Colombo',
-        degree: 'BSc in Physics',
-        contact: '077 0089633',
-        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-        gpa: '3.5',
-        workExperience: '2 years',
-        cv: 'https://www.google.com',        
-        status: 'Active'
-      }
-    ];
-
-    this.loading = false;
-  }
-
   getCustomers() {
     return this.customers;
   }
@@ -78,4 +18,84 @@ export class ApplicantsListService {
   isLoading() {
     return this.loading;
   }
+
+  updateCommentExceeded(id: number, exceeded: boolean) {
+    const customer = this.customers.find(c => c.id === id);
+    if (customer) {
+      customer.commentExceeded = exceeded;
+    }
+  }
+
+  loadDummyData() {
+    this.customers = [
+      {
+        // representative: { name: 'Jane Smith' },
+        id: 1,
+        position: 'Software Engineer',
+        name: 'John Doe',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Computer Science',
+        contact: '077 0089633',
+        skills: 'java, angular, spring, khfsdgwe yoisdjgk kjgfsdgwe yoisdj gkkjg',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com', 
+        comment: '',          
+        commentExceeded: false,
+        status: 'Applied'
+      },
+      {
+        id: 2,
+        position: 'Software Engineer',
+        name: 'Keran Perera',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Physics',
+        contact: '077 0089633',
+        skills: 'java, angular, spring, khfs dgweyoisd jgkkjgf sdgwey oisdjgkk jgfsdgwe yoisdj gkkjg yoisdjgk kjgfsdgwe yoisdj gkkjg..',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com',   
+        comment: 'comment 1',   
+        commentExceeded: false,     
+        status: 'ShortListed'
+      },
+      {
+        id: 3,
+        position: 'Software Engineer',
+        name: 'Keran Perera',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Physics',
+        contact: '077 0089633',
+        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com',   
+        comment: '',     
+        commentExceeded: false,
+        status: 'Not Selected'
+      },
+      {
+        id: 4,
+        position: 'Software Engineer',
+        name: 'Keran Perera',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Physics',
+        contact: '077 0089633',
+        skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com',        
+        comment: '',   
+        commentExceeded: false,
+        status: 'Applied'
+      }
+    ];
+
+    this.loading = false;
+  }
+
 }
