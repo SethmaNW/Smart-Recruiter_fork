@@ -1,0 +1,31 @@
+
+<div class="editor-container card">
+    
+    <p-editor [(ngModel)]="text" [readonly]="!isEditing" [style]="{ height: '320px',width:'100%'}" />
+</div>
+
+<div class="button-container">
+
+    <button 
+  
+    pButton 
+    pRipple 
+    label="Edit" 
+    class="p-button-danger" rounded="true"
+    (click)="editComment()">
+</button>
+
+<button 
+   
+    pButton 
+    pRipple 
+    label="Save" 
+    class="p-button-success" rounded="true"
+    (click)="saveComment()">
+</button>
+
+
+
+
+
+</div>
