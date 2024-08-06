@@ -33,6 +33,7 @@ import { DividerModule } from 'primeng/divider';
 import { SlidersComponent } from './sliders/sliders.component';
 import { PanelModule } from 'primeng/panel';
 import { SliderModule } from 'primeng/slider';
+import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.component';
  
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SliderModule } from 'primeng/slider';
     ShortlistedCandidateAccountComponent,
     MaxWordsDirective,
     CandidatePersonalProfileComponent,
-    SlidersComponent
+    SlidersComponent,
+    ShortlistedCardComponent
 
   ],
   imports: [
