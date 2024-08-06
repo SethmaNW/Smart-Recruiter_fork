@@ -34,6 +34,9 @@ import { SlidersComponent } from './sliders/sliders.component';
 import { PanelModule } from 'primeng/panel';
 import { SliderModule } from 'primeng/slider';
 import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.component';
+import { CommentsComponent } from './comments/comments.component';
+import { EditorModule } from 'primeng/editor';
+
  
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.co
     MaxWordsDirective,
     CandidatePersonalProfileComponent,
     SlidersComponent,
-    ShortlistedCardComponent
+    ShortlistedCardComponent,
+    CommentsComponent
 
   ],
   imports: [
@@ -72,7 +76,9 @@ import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.co
     InputTextareaModule,
     DividerModule,
     PanelModule,
-    SliderModule
+    SliderModule,
+    EditorModule
+  
   ],
   providers: [provideAnimations()],
   bootstrap: [AppComponent]
