@@ -1,32 +1,32 @@
-/* Ensure the container fits well within the column */
+
 .editor-container {
     display: flex;
-   
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
+    padding: 0;
    
 }
 
-.p-editor{
+ .p-editor{
     width: 100%;
     margin: 0;
-    height: 100%;
- 
-}
+ }
 
-.button{
-    margin-top: 10px;
-    margin-left: 150px;
-    margin-bottom: 10px;
+ .button-container{
+    display: flex;
+       margin-top: 5px;
+       justify-content: flex-start;
+       flex-direction: row;
+       padding:0;
+ }
+
+ .p-button-success,.p-button-danger{
     margin-right: 10px;
-}
-.p-button-success{
-    margin-left: 10px;
-    margin-right: 10px;
-}
+ }
+
+
+
 
 
 
