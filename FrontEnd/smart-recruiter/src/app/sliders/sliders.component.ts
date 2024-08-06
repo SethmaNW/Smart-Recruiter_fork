@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 
 
-interface candidate{
+interface criteria{
   name:string;
   marks:number;
 }
@@ -12,7 +12,7 @@ interface candidate{
   styleUrls: ['./sliders.component.scss']
 })
 export class SlidersComponent implements  OnInit{
-   candidate:candidate[]=[
+  criteria:criteria[]=[
     { name: 'Attitude and Discipline', marks: 70 },
     { name: 'Technical Knowledge', marks: 80 },
     { name: 'Education Background', marks: 60 },
@@ -26,7 +26,7 @@ export class SlidersComponent implements  OnInit{
   
   ];
 
-  selectedCandidate:candidate|undefined;
+  selectedCriteria:criteria|undefined;
   value=0;
 
 
@@ -34,12 +34,21 @@ export class SlidersComponent implements  OnInit{
 
   constructor() { }
 
-  ngOnInit(): void {
-      
+  ngOnInit(): void {}
+
+  savevalue():void{
+
+    if(this.selectedCriteria){
+      console.log(`Saving ${this.value} for ${this.selectedCriteria.name}`);
+
+      this.value=0;
+
+
+     } else {
+      console.log('select a criteria first');
+    }
+
+
   }
-
-
-
-
 
 }

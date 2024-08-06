@@ -3,8 +3,8 @@
     <h2>1 st interview Marks</h2>
     <div class="card flex justify-content-center">
         <p-dropdown 
-            [options]="candidate" 
-            [(ngModel)]="selectedCandidate" 
+            [options]="criteria" 
+            [(ngModel)]="selectedCriteria" 
             optionLabel="name"
             placeholder="Select Interview Criteria" />
 
@@ -17,9 +17,11 @@
             pButton 
             pRipple 
             label="Save" 
-            class="p-button-success">
-        </button>
+            class="p-button-success"
+            (click)="savevalue()"></button>
+       
         </div>
+
 
 
 
