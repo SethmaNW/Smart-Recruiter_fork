@@ -40,7 +40,7 @@ export class ShortlistedListService {
         interview2: 'the action of ordaining someone in holy orders',	
         interview3: 'the action of ordaining someone in holy orders',       
         commentExceeded: false,
-        status: '2nd Interview'
+        status: 'Interview-2'
       },
       {
         id: 2,
@@ -82,7 +82,49 @@ export class ShortlistedListService {
         interview2: '',	
         interview3: '',        
         commentExceeded: false,
-        status: '3rd Interview'
+        status: 'Interview-3'
+      },
+      {
+        id: 2,
+        position: 'Software Engineer',
+        name: 'ravi Perera',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Physics',
+        contact: '077 0089633',
+        email: 'karan.email.com',
+        skills: 'java, angular, spring, khfs dgweyoisd jgkkjgf sdgwey oisdjgkk jgfsdgwe yoisdj gkkjg yoisdjgk kjgfsdgwe yoisdj gkkjg..',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com',   
+        comment: 'comment 1',  
+        testmark: '',
+        interview1: '',
+        interview2: '',	
+        interview3: '',        
+        commentExceeded: false,
+        status: 'Offered'
+      },
+      {
+        id: 3,
+        position: 'Software Engineer',
+        name: 'Saman Perera',
+        availableDate: '2021-01-01',
+        university: 'University of Colombo',
+        degree: 'BSc in Physics',
+        contact: '077 0089633',
+        email: 'karan.email.com',
+        skills: 'java, angular, spring, khfs dgweyoisd jgkkjgf sdgwey oisdjgkk jgfsdgwe yoisdj gkkjg yoisdjgk kjgfsdgwe yoisdj gkkjg..',
+        gpa: '3.5',
+        workExperience: '2 years',
+        cv: 'https://www.google.com',   
+        comment: 'comment 1',  
+        testmark: '30',
+        interview1: '',
+        interview2: '',	
+        interview3: '',        
+        commentExceeded: false,
+        status: 'Offered'
       }
     ];
 

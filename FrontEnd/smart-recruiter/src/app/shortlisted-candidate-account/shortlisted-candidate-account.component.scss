@@ -2,10 +2,25 @@
     font-size: 30px;
     font-weight: bold;
     color: rgb(48, 48, 48);
-    margin-bottom: 30px;
+    // margin-bottom: 20px;
+}
+
+.int2{
+    background-color: #EAECEC;
+    height: 100%;
+    min-height: 80vh;
+    margin-bottom: 20px;
+}
+
+.int1{
+    background-color: #dfedea;
+    height: 100%;
+    min-height: 80vh;
+    margin-bottom: 20px;
 }
 
 .column-1{
+    font-size: 20px;
     padding: 9px;
     // background-color: azure;
     display: flex;
