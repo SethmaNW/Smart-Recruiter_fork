@@ -1,19 +1,30 @@
 .head-topic{
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 30px;
+    color: rgb(48, 48, 48);
+    // margin-bottom: 20px;
+}
+
+.int2{
+    background-color: #EAECEC;
+    height: 100%;
+    min-height: 80vh;
+    margin-bottom: 20px;
+}
+
+.int1{
+    background-color: #dfedea;
+    height: 100%;
+    min-height: 80vh;
+    margin-bottom: 20px;
 }
 
 .column-1{
+    font-size: 20px;
     padding: 9px;
-    background-color: azure;
+    // background-color: azure;
     display: flex;
     justify-content: center;
+    font-weight: bold;
 }
 
-.cards{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    font-size: 12px;
-}
