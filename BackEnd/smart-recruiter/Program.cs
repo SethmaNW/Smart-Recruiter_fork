@@ -1,4 +1,5 @@
 using Domain.RepositoryInterfaces;
+using Infrastructure.DBConnection;
 using Infrastructure.Repositories;
 using ServiceInterfaces.IServices;
 using services.ServiceImplementations;
@@ -17,6 +18,7 @@ Services.AddControllers();  // Register the controllers
 // Register Classes for dependency injection
 Services.AddScoped<ICandidateRepository, CandidateRepository>();
 Services.AddScoped<ICandidateService, CandidateService>();
+Services.AddSingleton<DBContext>();
 
 var app = builder.Build();
 
