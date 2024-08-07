@@ -19,10 +19,6 @@ export class CommentsComponent {
       this.isEditing=false;
     }
 
-    else{
-      console.log('error');
-    }
-
   }
 
   editComment():void{
@@ -31,10 +27,6 @@ export class CommentsComponent {
       console.log('Editing comment:', this.text);
       this.isEditing=true;
 
-    }
-
-    else{
-      console.log('error');
     }
   }
  
