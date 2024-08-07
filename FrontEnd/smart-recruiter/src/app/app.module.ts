@@ -36,6 +36,9 @@ import { SliderModule } from 'primeng/slider';
 import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.component';
 import { CommentsComponent } from './comments/comments.component';
 import { EditorModule } from 'primeng/editor';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { ChartModule } from 'primeng/chart';
+import { KnobModule } from 'primeng/knob';
 
  
 @NgModule({
@@ -53,7 +56,8 @@ import { EditorModule } from 'primeng/editor';
     CandidatePersonalProfileComponent,
     SlidersComponent,
     ShortlistedCardComponent,
-    CommentsComponent
+    CommentsComponent,
+    PieChartComponent
 
   ],
   imports: [
@@ -77,7 +81,9 @@ import { EditorModule } from 'primeng/editor';
     DividerModule,
     PanelModule,
     SliderModule,
-    EditorModule
+    EditorModule,
+    ChartModule,
+    KnobModule
   
   ],
   providers: [provideAnimations()],
