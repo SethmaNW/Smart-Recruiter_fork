@@ -1,0 +1,12 @@
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\bin\Debug\net8.0\Models.deps.json
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\bin\Debug\net8.0\Models.dll
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\bin\Debug\net8.0\Models.pdb
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.AssemblyInfoInputs.cache
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.AssemblyInfo.cs
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.csproj.CoreCompileInputs.cache
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.sourcelink.json
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.dll
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\refint\Models.dll
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\Models.pdb
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Models\obj\Debug\net8.0\ref\Models.dll
