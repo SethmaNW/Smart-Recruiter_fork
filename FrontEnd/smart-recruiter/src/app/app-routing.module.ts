@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'applicants', component: ApplicantsComponent},
   {path: 'form', component: FormComponent},
-  {path: 'applicant-table', component: ApplicantTableComponent},
+  // {path: 'applicant-table', component: ApplicantTableComponent},
   {path: 'personal-profile', component: CandidatePersonalProfileComponent},
   {path: 'shortlisted', component: ShortlistedCandidateAccountComponent}
 ];

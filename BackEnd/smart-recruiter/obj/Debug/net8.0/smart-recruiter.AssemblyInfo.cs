@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("smart-recruiter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9260e1ec505e78c3695dfdb64e3cb361f1e16fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cbb364bf4524db451fd89e50ccc01ff74f113d3")]
 [assembly: System.Reflection.AssemblyProductAttribute("smart-recruiter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("smart-recruiter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

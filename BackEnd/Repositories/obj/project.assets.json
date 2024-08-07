@@ -1927,24 +1927,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TUF GAMING\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Repositories\\Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\ACER\\Desktop\\LB Tutorials\\mini-project\\Smart-Recruiter\\BackEnd\\Repositories\\Repositories.csproj",
       "projectName": "Repositories",
-      "projectPath": "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Repositories\\Repositories.csproj",
-      "packagesPath": "C:\\Users\\TUF GAMING\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Repositories\\obj\\",
+      "projectPath": "C:\\Users\\ACER\\Desktop\\LB Tutorials\\mini-project\\Smart-Recruiter\\BackEnd\\Repositories\\Repositories.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ACER\\Desktop\\LB Tutorials\\mini-project\\Smart-Recruiter\\BackEnd\\Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\TUF GAMING\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
