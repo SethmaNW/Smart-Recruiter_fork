@@ -14,7 +14,7 @@ public class Candidate
     public string? Degree { get; set; }
     public string? University { get; set; }
     public float? GPA { get; set; }
-    public int? Experience { get; set; }
+    public string? Experience { get; set; }
     public int? Role_Id { get; set; }
 
 }

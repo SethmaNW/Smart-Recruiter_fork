@@ -84,6 +84,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Core\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Core\\Domain\\Domain.csproj"
+              },
               "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Models\\Models.csproj": {
                 "projectPath": "C:\\Users\\TUF GAMING\\Desktop\\Training\\Smart-Recruiter\\BackEnd\\Models\\Models.csproj"
               }
