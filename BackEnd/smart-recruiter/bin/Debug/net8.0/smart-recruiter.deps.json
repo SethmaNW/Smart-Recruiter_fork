@@ -8,11 +8,12 @@
     ".NETCoreApp,Version=v8.0": {
       "smart-recruiter/1.0.0": {
         "dependencies": {
-          "Controllers": "1.0.0",
+          "Domain": "1.0.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.7",
-          "Repositories": "1.0.0",
-          "Services": "1.0.0",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Presentation": "1.0.0",
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "services": "1.0.0"
         },
         "runtime": {
           "smart-recruiter.dll": {}
@@ -1403,26 +1404,48 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
-      "Controllers/1.0.0": {
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "Infrastructure/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Infrastructure.dll": {}
+        }
+      },
+      "Models/1.0.0": {
+        "runtime": {
+          "Models.dll": {}
+        }
+      },
+      "Presentation/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc": "2.2.0",
-          "Services": "1.0.0"
+          "ServiceInterfaces": "1.0.0"
         },
         "runtime": {
-          "Controllers.dll": {}
+          "Presentation.dll": {}
         }
       },
-      "Repositories/1.0.0": {
-        "runtime": {
-          "Repositories.dll": {}
-        }
-      },
-      "Services/1.0.0": {
+      "ServiceInterfaces/1.0.0": {
         "dependencies": {
-          "Repositories": "1.0.0"
+          "Models": "1.0.0"
         },
         "runtime": {
-          "Services.dll": {}
+          "ServiceInterfaces.dll": {}
+        }
+      },
+      "services/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "ServiceInterfaces": "1.0.0"
+        },
+        "runtime": {
+          "services.dll": {}
         }
       }
     }
@@ -2616,17 +2639,32 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
-    "Controllers/1.0.0": {
+    "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Repositories/1.0.0": {
+    "Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Services/1.0.0": {
+    "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Presentation/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ServiceInterfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
