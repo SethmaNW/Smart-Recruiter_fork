@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { SlidersService } from 'src/app/sliders.service';
 
 
 interface criteria{
@@ -32,7 +33,7 @@ export class SlidersComponent implements  OnInit{
 
 
 
-  constructor() { }
+  constructor(private slidersService: SlidersService) { }
 
   ngOnInit(): void {}
 
@@ -40,6 +41,7 @@ export class SlidersComponent implements  OnInit{
 
     if(this.selectedCriteria){
       console.log(`Saving ${this.value} for ${this.selectedCriteria.name}`);
+      this.slidersService.updateslidervalue(this.selectedCriteria.name,this.value);
 
       this.value=0;
 
