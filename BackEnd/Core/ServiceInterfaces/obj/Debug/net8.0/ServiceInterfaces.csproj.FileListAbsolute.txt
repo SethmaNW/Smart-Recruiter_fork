@@ -14,3 +14,5 @@ C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfa
 C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfaces\obj\Debug\net8.0\refint\ServiceInterfaces.dll
 C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfaces\obj\Debug\net8.0\ServiceInterfaces.pdb
 C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfaces\obj\Debug\net8.0\ref\ServiceInterfaces.dll
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfaces\bin\Debug\net8.0\Domain.dll
+C:\Users\TUF GAMING\Desktop\Training\Smart-Recruiter\BackEnd\Core\ServiceInterfaces\bin\Debug\net8.0\Domain.pdb

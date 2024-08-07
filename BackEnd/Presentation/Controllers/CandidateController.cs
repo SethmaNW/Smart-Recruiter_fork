@@ -16,9 +16,10 @@ public class CandidateController : ControllerBase
     }
 
     [HttpGet]
-    public string GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        return _CandidateService.GetAll();
+        var candidates = await _CandidateService.GetAll();
+        return Ok(candidates);
     }
 
 }

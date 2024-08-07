@@ -29,7 +29,7 @@ INSERT INTO [dbo].[candidates] (
     'B.Sc. Computer Science', 
     'University of Example', 
     3.5, 
-    5, 
+    '5', 
     1
 ),
 (
@@ -45,7 +45,7 @@ INSERT INTO [dbo].[candidates] (
     'M.Sc. Software Engineering', 
     'Example University', 
     3.8, 
-    3, 
+    '3', 
     2
 ),
 (
@@ -61,6 +61,6 @@ INSERT INTO [dbo].[candidates] (
     'B.Sc. Information Technology', 
     'Tech University', 
     3.9, 
-    4, 
+    '4', 
     3
 );

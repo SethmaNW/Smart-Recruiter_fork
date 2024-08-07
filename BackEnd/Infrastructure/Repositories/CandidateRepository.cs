@@ -1,6 +1,9 @@
 using Dapper;
+using Dapper.Contrib.Extensions;
+using Domain.Entities;
 using Domain.RepositoryInterfaces;
 using Infrastructure.DBConnection;
+using System.Linq;
 
 namespace Infrastructure.Repositories;
 public class CandidateRepository : ICandidateRepository
@@ -10,13 +13,11 @@ public class CandidateRepository : ICandidateRepository
     {
         _dbContext = dbContext;
     }
-    public string GetAll()
+    public async Task<IEnumerable<Candidate>> GetAll()
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = """
-            SELECT Description FROM dbo.roles WHERE Id = 1
-        """;
-        return connection.QuerySingleOrDefault<string>(sql);
-        //return "Hello from CandidatesRepository!";
+         
+        var candidates = await connection.QueryAsync<Candidate>("SELECT * FROM Candidates");
+        return candidates.ToList();
     }
 }
