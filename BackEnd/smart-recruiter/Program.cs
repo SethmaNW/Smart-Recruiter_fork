@@ -1,22 +1,9 @@
-using Services;
-using Repositories;
-using Repositories.DatabaseConnection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-var Services = builder.Services;
-
-Services.AddControllers();  // Register the controllers
-
-// Register Classes for dependency injection
-Services.AddScoped<ICandidateService, CandidateService>();
-Services.AddScoped<ICandidateRepository, CandidateRepository>();
-Services.AddSingleton<DataContext>();
 
 var app = builder.Build();
 
@@ -28,7 +15,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 var summaries = new[]
 {
@@ -50,7 +36,6 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapControllers();  // Map incomming requests to the registered controllers
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
