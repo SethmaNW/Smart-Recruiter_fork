@@ -1,6 +1,7 @@
-using Services;
-using Repositories;
-using Repositories.DatabaseConnection;
+using Domain.RepositoryInterfaces;
+using Infrastructure.Repositories;
+using ServiceInterfaces.IServices;
+using services.ServiceImplementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +15,8 @@ var Services = builder.Services;
 Services.AddControllers();  // Register the controllers
 
 // Register Classes for dependency injection
-Services.AddScoped<ICandidateService, CandidateService>();
 Services.AddScoped<ICandidateRepository, CandidateRepository>();
-Services.AddSingleton<DataContext>();
+Services.AddScoped<ICandidateService, CandidateService>();
 
 var app = builder.Build();
 
@@ -28,7 +28,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 var summaries = new[]
 {
