@@ -1,9 +1,9 @@
 USE SmartRecruiterDB;
 INSERT INTO [dbo].[jobs] 
-    ([Title], [Description], [No.ofAvailablePositions], [Location], [Deparment], [ActiveStatus], 
+    ([Title], [Description], [NoofAvailablePositions], [Location], [Deparment], [ActiveStatus], 
      [AttitudeAndDiscipline], [TechnicalKnowledge], [EducationBackground], [ProfessionalQualification], 
      [CarrierBackground], [CommunicationSkills], [CulturalFit], [FamilyBackground], 
-     [IQ/Craetivity/ProblemSolvingSkills], [ManagementSkills])
+     [IQCraetivityProblemSolvingSkills], [ManagementSkills])
 VALUES
     ('Software Engineer', 'Develop and maintain software applications.', 5, 'New York', 'IT', 1, 
      8, 9, 7, 6, 5, 8, 7, 6, 9, 7),
