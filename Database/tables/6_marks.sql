@@ -15,7 +15,7 @@ CREATE TABLE [dbo].[marks] (
     [CommunicationSkills] INT NOT NULL DEFAULT 0,
     [CulturalFit] INT NOT NULL DEFAULT 0,
     [FamilyBackground] INT NOT NULL DEFAULT 0,
-    [IQ/Craetivity/ProblemSolvingSkills] INT NOT NULL DEFAULT 0,
+    [IQCraetivityProblemSolvingSkills] INT NOT NULL DEFAULT 0,
     [ManagementSkills] INT NOT NULL DEFAULT 0,
 
     [AdminId] INT NOT NULL,
