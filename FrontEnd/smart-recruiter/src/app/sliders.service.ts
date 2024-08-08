@@ -10,8 +10,7 @@ export class SlidersService {
   sliderValue$ = this.sliderValue.asObservable();
 
  updateslidervalue(criteria:string,value:number):void{
-  const currentValues = { ...this.sliderValue.value };
-   currentValues[criteria] = value;
-   this.sliderValue.next(currentValues);
+  const currentValues = { ...this.sliderValue.value, [criteria]: value };
+  this.sliderValue.next(currentValues);
  }
 }

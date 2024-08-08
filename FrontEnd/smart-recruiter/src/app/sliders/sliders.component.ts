@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
-import { SlidersService } from 'src/app/sliders.service';
+import { Component,Injectable,OnInit } from '@angular/core';
+import { SlidersService } from '../sliders.service';
+
 
 
 interface criteria{
