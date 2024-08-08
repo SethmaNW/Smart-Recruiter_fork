@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
 import { FileUploadModule } from 'primeng/fileupload';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
@@ -39,6 +39,7 @@ import { EditorModule } from 'primeng/editor';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
+
 
  
 @NgModule({
@@ -86,7 +87,7 @@ import { KnobModule } from 'primeng/knob';
     KnobModule
   
   ],
-  providers: [provideAnimations()],
+  providers: [provideAnimations(), provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
