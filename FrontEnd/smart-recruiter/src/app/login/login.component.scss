@@ -18,11 +18,18 @@ html, body {
 
 .p-field{
     margin-bottom: 1.5rem;
+    color: white;
+    :placeholder-shown{
+        color: grey;
+    }
+    
 
 }
 
 .p-p-field{
-    padding:0%
+    padding:0%;
+    color: white;
+    
 }
 
 .custom-input{
@@ -48,7 +55,8 @@ html, body {
 
 .for-text{
     font-size: small;
-    margin-left: 200px;;
+    margin-left: 240px;;
+    color: white;
 }
 
 .background-image{
@@ -62,6 +70,18 @@ html, body {
     z-index: -1;
     // filter: blur(5px);
     // -webkit-filter: blur(5px);
-    opacity: 0.5;
+    opacity: 0.9;
 }
+
+.p-sign{
+    color: white;
+    margin-bottom: 20px;
+}
+
+// .sign-up{
+//     color: white;
+//     margin-left: 10px;
+//     font-size: 1 rem;
+// }
+
 
