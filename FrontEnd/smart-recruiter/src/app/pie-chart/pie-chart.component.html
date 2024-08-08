@@ -1,0 +1,19 @@
+
+    <div class="card flex-column  col-12 p-md-6">
+        <div class="container">
+            <h3>Overview</h3>
+            </div>
+            <div class="chart-container flex ">
+                <div class="pie-chart-container">
+                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" />
+            </div>
+            <div class="knob-container ">
+                <h3>Average Marks</h3><br>
+                <p-knob [(ngModel)]="value" />
+            </div>
+        </div>
+    </div> 
+
+
+
+  
