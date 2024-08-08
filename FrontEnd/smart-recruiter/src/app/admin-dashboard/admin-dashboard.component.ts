@@ -24,7 +24,7 @@ export class AdminDashboardComponent implements OnInit {
   // }
 
   ngOnInit(){
-    this.jobs = this.jobPostSvc.jobs;
+    this.jobPostSvc.getAllJobs().subscribe(jobs => {this.jobs = jobs; this.filteredJobs = jobs; console.log(jobs)});
     this.filteredJobs = this.jobs;
   }
   // Add New button popup control

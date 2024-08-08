@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Job } from '../models/job.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobPostService {
   // These job details used until database is connected
-  jobs : Job[] = [
+  jobs : any[] = [
     {
       jobId : 1,
       title : 'Software Engineer',
@@ -32,6 +34,9 @@ export class JobPostService {
       active : false
     }
   ];
-  constructor() { }
+  constructor(private http : HttpClient) { }
   
+  getAllJobs () : Observable<Job[]>  {
+    return this.http.get<Job[]>('http://localhost:5263/api/Job');
+  }
 }
