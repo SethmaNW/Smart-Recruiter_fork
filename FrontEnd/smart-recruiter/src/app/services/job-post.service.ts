@@ -37,6 +37,6 @@ export class JobPostService {
   constructor(private http : HttpClient) { }
   
   getAllJobs () : Observable<Job[]>  {
-    return this.http.get<Job[]>('http://localhost:5263/api/Job');
+    return this.http.get<Job[]>('api/Job');
   }
 }

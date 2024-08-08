@@ -16,8 +16,8 @@ var Services = builder.Services;
 // Add CORS services
 Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder => builder.WithOrigins("http://localhost:4200")
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
                           .AllowAnyHeader()
                           .AllowAnyMethod());
 });
@@ -34,6 +34,9 @@ Services.AddScoped<IJobService, JobService>();
 
 
 var app = builder.Build();
+
+// Use the CORS policy
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -64,6 +67,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+app.UseAuthorization();
 app.MapControllers();  // Map incomming requests to the registered controllers
 app.Run();
 
