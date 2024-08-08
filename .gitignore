@@ -17,3 +17,7 @@ obj/
 # Ignore Rider files
 .idea/
 *.sln.iml
+
+# Ignore Visual Studio Code settings
+.vscode/
+.vs/
