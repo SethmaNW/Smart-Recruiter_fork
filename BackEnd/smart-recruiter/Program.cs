@@ -13,6 +13,15 @@ builder.Services.AddSwaggerGen();
 
 var Services = builder.Services;
 
+// Add CORS services
+Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
 Services.AddControllers();  // Register the controllers
 
 // Register Classes for dependency injection

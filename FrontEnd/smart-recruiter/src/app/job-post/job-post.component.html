@@ -1,12 +1,12 @@
 <!-- Use objects to style p-cards in ng component -->
-<a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.jobId}" class="customized-card-link no-underline">
+<a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.id}" class="customized-card-link no-underline">
     <p-card styleClass="customized-card">
         <div class="grid grid-custom">
             <div class="col-12 col-12-custom">
                 <h2>{{job.title}}</h2>
                 <div class="batch">
-                    <p-tag severity="success" value="Active" [hidden]="!job.active"/>
-                    <p-tag severity="danger" value="Inactive" [hidden]="job.active"/>
+                    <p-tag severity="success" value="Active" [hidden]="!job.activeStatus"/>
+                    <p-tag severity="danger" value="Inactive" [hidden]="job.activeStatus"/>
                 </div>
                 <div class="drop-down">
                     <p-dropdown 
@@ -21,7 +21,7 @@
         <div class="location">
             <i class="fa-solid fa-location-dot"></i>
             <span style="margin-left: 1rem;">{{job.location}} | &nbsp;</span>
-            <span>{{job.Deparment}}</span>
+            <span>{{job.department}}</span>
         </div>
         <div class="third-line">
             <div class="candidate-count">
