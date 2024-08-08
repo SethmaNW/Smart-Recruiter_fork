@@ -1,6 +1,8 @@
+using Domain.Entities;
+
 namespace Domain.RepositoryInterfaces;
 
 public interface ICandidateRepository
 {
-    string GetAll();
+    Task<IEnumerable<Candidate>> GetAll();
 }

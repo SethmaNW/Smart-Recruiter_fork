@@ -1,5 +1,7 @@
+using Domain.Entities;
+
 namespace ServiceInterfaces.IServices;
 public interface ICandidateService
 {
-    string GetAll();
+    Task<IEnumerable<Candidate>> GetAll();
 }

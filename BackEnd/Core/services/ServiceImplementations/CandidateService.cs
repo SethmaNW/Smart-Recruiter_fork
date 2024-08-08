@@ -1,3 +1,4 @@
+using Domain.Entities;
 using Domain.RepositoryInterfaces;
 using ServiceInterfaces.IServices;
 
@@ -11,8 +12,8 @@ public class CandidateService : ICandidateService
     ){
         _CandidateRepository = candidateRepository;
     }
-    public string GetAll()
+    public async Task<IEnumerable<Candidate>> GetAll()
     {
-        return _CandidateRepository.GetAll();
+        return await _CandidateRepository.GetAll();
     }
 }
