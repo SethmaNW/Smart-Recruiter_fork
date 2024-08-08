@@ -3,7 +3,7 @@ INSERT INTO [dbo].[jobs]
     ([Title], [Description], [NoofAvailablePositions], [Location], [Deparment], [ActiveStatus], 
      [AttitudeAndDiscipline], [TechnicalKnowledge], [EducationBackground], [ProfessionalQualification], 
      [CarrierBackground], [CommunicationSkills], [CulturalFit], [FamilyBackground], 
-     [IQCraetivityProblemSolvingSkills], [ManagementSkills])
+     [IQCreativityProblemSolvingSkills], [ManagementSkills])
 VALUES
     ('Software Engineer', 'Develop and maintain software applications.', 5, 'New York', 'IT', 1, 
      8, 9, 7, 6, 5, 8, 7, 6, 9, 7),
