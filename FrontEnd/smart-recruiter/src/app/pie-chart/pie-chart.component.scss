@@ -1,26 +1,7 @@
-.card{
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  padding: 20px;
 
-}
 
-.overview{
-  margin-bottom: 20px;
-}
-
-.chart-container{
-  justify-content: space-between;
-}
-
-.p-knob{
-  transform: scale(2);
-  transform-origin: center;
-}
-
-.pie-chart-container{
-  width:30%;
+.knob-container {
+  margin-left: 200px; 
 }
 
 
