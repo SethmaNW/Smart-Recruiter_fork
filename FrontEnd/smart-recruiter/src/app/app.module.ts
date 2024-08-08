@@ -88,11 +88,7 @@ import { SlidersService } from './sliders.service';
     KnobModule
   
   ],
-<<<<<<< HEAD
-  providers: [provideAnimations(),SlidersService],
-=======
-  providers: [provideAnimations(), provideHttpClient()],
->>>>>>> b0bef5def8ac6982cbadf7405de3f4ba6c075ba9
+  providers: [provideAnimations(),SlidersService, provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
