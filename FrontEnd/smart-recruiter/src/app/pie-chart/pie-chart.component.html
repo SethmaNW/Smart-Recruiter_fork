@@ -5,8 +5,9 @@
             </div>
             <div class="chart-container flex ">
                 <div class="pie-chart-container">
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" />
-            </div>
+                <!-- <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" /> -->
+                <canvas #canvas></canvas>
+                </div>
             <div class="knob-container ">
                 <h3>Average Marks</h3><br>
                 <p-knob [(ngModel)]="value" />
@@ -16,4 +17,5 @@
 
 
 
-  
+
+

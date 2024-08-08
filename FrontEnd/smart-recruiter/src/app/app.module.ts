@@ -39,6 +39,7 @@ import { EditorModule } from 'primeng/editor';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
+import { SlidersService } from './sliders.service';
 
 
  
@@ -87,7 +88,11 @@ import { KnobModule } from 'primeng/knob';
     KnobModule
   
   ],
+<<<<<<< HEAD
+  providers: [provideAnimations(),SlidersService],
+=======
   providers: [provideAnimations(), provideHttpClient()],
+>>>>>>> b0bef5def8ac6982cbadf7405de3f4ba6c075ba9
   bootstrap: [AppComponent]
 })
 export class AppModule { }
