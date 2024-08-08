@@ -8,7 +8,7 @@ CREATE TABLE [dbo].[jobs] (
     [Id] INT IDENTITY(1,1) NOT NULL,
     [Title] NVARCHAR(50) NOT NULL,
     [Description] NVARCHAR(1000) NOT NULL,
-    [No.ofAvailablePositions] INT NULL,
+    [NoofAvailablePositions] INT NULL,
     [Location] NVARCHAR(50) NOT NULL,
     [Deparment] NVARCHAR(50) NOT NULL,
     -- The BIT data type is used to store boolean values, where 0 represents FALSE and 1 represents TRUE.
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[jobs] (
     [CommunicationSkills] INT NOT NULL DEFAULT 0,
     [CulturalFit] INT NOT NULL DEFAULT 0,
     [FamilyBackground] INT NOT NULL DEFAULT 0,
-    [IQ/Craetivity/ProblemSolvingSkills] INT NOT NULL DEFAULT 0,
+    [IQCraetivityProblemSolvingSkills] INT NOT NULL DEFAULT 0,
     [ManagementSkills] INT NOT NULL DEFAULT 0,
 
     CONSTRAINT [PK_Jobs] PRIMARY KEY CLUSTERED ([Id] ASC)

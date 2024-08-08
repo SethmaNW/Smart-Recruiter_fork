@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
 import { FileUploadModule } from 'primeng/fileupload';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { MaxWordsDirective } from './directives/max-words.directive';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CandidatePersonalProfileComponent } from './candidate-personal-profile/candidate-personal-profile.component';
@@ -40,6 +40,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
 import { SlidersService } from './sliders.service';
+
 
  
 @NgModule({
@@ -87,7 +88,11 @@ import { SlidersService } from './sliders.service';
     KnobModule
   
   ],
+<<<<<<< HEAD
   providers: [provideAnimations(),SlidersService],
+=======
+  providers: [provideAnimations(), provideHttpClient()],
+>>>>>>> b0bef5def8ac6982cbadf7405de3f4ba6c075ba9
   bootstrap: [AppComponent]
 })
 export class AppModule { }
