@@ -16,9 +16,13 @@ var Services = builder.Services;
 Services.AddControllers();  // Register the controllers
 
 // Register Classes for dependency injection
+//Add siglton instace for creating the connection to the database
+Services.AddSingleton<DBContext>();
 Services.AddScoped<ICandidateRepository, CandidateRepository>();
 Services.AddScoped<ICandidateService, CandidateService>();
-Services.AddSingleton<DBContext>();
+Services.AddScoped<IJobRepository, JobRepository>();
+Services.AddScoped<IJobService, JobService>();
+
 
 var app = builder.Build();
 
