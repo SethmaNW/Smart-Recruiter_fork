@@ -13,4 +13,9 @@ public class JobService(IJobRepository jobRepository) : IJobService
     {
         return await _jobRepository.GetAll();
     }
+
+    public async Task<bool> Update(Job job)
+    {
+        return await _jobRepository.Update(job);
+    }
 }
