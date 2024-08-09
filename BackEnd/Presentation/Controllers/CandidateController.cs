@@ -22,4 +22,11 @@ public class CandidateController : ControllerBase
         return Ok(candidates);
     }
 
+    [HttpGet("applicants/{jobId}")]
+    public async Task<IActionResult> GetApplicantsFromJobId(int jobId)
+    {
+        var applicants = await _CandidateService.GetApplicantsFromJobId(jobId);
+        return Ok(applicants);
+    }
+
 }
