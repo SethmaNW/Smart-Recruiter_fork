@@ -19,4 +19,11 @@ public class JobRepository : IJobRepository
         var sql = "SELECT * FROM jobs";
         return (await connection.QueryAsync<Job>(sql)).ToList();
     }
+
+    public async Task<bool> Update(Job job)
+    {
+        using var connection = _dbConnection.GetOpenConnection();
+        var sql = "UPDATE jobs SET title = @Title, description = @Description, location = @Location, department = @Department activestatus = @ActiveStatus salary = @Salary, company = @Company, jobType = @JobType, jobCategory = @JobCategory, jobStatus = @JobStatus WHERE id = @Id";
+        return await connection.ExecuteAsync(sql, job) > 0;
+    }
 }

@@ -1,0 +1,13 @@
+EndPoint URL | HTTP Method | Description
+
+1. /api/Candidate               | Get   | get all attibutes in Candidates table (completed)
+2. /api/Candidate               | Delete| Delete Candidate using candidate ID
+3. /api/Candidate               | Update| Update all attibute of the candidate using candidat id
+4. /api/Candidate               | Post  | Save new candidate details
+5. /api/Job                     | Get   | get all job entity attributes (completed)
+6. /api/Job                     | Post  | save the job entity attibutes in the database
+7. /api/Job                     | Delete| delete a job by job id
+4. /api/Candidate/Applicants    | Get   | filter Applicants for a job
+5. /api/Candidate/shortlisted   | Get   | Filter shortlisted or interviewed candidates.
+7. /api/Comment                 | Get   | Fetch the comment by candidate id and job id
+8. /api/Comment                 | Post  | Get a comment by candidat id and job id
