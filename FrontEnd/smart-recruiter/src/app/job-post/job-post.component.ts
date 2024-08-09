@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { Job } from '../models/job.model';
@@ -16,19 +16,33 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule, CardModule, TagModule, DropdownModule, FormsModule, RouterLink],
   encapsulation: ViewEncapsulation.None
 })
-export class JobPostComponent {
-  // Style object for p-card. Important -: This is not when I create class and apply styles.
-  //p_cardStyleOBJ = {'background-color':'var(--surface-200)', 'margin-top': '2rem'}
+export class JobPostComponent implements OnInit {
+  
 
   dropDownOptions : any = [
-    { name : 'Active' },
-    { name : 'Inactive' },
+    { name : 'Active', value : true },
+    { name : 'Inactive', value : false },
   ];
-  selectedFromDropDown : string = 'Active';
+  selectedFromDropDown! : any;
 
   @Input() job! : Job;
-  constructor() { }
+  constructor() { 
+  
+  }
 
+  ngOnInit(): void {
+    //Assuming when a job posted it should be active at posting time
+    this.selectedFromDropDown = this.dropDownOptions[0];
+  }
+
+  changeActiveStatus(){
+    this.job.activeStatus = this.selectedFromDropDown.value;
+    // update the dabase with the new active status of the job
+
+
+
+    
+  }
   // get dropdownOptions
   get dropdownOptions(){
     return this.dropDownOptions;
