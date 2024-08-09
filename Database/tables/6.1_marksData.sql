@@ -3,7 +3,7 @@ USE SmartRecruiterDB;
 INSERT INTO [dbo].[marks] 
     ([AttitudeAndDiscipline], [TechnicalKnowledge], [EducationBackground], [ProfessionalQualification], 
      [CarrierBackground], [CommunicationSkills], [CulturalFit], [FamilyBackground], 
-     [IQCraetivityProblemSolvingSkills], [ManagementSkills], [AdminId], [JobId], [CandidateId])
+     [IQCreativityProblemSolvingSkills], [ManagementSkills], [AdminId], [JobId], [CandidateId])
 VALUES
     (8, 9, 7, 6, 5, 8, 7, 6, 9, 7, 1, 1, 1),
     (7, 8, 8, 7, 6, 7, 8, 5, 8, 6, 2, 2, 2),

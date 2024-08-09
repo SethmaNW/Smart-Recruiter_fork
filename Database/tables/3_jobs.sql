@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[jobs] (
     [CommunicationSkills] INT NOT NULL DEFAULT 0,
     [CulturalFit] INT NOT NULL DEFAULT 0,
     [FamilyBackground] INT NOT NULL DEFAULT 0,
-    [IQCraetivityProblemSolvingSkills] INT NOT NULL DEFAULT 0,
+    [IQCreativityProblemSolvingSkills] INT NOT NULL DEFAULT 0,
     [ManagementSkills] INT NOT NULL DEFAULT 0,
 
     CONSTRAINT [PK_Jobs] PRIMARY KEY CLUSTERED ([Id] ASC)
