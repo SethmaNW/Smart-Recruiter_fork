@@ -21,37 +21,37 @@ public class CandidateRepository : ICandidateRepository
         return candidates.ToList();
     }
 
-    // public async Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId)
-    // {
-    //     using var connection = _dbContext.GetOpenConnection();
+    //public async Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId)
+    //{
+    //    using var connection = _dbContext.GetOpenConnection();
 
-    //     //  if a candidate might have multiple comments
-    //     // var candidateDict = new Dictionary<int, Candidate>();
+    //    //  if a candidate might have multiple comments
+    //    var candidateDict = new Dictionary<int, Candidate>();
 
-    //     var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
+    //    var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
 
-    //     var applicants = await connection.QueryAsync<Candidate, string, Candidate>(
-    //         sql,
-    //         (candidate, comment) =>
-    //         {
-    //             if (!applicants.TryGetValue(candidate.Id, out var currentCandidate))
-    //             {
-    //                 currentCandidate = candidate;
-    //                 currentCandidate.Comments = new List<string>();
-    //                 applicants.Add(currentCandidate.Id, currentCandidate);
-    //             }
-    //             if (!string.IsNullOrEmpty(comment))
-    //             {
-    //                 currentCandidate.Comments.Add(comment);
-    //             }
-    //             return currentCandidate;
-    //         },
-    //         splitOn: "CommentText",
-    //         param: new { jobId }
-    //     );
+    //    await connection.QueryAsync<Candidate, string, Candidate>(
+    //        sql,
+    //        (candidate, comment) =>
+    //        {
+    //            if (!candidateDict.TryGetValue(candidate.Id, out var currentCandidate))
+    //            {
+    //                currentCandidate = candidate;
+    //                currentCandidate.Comments = new List<string>();
+    //                candidateDict.Add(currentCandidate.Id, currentCandidate);
+    //            }
+    //            if (!string.IsNullOrEmpty(comment))
+    //            {
+    //                currentCandidate.Comments.Add(comment);
+    //            }
+    //            return currentCandidate;
+    //        },
+    //        splitOn: "CommentText",
+    //        param: new { jobId }
+    //    );
 
-    //     return applicants.Values;
-    // }
+    //    return candidateDict.Values;
+    //}
 
 
 }
