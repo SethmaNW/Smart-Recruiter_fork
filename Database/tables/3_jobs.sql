@@ -10,7 +10,7 @@ CREATE TABLE [dbo].[jobs] (
     [Description] NVARCHAR(1000) NOT NULL,
     [NoofAvailablePositions] INT NULL,
     [Location] NVARCHAR(50) NOT NULL,
-    [Deparment] NVARCHAR(50) NOT NULL,
+    [Department] NVARCHAR(50) NOT NULL,
     -- The BIT data type is used to store boolean values, where 0 represents FALSE and 1 represents TRUE.
     [ActiveStatus] BIT NOT NULL DEFAULT 1, -- Default value is true. this stores job active status
     -- Evaluation criteria full marks 
