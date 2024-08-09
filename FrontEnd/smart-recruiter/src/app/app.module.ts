@@ -40,6 +40,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
 import { SlidersService } from './sliders.service';
+import { UserOpeningComponent } from './user-opening/user-opening.component';
 
 
  
@@ -59,7 +60,8 @@ import { SlidersService } from './sliders.service';
     SlidersComponent,
     ShortlistedCardComponent,
     CommentsComponent,
-    PieChartComponent
+    PieChartComponent,
+    UserOpeningComponent
 
   ],
   imports: [
