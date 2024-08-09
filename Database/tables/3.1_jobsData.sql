@@ -1,6 +1,6 @@
 USE SmartRecruiterDB;
 INSERT INTO [dbo].[jobs] 
-    ([Title], [Description], [NoofAvailablePositions], [Location], [Deparment], [ActiveStatus], 
+    ([Title], [Description], [NoofAvailablePositions], [Location], [Department], [ActiveStatus], 
      [AttitudeAndDiscipline], [TechnicalKnowledge], [EducationBackground], [ProfessionalQualification], 
      [CarrierBackground], [CommunicationSkills], [CulturalFit], [FamilyBackground], 
      [IQCreativityProblemSolvingSkills], [ManagementSkills])

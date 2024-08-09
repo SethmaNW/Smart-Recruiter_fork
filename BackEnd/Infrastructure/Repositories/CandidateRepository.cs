@@ -20,4 +20,9 @@ public class CandidateRepository : ICandidateRepository
         var candidates = await connection.QueryAsync<Candidate>("SELECT * FROM Candidates");
         return candidates.ToList();
     }
+
+    public IEnumerable<Candidate> GetApplicants() { 
+        
+    }
+
 }

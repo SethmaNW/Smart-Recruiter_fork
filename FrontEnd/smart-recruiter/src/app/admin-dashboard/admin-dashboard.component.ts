@@ -19,13 +19,9 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor( private jobPostSvc : JobPostService, protected AuthSvc : AuthenticationService) { }
 
-  // get jobs(){
-  //   return this.jobPostSvc.jobs;
-  // }
 
   ngOnInit(){
-    this.jobPostSvc.getAllJobs().subscribe(jobs => {this.jobs = jobs; this.filteredJobs = jobs; console.log(jobs)});
-    this.filteredJobs = this.jobs;
+    this.jobPostSvc.getAllJobs().subscribe(jobs => {this.jobs = jobs; this.filteredJobs = jobs;});
   }
   // Add New button popup control
   showDialog(){
@@ -40,7 +36,7 @@ export class AdminDashboardComponent implements OnInit {
       job.title.toLowerCase().includes(query) ||
       job.description.toLowerCase().includes(query) ||
       job.location.toLowerCase().includes(query) ||
-      job.Deparment.toLowerCase().includes(query)
+      job.department.toLowerCase().includes(query)
     );
     
     // console.log(this.filteredJobs);
