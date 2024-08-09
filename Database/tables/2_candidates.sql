@@ -18,7 +18,6 @@ CREATE TABLE [dbo].[candidates] (
     [Degree] NVARCHAR(50) NULL,
     [University] NVARCHAR(50) NULL,
     [GPA] FLOAT NULL,
-    -- Experience should be integer years
     [Experience] NVARCHAR(500) NULL,
     [Role_Id] INT NOT NULL, -- Add Role_Id column
     CONSTRAINT [PK_contacts] PRIMARY KEY CLUSTERED ([Id] ASC),
