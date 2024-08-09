@@ -21,8 +21,37 @@ public class CandidateRepository : ICandidateRepository
         return candidates.ToList();
     }
 
-    public IEnumerable<Candidate> GetApplicants() { 
-        
+    public async Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+
+        //  if a candidate might have multiple comments
+        var candidateDict = new Dictionary<int, Candidate>();
+
+        var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
+
+        await connection.QueryAsync<Candidate, string, Candidate>(
+            sql,
+            (candidate, comment) =>
+            {
+                if (!candidateDict.TryGetValue(candidate.Id, out var currentCandidate))
+                {
+                    currentCandidate = candidate;
+                    currentCandidate.Comments = new List<string>();
+                    candidateDict.Add(currentCandidate.Id, currentCandidate);
+                }
+                if (!string.IsNullOrEmpty(comment))
+                {
+                    currentCandidate.Comments.Add(comment);
+                }
+                return currentCandidate;
+            },
+            splitOn: "CommentText",
+            param: new { jobId }
+        );
+
+        return candidateDict.Values;
     }
+
 
 }

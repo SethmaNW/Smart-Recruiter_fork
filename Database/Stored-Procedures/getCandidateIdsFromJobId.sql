@@ -1,6 +1,6 @@
 /**************************************************************************************************
 Author : Nilakshi Induwara
-To : get all candidate ids from a given job id
+Usage : get all candidate ids from a given job id
 Changes : 
     2024-08-09 => Created
 Example : 
