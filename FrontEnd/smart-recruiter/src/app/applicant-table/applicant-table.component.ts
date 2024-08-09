@@ -18,8 +18,12 @@ export class ApplicantTableComponent implements OnInit {
   constructor(private applicantsListService: ApplicantsListService) { }
 
   ngOnInit() {
-    this.customers = this.applicantsListService.getCustomers();
-    this.loading = this.applicantsListService.isLoading();
+    this.applicantsListService.getAllApplicants().subscribe(customers => {
+      this.customers = customers; 
+      console.log(this.customers);
+    });
+    // this.customers = this.applicantsListService.getCustomers();
+    // this.loading = this.applicantsListService.isLoading();
   }
 
   filterGlobal(event: Event, matchMode: string) {

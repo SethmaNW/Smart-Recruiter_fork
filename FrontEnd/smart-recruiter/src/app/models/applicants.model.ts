@@ -5,8 +5,8 @@ export interface Applicant {
     degree: string; 
     contact: string;
     skills: string;
-    startingDate: string;    // is this a date type
-    workExperience: string;
+    available_Date: Date;    
+    experience: string;
     cv: string;
     status: string;
 }
