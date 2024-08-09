@@ -1,6 +1,6 @@
 /**************************************************************************************************
 Author : Nilakshi Induwara
-To : get all applicants from a given job id
+Usage : get all applicants from a given job id
 Changes : 
     2024-08-09 => Created
 Example : 
