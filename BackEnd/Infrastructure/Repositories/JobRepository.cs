@@ -23,7 +23,13 @@ public class JobRepository : IJobRepository
     public async Task<bool> Update(Job job)
     {
         using var connection = _dbConnection.GetOpenConnection();
-        var sql = "UPDATE jobs SET title = @Title, description = @Description, location = @Location, department = @Department activestatus = @ActiveStatus salary = @Salary, company = @Company, jobType = @JobType, jobCategory = @JobCategory, jobStatus = @JobStatus WHERE id = @Id";
+        var sql = "UPDATE jobs SET Title = @Title, Description = @Description, NoOfAvailablePositions = @NoOfAvailablePositions, Location = @Location," + 
+        "Department = @Department, ActiveStatus = @ActiveStatus, AttitudeAndDiscipline = @AttitudeAndDiscipline," +
+        "TechnicalKnowledge = @TechnicalKnowledge, EducationBackground = @EducationBackground," +
+        "ProfessionalQualification = @ProfessionalQualification, CareerBackground = @CareerBackground," +
+        "CommunicationSkills = @CommunicationSkills, CulturalFit = @CulturalFit, FamilyBackground = @FamilyBackground," +
+        "IQCreativityProblemSolvingSkills = @IQCreativityProblemSolvingSkills, ManagementSkills = @ManagementSkills " +
+        "WHERE id = @Id";
         return await connection.ExecuteAsync(sql, job) > 0;
     }
 }
