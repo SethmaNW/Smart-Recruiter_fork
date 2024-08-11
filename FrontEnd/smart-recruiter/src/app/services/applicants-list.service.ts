@@ -101,8 +101,9 @@ export class ApplicantsListService {
   //   this.loading = false;
   // }
 
-  getAllApplicants(): Observable<Applicant[]> {
-    return this.http.get<Applicant[]>('api/Candidate');
+  getAllApplicants(jobId: number): Observable<Applicant[]> {
+    // console.log('Reached applicant list service');
+    return this.http.get<Applicant[]>(`api/Candidate/applicants/${jobId}`);
   }
 
 }

@@ -16,5 +16,6 @@ public class Candidate
     public float? GPA { get; set; }
     public string? Experience { get; set; }
     public int? Role_Id { get; set; }
-    public List<string>? Comments { get; set; }
+    public List<string> Comments { get; set; } = new List<string>();
+
 }
