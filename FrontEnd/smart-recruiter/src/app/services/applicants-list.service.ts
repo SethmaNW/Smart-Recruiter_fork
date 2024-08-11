@@ -29,6 +29,15 @@ export class ApplicantsListService {
     }
   }
 
+  getAllApplicants(jobId: number): Observable<Applicant[]> {
+    // console.log('Reached applicant list service');
+    return this.http.get<Applicant[]>(`api/Candidate/applicants/${jobId}`);
+  }
+
+  getPositionName(jobId: number): Observable<string> {
+    return this.http.get<string>(`api/Job/position/${jobId}`);
+  }
+
   // loadDummyData() {
   //   this.customers = [
   //     {
@@ -47,63 +56,10 @@ export class ApplicantsListService {
   //       comment: '',          
   //       commentExceeded: false,
   //       status: 'Applied'
-  //     },
-  //     {
-  //       id: 2,
-  //       position: 'Software Engineer',
-  //       name: 'Keran Perera',
-  //       availableDate: '2021-01-01',
-  //       university: 'University of Colombo',
-  //       degree: 'BSc in Physics',
-  //       contact: '077 0089633',
-  //       skills: 'java, angular, spring, khfs dgweyoisd jgkkjgf sdgwey oisdjgkk jgfsdgwe yoisdj gkkjg yoisdjgk kjgfsdgwe yoisdj gkkjg..',
-  //       gpa: '3.5',
-  //       workExperience: '2 years',
-  //       cv: 'https://www.google.com',   
-  //       comment: 'comment 1',   
-  //       commentExceeded: false,     
-  //       status: 'ShortListed'
-  //     },
-  //     {
-  //       id: 3,
-  //       position: 'Software Engineer',
-  //       name: 'Keran Perera',
-  //       availableDate: '2021-01-01',
-  //       university: 'University of Colombo',
-  //       degree: 'BSc in Physics',
-  //       contact: '077 0089633',
-  //       skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-  //       gpa: '3.5',
-  //       workExperience: '2 years',
-  //       cv: 'https://www.google.com',   
-  //       comment: '',     
-  //       commentExceeded: false,
-  //       status: 'Not Selected'
-  //     },
-  //     {
-  //       id: 4,
-  //       position: 'Software Engineer',
-  //       name: 'Keran Perera',
-  //       availableDate: '2021-01-01',
-  //       university: 'University of Colombo',
-  //       degree: 'BSc in Physics',
-  //       contact: '077 0089633',
-  //       skills: 'java, angular, spring, khfsdgweyoisdjgkkjg',
-  //       gpa: '3.5',
-  //       workExperience: '2 years',
-  //       cv: 'https://www.google.com',        
-  //       comment: '',   
-  //       commentExceeded: false,
-  //       status: 'Applied'
   //     }
   //   ];
 
   //   this.loading = false;
   // }
-
-  getAllApplicants(jobId: number): Observable<Applicant[]> {
-    // console.log('Reached applicant list service');
-    return this.http.get<Applicant[]>(`api/Candidate/applicants/${jobId}`);
-  }
 
 }
