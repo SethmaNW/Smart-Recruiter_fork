@@ -33,4 +33,4 @@ BEGIN
     -- WHERE cj.[JobID] = @jobId
     -- AND c.[Role_Id] IN (0, 7);
 
-END
+END;

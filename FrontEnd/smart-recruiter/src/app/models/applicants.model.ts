@@ -7,6 +7,6 @@ export interface Applicant {
     skills: string;
     available_Date: Date;    
     experience: string;
-    cv: string;
-    status: string;
+    // cv: string;
+    // status: string;
 }
