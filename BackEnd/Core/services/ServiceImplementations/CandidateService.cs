@@ -11,6 +11,7 @@ public class CandidateService : ICandidateService
         _CandidateRepository = candidateRepository;
     }
 
+
     public async Task<IEnumerable<Candidate>> GetAll()
     {
         return await _CandidateRepository.GetAll();

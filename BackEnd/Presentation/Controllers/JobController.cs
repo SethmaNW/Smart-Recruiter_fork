@@ -27,4 +27,11 @@ public class JobController(
         // Return HTTP status code 200 (OK) with the result of the update operation
         return Ok(status);
     }
+
+    [HttpGet("position/{jobId}")]
+    public async Task<IActionResult> GetJobPosition(int jobId)
+    {
+        var jobPosition = await _JobService.GetJobPosition(jobId);
+        return Ok(jobPosition);
+    }
 }

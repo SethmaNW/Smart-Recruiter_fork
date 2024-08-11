@@ -18,7 +18,7 @@ export class ApplicantTableComponent implements OnInit {
   constructor(private applicantsListService: ApplicantsListService) { }
 
   ngOnInit() {
-    const JobId = 1;
+    const JobId = 1;   // JobId is hardcoded for now  *********************************
     this.applicantsListService.getAllApplicants(JobId).subscribe(customers => {
       this.customers = customers; 
       // console.log(this.customers);
