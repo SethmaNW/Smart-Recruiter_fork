@@ -23,12 +23,11 @@ $nav-bar-height: 55px;
 //     border-color: #00ccff !important; /* Custom border color */
 // }
 
-::ng-deep .p-button {
+.custom-button {
     color: #f2f4f6 !important;
     font-weight: 700;
     background-color: var(--red-600);
   }
-
 
 .add-new-button {
     display: flex;
