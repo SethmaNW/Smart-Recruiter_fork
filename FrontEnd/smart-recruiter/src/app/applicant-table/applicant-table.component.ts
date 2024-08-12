@@ -12,6 +12,7 @@ export class ApplicantTableComponent implements OnInit {
   customers: any[] = [];
   loading: boolean = true;
   commentExceeded = false;
+  position: string = '';
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -19,6 +20,9 @@ export class ApplicantTableComponent implements OnInit {
 
   ngOnInit() {
     const JobId = 1;   // JobId is hardcoded for now  *********************************
+    this.applicantsListService.getPositionName(JobId).subscribe(position => {
+      this.position = position;	
+    });
     this.applicantsListService.getAllApplicants(JobId).subscribe(customers => {
       this.customers = customers; 
       // console.log(this.customers);

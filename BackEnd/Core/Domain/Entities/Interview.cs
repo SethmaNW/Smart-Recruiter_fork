@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class Interviews
+    public class Interview
     {
         public int Id { get; set; }
         public DateTime? InterviewDateTime { get; set; }
