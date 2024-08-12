@@ -13,6 +13,7 @@ export class ApplicantTableComponent implements OnInit {
   loading: boolean = true;
   commentExceeded = false;
   position: string = '';
+  // commentEditable: boolean = false;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -22,6 +23,7 @@ export class ApplicantTableComponent implements OnInit {
     const JobId = 1;   // JobId is hardcoded for now  *********************************
     this.applicantsListService.getPositionName(JobId).subscribe(position => {
       this.position = position;	
+      // console.log("get postion");
     });
     this.applicantsListService.getAllApplicants(JobId).subscribe(customers => {
       this.customers = customers; 
@@ -40,5 +42,10 @@ export class ApplicantTableComponent implements OnInit {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
   }
 
+  submitComment(customer: any){
+    this.applicantsListService.updateComment(customer.jobId, customer.id, customer.adminId, customer.comment).subscribe((response) => {
+      customer.commentEditable = false;
+    });
+  }
   
 }

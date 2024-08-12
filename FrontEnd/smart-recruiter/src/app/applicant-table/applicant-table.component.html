@@ -70,8 +70,9 @@
                         [maxWords]="2"
                         (wordLimitExceeded)="handleWordLimitExceeded(customer.id, $event)"
                         placeholder="Enter your comment (max 20 words)"
+                        [disabled]="!customer.commentEditable"
                     ></textarea>
-                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" />
+                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" (click)="submitComment(customer)" *ngIf="customer.commentEditable"/>
                     <div *ngIf="customer.commentExceeded" class="error-message">Word limit exceeded.</div>
                 </div>
             </td>

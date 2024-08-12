@@ -31,6 +31,8 @@ Services.AddScoped<ICandidateRepository, CandidateRepository>();
 Services.AddScoped<ICandidateService, CandidateService>();
 Services.AddScoped<IJobRepository, JobRepository>();
 Services.AddScoped<IJobService, JobService>();
+Services.AddScoped<ICommentRepository, CommentRepository>();
+Services.AddScoped<ICommentService, CommentService>();
 
 
 var app = builder.Build();
