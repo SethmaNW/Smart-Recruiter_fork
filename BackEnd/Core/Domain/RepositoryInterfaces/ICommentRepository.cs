@@ -4,5 +4,5 @@ namespace Domain.RepositoryInterfaces;
 
 public interface ICommentRepository
 {
-    Task<IEnumerable<string>> UpdateApplicantComment(int jobId, int candidateId, string commentText);
+    Task<IEnumerable<string>> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText);
 }

@@ -16,10 +16,10 @@ public class CommentController : ControllerBase
     }
 
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, string commentText)
+    [HttpPut("{jobId}/{candidateId}/{adminId}")]
+    public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
     {
-        var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, commentText);
+        var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
         return Ok(comment);
     }
 
