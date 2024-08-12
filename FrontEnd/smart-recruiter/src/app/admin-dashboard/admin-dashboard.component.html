@@ -16,7 +16,7 @@
                         </span>
                     </div>
                     <div class="w-9">
-                        <p-button label="+ Add New" severity="warning" (onClick)="showDialog()"></p-button>
+                        <p-button label="+ Add New" [style]="{ 'background-color': 'var(--red-600)', 'color': 'white' }" (onClick)="showDialog()"></p-button>
                         <!-- Add dialog box -->
                         <p-dialog 
                         header="Header" 
