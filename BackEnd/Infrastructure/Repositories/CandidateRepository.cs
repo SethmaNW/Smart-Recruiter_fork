@@ -79,5 +79,31 @@ public class CandidateRepository : ICandidateRepository
     //    return candidateDict.Values;
     //}
 
+    // save candidate details
+    public async Task<Candidate> Save(Candidate candidate)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+
+        if (candidate.Id == 0)
+        {   
+            
+            var sql = @"
+                INSERT INTO Candidates (Name, Contact, Email, CV_FilePath, CV_FileName, Skills, Available_Date, GitHub_Link, LinkedIn, Degree, University, Reason, Experience, Role_Id) 
+                VALUES (@Name, @Contact, @Email, @CV_FilePath, @CV_FileName, @Skills, @Available_Date, @GitHub_Link, @LinkedIn, @Degree, @University, @Reason, @Experience, @Role_Id); 
+                SELECT CAST(SCOPE_IDENTITY() as int)";
+
+            var id = connection.Query<int>(sql, candidate).Single();
+
+            candidate.Id = id;
+            return candidate;
+        
+        }
+        else
+        {
+            await connection.UpdateAsync(candidate);
+        }
+
+        return candidate;
+    }
 
 }

@@ -4,5 +4,6 @@ namespace ServiceInterfaces.IServices;
 public interface ICandidateService
 {
     Task<IEnumerable<Candidate>> GetAll();
-    Task<IEnumerable<CandidateWithComment>> GetApplicantsFromJobId(int jobId);    
+    Task<IEnumerable<CandidateWithComment>> GetApplicantsFromJobId(int jobId);
+    Task<Candidate> Save(Candidate candidate);    
 }
