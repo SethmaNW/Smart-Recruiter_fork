@@ -1,9 +1,9 @@
 .p-fluid {
     flex-direction: column;
-    align-items: left;
-    padding-left: 200px;
+    align-items: center;
+    padding-left: 10rem;
     justify-content: center;
-    height: 100%;
+    // height: 100%;
     padding-bottom: 30px;
 }
 
@@ -20,7 +20,7 @@
     margin-left: 6px;
 }
 
-.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.degree,.reason{
+.fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.degree,.reason,.github,.linkedin,.availabledate{
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom:10px ;
@@ -28,7 +28,7 @@
     // margin-bottom: 15px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 800px;   
+    width: 80%;   
 }
 
 .deg-topic{
@@ -72,25 +72,28 @@ p{
 }
 
 .form-style{
-    padding-top: 10px;
-    margin-left: 150px;
-    margin-right: 150px;
-    padding: -2rem;
+    //width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 10%;
+    margin-right: 10%;
+    // padding-top: 10px;
+    //margin-left: 5rem;
+    //margin-right: 5rem;
+    // padding: -2rem;
     background-color: rgb(233, 230, 225);   // rgb(222, 219, 214)
     // height: 130vh;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    // margin-bottom: 40px;
+    //margin-top: 3rem;
 }
 
 .card-body{
     margin: 10px;
-    margin-left: 0;
     border: 1px solid rgb(168, 168, 168);
-    // background-color: aquamarine;
     display: flex;
     justify-content: center;
     padding: 50px;
-    width: 800px;
+    width: 80%;
     border-radius: 8px;
 }
 
@@ -99,10 +102,6 @@ p{
     height: 140vh;
 }
 
-input.phone.ng-invalid.ng-dirty,
-input.phone.ng-invalid.ng-touched {
-    // border-color: red;
-}
 
 small {
     margin-left: 10px;
