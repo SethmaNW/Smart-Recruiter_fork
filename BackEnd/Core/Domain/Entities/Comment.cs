@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public class Comments
+public class Comment
 {
     public int Id { get; set; }
     public string? Comment { get; set; }
