@@ -6,6 +6,8 @@ import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -26,7 +28,7 @@ export class JobPostComponent implements OnInit {
   selectedFromDropDown! : any;
 
   @Input() job! : Job;
-  constructor() { 
+  constructor(private http: HttpClient) { 
   
   }
 
@@ -35,13 +37,15 @@ export class JobPostComponent implements OnInit {
     this.selectedFromDropDown = this.dropDownOptions[0];
   }
 
+  updateJob(job : Job) : Observable<boolean>{
+    return this.http.put<boolean>('api/Job', job);
+  }
+
   changeActiveStatus(){
     this.job.activeStatus = this.selectedFromDropDown.value;
-    // update the dabase with the new active status of the job
-
-
-
-    
+    this.updateJob(this.job).subscribe((res) => {
+      console.log(res);
+    });
   }
   // get dropdownOptions
   get dropdownOptions(){
