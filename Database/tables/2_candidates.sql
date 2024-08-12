@@ -20,8 +20,8 @@ CREATE TABLE [dbo].[candidates] (
     [GPA] FLOAT NULL,
     [Experience] NVARCHAR(500) NULL,
     [Role_Id] INT NOT NULL, -- Add Role_Id column
-    CONSTRAINT [PK_contacts] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_contacts_roles] FOREIGN KEY ([Role_Id]) REFERENCES [dbo].[roles]([Id])
+    CONSTRAINT [PK_candidates] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_candidate_roles] FOREIGN KEY ([Role_Id]) REFERENCES [dbo].[roles]([Id])
 );
 END
 
