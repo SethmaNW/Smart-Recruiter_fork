@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { JobPostService } from '../services/job-post.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { Job } from '../models/job.model';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class AdminDashboardComponent implements OnInit {
   visible : boolean = false;
   jobs: any[] = [];
   filteredJobs: any[] = [];
-  jobDescription : any = '';
+
+  job : Job = {title : '', description : '',noOfAvailablePositions : 1, location : '', department : '', activeStatus : true, attitudeAndDiscipline : 10, technicalKnowledge : 10, educationBackground : 10, professionalQualification : 10, careerBackground : 10, communicationSkills : 10, culturalFit : 10, familyBackground : 10, iqCreativityProblemSolvingSkills : 10, managementSkills : 10};
 
   constructor( private jobPostSvc : JobPostService, protected AuthSvc : AuthenticationService) { }
 
@@ -38,8 +40,17 @@ export class AdminDashboardComponent implements OnInit {
       job.location.toLowerCase().includes(query) ||
       job.department.toLowerCase().includes(query)
     );
-    
-    // console.log(this.filteredJobs);
+  }
+
+  addJob(){
+    this.jobPostSvc.addJob(this.job).subscribe((res) => {
+      console.log(res);
+      this.jobs.push(res);
+      this.filteredJobs = this.jobs;
+    });
+    this.visible = false;
+
+    // Reset the form
   }
 
 }
