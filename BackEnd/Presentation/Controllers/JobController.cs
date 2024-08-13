@@ -20,6 +20,14 @@ public class JobController(
         return Ok(jobs);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Save(Job job)
+    {
+        Job status = await _JobService.Save(job);
+        // Return HTTP status code 200 (OK) with the result of the save operation
+        return Ok(status);
+    }
+
     [HttpPut]
     public async Task<IActionResult> Update(Job job)
     {

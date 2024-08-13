@@ -19,6 +19,20 @@ public class JobRepository : IJobRepository
         var sql = "SELECT * FROM jobs";
         return (await connection.QueryAsync<Job>(sql)).ToList();
     }
+    public async Task<Job> Save(Job job){
+        using var connection = _dbConnection.GetOpenConnection();
+        var sql = "INSERT INTO jobs (Title, Description, NoOfAvailablePositions, Location, Department, ActiveStatus, " + 
+        "AttitudeAndDiscipline, TechnicalKnowledge, EducationBackground, ProfessionalQualification, " +
+        "CareerBackground, CommunicationSkills, CulturalFit, FamilyBackground, IQCreativityProblemSolvingSkills, " + 
+        "ManagementSkills) VALUES (@Title, @Description, @NoOfAvailablePositions, @Location, @Department, " + 
+        "@ActiveStatus, @AttitudeAndDiscipline, @TechnicalKnowledge, @EducationBackground, @ProfessionalQualification, " +  
+        "@CareerBackground, @CommunicationSkills, @CulturalFit, @FamilyBackground, @IQCreativityProblemSolvingSkills, " +
+        "@ManagementSkills); SELECT CAST(SCOPE_IDENTITY() as int)";
+
+        var id = (await connection.QueryAsync<int>(sql, job)).FirstOrDefault();
+        job.Id = id;
+        return job;
+    }
 
     public async Task<bool> Update(Job job)
     {
