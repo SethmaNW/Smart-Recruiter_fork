@@ -1,33 +1,28 @@
-<!-- Use objects to style p-cards in ng component -->
-<!-- <a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.id}" class="customized-card-link no-underline"> -->
-
-    <app-navbar></app-navbar>
-    
-    <p-card styleClass="customized-card">
-        <div class="grid grid-custom">
-            <div class="col-12 col-12-custom">
-                <h2>{{job.title}}</h2>
-                <!-- <div class="batch">
-                    <p-tag severity="success" value="Active" [hidden]="!job.activeStatus"/>
-                    <p-tag severity="danger" value="Inactive" [hidden]="job.activeStatus"/>
-                </div> -->
-                <!-- <div class="drop-down">
-                    <p-dropdown 
-                    [options]="dropDownOptions"
-                    [(ngModel)]="selectedFromDropDown" 
-                    optionLabel="name"
-                    [autoDisplayFirst]="false"
-                    placeholder="Active"
-                    [checkmark]="true"
-                    (onChange)="changeActiveStatus()" 
-                    />
-                </div> -->
+<app-navbar></app-navbar>
+<div class="flex flex-column mx-6 mt-3 w-screen">
+    <div class="flex flex-row flex-wrap w-full">
+        <div>
+            <h2>Recuruitment</h2>
+            <p class="opacity-70 -mt-3">Here is all job openings!</p>
+        </div>
+        <div class="ml-auto mt-4 flex flex-row items-center">
+            <div>
+                <span class="p-input-icon-left mr-3">
+                    <i class="pi pi-search"></i>
+                    <!-- <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" /> -->
+                </span>
             </div>
+    
+     <p-card styleClass="customized-card">
+        <div class="grid grid-custom">
+            <div class="card">
+                <h2>UX/UI Designer</h2>           
+                  
         </div>
         <div class="location">
             <i class="fa-solid fa-location-dot"></i>
-            <span style="margin-left: 1rem;">{{job.location}} | &nbsp;</span>
-            <span>{{job.department}}</span>
+            <span style="margin-left: 1rem;">Colombo,Sri Lanka| &nbsp;</span>
+            <span>IT department</span>
         </div>
         <div class="third-line">
             <div class="candidate-count">
@@ -46,5 +41,5 @@
                 </a>
             </div> -->
         </div>
-    </p-card>
+    <!-- </p-card> -->
     <!-- </a> -->

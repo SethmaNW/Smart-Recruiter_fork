@@ -13,7 +13,7 @@ public class Candidate
     public string? LinkedIn { get; set; }
     public string? Degree { get; set; }
     public string? University { get; set; }
-    public float? GPA { get; set; }
+    public string? Reason { get; set; }
     public string? Experience { get; set; }
     public int? Role_Id { get; set; }
 }
