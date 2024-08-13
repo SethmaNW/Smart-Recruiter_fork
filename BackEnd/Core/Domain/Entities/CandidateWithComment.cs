@@ -16,6 +16,6 @@ public class CandidateWithComment
     public float? GPA { get; set; }
     public string? Experience { get; set; }
     public int? Role_Id { get; set; }
-    public string Comment { get; set; }
-
+    public string? Comment { get; set; }
+    public bool commentEditable { get; set; } = true;
 }
