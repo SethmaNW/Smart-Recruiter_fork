@@ -22,6 +22,11 @@ export class ApplicantsListService {
   //   return this.loading;
   // }
 
+  updateComment(jobId: number, candidateId: number, adminId: number,  comment: string) {
+    console.log('Reached update comment service');
+    return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
+  }
+
   updateCommentExceeded(id: number, exceeded: boolean) {
     const customer = this.customers.find(c => c.id === id);
     if (customer) {
@@ -30,7 +35,7 @@ export class ApplicantsListService {
   }
 
   getAllApplicants(jobId: number): Observable<Applicant[]> {
-    // console.log('Reached applicant list service');
+    console.log('Reached applicant list service');
     return this.http.get<Applicant[]>(`api/Candidate/applicants/${jobId}`);
   }
 

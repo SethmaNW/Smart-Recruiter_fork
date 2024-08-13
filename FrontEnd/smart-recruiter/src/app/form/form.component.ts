@@ -11,6 +11,8 @@ export class FormComponent {
   fileName: string | null = null;
   skillsTooLong = false;
   fileUploaded: boolean = false;
+  availableDate : any;
+  minDate: Date = new Date();
 
   onSubmit(form: NgForm) {
     // if(!this.fileUploaded){

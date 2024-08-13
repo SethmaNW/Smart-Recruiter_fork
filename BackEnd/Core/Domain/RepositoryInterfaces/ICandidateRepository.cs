@@ -5,5 +5,6 @@ namespace Domain.RepositoryInterfaces;
 public interface ICandidateRepository
 {
     Task<IEnumerable<Candidate>> GetAll();
-    Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId);    
+    Task<IEnumerable<CandidateWithComment>> GetApplicantsFromJobId(int jobId);
+    Task<Candidate> Save(Candidate candidate);
 }

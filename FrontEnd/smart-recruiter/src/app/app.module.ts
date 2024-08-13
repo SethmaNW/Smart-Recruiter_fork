@@ -41,7 +41,7 @@ import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
 import { SlidersService } from './sliders.service';
 import { UserOpeningComponent } from './user-opening/user-opening.component';
-
+import { CalendarModule } from 'primeng/calendar';
 
  
 @NgModule({
@@ -87,7 +87,8 @@ import { UserOpeningComponent } from './user-opening/user-opening.component';
     SliderModule,
     EditorModule,
     ChartModule,
-    KnobModule
+    KnobModule,
+    CalendarModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient()],

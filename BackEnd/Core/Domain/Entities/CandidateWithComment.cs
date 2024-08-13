@@ -1,5 +1,5 @@
 namespace Domain.Entities;
-public class Candidate
+public class CandidateWithComment
 {
     public int Id { get; set; }
     public string? Name { get; set; }
@@ -13,7 +13,9 @@ public class Candidate
     public string? LinkedIn { get; set; }
     public string? Degree { get; set; }
     public string? University { get; set; }
-    public string? Reason { get; set; }
+    public float? GPA { get; set; }
     public string? Experience { get; set; }
     public int? Role_Id { get; set; }
+    public string Comment { get; set; }
+
 }

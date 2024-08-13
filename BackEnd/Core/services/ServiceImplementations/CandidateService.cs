@@ -17,9 +17,13 @@ public class CandidateService : ICandidateService
         return await _CandidateRepository.GetAll();
     }
 
-    public async Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId)
+    public async Task<IEnumerable<CandidateWithComment>> GetApplicantsFromJobId(int jobId)
     {
         return await _CandidateRepository.GetApplicantsFromJobId(jobId);
+    }
+    public async Task<Candidate> Save(Candidate candidate)
+    {
+        return await _CandidateRepository.Save(candidate);
     }
 
 }
