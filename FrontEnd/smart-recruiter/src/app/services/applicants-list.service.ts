@@ -22,9 +22,14 @@ export class ApplicantsListService {
   //   return this.loading;
   // }
 
-  updateComment(jobId: number, candidateId: number, adminId: number,  comment: string) {
+  updateComment(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
     console.log('Reached update comment service');
     return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
+  }
+
+  existComment(jobId: number, candidateId: number): Observable<boolean> {
+    console.log('Reached exist comment');
+    return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`);
   }
 
   updateCommentExceeded(id: number, exceeded: boolean) {
@@ -41,6 +46,10 @@ export class ApplicantsListService {
 
   getPositionName(jobId: number): Observable<string> {
     return this.http.get<string>(`api/Job/position/${jobId}`);
+  }
+
+  getAdminId(email: string): Observable<number> {
+    return this.http.get<number>(`api/Admin/email/${email}`);
   }
 
   // loadDummyData() {

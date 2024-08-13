@@ -33,6 +33,8 @@ Services.AddScoped<IJobRepository, JobRepository>();
 Services.AddScoped<IJobService, JobService>();
 Services.AddScoped<ICommentRepository, CommentRepository>();
 Services.AddScoped<ICommentService, CommentService>();
+Services.AddScoped<IAdminRepository, AdminRepository>();
+Services.AddScoped<IAdminService, AdminService>();
 
 
 var app = builder.Build();
