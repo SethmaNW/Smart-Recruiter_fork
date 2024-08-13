@@ -80,7 +80,7 @@ public class CandidateController : ControllerBase
             Reason = candidateDTO?.Reason,
             Experience = candidateDTO?.Experience,
             
-            Role_Id = 0
+            Role_Id = candidateDTO?.Role_Id
         };
 
         //Save the candidate to the database
