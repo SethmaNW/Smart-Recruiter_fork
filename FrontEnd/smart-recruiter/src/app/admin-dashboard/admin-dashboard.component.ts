@@ -44,7 +44,7 @@ export class AdminDashboardComponent implements OnInit {
 
   addJob(){
     this.jobPostSvc.addJob(this.job).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
       this.jobs.push(res);
       this.filteredJobs = this.jobs;
     });
