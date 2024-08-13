@@ -34,7 +34,7 @@ export class JobPostComponent implements OnInit {
 
   ngOnInit(): void {
     //Assuming when a job posted it should be active at posting time
-    this.selectedFromDropDown = this.dropDownOptions[0];
+    this.selectedFromDropDown = this.job.activeStatus? this.dropDownOptions[0] : this.dropDownOptions[1];
   }
 
   updateJob(job : Job) : Observable<boolean>{
@@ -44,7 +44,7 @@ export class JobPostComponent implements OnInit {
   changeActiveStatus(){
     this.job.activeStatus = this.selectedFromDropDown.value;
     this.updateJob(this.job).subscribe((res) => {
-      console.log(res);
+      //console.log(res);
     });
   }
   // get dropdownOptions

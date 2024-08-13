@@ -13,6 +13,10 @@ public class JobService(IJobRepository jobRepository) : IJobService
     {
         return await _jobRepository.GetAll();
     }
+    public async Task<Job> Save(Job job)
+    {
+        return await _jobRepository.Save(job);
+    }
 
     public async Task<bool> Update(Job job)
     {
