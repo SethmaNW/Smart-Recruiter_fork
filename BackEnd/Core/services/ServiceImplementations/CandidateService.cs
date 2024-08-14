@@ -26,8 +26,8 @@ public class CandidateService : ICandidateService
         return await _CandidateRepository.Save(candidate);
     }
 
-    // public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
-    // {
-    //     return await _CandidateRepository.UpdateRoleId(candidateId, newRoleId);
-    // }
+    public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
+    {
+        return await _CandidateRepository.UpdateRoleId(candidateId, newRoleId);
+    }
 }

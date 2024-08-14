@@ -89,23 +89,24 @@ public class CandidateController : ControllerBase
         return Ok(savedCandidate);
     }
 
-    // [HttpPut("role/{candidateId}/{newRoleId}")]
-    // public async Task<IActionResult> UpdateRoleId(int candidateId, int newRoleId)
-    // {
-    //     try
-    //     {
-    //         var role = await _CandidateService.UpdateRoleId(candidateId, newRoleId);
-    //         if (role)
-    //         {
-    //             return Ok();
-    //         }
-    //         else
-    //         {
-    //             return NotFound();
-    //         }
-    //     }
-    //     catch (Exception ex) {
-    //         return StatusCode(500, "Internal server error");
-    //     }
-    // }
+    [HttpPut("role/{candidateId}/{newRoleId}")]
+    public async Task<IActionResult> UpdateRoleId(int candidateId, int newRoleId)
+    {
+        try
+        {
+            var role = await _CandidateService.UpdateRoleId(candidateId, newRoleId);
+            if (role)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        catch (Exception)
+        {
+            return StatusCode(500, "Internal server error");
+        }
+    }
 }
