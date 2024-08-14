@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Applicant } from '../models/applicants.model';
 
 @Injectable({
@@ -22,16 +22,23 @@ export class ApplicantsListService {
   //   return this.loading;
   // }
 
-  updateComment(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
-    console.log('Reached update comment service');
-    return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
+  // updateCommentt(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
+  //   console.log('Reached update comment service');
+  //   return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
+  // }
+
+  updateComment(jobId: number, candidateId: number, adminId: number, commentText: string): Observable<Comment> {
+    // console.log('Reached applicant update comment service');
+    return this.http.post<Comment>(`api/Comment/${jobId}/${candidateId}/${adminId}`, { commentText });
   }
 
   existComment(jobId: number, candidateId: number): Observable<boolean> {
-    console.log('Reached exist comment');
-    return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`);
+    // console.log('Reached exist comment');
+    return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`).pipe(
+      tap(response => console.log('API Response:', response))
+    );
   }
-
+  
   updateCommentExceeded(id: number, exceeded: boolean) {
     const customer = this.customers.find(c => c.id === id);
     if (customer) {
@@ -40,7 +47,7 @@ export class ApplicantsListService {
   }
 
   getAllApplicants(jobId: number): Observable<Applicant[]> {
-    console.log('Reached applicant list service');
+    // console.log('Reached applicant list service');
     return this.http.get<Applicant[]>(`api/Candidate/applicants/${jobId}`);
   }
 
@@ -50,6 +57,10 @@ export class ApplicantsListService {
 
   getAdminId(email: string): Observable<number> {
     return this.http.get<number>(`api/Admin/email/${email}`);
+  }
+
+  updateRole(candidateId: number, newRoleId: number): Observable<any> {
+    return this.http.put(`api/Candidate/role/${candidateId}/${newRoleId}`, null);
   }
 
   // loadDummyData() {

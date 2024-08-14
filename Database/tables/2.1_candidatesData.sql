@@ -11,8 +11,8 @@ INSERT INTO [dbo].[candidates] (
     [GitHub_Link], 
     [LinkedIn], 
     [Degree], 
-    [University], 
-    [GPA], 
+    [University],
+    [Reason],
     [Experience], 
     [Role_Id]
 ) VALUES 
@@ -28,7 +28,7 @@ INSERT INTO [dbo].[candidates] (
     'https://linkedin.com/in/johndoe', 
     'B.Sc. Computer Science', 
     'University of Example', 
-    3.5, 
+    'Looking for new opportunities', 
     '5', 
     1
 ),
@@ -44,7 +44,7 @@ INSERT INTO [dbo].[candidates] (
     'https://linkedin.com/in/janesmith', 
     'M.Sc. Software Engineering', 
     'Example University', 
-    3.8, 
+    'Seeking a challenging role', 
     '3', 
     2
 ),
@@ -60,7 +60,7 @@ INSERT INTO [dbo].[candidates] (
     'https://linkedin.com/in/alicejohnson', 
     'B.Sc. Information Technology', 
     'Tech University', 
-    3.9, 
+    'Passionate about coding', 
     '4', 
     3
 );

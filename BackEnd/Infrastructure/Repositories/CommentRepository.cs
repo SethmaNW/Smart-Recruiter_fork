@@ -19,15 +19,7 @@ public class CommentRepository: ICommentRepository
     public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = @"
-                    IF EXISTS (SELECT 1 FROM [dbo].[Comments] WHERE [CandidateId] = @candidateId AND [jobId] = @jobId)
-                    BEGIN 
-	                    UPDATE [dbo].[comments] 
-                        SET [Comment] = @commentText 
-                        WHERE [CandidateId] = @candidateId AND [jobId] = @jobId
-                    END
-
-                    ELSE
+        var sql = @"                    
                     BEGIN 
 	                    INSERT INTO [dbo].[Comments] ([CandidateId], [jobId], [adminId], [Comment])
 	                    VALUES (@candidateId, @jobId, @adminId, @commentText )

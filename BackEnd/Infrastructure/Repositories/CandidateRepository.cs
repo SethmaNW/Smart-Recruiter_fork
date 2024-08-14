@@ -32,7 +32,7 @@ public class CandidateRepository : ICandidateRepository
         SELECT 
             c.[Id], c.[Name], c.[Contact], c.[CV_FilePath], 
             c.[CV_FileName], c.[Skills], c.[Available_Date], 
-            c.[Degree], c.[Experience], com.[Comment] 
+            c.[Degree], c.[Experience], c.[Reason], c.[Role_Id], com.[Comment] 
         FROM [dbo].[candidates] c
         INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id]
         LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId] AND com.[jobId] = @jobId
@@ -43,41 +43,6 @@ public class CandidateRepository : ICandidateRepository
 
         return candidates.ToList();
     }
-
-
-    //    public async Task<IEnumerable<Candidate>> GetApplicantsFromJobId(int jobId)
-    //{
-    //    using var connection = _dbContext.GetOpenConnection();
-
-    //    //  if a candidate might have multiple comments
-    //    var candidateDict = new Dictionary<int, Candidate>();
-
-    //    //var sql = "SELECT * FROM Candidates";
-    //    //var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
-    //    var sql = "SELECT c.[Name],c.[Contact],c.[CV_FilePath],c.[CV_FileName],c.[Skills],c.[Available_Date],c.[Degree],c.[Experience],com.[Comment] FROM [dbo].[candidates] c INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id] LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId] WHERE cj.[JobId] = @jobId AND c.[Role_Id] IN (0, 7)";
-
-    //    await connection.QueryAsync<Candidate, string, Candidate>(
-    //        sql,
-    //        (candidate, comment) =>
-    //        {
-    //            if (!candidateDict.TryGetValue(candidate.Id, out var currentCandidate))
-    //            {
-    //                currentCandidate = candidate;
-    //                currentCandidate.Comments = new List<string>();
-    //                candidateDict.Add(currentCandidate.Id, currentCandidate);
-    //            }
-    //            if (!string.IsNullOrEmpty(comment))
-    //            {
-    //                currentCandidate.Comments.Add(comment);
-    //            }
-    //            return currentCandidate;
-    //        },
-    //        splitOn: "Comment",
-    //        param: new { jobId }
-    //    );
-
-    //    return candidateDict.Values;
-    //}
 
     // save candidate details
     public async Task<Candidate> Save(Candidate candidate)
@@ -104,6 +69,19 @@ public class CandidateRepository : ICandidateRepository
         }
 
         return candidate;
+    }
+
+    // update roleId by candidateId
+    public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = @"
+                   UPDATE [dbo].[candidates]
+                   SET [role_Id] = @newRoleId
+                   WHERE [Id] = @candidateId
+                   ";
+        var role = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId, newRoleId });
+        return role;
     }
 
 }

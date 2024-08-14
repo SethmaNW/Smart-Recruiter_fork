@@ -4,6 +4,7 @@ import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
 import { Applicant } from '../models/applicants.model';
 import { AuthenticationService } from '../services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-applicant-table',
@@ -18,6 +19,7 @@ export class ApplicantTableComponent implements OnInit {
   position: string = '';
   jobId!: number;  // Declare jobId as a class property
   adminId!: number;
+  // isEditable: boolean = false;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -52,6 +54,7 @@ export class ApplicantTableComponent implements OnInit {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       this.getAdminIdfromEmail(currentUser.email);
+      console.log(this.getAdminIdfromEmail(currentUser.email));
     }
   }
 
@@ -61,6 +64,7 @@ export class ApplicantTableComponent implements OnInit {
     });
     this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
       this.customers = customers; 
+      console.log(this.customers);
     });
   }
 
@@ -73,19 +77,26 @@ export class ApplicantTableComponent implements OnInit {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
   }
 
-  checkCommentExist(jobId: number, candidateId: number) {
-    this.applicantsListService.existComment(jobId, candidateId).subscribe((exists) => {
-        const customer = this.customers.find(c => c.id === candidateId);
-        if (customer) {
-          customer.commentEditable = !exists;
-        }
-      }
-    );
+  // checkCommentExist(jobId: number, candidateId: number) {
+  //   this.applicantsListService.existComment(jobId, candidateId).subscribe((exists) => {
+  //       const customer = this.customers.find(c => c.id === candidateId);
+  //       if (customer) {
+  //         this.isEditable = !exists;
+  //         console.log(this.isEditable);
+  //       }
+  //     }
+  //   );
+  // }
+
+  checkCommentExist(jobId: number, candidateId: number): Observable<boolean> {
+    // console.log('Reached check comment exist');
+    return this.applicantsListService.existComment(jobId, candidateId);
   }
 
   getAdminIdfromEmail(email: string) {
     this.applicantsListService.getAdminId(email).subscribe(adminId => {
       this.adminId = adminId;
+      console.log(this.adminId);
     });
   }
 
@@ -93,7 +104,7 @@ export class ApplicantTableComponent implements OnInit {
     if (customer.id && customer.comment !== undefined) {
       this.applicantsListService.updateComment(this.jobId, customer.id, this.adminId, customer.comment).subscribe(
         (response) => {
-          customer.commentEditable = false;
+          console.log('Comment submitted successfully');
         },
         error => {
           console.log('Error in updating comment', error);
@@ -102,6 +113,30 @@ export class ApplicantTableComponent implements OnInit {
     } else {
       console.error('Missing required properties in customer object');
     }
+  }
+
+  showStatus(roleId: number): string {
+    switch (roleId) {
+      case 0:
+        return 'Applicant';
+      case 7:
+        return 'Rejected';
+      default:
+        return 'Unknown Status'; 
+    }
+  }
+  
+  updateRoleId(candidateId: number, roleId: number) {	
+    this.applicantsListService.updateRole(candidateId, roleId).subscribe((response) => {
+      const customer = this.customers.find(c => c.id === candidateId);
+      if (customer) {
+        customer.role_Id = roleId;
+      }
+    },
+    error => {
+      console.log('Error in updating role', error);
+    }
+  );
   }
 
 }
