@@ -1,12 +1,7 @@
 import { Component,Injectable,OnInit } from '@angular/core';
-import { SlidersService } from '../sliders.service';
+import { SlidersService } from '../services/sliders.service';
+import { Mark } from '../models/mark.model';
 
-
-
-interface criteria{
-  name:string;
-  marks:number;
-}
 
 @Component({
   selector: 'app-sliders',
@@ -14,22 +9,24 @@ interface criteria{
   styleUrls: ['./sliders.component.scss']
 })
 export class SlidersComponent implements  OnInit{
-  criteria:criteria[]=[
-    { name: 'Attitude and Discipline', marks: 70 },
-    { name: 'Technical Knowledge', marks: 80 },
-    { name: 'Education Background', marks: 60 },
-    { name: 'Professional Qualification', marks: 75 },
-    { name: 'Carrier Background', marks: 85 },
-    { name: 'Communication Skills', marks: 90 },
-    { name: 'Cultrul fit', marks: 70 },
-    { name: 'Family Background', marks: 70 },
-    { name: 'IQ/Craetivity/Problem Solving Skill', marks: 80 },
-    { name: 'Management  Skills', marks: 75 },
+
+  value : number = 0; //default value = 0 for the slider
+  criteria_value : Mark[]=[
+    { criteria: 'Attitude and Discipline', value: this.value, inactive: false },
+    { criteria: 'Technical Knowledge', value: this.value, inactive: false },
+    { criteria: 'Education Background', value: this.value, inactive: false },
+    { criteria: 'Professional Qualification', value: this.value, inactive: false },
+    { criteria: 'Carrier Background', value: this.value, inactive: false },
+    { criteria: 'Communication Skills', value: this.value, inactive: false },
+    { criteria: 'Cultrul fit', value: this.value, inactive: false },
+    { criteria: 'Family Background', value: this.value, inactive: false },
+    { criteria: 'IQ/Craetivity/Problem Solving Skill', value: this.value, inactive: false },
+    { criteria: 'Management  Skills', value: this.value, inactive: false },
   
   ];
 
-  selectedCriteria:criteria|undefined;
-  value=0;
+  mark : Mark | undefined;
+  
 
 
 
@@ -39,19 +36,21 @@ export class SlidersComponent implements  OnInit{
   ngOnInit(): void {}
 
   savevalue():void{
-
-    if(this.selectedCriteria){
-      console.log(`Saving ${this.value} for ${this.selectedCriteria.name}`);
-      this.slidersService.updateslidervalue(this.selectedCriteria.name,this.value);
-
-      this.value=0;
-
-
+  
+    if(this.mark){
+      console.log(`Saving ${this.value} for ${this.mark.criteria}`);
+      if (this.mark.criteria && this.mark.value) {
+        this.slidersService.updateslidervalue(this.mark.criteria, this.mark.value);
+      } else {
+        console.log('select a criteria first');
+      }
+  
+  
      } else {
       console.log('select a criteria first');
     }
-
-
+  
+  
   }
 
 }

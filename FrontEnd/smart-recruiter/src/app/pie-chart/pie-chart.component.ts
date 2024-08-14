@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit,ViewChild,ElementRef } from '@angular/core';
-import { SlidersService } from '../sliders.service';
+import { SlidersService } from '../services/sliders.service';
 import { Chart } from 'chart.js';
 
 
@@ -14,6 +14,8 @@ export class PieChartComponent implements OnInit, AfterViewInit {
   options: any;
   value: number = 0;
   chart: any;
+  CurrentSection:any;
+
 
   // latestValues: { [key: string]: number } = {};
 
@@ -69,6 +71,11 @@ export class PieChartComponent implements OnInit, AfterViewInit {
     this.data.datasets[0].hoverBackgroundColor = colorPalette.slice(0, this.data.labels.length);
 
     this.chart.update();
+  }
+
+  navigateToSection(name: string): void {
+    
+
   }
 }
 
