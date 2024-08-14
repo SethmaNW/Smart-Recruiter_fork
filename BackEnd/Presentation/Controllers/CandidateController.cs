@@ -104,7 +104,8 @@ public class CandidateController : ControllerBase
                 return NotFound();
             }
         }
-        catch (Exception ex) {
+        catch (Exception)
+        {
             return StatusCode(500, "Internal server error");
         }
     }
