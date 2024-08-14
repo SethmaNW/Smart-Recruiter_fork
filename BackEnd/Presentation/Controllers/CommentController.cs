@@ -17,24 +17,24 @@ public class CommentController : ControllerBase
     }
 
 
-    [HttpPost("{jobId}/{candidateId}/{adminId}")]
-    public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, int adminId, [FromBody] CommentRequest commentRequest)
-    {
-        //var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
-        //return Ok(comment);
-        if (commentRequest == null || string.IsNullOrEmpty(commentRequest.CommentText))
-        {
-            return BadRequest("Comment text is required.");
-        }
+    // [HttpPost("{jobId}/{candidateId}/{adminId}")]
+    // public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, int adminId, [FromBody] CommentRequest commentRequest)
+    // {
+    //     //var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
+    //     //return Ok(comment);
+    //     if (commentRequest == null || string.IsNullOrEmpty(commentRequest.CommentText))
+    //     {
+    //         return BadRequest("Comment text is required.");
+    //     }
 
-        var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentRequest.CommentText);
-        if (comment)
-        {
-            return Ok();
-        }
+    //     var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentRequest.CommentText);
+    //     if (comment)
+    //     {
+    //         return Ok();
+    //     }
 
-        return StatusCode(500, "An error occurred while updating the comment.");
-    }
+    //     return StatusCode(500, "An error occurred while updating the comment.");
+    // }
 
     [HttpGet("checkcomment/{jobId}/{candidateId}")]
     public async Task<IActionResult> CheckApplicantComment(int jobId, int candidateId)
