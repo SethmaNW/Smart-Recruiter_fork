@@ -1,4 +1,6 @@
 namespace Infrastructure.Repositories;
+
+using System.Data;
 using Dapper;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
@@ -16,18 +18,15 @@ public class JobRepository : IJobRepository
     public async Task<IEnumerable<Job>> GetAll()
     {
         using var connection = _dbConnection.GetOpenConnection();
-        var sql = "SELECT * FROM jobs";
+        var sql = "EXEC GetAllJobs";
         return (await connection.QueryAsync<Job>(sql)).ToList();
     }
     public async Task<Job> Save(Job job){
         using var connection = _dbConnection.GetOpenConnection();
-        var sql = "INSERT INTO jobs (Title, Description, NoOfAvailablePositions, Location, Department, ActiveStatus, " + 
-        "AttitudeAndDiscipline, TechnicalKnowledge, EducationBackground, ProfessionalQualification, " +
-        "CareerBackground, CommunicationSkills, CulturalFit, FamilyBackground, IQCreativityProblemSolvingSkills, " + 
-        "ManagementSkills) VALUES (@Title, @Description, @NoOfAvailablePositions, @Location, @Department, " + 
-        "@ActiveStatus, @AttitudeAndDiscipline, @TechnicalKnowledge, @EducationBackground, @ProfessionalQualification, " +  
-        "@CareerBackground, @CommunicationSkills, @CulturalFit, @FamilyBackground, @IQCreativityProblemSolvingSkills, " +
-        "@ManagementSkills); SELECT CAST(SCOPE_IDENTITY() as int)";
+        var sql = "EXEC SaveJob @Title, @Description, @NoOfAvailablePositions, @Location, @Department, @ActiveStatus, " +
+              "@AttitudeAndDiscipline, @TechnicalKnowledge, @EducationBackground, @ProfessionalQualification, " +
+              "@CareerBackground, @CommunicationSkills, @CulturalFit, @FamilyBackground, @IQCreativityProblemSolvingSkills, " +
+              "@ManagementSkills";
 
         var id = (await connection.QueryAsync<int>(sql, job)).FirstOrDefault();
         job.Id = id;
@@ -37,14 +36,28 @@ public class JobRepository : IJobRepository
     public async Task<bool> Update(Job job)
     {
         using var connection = _dbConnection.GetOpenConnection();
-        var sql = "UPDATE jobs SET Title = @Title, Description = @Description, NoOfAvailablePositions = @NoOfAvailablePositions, Location = @Location," + 
-        "Department = @Department, ActiveStatus = @ActiveStatus, AttitudeAndDiscipline = @AttitudeAndDiscipline," +
-        "TechnicalKnowledge = @TechnicalKnowledge, EducationBackground = @EducationBackground," +
-        "ProfessionalQualification = @ProfessionalQualification, CareerBackground = @CareerBackground," +
-        "CommunicationSkills = @CommunicationSkills, CulturalFit = @CulturalFit, FamilyBackground = @FamilyBackground," +
-        "IQCreativityProblemSolvingSkills = @IQCreativityProblemSolvingSkills, ManagementSkills = @ManagementSkills " +
-        "WHERE id = @Id";
-        return await connection.ExecuteAsync(sql, job) > 0;
+        var sql = "[dbo].[UpdateJob]";
+        var parameters = new
+        {
+            job.Id,
+            job.Title,
+            job.Description,
+            job.NoOfAvailablePositions,
+            job.Location,
+            job.Department,
+            job.ActiveStatus,
+            job.AttitudeAndDiscipline,
+            job.TechnicalKnowledge,
+            job.EducationBackground,
+            job.ProfessionalQualification,
+            job.CareerBackground,
+            job.CommunicationSkills,
+            job.CulturalFit,
+            job.FamilyBackground,
+            job.IQCreativityProblemSolvingSkills,
+            job.ManagementSkills
+        };
+        return await connection.ExecuteAsync(sql, parameters, commandType: CommandType.StoredProcedure) > 0;
     }
 
     // get job position from jobId

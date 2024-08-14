@@ -4,5 +4,6 @@ namespace ServiceInterfaces.IServices;
 
 public interface ICommentService
 {
-    Task<IEnumerable<string>> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText);
+    Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText);
+    Task<bool> CheckApplicantComment(int jobId, int candidateId);
 }

@@ -16,7 +16,7 @@ public class CommentRepository: ICommentRepository
     }
 
     // update applicants page comment related to candidate
-    public async Task<IEnumerable<string>> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
+    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
     {
         using var connection = _dbContext.GetOpenConnection();
         var sql = @"
@@ -33,8 +33,26 @@ public class CommentRepository: ICommentRepository
 	                    VALUES (@candidateId, @jobId, @adminId, @commentText )
                     END 
                     ";
-        var comments = await connection.QueryAsync<string>(sql, new { jobId, candidateId, adminId, commentText });
 
-        return comments;
+        var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, commentText });
+
+        return rowsAffected > 0;
+    }
+
+    // check whether there is a comment under relevant candidateId and jobId
+    public async Task<bool> CheckApplicantComment(int jobId, int candidateId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = @"
+                    SELECT CASE
+                    WHEN EXISTS 
+                    ( SELECT 1 FROM [dbo].[comments] WHERE [CandidateId] = @candidateId AND [jobId] = @jobId )
+                    THEN CAST (1 AS BIT)
+                    ELSE CAST (0 AS BIT)
+                    END
+                    ";
+        var check_comment = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { jobId, candidateId });
+
+        return check_comment;
     }
 }

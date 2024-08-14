@@ -7,6 +7,8 @@ export interface Applicant {
     skills: string;
     available_Date: Date;    
     experience: string;
+    comment: string;
+    commentEditable: boolean;
     // cv: string;
     // status: string;
 }

@@ -13,8 +13,15 @@ public class CommentService : ICommentService
         _CommentRepository = commentRepository;
     }
 
-    public async Task<IEnumerable<string>> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
+    // update comments in Applicants page
+    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
     {
         return await _CommentRepository.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
+    }
+
+    // check whether there is a comment under relevant candidateId and jobId
+    public async Task<bool> CheckApplicantComment(int jobId, int candidateId)
+    {
+        return await _CommentRepository.CheckApplicantComment(jobId, candidateId);
     }
 }

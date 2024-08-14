@@ -34,52 +34,258 @@
                                 </div>
                             </ng-template>
                             <span class="p-text-secondary block mb-5 -mt-1">Post a Job Detail</span>
-                            <div class="flex align-items-center gap-3 mb-3">
-                                <label for="title" class="font-semibold w-6rem">
-                                    Title
-                                </label>
-                                <input pInputText id="title" class="flex-auto" autocomplete="off" />
-                            </div>
-                            <div class="flex align-items-center gap-3 mb-5">
-                                <label for="description" class="font-semibold w-6rem">Description</label>
-                                <div class="card flex justify-content-center">
-                                    <textarea 
-                                        rows="5"
-                                        cols="30"
-                                        pInputTextarea 
-                                        [(ngModel)]="jobDescription">
-                                    </textarea>
+                            <form class="form">
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="title" class="font-semibold w-6rem">
+                                        Title
+                                    </label>
+                                    <input pInputText name="title" class="flex-auto" autocomplete="off" [(ngModel)]="job.title" />
                                 </div>
-                            </div>
-                            <div class="flex align-items-center gap-3 mb-3">
-                                <label for="location" class="font-semibold w-6rem">
-                                    Location
-                                </label>
-                                <input pInputText id="title" class="flex-auto" autocomplete="off" />
-                            </div>
-                            <div class="flex align-items-center gap-3 mb-3">
-                                <label for="department" class="font-semibold w-6rem">
-                                    Department
-                                </label>
-                                <input pInputText id="title" class="flex-auto" autocomplete="off" />
-                            </div>
-                            <div class="flex align-items-center gap-3 mb-3">
-                                <label for="count" class="font-semibold w-6rem">
-                                    Available Vacancy Count
-                                </label>
-                                <input pInputText id="count" class="flex-auto" autocomplete="off" />
-                            </div>
+                                <div class="flex align-items-center gap-3 mb-5">
+                                    <label for="description" class="font-semibold w-6rem">Description</label>
+                                    <div class="card flex justify-content-center">
+                                        <textarea 
+                                            rows="5"
+                                            cols="30"
+                                            pInputTextarea 
+                                            name="description"
+                                            [(ngModel)]="job.description">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="location" class="font-semibold w-6rem">
+                                        Location
+                                    </label>
+                                    <input pInputText name="title" class="flex-auto" autocomplete="off" [(ngModel)] = "job.location" />
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="department" class="font-semibold w-6rem">
+                                        Department
+                                    </label>
+                                    <input pInputText name="department" class="flex-auto" autocomplete="off" [(ngModel)] = "job.department" />
+                                </div>
+                                <div class="flex align-items-center gap-3 mb-3">
+                                    <label for="count" class="font-semibold w-6rem">
+                                        Available Vacancy Count
+                                    </label>
+                                    <p-inputNumber 
+                                    [(ngModel)]="job.noOfAvailablePositions" 
+                                    name="count"
+                                    [showButtons]="true" 
+                                    buttonLayout="horizontal" 
+                                    inputId="horizontal" 
+                                    spinnerMode="horizontal" 
+                                    [step]="1"
+                                    decrementButtonClass=""
+                                    incrementButtonClass=""
+                                    incrementButtonIcon="pi pi-plus" 
+                                    decrementButtonIcon="pi pi-minus"
+                                    [min]="1" 
+                                    />
+                                </div>
+                                <div class="w-full text-center">
+                                    <span class="text-3xl">Enter Full Mark that each candidate can perform</span>
+                                </div>
+                                <div class="mt-4 w-full flex flex-row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Attitude And Discipline </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.attitudeAndDiscipline" 
+                                            name  = "attitudeAndDiscipline"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus"
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Educational Background </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.educationBackground"
+                                            name = "educationBackground" 
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus"
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Career Background </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.careerBackground"
+                                            name = "careerBackground" 
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus"
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Cultural Fit </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.culturalFit"
+                                            name = "culturalFit"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus"
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> IQ/Creativity And Problem Solving </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.iqCreativityProblemSolvingSkills"
+                                            name = "iqCreativityProblemSolvingSkills"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus"
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Technical Knowledge </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.technicalKnowledge"
+                                            name = "technicalKnowledge"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus" 
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Professional Qualification </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.professionalQualification"
+                                            name = "professionalQualification"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus" 
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Communication Skills </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.communicationSkills"
+                                            name = "communicationSkills"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus" 
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Family Background </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.familyBackground"
+                                            name = "familyBackground" 
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus" 
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="font-bold block mb-2"> Management Skills </label>
+                                            <p-inputNumber 
+                                            [(ngModel)]="job.managementSkills"
+                                            name = "managementSkills"
+                                            [showButtons]="true" 
+                                            buttonLayout="horizontal" 
+                                            inputId="horizontal" 
+                                            spinnerMode="horizontal" 
+                                            [step]="5"
+                                            decrementButtonClass=""
+                                            incrementButtonClass=""
+                                            incrementButtonIcon="pi pi-plus" 
+                                            decrementButtonIcon="pi pi-minus" 
+                                            [min]="0"
+                                            [max]="100"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <ng-template pTemplate="footer">
                                 <p-button 
                                     label="Cancel" 
                                     [text]="true" 
+                                    [outlined]="true" 
                                     severity="secondary" 
                                     (onClick)="visible = false" />
                                 <p-button 
                                     label="Save" 
                                     [outlined]="true" 
                                     severity="secondary" 
-                                    (onClick)="visible = false" 
+                                    (onClick)="addJob()" 
                                   />
                             </ng-template>
                     </p-dialog>
