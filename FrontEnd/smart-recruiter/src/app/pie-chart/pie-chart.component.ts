@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit,ViewChild,ElementRef } from '@angular/core';
-import { SlidersService } from '../sliders.service';
+import { SlidersService } from '../services/sliders.service';
 import { Chart } from 'chart.js';
 
 
