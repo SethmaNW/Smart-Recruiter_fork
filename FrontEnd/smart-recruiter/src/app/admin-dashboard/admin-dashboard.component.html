@@ -85,191 +85,81 @@
                                     />
                                 </div>
                                 <div class="w-full text-center">
-                                    <span class="text-3xl">Enter Full Mark that each candidate can perform</span>
+                                    <span class="text-3xl">Adjust the Weight for Each Criteria</span>
                                 </div>
                                 <div class="mt-4 w-full flex flex-row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Attitude And Discipline </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.attitudeAndDiscipline" 
-                                            name  = "attitudeAndDiscipline"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus"
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.attitudeAndDiscipline" name="attitudeValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.attitudeAndDiscipline" class="w-full" [min]="0" [max]="10" name="attitudeSlider"/>
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Educational Background </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.educationBackground"
-                                            name = "educationBackground" 
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus"
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.educationBackground" name="educationValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.educationBackground" class="w-full" [min]="0" [max]="10" name="educationSlider" />
+                                            </div>                                            
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Career Background </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.careerBackground"
-                                            name = "careerBackground" 
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus"
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.careerBackground" name="careerValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.careerBackground" class="w-full" [min]="0" [max]="10" name="careerSlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Cultural Fit </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.culturalFit"
-                                            name = "culturalFit"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus"
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.culturalFit" name="culturalValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.culturalFit" class="w-full" [min]="0" [max]="10" name="culturalSlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> IQ/Creativity And Problem Solving </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.iqCreativityProblemSolvingSkills"
-                                            name = "iqCreativityProblemSolvingSkills"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus"
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.iqCreativityProblemSolvingSkills" name="iqValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.iqCreativityProblemSolvingSkills" class="w-full" [min]="0" [max]="10" name="iqSlider" />
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Technical Knowledge </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.technicalKnowledge"
-                                            name = "technicalKnowledge"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus" 
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.technicalKnowledge" name="technicalValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.technicalKnowledge" class="w-full" [min]="0" [max]="10" name="technicalSlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Professional Qualification </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.professionalQualification"
-                                            name = "professionalQualification"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus" 
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.professionalQualification" name="professionalValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.professionalQualification" class="w-full" [min]="0" [max]="10" name="professionalSlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Communication Skills </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.communicationSkills"
-                                            name = "communicationSkills"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus" 
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.communicationSkills" name="communicationValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.communicationSkills" class="w-full" [min]="0" [max]="10" name="communicationSlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Family Background </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.familyBackground"
-                                            name = "familyBackground" 
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus" 
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.familyBackground" name="familyValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.familyBackground" class="w-full" [min]="0" [max]="10" name="familySlider" />
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="font-bold block mb-2"> Management Skills </label>
-                                            <p-inputNumber 
-                                            [(ngModel)]="job.managementSkills"
-                                            name = "managementSkills"
-                                            [showButtons]="true" 
-                                            buttonLayout="horizontal" 
-                                            inputId="horizontal" 
-                                            spinnerMode="horizontal" 
-                                            [step]="5"
-                                            decrementButtonClass=""
-                                            incrementButtonClass=""
-                                            incrementButtonIcon="pi pi-plus" 
-                                            decrementButtonIcon="pi pi-minus" 
-                                            [min]="0"
-                                            [max]="100"
-                                            />
+                                            <div>
+                                                <input type="text" pInputText [(ngModel)]="job.managementSkills" name="managementValue" class="w-full mb-3"/>
+                                                <p-slider [(ngModel)]="job.managementSkills" class="w-full" [min]="0" [max]="10" name="managementSlider" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

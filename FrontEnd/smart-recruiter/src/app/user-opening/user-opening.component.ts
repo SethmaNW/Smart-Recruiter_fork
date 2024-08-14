@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-opening',
@@ -8,13 +9,16 @@ import { Component } from '@angular/core';
 export class UserOpeningComponent {
 
   job:any;
+  filterGlobal: any;
 
-  constructor() { }
+  constructor(private router:Router) { }
+
+  navigateToForm(){
+    this.router. navigate (['/form']);
+  }
 
   ngOnInit(): void {
   }
-
-
 
 
 }

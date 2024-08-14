@@ -17,7 +17,7 @@ export class AdminDashboardComponent implements OnInit {
   jobs: any[] = [];
   filteredJobs: any[] = [];
 
-  job : Job = {title : '', description : '',noOfAvailablePositions : 1, location : '', department : '', activeStatus : true, attitudeAndDiscipline : 10, technicalKnowledge : 10, educationBackground : 10, professionalQualification : 10, careerBackground : 10, communicationSkills : 10, culturalFit : 10, familyBackground : 10, iqCreativityProblemSolvingSkills : 10, managementSkills : 10};
+  job : Job = {title : '', description : '',noOfAvailablePositions : 1, location : '', department : '', activeStatus : true, attitudeAndDiscipline : 1, technicalKnowledge : 1, educationBackground : 1, professionalQualification : 1, careerBackground : 1, communicationSkills : 1, culturalFit : 1, familyBackground : 1, iqCreativityProblemSolvingSkills : 1, managementSkills : 1};
 
   constructor( private jobPostSvc : JobPostService, protected AuthSvc : AuthenticationService) { }
 

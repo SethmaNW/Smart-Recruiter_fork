@@ -1,45 +1,45 @@
 <app-navbar></app-navbar>
-<div class="flex flex-column mx-6 mt-3 w-screen">
-    <div class="flex flex-row flex-wrap w-full">
+<div class="flex flex-column mx-6 mt-3">
+    <div class="flex flex-row flex-wrap ">
         <div>
-            <h2>Recuruitment</h2>
+            <h2>Recruitment</h2>
             <p class="opacity-70 -mt-3">Here is all job openings!</p>
         </div>
-        <div class="ml-auto mt-4 flex flex-row items-center">
+        <div class="ml-auto flex flex-row items-center">
             <div>
                 <span class="p-input-icon-left mr-3">
                     <i class="pi pi-search"></i>
-                    <!-- <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" /> -->
+                    <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" />
                 </span>
             </div>
-    
-     <p-card styleClass="customized-card">
+        </div>
+    </div>
+
+    <!-- Card Section -->
+    <p-card styleClass="customized-card" (click)="navigateToForm()">
         <div class="grid grid-custom">
+            <!-- Job Title -->
             <div class="card">
                 <h2>UX/UI Designer</h2>           
-                  
-        </div>
-        <div class="location">
-            <i class="fa-solid fa-location-dot"></i>
-            <span style="margin-left: 1rem;">Colombo,Sri Lanka| &nbsp;</span>
-            <span>IT department</span>
-        </div>
-        <div class="third-line">
-            <div class="candidate-count">
-                <span style="opacity: 0.7;">15 Candidates Applied</span>
             </div>
-            <!-- <div class="ml-3">
-                <a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.id}" style="color: #22c55e">
-                    <span >View Applicants</span>
-                    <i class="fa-solid fa-angle-right ml-1"></i>
-                </a>
-            </div> -->
-            <!-- <div class="ml-3">
-                <a [routerLink]="['/shortlisted']" [queryParams]="{'jobId' : job.id}" style="color: #22c55e">
-                    <span >View Shortlisted list</span>
-                    <i class="fa-solid fa-angle-right ml-1"></i>
-                </a>
-            </div> -->
         </div>
-    <!-- </p-card> -->
-    <!-- </a> -->
+
+            <!-- Location and Department -->
+            <div >
+                <i class="fa-solid fa-location-dot"></i>
+                <span style="margin-left: 1rem;">Colombo, Sri Lanka | &nbsp;</span>
+                <span>IT department</span>
+            </div>
+
+            <!-- Candidate Count -->
+            <div>
+                <div class="candidate-count">
+                    <span style="opacity: 0.7;">15 Candidates Applied</span>
+                </div>
+            </div>
+       
+               
+        
+        
+    </p-card>
+</div>
