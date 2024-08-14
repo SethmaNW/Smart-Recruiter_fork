@@ -3,10 +3,12 @@
     <h2>1 st interview Marks</h2>
     <div class="card flex justify-content-center">
         <p-dropdown 
-            [options]="criteria" 
-            [(ngModel)]="selectedCriteria" 
-            optionLabel="name"
-            placeholder="Select Interview Criteria" />
+            [options]="criteria_value" 
+            [(ngModel)]="mark" 
+            optionLabel="criteria"
+            placeholder="Select Interview Criteria"
+            optionDisabled="inactive"
+            />
 
     </div>
         <div  class="card flex flex-column align-items-center" >
