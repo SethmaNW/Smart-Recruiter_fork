@@ -30,4 +30,9 @@ public class CandidateService : ICandidateService
     {
         return await _CandidateRepository.UpdateRoleId(candidateId, newRoleId);
     }
+
+    public async Task<bool> DeleteCandidate(int candidateId)
+    {
+        return await _CandidateRepository.DeleteCandidate(candidateId);
+    }
 }
