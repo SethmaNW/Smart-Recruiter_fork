@@ -12,4 +12,6 @@ VALUES
     ('Average performance in the interview.', 1, 2, 2, 3),
     ('Excellent problem-solving skills.', 2, 2, 3, 5),
     ('Not suitable for the current opening.', 3, 1, 1, 0),
-    ('Shows great potential for growth.', 1, 1, 1, 0);
+    ('Shows great potential for growth.', 1, 1, 1, 0),
+    ('Better performance in the interview.', 1, 6, 1, 7),
+    ('Good problem-solving skills.', 2, 10, 1, 0);

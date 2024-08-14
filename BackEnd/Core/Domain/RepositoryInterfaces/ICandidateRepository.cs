@@ -8,4 +8,5 @@ public interface ICandidateRepository
     Task<IEnumerable<CandidateWithComment>> GetApplicantsFromJobId(int jobId);
     Task<Candidate> Save(Candidate candidate);
     Task<bool> UpdateRoleId(int candidateId, int newRoleId);
+    Task<bool> DeleteCandidate(int candidateId);
 }

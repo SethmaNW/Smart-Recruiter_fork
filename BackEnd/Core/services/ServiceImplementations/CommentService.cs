@@ -14,9 +14,9 @@ public class CommentService : ICommentService
     }
 
     // update comments in Applicants page
-    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
+    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, string commentText)
     {
-        return await _CommentRepository.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
+        return await _CommentRepository.UpdateApplicantComment(jobId, candidateId, adminId, roleId, commentText);
     }
 
     // check whether there is a comment under relevant candidateId and jobId

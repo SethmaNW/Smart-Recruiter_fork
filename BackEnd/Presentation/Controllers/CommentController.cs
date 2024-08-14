@@ -17,8 +17,8 @@ public class CommentController : ControllerBase
     }
 
 
-    [HttpPost("{jobId}/{candidateId}/{adminId}")]
-    public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, int adminId, [FromBody] CommentRequest commentRequest)
+    [HttpPost("{jobId}/{candidateId}/{adminId}/{roleId}")]
+    public async Task<IActionResult> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, [FromBody] CommentRequest commentRequest)
     {
         //var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentText);
         //return Ok(comment);
@@ -27,7 +27,7 @@ public class CommentController : ControllerBase
             return BadRequest("Comment text is required.");
         }
 
-        var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, commentRequest.CommentText);
+        var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, roleId, commentRequest.CommentText);
         if (comment)
         {
             return Ok();
