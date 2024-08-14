@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class UserOpeningComponent {
 
   job:any;
+  filterGlobal: any;
 
   constructor() { }
 
