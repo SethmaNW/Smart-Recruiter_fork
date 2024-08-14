@@ -27,16 +27,17 @@ export class ApplicantsListService {
   //   return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
   // }
 
-  updateComment(jobId: number, candidateId: number, adminId: number, commentText: string): Observable<Comment> {
+  updateComment(jobId: number, candidateId: number, adminId: number, roleId: number, commentText: string): Observable<Comment> {
     // console.log('Reached applicant update comment service');
-    return this.http.post<Comment>(`api/Comment/${jobId}/${candidateId}/${adminId}`, { commentText });
+    return this.http.post<Comment>(`api/Comment/${jobId}/${candidateId}/${adminId}/${roleId}`, { commentText });
   }
 
   existComment(jobId: number, candidateId: number): Observable<boolean> {
     // console.log('Reached exist comment');
-    return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`).pipe(
-      tap(response => console.log('API Response:', response))
-    );
+    // return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`).pipe(
+    //   tap(response => console.log('API Response:', response))
+    // );
+    return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`);
   }
   
   updateCommentExceeded(id: number, exceeded: boolean) {
@@ -60,7 +61,11 @@ export class ApplicantsListService {
   }
 
   updateRole(candidateId: number, newRoleId: number): Observable<any> {
-    return this.http.put(`api/Candidate/role/${candidateId}/${newRoleId}`, null);
+    return this.http.put(`api/Candidate/role/${candidateId}/${newRoleId}`, {});
+  }
+
+  deleteApplicant(candidateId: number): Observable<any> {
+    return this.http.delete(`api/Candidate/delete/${candidateId}`);
   }
 
   // loadDummyData() {
