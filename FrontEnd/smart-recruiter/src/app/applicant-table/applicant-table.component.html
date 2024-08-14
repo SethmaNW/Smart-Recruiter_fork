@@ -34,8 +34,9 @@
             <th class="column column-contact">Contact</th>
             <th class="column column-date">Available Date</th>
             <th class="column column-degree">Degree</th>
-            <th class="column column-skills">Skills</th>
+            <th class="column column-skills">Skills</th>            
             <th class="column column-workExperience">Work Experience</th>
+            <th class="column column-skills">Reason</th>
             <th class="column column-comment">Comments</th>
             <th class="column column-action">Action</th>            
         </tr>
@@ -53,7 +54,8 @@
             <td>{{ customer.available_Date }}</td>
             <td>{{ customer.degree }}</td>
             <td>{{ customer.skills }}</td>
-            <td>{{ customer.experience }} {{ customer.commentEditable }}</td>
+            <td class="experience">{{ customer.experience }}</td>
+            <td>{{ customer.reason }}</td>
             <td>
                 <!-- {{ customer.comment }} -->
                 <div>
@@ -70,16 +72,16 @@
                         [maxWords]="2"
                         (wordLimitExceeded)="handleWordLimitExceeded(customer.id, $event)"
                         placeholder="Enter your comment (max 20 words)"
-                        [disabled]="!customer.commentEditable"
+                        [disabled]="!(checkCommentExist(jobId, customer.id))"
                     ></textarea>
-                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" (click)="submitComment(customer)" *ngIf="customer.commentEditable"/>
+                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" (click)="submitComment(customer)" *ngIf="(checkCommentExist(jobId, customer.id))" />
                     <div *ngIf="customer.commentExceeded" class="error-message">Word limit exceeded.</div>
                 </div>
             </td>
             <td>
-                <div class="status">{{ customer.status }}</div>
+                <div class="status">{{ showStatus(customer.role_Id) }} </div>
                 <div class="button-container">
-                  <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button"></p-button>
+                  <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>
                   <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button"></p-button>
                 </div>
             </td>                          
