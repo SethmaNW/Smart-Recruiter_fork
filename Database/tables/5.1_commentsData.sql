@@ -14,4 +14,4 @@ VALUES
     ('Not suitable for the current opening.', 3, 1, 1, 0),
     ('Shows great potential for growth.', 1, 1, 1, 0),
     ('Better performance in the interview.', 1, 6, 1, 7),
-    ('Good problem-solving skills.', 2, 10, 1, 0);
+    ('Good problem-solving skills.', 2, 1, 1, 0);
