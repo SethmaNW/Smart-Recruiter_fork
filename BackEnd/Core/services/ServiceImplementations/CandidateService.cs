@@ -35,4 +35,9 @@ public class CandidateService : ICandidateService
     {
         return await _CandidateRepository.DeleteCandidate(candidateId);
     }
+
+    public async Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId)
+    {
+        return await _CandidateRepository.GetShortlistFromJobId(jobId);
+    }
 }

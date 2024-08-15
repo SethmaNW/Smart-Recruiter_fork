@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShortlistedListService } from '../services/shortlisted-list.service';
+import { ActivatedRoute } from '@angular/router';
+import { Applicant } from '../models/applicants.model';
 
 @Component({
   selector: 'app-shortlisted-card',
@@ -9,18 +11,34 @@ import { ShortlistedListService } from '../services/shortlisted-list.service';
 })
 
 export class ShortlistedCardComponent implements OnInit {
-  @Input() status: string = '';
-  shortlisted: any[] = [];
-  // loading: boolean = true;
+  @Input() roleId: number = 1;
+  shortlisted: Applicant[] = [];
+  jobId!: number;  
 
-  constructor(private shortlistedListService: ShortlistedListService) { }
+  constructor(
+    private shortlistedListService: ShortlistedListService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(){
-    this.shortlisted = this.shortlistedListService.getShortlistedCandidates().filter(candidate => candidate.status === this.status);
-    // this.loading = this.shortlistedListService.isLoading();
+    this.route.queryParamMap.subscribe(params => {
+      this.jobId = +params.get('jobId')!;
+      this.loadShortlist();
+    });    
   }
-}
 
+  loadShortlist(){
+    this.shortlistedListService.getShortlistedCandidates(this.jobId).subscribe(candidates => {
+      this.shortlisted = candidates.filter(candidate => candidate.role_Id === this.roleId);
+    });
+  }
+
+  passCandidateId(candidateId: number){
+    
+  }
+
+}
+ 
 
 // export class ShortlistedCardComponent implements OnInit {
 //   shortlisted: any[] = [];
