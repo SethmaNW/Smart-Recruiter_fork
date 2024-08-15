@@ -16,7 +16,7 @@ export class ShortlistedPicklistComponent implements OnInit {
   constructor(private shortlistedListService: ShortlistedListService) { }
 
   ngOnInit(){
-    this.sourcecandidates = this.shortlistedListService.getShortlistedCandidates().filter(candidate => candidate.status === this.status);
+    // this.sourcecandidates = this.shortlistedListService.getShortlistedCandidates().filter(candidate => candidate.status === this.status);
     // this.loading = this.shortlistedListService.isLoading();
   }
 }

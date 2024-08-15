@@ -130,4 +130,11 @@ public class CandidateController : ControllerBase
         }
     }
 
+    [HttpGet("shortlist/{jobId}")]
+    public async Task<IActionResult> GetShortlistFromJobId(int jobId)
+    {
+        var candidate = await _CandidateService.GetShortlistFromJobId(jobId);
+        return Ok(candidate);
+    }
+
 }
