@@ -94,7 +94,8 @@
                 <div class="status">{{ showStatus(customer.role_Id) }} </div>
                 <div class="button-container">
                   <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>
-                  <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" (click)="deleteCandidate(customer.id)"></p-button>
+                  <p-button icon="pi pi-times" [rounded]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===7" (click)="deleteCandidate(customer.id)"></p-button>
+                  <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===0" (click)="updateRoleId(customer.id, 7)"></p-button>
                   <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" (click)="updateRoleId(customer.id, 7)" *ngIf="!isButtonHidden(customer.id)"></p-button> -->
                 </div>
             </td>                          
