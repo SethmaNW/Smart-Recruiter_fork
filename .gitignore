@@ -2,6 +2,8 @@
 bin/
 obj/
 
+BackEnd/smart-recruiter/appsettings.json
+
 # Ignore database authentication details
 #.Smart-Recruiter/BackEnd/smart-recruiter/appsettings.json
 
