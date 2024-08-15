@@ -10,7 +10,7 @@ import { Mark } from '../models/mark.model';
 })
 export class SlidersComponent implements  OnInit{
 
-  value : number = 0; //default value = 0 for the slider
+  value : number = 50; //default value = 50 for the slider
   criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value, inactive: false },
     { criteria: 'Technical Knowledge', value: this.value, inactive: false },
@@ -35,12 +35,17 @@ export class SlidersComponent implements  OnInit{
 
   ngOnInit(): void {}
 
-  savevalue():void{
+  savevalue() : void{
   
     if(this.mark){
-      console.log(`Saving ${this.value} for ${this.mark.criteria}`);
-      if (this.mark.criteria && this.mark.value) {
-        this.slidersService.updateslidervalue(this.mark.criteria, this.mark.value);
+      //console.log(`Saving ${this.value} for ${this.mark.criteria}`);
+      if (this.mark.criteria && this.mark.value) {  // Mark 0 is not taking to account
+        var candidateId = 1;  //get using query parameter
+        var roleId = 0;       // get by fetching all candidate detail by candidateId
+        var jobId = 1;        // get using query parameter
+        var adminId = 1;      // get using authentication service
+        this.slidersService.saveMark(this.mark.criteria, this.mark.value, candidateId, roleId, jobId, adminId)
+        .subscribe((res) => { console.log(res); });
       } else {
         console.log('select a criteria first');
       }
