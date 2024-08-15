@@ -87,4 +87,23 @@
     font-size: 14px;
 }
 
+.popup{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    height: 100%;
+}
+
+:host ::ng-deep .p-confirm-dialog .p-confirm-dialog-accept {
+    background-color: green;
+    border-color: green;
+    color: white;
+}
+
+:host ::ng-deep .p-confirm-dialog .p-confirm-dialog-reject {
+    background-color: rgb(221, 13, 13);
+    border-color: rgb(221, 13, 13);
+    color: white;
+}
 

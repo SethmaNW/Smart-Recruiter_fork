@@ -45,6 +45,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
  
 @NgModule({
@@ -94,10 +96,11 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     CalendarModule,
     KeyFilterModule,
     InputNumberModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ConfirmDialogModule
   
   ],
-  providers: [provideAnimations(),SlidersService, provideHttpClient()],
+  providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
