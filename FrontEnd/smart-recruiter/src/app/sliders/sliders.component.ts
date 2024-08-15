@@ -47,7 +47,13 @@ export class SlidersComponent implements  OnInit{
         var adminId = 1;      // get using authentication service
         this.slidersService.saveMark(this.mark.criteria, this.mark.value, candidateId, roleId, jobId, adminId)
         .subscribe((res) => { 
-          //console.log(res);
+          if (res){
+            this.isMarkSaved = true;
+
+            setTimeout(() => {
+              this.isMarkSaved = false;
+            }, 2000); // 5000 milliseconds = 5 seconds
+          }
         });
       } else {
         console.log('select a criteria first');
