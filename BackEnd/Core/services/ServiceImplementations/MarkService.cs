@@ -13,7 +13,7 @@ public class MarkService : IMarkService
         _markRepository = markRepository;
     }
 
-    public async Task<string> SaveMark(MarkSaveDTO markSaveDTO)
+    public async Task<bool> SaveMark(MarkSaveDTO markSaveDTO)
     {
         var criteriaMap = new Dictionary<string, string>
         {

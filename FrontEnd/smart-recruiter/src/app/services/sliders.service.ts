@@ -16,7 +16,7 @@ export class SlidersService {
 //  }
   constructor(private http: HttpClient) { }
 
-saveMark(criteria: string, value: number, candidateId : number, roleId : number, jobId : number, adminId : number): Observable<string> {
+saveMark(criteria: string, value: number, candidateId : number, roleId : number, jobId : number, adminId : number): Observable<boolean> {
   var mark = {criteria: criteria, 
               value: value, 
               candidateId: candidateId, 
@@ -25,6 +25,6 @@ saveMark(criteria: string, value: number, candidateId : number, roleId : number,
               adminId: adminId};
   //console.log(mark);
   // send post request to backend
-  return this.http.post<string>('api/Mark', mark);
+  return this.http.post<boolean>('api/Mark', mark);
   }
 }

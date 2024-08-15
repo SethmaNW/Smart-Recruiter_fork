@@ -18,7 +18,7 @@ public class MarkController : ControllerBase{
     [HttpPost]
     public async Task<IActionResult> SaveMark(MarkSaveDTO markSaveDTO)
     {
-        string res = await _MarkService.SaveMark(markSaveDTO);
+        var res = await _MarkService.SaveMark(markSaveDTO);
         return Ok(res);
     }
     

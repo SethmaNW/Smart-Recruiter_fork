@@ -17,7 +17,7 @@ public class MarkRepository : IMarkRepository
         _dbConnection = dbConnection;
     }
 
-    public async Task<string> SaveMark(MarkSaveDTO mark)
+    public async Task<bool> SaveMark(MarkSaveDTO mark)
     {
         using IDbConnection dbConnection = _dbConnection.GetOpenConnection();
 
@@ -31,6 +31,7 @@ public class MarkRepository : IMarkRepository
         Value = mark.Value
     };
         await dbConnection.ExecuteAsync("SaveOrUpdateMark", parameters, commandType: CommandType.StoredProcedure);
-        return "Mark saved successfully";
+        return true;
+        // Error handling not implemented
     }
 }
