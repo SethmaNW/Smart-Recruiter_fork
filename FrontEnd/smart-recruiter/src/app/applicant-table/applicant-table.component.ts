@@ -19,7 +19,8 @@ export class ApplicantTableComponent implements OnInit {
   position: string = '';
   jobId!: number;  // Declare jobId as a class property
   adminId!: number;
-  // isEditable: boolean = false;
+  // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
+  // buttonHiddenState: { [candidateId: number]: boolean } = {};
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -47,6 +48,7 @@ export class ApplicantTableComponent implements OnInit {
       this.jobId = +params.get('jobId')!;    // + => converts the string to a number
       this.loadAdminId();
       this.loadData();  
+      // this.loadButtonState();
     });
   }
 
@@ -65,8 +67,26 @@ export class ApplicantTableComponent implements OnInit {
     this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
       this.customers = customers; 
       console.log(this.customers);
+
+      // // Precompute the hidden state of buttons if necessary
+      // this.customers.forEach(customer => {
+      //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
+      // });
     });
   }
+
+  // loadButtonState() {
+  //   // Load button clicked state from local storage
+  //   const buttonState = localStorage.getItem('buttonClicked');
+  //   if (buttonState) {
+  //     this.buttonClicked = new Set<number>(JSON.parse(buttonState));
+  //   }
+  // }
+
+  // saveButtonState() {
+  //   // Save button clicked state to local storage
+  //   localStorage.setItem('buttonClicked', JSON.stringify(Array.from(this.buttonClicked)));
+  // }
 
   filterGlobal(event: Event, matchMode: string) {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
@@ -102,9 +122,11 @@ export class ApplicantTableComponent implements OnInit {
 
   submitComment(customer: Applicant) {
     if (customer.id && customer.comment !== undefined) {
-      this.applicantsListService.updateComment(this.jobId, customer.id, this.adminId, customer.comment).subscribe(
+      this.applicantsListService.updateComment(this.jobId, customer.id, this.adminId, customer.role_Id, customer.comment).subscribe(
         (response) => {
           console.log('Comment submitted successfully');
+          // this.buttonClicked.add(customer.id);
+          // this.saveButtonState();
         },
         error => {
           console.log('Error in updating comment', error);
@@ -132,11 +154,28 @@ export class ApplicantTableComponent implements OnInit {
       if (customer) {
         customer.role_Id = roleId;
       }
+      // this.buttonClicked.add(candidateId);
+      // this.buttonHiddenState[candidateId] = true;
     },
     error => {
       console.log('Error in updating role', error);
     }
   );
   }
+
+  deleteCandidate(candidateId: number) {
+    this.applicantsListService.deleteApplicant(candidateId).subscribe((response) => {
+      this.customers = this.customers.filter(c => c.id !== candidateId);
+    },
+    error => {
+      console.log('Error in deleting candidate', error);
+    }
+  );
+  }
+
+  // isButtonHidden(candidateId: number): boolean {
+  //   console.log("button clicked");
+  //   return this.buttonClicked.has(candidateId);
+  // }
 
 }

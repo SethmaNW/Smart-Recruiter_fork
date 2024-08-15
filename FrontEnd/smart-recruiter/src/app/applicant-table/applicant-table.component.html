@@ -69,12 +69,24 @@
                         [(ngModel)] = "customer.comment"
                         #comment="ngModel" required
                         appMaxWords 
-                        [maxWords]="2"
+                        [maxWords]="10"
                         (wordLimitExceeded)="handleWordLimitExceeded(customer.id, $event)"
                         placeholder="Enter your comment (max 20 words)"
                         [disabled]="!(checkCommentExist(jobId, customer.id))"
                     ></textarea>
-                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" class="small-button" (click)="submitComment(customer)" *ngIf="(checkCommentExist(jobId, customer.id))" />
+                    <p-button 
+                    icon="pi pi-check" 
+                    [rounded]="true" 
+                    [text]="true" class="small-button" 
+                    (click)="submitComment(customer)" 
+                    />
+                    <!-- <p-button 
+                    icon="pi pi-check" 
+                    [rounded]="true" 
+                    [text]="true" class="small-button" 
+                    (click)="submitComment(customer)" 
+                    *ngIf="!buttonClicked.has(customer.id) && (checkCommentExist(jobId, customer.id) | async)" 
+                    /> -->
                     <div *ngIf="customer.commentExceeded" class="error-message">Word limit exceeded.</div>
                 </div>
             </td>
@@ -82,7 +94,9 @@
                 <div class="status">{{ showStatus(customer.role_Id) }} </div>
                 <div class="button-container">
                   <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>
-                  <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button"></p-button>
+                  <p-button icon="pi pi-times" [rounded]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===7" (click)="deleteCandidate(customer.id)"></p-button>
+                  <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===0" (click)="updateRoleId(customer.id, 7)"></p-button>
+                  <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" (click)="updateRoleId(customer.id, 7)" *ngIf="!isButtonHidden(customer.id)"></p-button> -->
                 </div>
             </td>                          
             <!-- <td>

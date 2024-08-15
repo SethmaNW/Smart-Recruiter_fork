@@ -44,6 +44,7 @@ import { UserOpeningComponent } from './user-opening/user-opening.component';
 import { CalendarModule } from 'primeng/calendar';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
  
 @NgModule({
@@ -92,7 +93,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     KnobModule,
     CalendarModule,
     KeyFilterModule,
-    InputNumberModule
+    InputNumberModule,
+    ConfirmPopupModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient()],

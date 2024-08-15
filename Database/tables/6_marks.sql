@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[marks] (
     [TechnicalKnowledge] INT NOT NULL DEFAULT 0,
     [EducationBackground] INT NOT NULL DEFAULT 0,
     [ProfessionalQualification] INT NOT NULL DEFAULT 0,
-    [CarrierBackground] INT NOT NULL DEFAULT 0,
+    [CareerBackground] INT NOT NULL DEFAULT 0,
     [CommunicationSkills] INT NOT NULL DEFAULT 0,
     [CulturalFit] INT NOT NULL DEFAULT 0,
     [FamilyBackground] INT NOT NULL DEFAULT 0,
