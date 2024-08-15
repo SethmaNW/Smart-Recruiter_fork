@@ -11,6 +11,7 @@ import { Mark } from '../models/mark.model';
 export class SlidersComponent implements  OnInit{
 
   value : number = 50; //default value = 50 for the slider
+  isMarkSaved : boolean = false;  // confimation popup that mark is saved
   criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value, inactive: false },
     { criteria: 'Technical Knowledge', value: this.value, inactive: false },
@@ -45,7 +46,9 @@ export class SlidersComponent implements  OnInit{
         var jobId = 1;        // get using query parameter
         var adminId = 1;      // get using authentication service
         this.slidersService.saveMark(this.mark.criteria, this.mark.value, candidateId, roleId, jobId, adminId)
-        .subscribe((res) => { console.log(res); });
+        .subscribe((res) => { 
+          //console.log(res);
+        });
       } else {
         console.log('select a criteria first');
       }
