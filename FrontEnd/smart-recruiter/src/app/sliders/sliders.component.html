@@ -1,6 +1,19 @@
 <div class="p-grid p-justify-center">
    <div class="p-col-12 p-md-9" >
-    <h2>1 st interview Marks</h2>
+    <div class="flex flex-row">
+        <h2>1 st interview Marks</h2>
+        <div class="flex-grow-1" *ngIf="isMarkSaved">
+            <p-card [style]="{'background-color':'var(--green-200)', 
+                            'height':'50%', 
+                            'width': '80%',
+                            'margin-left'  : 'auto'}">
+                <div class="-mt-5">
+                    <i class="fa-regular fa-circle-check" style="color: #1da750; margin-right : 5px"></i>
+                    Mark Saved successfully
+                </div>
+            </p-card>
+        </div>
+    </div>
     <div class="card flex justify-content-center">
         <p-dropdown 
             [options]="criteria_value" 
