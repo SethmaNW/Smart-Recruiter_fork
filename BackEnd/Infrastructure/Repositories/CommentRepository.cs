@@ -16,17 +16,17 @@ public class CommentRepository: ICommentRepository
     }
 
     // update applicants page comment related to candidate
-    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, string commentText)
+    public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, string commentText)
     {
         using var connection = _dbContext.GetOpenConnection();
         var sql = @"                    
                     BEGIN 
-	                    INSERT INTO [dbo].[Comments] ([CandidateId], [jobId], [adminId], [Comment])
-	                    VALUES (@candidateId, @jobId, @adminId, @commentText )
+	                    INSERT INTO [dbo].[Comments] ([CandidateId], [jobId], [adminId], [roleId], [Comment])
+	                    VALUES (@candidateId, @jobId, @adminId, @roleId, @commentText )
                     END 
                     ";
 
-        var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, commentText });
+        var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, roleId, commentText });
 
         return rowsAffected > 0;
     }

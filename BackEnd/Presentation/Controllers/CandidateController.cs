@@ -105,7 +105,29 @@ public class CandidateController : ControllerBase
             }
         }
         catch (Exception ex) {
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
+
+    [HttpDelete("delete/{candidateId}")]
+    public async Task<IActionResult> DeleteCandidate(int candidateId)
+    {
+        try
+        {
+            var candidate = await _CandidateService.DeleteCandidate(candidateId);
+            if (candidate)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
 }

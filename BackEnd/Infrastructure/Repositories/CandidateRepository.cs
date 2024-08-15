@@ -84,4 +84,12 @@ public class CandidateRepository : ICandidateRepository
         return role;
     }
 
+    // delete a candidate by candidateId
+    public async Task<bool> DeleteCandidate(int candidateId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = @"DELETE FROM [dbo].[candidates] WHERE [Id] = @candidateId";
+        return await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId });
+    }
+
 }

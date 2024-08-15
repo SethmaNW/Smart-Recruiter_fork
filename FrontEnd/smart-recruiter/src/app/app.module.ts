@@ -39,11 +39,12 @@ import { EditorModule } from 'primeng/editor';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
 import { KnobModule } from 'primeng/knob';
-import { SlidersService } from './sliders.service';
+import { SlidersService } from './services/sliders.service';
 import { UserOpeningComponent } from './user-opening/user-opening.component';
 import { CalendarModule } from 'primeng/calendar';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
  
 @NgModule({
@@ -92,7 +93,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     KnobModule,
     CalendarModule,
     KeyFilterModule,
-    InputNumberModule
+    InputNumberModule,
+    ConfirmPopupModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient()],

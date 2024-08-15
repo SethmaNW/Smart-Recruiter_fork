@@ -1,3 +1,4 @@
+using Domain.Entities;
 using Domain.RepositoryInterfaces;
 using Infrastructure.DBConnection;
 using Infrastructure.Repositories;
@@ -35,6 +36,8 @@ Services.AddScoped<ICommentRepository, CommentRepository>();
 Services.AddScoped<ICommentService, CommentService>();
 Services.AddScoped<IAdminRepository, AdminRepository>();
 Services.AddScoped<IAdminService, AdminService>();
+Services.AddScoped<IMarkRepository, MarkRepository>();
+Services.AddScoped<IMarkService, MarkService>();
 
 
 var app = builder.Build();
