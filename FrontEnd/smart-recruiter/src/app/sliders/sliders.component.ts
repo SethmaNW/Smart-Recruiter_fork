@@ -1,5 +1,5 @@
 import { Component,Injectable,OnInit } from '@angular/core';
-import { SlidersService } from '../sliders.service';
+import { SlidersService } from '../services/sliders.service';
 import { Mark } from '../models/mark.model';
 
 
