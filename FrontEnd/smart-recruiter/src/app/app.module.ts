@@ -47,6 +47,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
+import { PickListModule } from 'primeng/picklist';
 
  
 @NgModule({
@@ -66,7 +68,8 @@ import { ConfirmationService } from 'primeng/api';
     ShortlistedCardComponent,
     CommentsComponent,
     PieChartComponent,
-    UserOpeningComponent
+    UserOpeningComponent,
+    ShortlistedPicklistComponent
 
   ],
   imports: [
@@ -97,7 +100,8 @@ import { ConfirmationService } from 'primeng/api';
     KeyFilterModule,
     InputNumberModule,
     ConfirmPopupModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PickListModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],
