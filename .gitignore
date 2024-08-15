@@ -2,6 +2,9 @@
 bin/
 obj/
 
+# Ignore database authentication details
+.\BackEnd\smart-recruiter\appsettings.json
+
 # Ignore user-specific files
 *.rsuser
 *.suo
