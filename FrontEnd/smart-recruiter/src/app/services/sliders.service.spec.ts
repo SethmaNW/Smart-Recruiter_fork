@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SlidersService } from './sliders.service';
+import { SlidersService } from '../services/sliders.service';
 
 describe('SlidersService', () => {
   let service: SlidersService;
