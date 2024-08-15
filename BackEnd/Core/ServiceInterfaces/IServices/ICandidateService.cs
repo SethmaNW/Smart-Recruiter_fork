@@ -9,4 +9,5 @@ public interface ICandidateService
     Task<bool> UpdateRoleId(int candidateId, int newRoleId);
     Task<bool> DeleteCandidate(int candidateId);
     Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId);
+    Task<Candidate> GetCandidateById(int candidateId);
 }

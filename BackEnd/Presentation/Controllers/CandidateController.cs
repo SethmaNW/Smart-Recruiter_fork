@@ -137,4 +137,10 @@ public class CandidateController : ControllerBase
         return Ok(candidate);
     }
 
+    [HttpGet("{candidateId}")]
+    public async Task<IActionResult> GetCandidateById(int candidateId)
+    {
+        var candidate = await _CandidateService.GetCandidateById(candidateId);
+        return Ok(candidate);
+    }
 }

@@ -40,4 +40,9 @@ public class CandidateService : ICandidateService
     {
         return await _CandidateRepository.GetShortlistFromJobId(jobId);
     }
+
+    public async Task<Candidate> GetCandidateById(int candidateId)
+    {
+        return await _CandidateRepository.GetCandidateById(candidateId);
+    }
 }
