@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +10,7 @@ export class SlidersService {
 
   private sliderValue = new BehaviorSubject<{[name:string]:number}>({});
   sliderValue$ = this.sliderValue.asObservable();
+
 
 //  updateslidervalue(criteria:string,value:number):void{
 //   const currentValues = { ...this.sliderValue.value, [criteria]: value };
@@ -27,4 +29,5 @@ saveMark(criteria: string, value: number, candidateId : number, roleId : number,
   // send post request to backend
   return this.http.post<boolean>('api/Mark', mark);
   }
+
 }
