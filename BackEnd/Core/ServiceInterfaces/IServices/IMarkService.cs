@@ -4,5 +4,5 @@ using DTO.DTOs;
 namespace ServiceInterfaces.IServices;
 
 public interface IMarkService{
-    Task<string> SaveMark(MarkSaveDTO markSaveDTO);
+    Task<bool> SaveMark(MarkSaveDTO markSaveDTO);
 }
