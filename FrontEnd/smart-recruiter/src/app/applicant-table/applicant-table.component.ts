@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Table } from 'primeng/table';
 import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
 import { Applicant } from '../models/applicants.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { Observable } from 'rxjs';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-applicant-table',
@@ -24,9 +25,12 @@ export class ApplicantTableComponent implements OnInit {
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
-  constructor(private applicantsListService: ApplicantsListService, 
+  constructor(
+    private applicantsListService: ApplicantsListService, 
     private route: ActivatedRoute,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private confService: ConfirmationService,
+    private cd: ChangeDetectorRef
   ) { }
 
   // ngOnInit() {
@@ -49,6 +53,7 @@ export class ApplicantTableComponent implements OnInit {
       this.loadAdminId();
       this.loadData();  
       // this.loadButtonState();
+      this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
   }
 
@@ -154,6 +159,7 @@ export class ApplicantTableComponent implements OnInit {
       if (customer) {
         customer.role_Id = roleId;
       }
+      // this.cd.detectChanges();
       // this.buttonClicked.add(candidateId);
       // this.buttonHiddenState[candidateId] = true;
     },
@@ -164,14 +170,32 @@ export class ApplicantTableComponent implements OnInit {
   }
 
   deleteCandidate(candidateId: number) {
-    this.applicantsListService.deleteApplicant(candidateId).subscribe((response) => {
-      this.customers = this.customers.filter(c => c.id !== candidateId);
-    },
-    error => {
-      console.log('Error in deleting candidate', error);
-    }
-  );
+    this.applicantsListService.deleteApplicant(candidateId).subscribe(
+      (response) => {
+        this.customers = this.customers.filter(c => c.id !== candidateId);
+        this.cd.detectChanges();
+        console.log('Candidate deleted successfully');
+      },
+      error => {
+        console.log('Error in deleting candidate', error);
+      }
+    );
   }
+  
+  confirmDelete(candidateId: number) {
+    this.confService.confirm({
+      message: 'Are you sure you want to delete this candidate?',
+      header: 'Delete Confirmation',
+      // icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.deleteCandidate(candidateId);
+      },
+      reject: () => {
+        console.log('Delete operation cancelled');
+      }
+    });
+  }
+  
 
   // isButtonHidden(candidateId: number): boolean {
   //   console.log("button clicked");
