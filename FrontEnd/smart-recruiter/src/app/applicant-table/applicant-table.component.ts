@@ -14,7 +14,7 @@ import { ConfirmationService } from 'primeng/api';
   encapsulation: ViewEncapsulation.None
 })
 export class ApplicantTableComponent implements OnInit {
-  customers: any[] = [];
+  customers: Applicant[] = [];
   loading: boolean = true;
   // commentExceeded = false;
   position: string = '';

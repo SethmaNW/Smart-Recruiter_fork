@@ -88,8 +88,22 @@ public class CandidateRepository : ICandidateRepository
     public async Task<bool> DeleteCandidate(int candidateId)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = @"DELETE FROM [dbo].[candidates] WHERE [Id] = @candidateId";
+        var sql = "DELETE FROM [dbo].[candidates] WHERE [Id] = @candidateId";
         return await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId });
+    }
+
+    // get shortlisted candidates using jobId
+    public async Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var shortlist = @"
+                        SELECT 
+                        c.[Id], c.[Name], c.[Contact], c.[CV_FilePath], 
+                        c.[CV_FileName], c.[Role_Id], c.[email]
+                        FROM [dbo].[candidates] c
+                        INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id] AND cj.[jobId] = @jobId AND c.[Role_Id] IN (1,2,3,6)
+                        ";
+        return await connection.QueryAsync<Candidate>(shortlist, new { jobId });
     }
 
 }

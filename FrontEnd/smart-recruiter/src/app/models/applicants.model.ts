@@ -10,7 +10,9 @@ export interface Applicant {
     reason: string;
     comment: string;
     commentEditable: boolean;
+    cv: string;
     role_Id: number;
-    // cv: string;
+    email: string;
+    testmark: number;
     // status: string;
 }
