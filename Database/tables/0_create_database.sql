@@ -6,4 +6,4 @@ IF NOT EXISTS (
    WHERE name = 'SmartRecruiterDB'
 )
 CREATE DATABASE [SmartRecruiterDB]
-GO
+GO 
