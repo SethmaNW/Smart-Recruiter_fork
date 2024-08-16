@@ -3,6 +3,7 @@ using Dapper.Contrib.Extensions;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
 using Infrastructure.DBConnection;
+using System.Data;
 using System.Linq;
 
 namespace Infrastructure.Repositories;
@@ -105,5 +106,23 @@ public class CandidateRepository : ICandidateRepository
                         ";
         return await connection.QueryAsync<Candidate>(shortlist, new { jobId });
     }
+
+    public async Task<Candidate> GetCandidateById(int candidateId)
+{
+    using var connection = _dbContext.GetOpenConnection();
+    var sql = "GetCandidateById";
+    var result = await connection.QueryFirstOrDefaultAsync<Candidate>(
+        sql, 
+        new { candidateId }, 
+        commandType: CommandType.StoredProcedure
+    );
+
+    if (result == null)
+    {
+        throw new KeyNotFoundException($"Candidate with ID {candidateId} not found.");
+    }
+
+    return result;
+}
 
 }

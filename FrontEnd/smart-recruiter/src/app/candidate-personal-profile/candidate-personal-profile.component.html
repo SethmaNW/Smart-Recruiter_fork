@@ -4,7 +4,7 @@
         <app-sidebar></app-sidebar>
         <div class="w-full flex">
             <div class="col-3 min-h-full">
-                <p-card styleClass="custom-card mt-3 h-full">
+                <p-card styleClass="custom-card mt-3 h-full" *ngIf="isloaded">
                     <div class="flex -mt-2">
                         <i class="fa-brands fa-linkedin fa-2xl" style="color: #0562a8;"></i>
                         <i class="fa-brands fa-square-github fa-2xl ml-3" style="color: #000000;"></i>
@@ -13,7 +13,7 @@
                     </div>
                     <p-divider />
                     <div class="name">
-                        <h1 class="text-center">Ashan Wimalasiri</h1>
+                        <h1 class="text-center">{{candidate.name}}</h1>
                     </div>
                     <div>
                         <h3 class="text-center opacity-reduce position -mt-3">Software Engineering Intern candidate</h3>
@@ -21,19 +21,19 @@
                     <div class="grid">
                         <div class="col-12 mb-3">
                             <i class="fa-solid fa-envelope fa-xl" style="color: #000000;"></i>
-                            <a href="" class="ml-2">ashan.wimalasiri&#64;gmail.com</a>
+                            <a href="" class="ml-2">{{candidate.email}}</a>
                         </div>
                     </div>
                     <div class="grid">
                         <div class="col-12 mb-3">
                             <i class="fa-solid fa-phone fa-lg" style="color: #000000;"></i>
-                            <span class="ml-2">071562567</span>
+                            <span class="ml-2">{{candidate.contact}}</span>
                         </div>
                     </div>
                     <div class="grid">
                         <div class="col-12">
                             <i class="fa-solid fa-house fa-xl" style="color: #000000;"></i>
-                            <span class="ml-2">kahawatta, Ratnapura</span>
+                            <span class="ml-2">san fransis</span>
                         </div>
                     </div>
                     <p-divider />
@@ -41,7 +41,7 @@
                         <div class="col-12">
                             <h3 class="-mt-1">Skills</h3>
                             <div class="opacity-reduce">
-                                C# | Java | Angular
+                                {{candidate.skills}}
                             </div>
                         </div>
                     </div>
@@ -50,13 +50,13 @@
                         <div class="col-6">
                             <h5 class="-mt-2">Highest Education</h5>
                             <div class="opacity-reduce -mt-2">
-                                BSc in Software Engineering
+                                {{candidate.degree}}
                             </div>
                         </div>
                         <div class="col-6">
                             <h5 class="-mt-2">Available Date</h5>
                             <div class="opacity-reduce -mt-2">
-                                08/08/2024
+                                {{candidate.available_Date}}
                             </div>
                         </div>
                     </div>
