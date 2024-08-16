@@ -49,6 +49,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
 import { PickListModule } from 'primeng/picklist';
+import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
 
  
 @NgModule({
@@ -69,7 +70,8 @@ import { PickListModule } from 'primeng/picklist';
     CommentsComponent,
     PieChartComponent,
     UserOpeningComponent,
-    ShortlistedPicklistComponent
+    ShortlistedPicklistComponent,
+    ApplicantsTableComponent
 
   ],
   imports: [
