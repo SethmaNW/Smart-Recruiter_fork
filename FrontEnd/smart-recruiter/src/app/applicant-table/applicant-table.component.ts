@@ -159,7 +159,8 @@ export class ApplicantTableComponent implements OnInit {
       if (customer) {
         customer.role_Id = roleId;
       }
-      // this.cd.detectChanges();
+      // this.loadData();
+      this.cd.detectChanges();
       // this.buttonClicked.add(candidateId);
       // this.buttonHiddenState[candidateId] = true;
     },

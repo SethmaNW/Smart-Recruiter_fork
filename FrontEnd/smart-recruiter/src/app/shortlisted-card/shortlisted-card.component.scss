@@ -58,3 +58,12 @@
     // flex-wrap: wrap;
     // gap: 1rem;
 }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    // text-decoration: wavy;
+  }
