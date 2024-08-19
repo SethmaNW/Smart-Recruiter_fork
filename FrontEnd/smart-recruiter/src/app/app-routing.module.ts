@@ -10,6 +10,7 @@ import { CandidatePersonalProfileComponent } from './candidate-personal-profile/
 import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-account/shortlisted-candidate-account.component';
 import { UserOpeningComponent } from './user-opening/user-opening.component';
 import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
+import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
 
 const routes: Routes = [
   // {path: 'nav-bar', component: NavbarComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'personal-profile', component: CandidatePersonalProfileComponent},
   {path: 'shortlisted', component: ShortlistedCandidateAccountComponent},
   {path:'user-opening',component:UserOpeningComponent},
-  {path: 'shortlist', component: ShortlistedPicklistComponent}
+  {path: 'shortlist', component: ShortlistedPicklistComponent},
+  {path: 'applicants-list', component: ApplicantsTableComponent}
 ];
 
 @NgModule({
