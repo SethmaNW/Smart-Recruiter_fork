@@ -1,7 +1,25 @@
 .customized-card {
-    background-color: grey;
+    background-color: var(--surface-200);
     margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 3rem;
 }
 
+.grid-custom{
+    margin-top: -3rem;
+    margin-bottom: -2rem;
+}
+
+.location{
+    padding-top: 1rem;
+    margin-top: 1rem;
+    display: flex;
+}
+
+.candidate-number{
+    padding-top: 1rem;
+    margin-bottom: -1rem;
+    display: flex;
+}
 
 
