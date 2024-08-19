@@ -49,6 +49,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
 import { PickListModule } from 'primeng/picklist';
+import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
+import { MultiSelectModule } from 'primeng/multiselect';
 
  
 @NgModule({
@@ -69,7 +71,8 @@ import { PickListModule } from 'primeng/picklist';
     CommentsComponent,
     PieChartComponent,
     UserOpeningComponent,
-    ShortlistedPicklistComponent
+    ShortlistedPicklistComponent,
+    ApplicantsTableComponent
 
   ],
   imports: [
@@ -101,7 +104,8 @@ import { PickListModule } from 'primeng/picklist';
     InputNumberModule,
     ConfirmPopupModule,
     ConfirmDialogModule,
-    PickListModule
+    PickListModule,
+    MultiSelectModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],

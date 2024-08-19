@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 
 @Component({
-  selector: 'app-applicant-table',
-  templateUrl: './applicant-table.component.html',
-  styleUrls: ['./applicant-table.component.scss'],
+  selector: 'app-applicants-table',
+  templateUrl: './applicants-table.component.html',
+  styleUrls: ['./applicants-table.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ApplicantTableComponent implements OnInit {
+export class ApplicantsTableComponent {
   customers: Applicant[] = [];
   loading: boolean = true;
   // commentExceeded = false;
@@ -22,6 +22,10 @@ export class ApplicantTableComponent implements OnInit {
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
   // buttonHiddenState: { [candidateId: number]: boolean } = {};
+  balanceFrozen: boolean = false; 
+  cols: any[] = [];
+  selectedColumns: any[] = [];
+  visible: boolean = false;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -47,6 +51,14 @@ export class ApplicantTableComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.cols = [      
+      { field: 'available_Date', header: 'Available Date' },
+      { field: 'experience', header: 'Experience' },
+      { field: 'reason', header: 'Reason' },
+      { field: 'comment', header: 'Comment' }
+    ];
+    this.selectedColumns = this.cols;
+
     // Get the jobId from the route parameters
     this.route.queryParamMap.subscribe(params => {
       this.jobId = +params.get('jobId')!;    // + => converts the string to a number
@@ -55,6 +67,10 @@ export class ApplicantTableComponent implements OnInit {
       // this.loadButtonState();
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
+  }
+
+  showDialog() {
+    this.visible = true;
   }
 
   loadAdminId(){

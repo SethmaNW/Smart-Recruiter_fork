@@ -30,6 +30,7 @@ export class ShortlistedCardComponent implements OnInit {
   loadShortlist(){
     this.shortlistedListService.getShortlistedCandidates(this.jobId).subscribe(candidates => {
       this.shortlisted = candidates.filter(candidate => candidate.role_Id === this.roleId);
+      // console.log(this.shortlisted);
     });
   }
 

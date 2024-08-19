@@ -1,12 +1,17 @@
 <div class="row flex flex-wrap">
     <div class="cards">
-        <a [routerLink]="['/personal-profile']" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}" *ngFor="let candidate of shortlisted">
-            <p-panel [toggleable]="true" class="card" [collapsed]="true">
+        <!-- <a [routerLink]="['/personal-profile']" class="card-link" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}" *ngFor="let candidate of shortlisted"> -->
+            <p-panel [toggleable]="true" class="card" [collapsed]="true" *ngFor="let candidate of shortlisted">
                 <ng-template pTemplate="header">
                     <div class="flex align-items-center gap-2">
                         <span class="font-bold">
-                            {{ candidate.name }} 
+                            <a [routerLink]="['/personal-profile']" class="card-link" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
+                                {{ candidate.name }}
+                            </a>                             
                         </span>
+                    </div>
+                    <div>
+                        <!-- <span class="font-bold">{{ candidate.interviewDate }}</span> -->
                     </div>
                 </ng-template>
     
@@ -31,6 +36,6 @@
                     </div>
                 </div>
             </p-panel>
-        </a>
+        <!-- </a> -->
     </div>
 </div>
