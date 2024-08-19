@@ -1,0 +1,109 @@
+.table{
+    margin-top: 5px;
+}
+
+.position-head{
+    font-size: 25px;
+}
+
+// .fixed-table{
+//     font-size: 10px;
+// }
+
+.error-message{
+    color: red;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+// .action-button{
+//     // display: flex;
+//     // flex-direction: row;
+// }
+
+.view-cv{
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+// .status{
+//     margin-bottom: 4px;
+// }
+
+.button-container{
+    display: flex;
+    // margin-top: 4px;
+}
+
+.accept-button{
+    margin-right: 10px;
+}
+
+.small-button .p-button {
+    font-size: 1rem; 
+    padding: 0.5rem 0.5rem; 
+    height: auto; 
+    width: auto; 
+}
+
+.fixed-height-row th, .fixed-height-row td {
+    height: 100%; 
+    // display: flex;
+    align-items: center;
+}
+
+.column-name{
+    width: 190px;
+}
+.column-contact{
+    width: 140px;
+}
+// .column-degree {
+//     width: 150px;
+// }
+// .column-skills {
+//     width: 200px;
+// }
+// .column-workExperience {
+//     width: 100px;
+// }
+// .column-comment {
+//     width: 150px;
+// }
+// .column-date {
+//     width: 130px;
+// }
+// .column-action{
+//     width: 100px;
+// }
+
+// .column {
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     white-space: nowrap;
+// }
+
+.fixed-height-row {
+    // height: 50px; 
+    font-size: 14px;
+}
+
+.popup{
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    height: 100%;
+}
+
+.comment-button.small-button{
+    font-size: 10px;
+    // font-weight: normal !important;
+    // margin: 2px;
+    // margin: 2px 2px;
+    // color: black;
+}
+
+.experience{
+    text-align: center;
+}
