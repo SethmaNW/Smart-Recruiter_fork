@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-opening',
   templateUrl: './user-opening.component.html',
-  styleUrls: ['./user-opening.component.scss']
+  styleUrls: ['./user-opening.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UserOpeningComponent {
 
