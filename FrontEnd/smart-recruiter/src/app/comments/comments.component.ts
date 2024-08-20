@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CommentsComponent {
   text: string | undefined;
-  isEditing: boolean = true;
+  // isEditing: boolean = true;
 
   constructor() { }
 
@@ -16,19 +16,19 @@ export class CommentsComponent {
     if(this.text)
     {
       console.log('Saving comment:', this.text);
-      this.isEditing=false;
+      // this.isEditing=false;
     }
 
   }
 
-  editComment():void{
-    if(this.text)
-    {
-      console.log('Editing comment:', this.text);
-      this.isEditing=true;
+  // editComment():void{
+  //   if(this.text)
+  //   {
+  //     console.log('Editing comment:', this.text);
+  //     this.isEditing=true;
 
-    }
-  }
+  //   }
+  // }
  
 
     

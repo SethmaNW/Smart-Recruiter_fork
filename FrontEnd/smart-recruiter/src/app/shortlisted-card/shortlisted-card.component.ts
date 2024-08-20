@@ -8,7 +8,7 @@ import { Applicant } from '../models/applicants.model';
   templateUrl: './shortlisted-card.component.html',
   styleUrls: ['./shortlisted-card.component.scss'],
   encapsulation: ViewEncapsulation.None
-})
+}) 
 
 export class ShortlistedCardComponent implements OnInit {
   @Input() roleId: number = 1;
@@ -32,10 +32,6 @@ export class ShortlistedCardComponent implements OnInit {
       this.shortlisted = candidates.filter(candidate => candidate.role_Id === this.roleId);
       // console.log(this.shortlisted);
     });
-  }
-
-  passCandidateId(candidateId: number){
-    
   }
 
 }

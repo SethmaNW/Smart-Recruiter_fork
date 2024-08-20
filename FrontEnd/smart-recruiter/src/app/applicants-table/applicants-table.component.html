@@ -2,7 +2,8 @@
     <p-table #dt2
     [columns]="selectedColumns" 
     [value]="customers" 
-    [tableStyle]="{'min-width': '50rem', 'table-layout': 'fixed', 'width': '100%'}">
+    [tableStyle]="{'min-width': '50rem', 'table-layout': 'fixed', 'width': '100%'}"
+    [globalFilterFields]="['name', 'contact', 'degree', 'skills', 'workExperience']">
         <ng-template pTemplate="caption">
             <div class="flex justify-content-between items-center">
                 <div>
@@ -48,9 +49,9 @@
                 <td>{{customer.contact}}</td>
                 <td>{{customer.skills}}</td>
                 <td>{{customer.degree}}</td>
-                <td *ngFor="let col of columns" class="experience">
-                    <ng-container *ngIf="col.field === 'comment'; else normalCell">
-                        <p-button (onClick)="showDialog()" label="Comment" class="comment-button small-button" [style]="{ 'background-color': 'var(--blue-400)', 'color': 'white', 'border-color': 'var(--blue-400)' }"/>
+                <td *ngFor="let col of columns">
+                    <ng-container *ngIf="col.field === 'comment'">
+                        <p-button (onClick)="showDialog()" label="Comment" class="small-button" [style]="{ 'background-color': 'var(--green-400)', 'color': 'white', 'border-color': 'var(--green-400)', 'font-size': '13px' }"/>
                         <p-dialog header="Enter your comment:" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
                             <!-- <span class="p-text-secondary block mb-5">Enter your comment.</span> -->
                             <div class="flex align-items-center gap-3 mb-3">
@@ -63,17 +64,28 @@
                             </div>
                         </p-dialog>
                     </ng-container>
-                    <ng-template #normalCell>
+                    <ng-container *ngIf="col.field === 'available_Date'">
+                        {{ customer[col.field] | date:'yyyy-MM-dd' }}
+                    </ng-container>
+                    <!-- <ng-container *ngIf="col.field === 'experience'; else normalCell"> -->
+                    <ng-container *ngIf="col.field === 'experience'">
                         {{customer[col.field]}}
-                    </ng-template>
+                    </ng-container>
+                    <!-- <ng-template #normalCell>
+                        {{customer[col.field]}}
+                    </ng-template> -->
                 </td>
                 <td>
                     <!-- <div class="status">{{ showStatus(customer.role_Id) }} </div> -->
-                    <p-confirmDialog class=""></p-confirmDialog> 
                     <div class="button-container">                  
-                      <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>
-                      <p-button icon="pi pi-times" [rounded]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===7" (click)="confirmDelete(customer.id)"></p-button>                  
-                      <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===0" (click)="updateRoleId(customer.id, 7)"></p-button>
+                      <!-- <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>                                      
+                      <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===0" (click)="updateRoleId(customer.id, 7)"></p-button> -->
+                      <!-- <p-toast /> -->
+                        <p-confirmDialog />
+                        <p-button (onClick)="updateRoleId(customer.id, 1)" label="Accept" [outlined]="true" class="accept-button small-button" [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>
+                        <p-button (onClick)="updateRoleId(customer.id, 7)" *ngIf="customer.role_Id===0" label="Remove" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
+                        <p-button (onClick)="confirmDelete(customer.id)" *ngIf="customer.role_Id===7" label="Delete" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
+                        <!-- <p-button icon="pi pi-times" [rounded]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===7" (click)="confirmDelete(customer.id)"></p-button>   -->
                     </div>
                 </td>
             </tr>

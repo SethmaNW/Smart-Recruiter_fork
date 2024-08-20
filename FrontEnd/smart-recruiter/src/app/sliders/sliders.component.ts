@@ -10,7 +10,7 @@ import { Mark } from '../models/mark.model';
 })
 export class SlidersComponent implements  OnInit{
 
-  value : number = 50; //default value = 50 for the slider
+  value : any = 50; //default value = 50 
   isMarkSaved : boolean = false;  // confimation popup that mark is saved
   criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value, inactive: false },
