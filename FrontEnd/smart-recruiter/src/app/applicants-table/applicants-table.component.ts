@@ -54,7 +54,7 @@ export class ApplicantsTableComponent {
     this.cols = [      
       { field: 'available_Date', header: 'Available Date' },
       { field: 'experience', header: 'Experience' },
-      { field: 'reason', header: 'Reason' },
+      // { field: 'reason', header: 'Reason' },
       { field: 'comment', header: 'Comment' }
     ];
     this.selectedColumns = this.cols;
