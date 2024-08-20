@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Table } from 'primeng/table';
 import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import { ConfirmationService } from 'primeng/api';
   styleUrls: ['./applicants-table.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ApplicantsTableComponent {
+export class ApplicantsTableComponent implements OnInit {
   customers: Applicant[] = [];
   loading: boolean = true;
   // commentExceeded = false;
@@ -26,6 +26,8 @@ export class ApplicantsTableComponent {
   cols: any[] = [];
   selectedColumns: any[] = [];
   visible: boolean = false;
+
+  @Input() roleId: number = 1;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -63,7 +65,8 @@ export class ApplicantsTableComponent {
     this.route.queryParamMap.subscribe(params => {
       this.jobId = +params.get('jobId')!;    // + => converts the string to a number
       this.loadAdminId();
-      this.loadData();  
+      // this.loadData();  
+      this.loadrelevantData(this.roleId);
       // this.loadButtonState();
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
@@ -93,6 +96,16 @@ export class ApplicantsTableComponent {
       // this.customers.forEach(customer => {
       //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
       // });
+    });
+  }
+
+  loadrelevantData(roleId: number) {
+    this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
+      this.position = position;	
+    });
+    this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
+      this.customers = customers.filter(customer => customer.role_Id === roleId); 
+      console.log(this.customers);
     });
   }
 
