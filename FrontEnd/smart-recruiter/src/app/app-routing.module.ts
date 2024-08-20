@@ -11,6 +11,7 @@ import { ShortlistedCandidateAccountComponent } from './shortlisted-candidate-ac
 import { UserOpeningComponent } from './user-opening/user-opening.component';
 import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
 import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
+import { JobDescriptionComponent } from './job-description/job-description.component';
 
 const routes: Routes = [
   // {path: 'nav-bar', component: NavbarComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'shortlisted', component: ShortlistedCandidateAccountComponent},
   {path:'user-opening',component:UserOpeningComponent},
   {path: 'shortlist', component: ShortlistedPicklistComponent},
-  {path: 'applicants-list', component: ApplicantsTableComponent}
+  {path: 'applicants-list', component: ApplicantsTableComponent},
+  {path: 'job-description', component: JobDescriptionComponent}  
 ];
 
 @NgModule({
