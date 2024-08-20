@@ -51,6 +51,7 @@ import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted
 import { PickListModule } from 'primeng/picklist';
 import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { TabViewModule } from 'primeng/tabview';
 
  
 @NgModule({
@@ -105,7 +106,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     ConfirmPopupModule,
     ConfirmDialogModule,
     PickListModule,
-    MultiSelectModule
+    MultiSelectModule,
+    TabViewModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],
