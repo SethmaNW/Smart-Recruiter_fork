@@ -4,6 +4,7 @@ using System.Data;
 using Dapper;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
+using DTO.DTOs;
 using Infrastructure.DBConnection;
 
 public class JobRepository : IJobRepository
@@ -27,6 +28,20 @@ public class JobRepository : IJobRepository
         using var connection = _dbConnection.GetOpenConnection();
         var sql = "EXEC GetActiveJobs";
         return (await connection.QueryAsync<Job>(sql)).ToList();
+    }
+
+    public async Task<JobDescriptionDTO> GetJobDescriptionByJobId(int jobId)
+    {
+        using var connection = _dbConnection.GetOpenConnection();
+        var sql = "EXEC GetJobDescriptionByJobId @jobId";
+        var result = await connection.QuerySingleOrDefaultAsync<JobDescriptionDTO>(sql, new { jobId });
+        
+        if (result == null)
+        {
+            throw new Exception($"Job description not found for jobId: {jobId}");
+        }
+        
+        return result;
     }
     public async Task<Job> Save(Job job){
         using var connection = _dbConnection.GetOpenConnection();

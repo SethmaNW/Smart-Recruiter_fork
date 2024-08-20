@@ -1,4 +1,5 @@
 using Domain.Entities;
+using DTO.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.IServices;
 
@@ -26,6 +27,13 @@ public class JobController(
     {
         var jobs = await _JobService.GetActiveJobs();
         return Ok(jobs);
+    }
+
+    [HttpGet("GetJobDescriptionByJobId/{JobId}")]
+    public async Task<IActionResult> GetJobDescriptionByJobId(int jobId)
+    {
+        JobDescriptionDTO job = await _JobService.GetJobDescriptionByJobId(jobId);
+        return Ok(job);
     }
 
     [HttpPost]
