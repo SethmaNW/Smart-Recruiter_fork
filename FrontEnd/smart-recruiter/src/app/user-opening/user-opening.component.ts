@@ -16,9 +16,9 @@ export class UserOpeningComponent {
 
   constructor(private router:Router, private http : HttpClient) { }
 
-  navigateToForm(){
-    this.router. navigate (['/form']);
-  }
+  // navigateToForm(){
+  //   this.router. navigate (['/form']);
+  // }
 
   ngOnInit(): void {
     this.http.get<Job[]>('api/Job/GetActiveJobs').subscribe(data=>{

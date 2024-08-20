@@ -39,3 +39,11 @@ $nav-bar-height: 55px;
 :ng-deep .p-dialog-header{
     padding-bottom: 1rem;
 }
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0; 
+}
