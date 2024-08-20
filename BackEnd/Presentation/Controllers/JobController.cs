@@ -20,6 +20,14 @@ public class JobController(
         return Ok(jobs);
     }
 
+    // Get all active jobs for user view
+    [HttpGet("GetActiveJobs")]
+    public async Task<IActionResult> GetActiveJobs()
+    {
+        var jobs = await _JobService.GetActiveJobs();
+        return Ok(jobs);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Save(Job job)
     {

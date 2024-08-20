@@ -21,6 +21,13 @@ public class JobRepository : IJobRepository
         var sql = "EXEC GetAllJobs";
         return (await connection.QueryAsync<Job>(sql)).ToList();
     }
+
+    public async Task<IEnumerable<Job>> GetActiveJobs()
+    {
+        using var connection = _dbConnection.GetOpenConnection();
+        var sql = "EXEC GetActiveJobs";
+        return (await connection.QueryAsync<Job>(sql)).ToList();
+    }
     public async Task<Job> Save(Job job){
         using var connection = _dbConnection.GetOpenConnection();
         var sql = "EXEC SaveJob @Title, @Description, @NoOfAvailablePositions, @Location, @Department, @ActiveStatus, " +
