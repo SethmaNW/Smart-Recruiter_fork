@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Table } from 'primeng/table';
 import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +18,7 @@ export class ApplicantsTableComponent implements OnInit {
   loading: boolean = true;
   // commentExceeded = false;
   position: string = '';
-  // jobId!: number;  // Declare jobId as a class property
+  jobId!: number;  // Declare jobId as a class property
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
   // buttonHiddenState: { [candidateId: number]: boolean } = {};
@@ -28,7 +28,7 @@ export class ApplicantsTableComponent implements OnInit {
   visible: boolean = false;
 
   @Input() roleId: number = 1;
-  @Input() jobId!: number;
+  @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -71,6 +71,8 @@ export class ApplicantsTableComponent implements OnInit {
       // this.loadButtonState();
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
+
+    this.jobIdChange.emit(this.jobId);
   }
 
   showDialog() {

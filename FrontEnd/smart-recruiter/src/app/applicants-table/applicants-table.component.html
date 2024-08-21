@@ -6,9 +6,9 @@
     [globalFilterFields]="['name', 'contact', 'degree', 'skills', 'workExperience']">
         <ng-template pTemplate="caption">
             <div class="flex justify-content-between items-center">
-                <div>
+                <!-- <div>
                     <div class="position-head">{{ position }}</div>
-                </div>
+                </div> -->
                 <div>
                     <span class="p-input-icon-left">
                         <i class="pi pi-search"></i>
@@ -78,21 +78,12 @@
                 <td>
                     <!-- <div class="status">{{ showStatus(customer.role_Id) }} </div> -->
                     <div class="button-container">                  
-                      <!-- <p-button icon="pi pi-check" [rounded]="true" [text]="true" [raised]="true" class="accept-button small-button" (click)="updateRoleId(customer.id, 1)"></p-button>                                      
-                      <p-button icon="pi pi-times" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===0" (click)="updateRoleId(customer.id, 7)"></p-button> -->
-                      <!-- <p-toast /> -->
-                        <p-confirmDialog />
                         <p-button (onClick)="updateRoleId(customer.id, 1)" label="Accept" [outlined]="true" class="accept-button small-button" [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>
                         <p-button (onClick)="updateRoleId(customer.id, 7)" *ngIf="customer.role_Id===0" label="Remove" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
-                        <p-button (onClick)="confirmDelete(customer.id)" *ngIf="customer.role_Id===7" label="Delete" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
-                        <!-- <p-button icon="pi pi-times" [rounded]="true" severity="danger" class="remove-button small-button" *ngIf="customer.role_Id===7" (click)="confirmDelete(customer.id)"></p-button>   -->
-                        <!-- <p-toast />
+                        <p-toast />
                         <p-confirmDialog #cd>
                             <ng-template pTemplate="headless" let-message>
                                 <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
-                                    <div class="border-circle bg-primary inline-flex justify-content-center align-items-center h-6rem w-6rem">
-                                        <i class="pi pi-question text-5xl"></i>
-                                    </div>
                                     <span class="font-bold text-2xl block mb-2 mt-4">
                                         {{ message.header }}
                                     </span>
@@ -100,21 +91,23 @@
                                     <div class="flex align-items-center gap-2 mt-4">
                                         <button 
                                             pButton 
-                                            label="Save" 
+                                            label="Delete" 
                                             (click)="cd.accept()" 
-                                            class="w-8rem">
+                                            class="w-6rem"
+                                            [style]="{ 'background-color': 'var(--red-600)', 'border-color': 'var(--red-600)' }">
                                         </button>
                                         <button 
                                             pButton 
                                             label="Cancel" 
                                             (click)="cd.reject()" 
-                                            class="p-button-outlined w-8rem ">
+                                            class="p-button-outlined w-6rem "
+                                            [style]="{ 'color': 'var(--red-600)', 'border-color': 'var(--red-600)' }">
                                         </button>
                                     </div>
                                 </div>
                             </ng-template>
                         </p-confirmDialog>
-                        <p-button (onClick)="deleteCandidate(customer.id)" icon="pi pi-check" label="Confirm" /> -->
+                        <p-button (onClick)="confirmDelete(customer.id)" *ngIf="customer.role_Id===7" label="Delete" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
                     </div>
                 </td>
             </tr>
