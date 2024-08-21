@@ -7,7 +7,7 @@ BEGIN
 CREATE TABLE [dbo].[jobs] (
     [Id] INT IDENTITY(1,1) NOT NULL,
     [Title] NVARCHAR(50) NOT NULL,
-    [Description] NVARCHAR(1000) NOT NULL,
+    [Description] NVARCHAR(MAX) NOT NULL,
     [NoofAvailablePositions] INT NULL,
     [Location] NVARCHAR(50) NOT NULL,
     [Department] NVARCHAR(50) NOT NULL,

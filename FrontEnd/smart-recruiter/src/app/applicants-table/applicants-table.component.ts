@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Table } from 'primeng/table';
 import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
@@ -28,6 +28,7 @@ export class ApplicantsTableComponent implements OnInit {
   visible: boolean = false;
 
   @Input() roleId: number = 1;
+  @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -70,6 +71,8 @@ export class ApplicantsTableComponent implements OnInit {
       // this.loadButtonState();
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
+
+    this.jobIdChange.emit(this.jobId);
   }
 
   showDialog() {
@@ -84,20 +87,20 @@ export class ApplicantsTableComponent implements OnInit {
     }
   }
 
-  loadData() {
-    this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
-      this.position = position;	
-    });
-    this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
-      this.customers = customers; 
-      console.log(this.customers);
+  // loadData() {
+  //   this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
+  //     this.position = position;	
+  //   });
+  //   this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
+  //     this.customers = customers; 
+  //     console.log(this.customers);
 
-      // // Precompute the hidden state of buttons if necessary
-      // this.customers.forEach(customer => {
-      //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
-      // });
-    });
-  }
+  //     // // Precompute the hidden state of buttons if necessary
+  //     // this.customers.forEach(customer => {
+  //     //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
+  //     // });
+  //   });
+  // }
 
   loadrelevantData(roleId: number) {
     this.applicantsListService.getPositionName(this.jobId).subscribe(position => {

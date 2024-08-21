@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-job-description',
@@ -9,23 +10,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JobDescriptionComponent implements OnInit {
   jobId: number | undefined;
-  jobDescription : any | undefined;
+  job : Job | undefined;
+  isJobLoaded : boolean = false;
+
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.jobId = +params['jobId']; // The '+' operator converts the string to a number
-      //console.log(this.jobId);
       if (this.jobId) {
+        // This will not fetching only description it fetches id, title, description etc..
         this.getJobDescription(this.jobId);
       }
+      this.isJobLoaded = true;
     });
   }
 
   getJobDescription(jobId: number): void {
     const url = `http://localhost:5263/api/Job/GetJobDescriptionByJobId/${jobId}`;
     this.http.get(url).subscribe((res) => {
-      this.jobDescription = res;
+      this.job = res;
+      //console.log(this.job?.description);
     }
     );
   }

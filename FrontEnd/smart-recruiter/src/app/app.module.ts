@@ -46,13 +46,14 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ShortlistedPicklistComponent } from './shortlisted-picklist/shortlisted-picklist.component';
 import { PickListModule } from 'primeng/picklist';
 import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
 import { JobDescriptionComponent } from './job-description/job-description.component';
+import { ToastModule } from 'primeng/toast';
 
  
 @NgModule({
@@ -109,10 +110,11 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
     ConfirmDialogModule,
     PickListModule,
     MultiSelectModule,
-    TabViewModule
+    TabViewModule,
+    ToastModule
   
   ],
-  providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],
+  providers: [provideAnimations(),SlidersService, provideHttpClient(), MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

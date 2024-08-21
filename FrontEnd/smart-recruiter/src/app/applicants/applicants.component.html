@@ -3,6 +3,9 @@
     <div class="flex flex-row">
         <app-sidebar></app-sidebar>
         <div class="flex flex-column mx-4 mt-3 w-screen">
+            <div>
+                <div class="position-head">{{ position }}</div>
+            </div>
             <p-tabView>
                 <p-tabPanel header="Applicants"> 
                     <div class="flex flex-row flex-wrap w-full">
@@ -12,7 +15,7 @@
                         </div>
                         <div>
                             <div class="mb-7">
-                                <app-applicants-table [roleId]="0"></app-applicants-table>
+                                <app-applicants-table [roleId]="0" (jobIdChange)="onJobIdChange($event)"></app-applicants-table>
                                 <!-- <app-applicant-table></app-applicant-table> -->                        
                             </div>
                         </div>
