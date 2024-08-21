@@ -30,11 +30,11 @@ public class JobRepository : IJobRepository
         return (await connection.QueryAsync<Job>(sql)).ToList();
     }
 
-    public async Task<JobDescriptionDTO> GetJobDescriptionByJobId(int jobId)
+    public async Task<Job> GetJobDescriptionByJobId(int jobId)
     {
         using var connection = _dbConnection.GetOpenConnection();
         var sql = "EXEC GetJobDescriptionByJobId @jobId";
-        var result = await connection.QuerySingleOrDefaultAsync<JobDescriptionDTO>(sql, new { jobId });
+        var result = await connection.QuerySingleOrDefaultAsync<Job>(sql, new { jobId });
         
         if (result == null)
         {
