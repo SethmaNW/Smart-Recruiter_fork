@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class JobDescriptionComponent implements OnInit {
   jobId: number | undefined;
   jobDescription : any | undefined;
+  
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {

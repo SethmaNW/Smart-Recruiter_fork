@@ -32,7 +32,7 @@ public class JobController(
     [HttpGet("GetJobDescriptionByJobId/{JobId}")]
     public async Task<IActionResult> GetJobDescriptionByJobId(int jobId)
     {
-        JobDescriptionDTO job = await _JobService.GetJobDescriptionByJobId(jobId);
+        Job job = await _JobService.GetJobDescriptionByJobId(jobId);
         return Ok(job);
     }
 

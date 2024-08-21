@@ -20,7 +20,7 @@ public class JobService(IJobRepository jobRepository) : IJobService
         return await _jobRepository.GetActiveJobs();
     }
 
-    public async Task<JobDescriptionDTO> GetJobDescriptionByJobId(int jobId)
+    public async Task<Job> GetJobDescriptionByJobId(int jobId)
     {
         return await _jobRepository.GetJobDescriptionByJobId(jobId);
     }
