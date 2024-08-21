@@ -19,20 +19,29 @@
         </div>
     </div>
     <div class="col-12">
-        <div>
+        <div *ngFor="let activeJob of activeJobs">
             <!-- Card Section -->
-            <p-card styleClass="customized-card" (click)="navigateToForm()">
+            <p-card styleClass="customized-card">
                 <div class="grid grid-custom">
-                    <h2>UX/UI Designer</h2> 
+                    <h2>{{activeJob.title}}</h2> 
                 </div>
                 <div class="location">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span style="margin-left: 1rem;">Colombo, Sri Lanka | &nbsp;</span>
-                    <span>IT department</span>
+                    <span style="margin-left: 1rem;">{{activeJob.location}} | &nbsp;</span>
+                    <span>{{activeJob.department}}</span>
                 </div>
                 <div class="candidate-number">
                     <div class="candidate-count">
                         <span style="opacity: 0.7;">15 Candidates Applied</span>
+                    </div>
+                    <!-- <div>
+                        <a [routerLink]="['/form']" ></a>
+                    </div> -->
+                    <div class="ml-3">
+                        <a [routerLink]="['/job-description']" [queryParams]="{'jobId' : activeJob.id}" style="color: #22c55e; text-decoration: none;">
+                            <span >Apply</span>
+                            <i class="fa-solid fa-angle-right ml-1"></i>
+                        </a>
                     </div>
                 </div>   
             </p-card>

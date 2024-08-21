@@ -52,6 +52,7 @@ import { PickListModule } from 'primeng/picklist';
 import { ApplicantsTableComponent } from './applicants-table/applicants-table.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
+import { JobDescriptionComponent } from './job-description/job-description.component';
 
  
 @NgModule({
@@ -73,7 +74,8 @@ import { TabViewModule } from 'primeng/tabview';
     PieChartComponent,
     UserOpeningComponent,
     ShortlistedPicklistComponent,
-    ApplicantsTableComponent
+    ApplicantsTableComponent,
+    JobDescriptionComponent
 
   ],
   imports: [
