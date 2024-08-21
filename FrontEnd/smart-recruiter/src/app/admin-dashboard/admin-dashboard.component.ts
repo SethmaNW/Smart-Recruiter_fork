@@ -49,7 +49,7 @@ export class AdminDashboardComponent implements OnInit {
       this.filteredJobs = this.jobs;
     });
     this.visible = false;
-
+    //console.log(this.job.description);
     // Reset the form
   }
 

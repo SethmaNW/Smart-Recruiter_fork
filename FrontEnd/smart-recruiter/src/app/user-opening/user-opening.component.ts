@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import {Router} from '@angular/router';
+import { Job } from '../models/job.model';
 
 @Component({
   selector: 'app-user-opening',
@@ -8,17 +10,20 @@ import {Router} from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class UserOpeningComponent {
-
+  activeJobs : Job[] = [];
   job:any;
   filterGlobal: any;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private http : HttpClient) { }
 
-  navigateToForm(){
-    this.router. navigate (['/form']);
-  }
+  // navigateToForm(){
+  //   this.router. navigate (['/form']);
+  // }
 
   ngOnInit(): void {
+    this.http.get<Job[]>('api/Job/GetActiveJobs').subscribe(data=>{
+      this.activeJobs = data;
+    })
   }
 
 
