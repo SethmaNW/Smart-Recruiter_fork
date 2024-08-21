@@ -18,7 +18,7 @@ export class ApplicantsTableComponent implements OnInit {
   loading: boolean = true;
   // commentExceeded = false;
   position: string = '';
-  jobId!: number;  // Declare jobId as a class property
+  // jobId!: number;  // Declare jobId as a class property
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
   // buttonHiddenState: { [candidateId: number]: boolean } = {};
@@ -28,6 +28,7 @@ export class ApplicantsTableComponent implements OnInit {
   visible: boolean = false;
 
   @Input() roleId: number = 1;
+  @Input() jobId!: number;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -84,20 +85,20 @@ export class ApplicantsTableComponent implements OnInit {
     }
   }
 
-  loadData() {
-    this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
-      this.position = position;	
-    });
-    this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
-      this.customers = customers; 
-      console.log(this.customers);
+  // loadData() {
+  //   this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
+  //     this.position = position;	
+  //   });
+  //   this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
+  //     this.customers = customers; 
+  //     console.log(this.customers);
 
-      // // Precompute the hidden state of buttons if necessary
-      // this.customers.forEach(customer => {
-      //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
-      // });
-    });
-  }
+  //     // // Precompute the hidden state of buttons if necessary
+  //     // this.customers.forEach(customer => {
+  //     //   this.buttonHiddenState[customer.id] = this.buttonClicked.has(customer.id);
+  //     // });
+  //   });
+  // }
 
   loadrelevantData(roleId: number) {
     this.applicantsListService.getPositionName(this.jobId).subscribe(position => {

@@ -53,6 +53,7 @@ import { ApplicantsTableComponent } from './applicants-table/applicants-table.co
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
 import { JobDescriptionComponent } from './job-description/job-description.component';
+import { ToastModule } from 'primeng/toast';
 
  
 @NgModule({
@@ -109,7 +110,8 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
     ConfirmDialogModule,
     PickListModule,
     MultiSelectModule,
-    TabViewModule
+    TabViewModule,
+    ToastModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), ConfirmationService],
