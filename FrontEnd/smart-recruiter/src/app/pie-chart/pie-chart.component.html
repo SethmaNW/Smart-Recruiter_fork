@@ -1,41 +1,39 @@
 
    <div class="interview header">
-    <ul class="interview tabs">
-        <li [ngClass]="{'active': CurrentSection === 'first-interview'}" (click)="navigateToSection('first-interview')">1 st interview</li>
-        <li [ngClass]="{'active': CurrentSection === 'second-interview'}" (click)="navigateToSection('second-interview')">2 nd interview</li>
-        <li [ngClass]="{'active': CurrentSection === 'third-interview'}" (click)="navigateToSection('third-interview')">3 rd interview</li>
-    </ul>
+    <h2>Summary </h2>
+    <h6> Displaying all the marks earned from administrators </h6>
+    <div> 
+        <p-tabView >
+            <p-tabPanel header="I">
+                <h4>1st Interview Section</h4>
+                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
+           
+            </p-tabPanel>
+
+            <p-tabPanel header="II">
+                <h4>2 nd Interview Section</h4>
+                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
+            
+            </p-tabPanel>
+
+            <p-tabPanel header="III">
+                <h4>3 rd Interview Section</h4>
+                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
+            
+            </p-tabPanel>
+        </p-tabView>
+
     </div>
 
-
-     <div class="card flex-column  col-12 p-md-6">
-        <div class="card container">
-            <h3>Overview</h3>
-        </div>
-        <div [ngSwitch]="CurrentSection">
-            <div *ngSwitchCase="'first-interview'" id="first-interview">
-                <h3>1st Interview Section</h3>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-            </div>
-
-            <div *ngSwitchCase="'second-interview'" id="second-interview">
-                <h3>2 nd Interview Section</h3>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-            </div>
-
-                <div *ngSwitchCase="'third-interview'" id="third-interview">
-                <h3>3 rd Interview Section</h3>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-            </div>
 
 
             <div class="knob-container ">
                 <h3>Average Marks</h3><br>
                 <p-knob [(ngModel)]="value" />
-            </div>
+            </div> 
         </div>
         <canvas #canvas></canvas>
-    </div> 
+    
 
     
 
