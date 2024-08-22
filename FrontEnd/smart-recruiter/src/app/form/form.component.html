@@ -1,5 +1,5 @@
 <div class="flex flex-column">
-    <app-navbar></app-navbar>
+    <app-user-nav></app-user-nav>
     <div class="form-style">
         <div>
             <h1 class="text-center h1-form">Join Our Team !</h1>
@@ -9,7 +9,7 @@
         <form (ngSubmit)="onSubmit(userForm)" class="p-fluid" autocomplete="on" #userForm="ngForm">
             <p-stepper [linear]="true">
                 <!-- Personal Information -->
-                <p-stepperPanel header="Personal Information">
+                <p-stepperPanel header="Personal Information" class="stepper-panel" [style]="{'width': '90%'}">
                     <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
                         <!-- <div class="flex flex-column h-12rem"> -->
                             <div class="border-1 surface-border border-round font-medium step-content">                                
@@ -28,7 +28,7 @@
                                         id="phone" 
                                         name="phone" 
                                         class="phone" 
-                                        placeholder="+94 7********" 
+                                        placeholder="07* *******" 
                                         ngModel 
                                         #phone="ngModel" 
                                         required 
@@ -199,9 +199,9 @@
                         <!-- <div class="flex flex-column h-12rem"> -->
                             <div class="border-1 surface-border border-round font-medium step-content">                                
                                 <div class="p-available-date">
-                                    <div class="topic">Immediate Available Date for the Position</div>
+                                    <div class="topic avail-date">Immediate Available Date for the Position</div>
                                         <p-calendar
-                                        [style]="{'width':'80%'}"
+                                        [style]="{'width':'90%'}"
                                         [(ngModel)]="availableDate" 
                                         [iconDisplay]="'input'" 
                                         [showIcon]="true" 
@@ -232,7 +232,7 @@
                                     <div class="card-header">
                                         <div class="topic">Upload CV</div>
                                     </div>
-                                    <div class="card-body">
+                                    <div class="card-body" [style]="{'width':'90%'}">
                                         <p-fileUpload 
                                             mode="basic" 
                                             name="demo[]" 

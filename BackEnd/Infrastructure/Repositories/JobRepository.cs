@@ -86,7 +86,8 @@ public class JobRepository : IJobRepository
     public async Task<IEnumerable<string>> GetJobPosition(int jobId)
     {
         using var connection = _dbConnection.GetOpenConnection();
-        var sql = "SELECT Title FROM jobs WHERE Id = @jobId";
+        //var sql = "SELECT Title FROM jobs WHERE Id = @jobId";
+        var sql = "EXEC GetPosition @jobId";
         var position = await connection.QueryAsync<string>(sql, new { jobId });
         return position;
     }

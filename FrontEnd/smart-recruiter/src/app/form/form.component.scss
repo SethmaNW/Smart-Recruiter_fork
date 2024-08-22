@@ -17,10 +17,15 @@
 }
 
 .step-content{
-    background-color: rgb(246, 243, 239);
+    background-color: rgb(249, 246, 241);
     padding-top: 2rem;
     padding-bottom: 4rem;
     padding-left: 5rem;
+}
+
+// doesnt apply
+.stepper-panel{
+    width: 100%;
 }
 
 .topic{
@@ -34,6 +39,10 @@
     color: red;
     font-size: 13.3px;
     margin-left: 6px;
+}
+
+.avail-date{
+    margin-bottom: 4px;
 }
 
 .fname,.lname,.address,.email,.phone,.University,.Other-University,.skills,.work,.degree,.reason,.github,.linkedin,.availabledate{
@@ -57,6 +66,7 @@
 .h1-form{
     color: rgb(91, 78, 80);
     font-style: inherit;
+    padding-top: 2rem;
     //padding-left: 200px;
 }
 
@@ -92,14 +102,16 @@
     //margin-left: 5rem;
     //margin-right: 5rem;
     // padding: -2rem;
-    background-color: rgb(233, 230, 225);   // rgb(222, 219, 214)
+    background-color: rgb(255, 251, 244);   //(255, 251, 244)
+    // background-color: rgb(233, 230, 225);   // rgb(222, 219, 214)
     // height: 130vh;
     // margin-bottom: 40px;
     //margin-top: 3rem;
 }
 
 .card-body{
-    margin: 10px;
+    // margin: 10px;
+    margin-top: 4px;
     border: 1px solid rgb(168, 168, 168);
     display: flex;
     justify-content: center;
@@ -121,11 +133,11 @@ small {
 
 .button{
     padding: 10px;
-    padding-top: 15px;
+    padding-top: 25px;
     width: 120px;
     display: flex;
     margin-left: auto;
-    margin-right: 160px;
+    margin-right: 32rem;
 }
 
 
