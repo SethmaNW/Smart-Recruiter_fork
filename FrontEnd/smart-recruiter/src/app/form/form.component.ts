@@ -15,9 +15,6 @@ export class FormComponent {
   minDate: Date = new Date();
 
   onSubmit(form: NgForm) {
-    // if(!this.fileUploaded){
-    //   return;
-    // }
     if (form.valid) {
       // Handle the valid form submission
       console.log('Form Submitted!', form.value);
