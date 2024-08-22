@@ -1,4 +1,4 @@
-<div class="table">
+<div *ngIf="customers && customers.length > 0" class="table">
     <p-table #dt2
     [columns]="selectedColumns" 
     [value]="customers" 
@@ -51,7 +51,12 @@
                 <td>{{customer.degree}}</td>
                 <td *ngFor="let col of columns">
                     <ng-container *ngIf="col.field === 'comment' && customer?.id">
-                        <p-button (onClick)="showDialog(customer)" label="Comment" class="small-button" 
+                        {{customer.comment}}
+                        <p-button 
+                        *ngIf="!customer.comment"
+                        (onClick)="showDialog(customer)" 
+                        label="Comment" 
+                        class="small-button" 
                         [style]="{ 'background-color': 'var(--green-400)', 'color': 'white', 'border-color': 'var(--green-400)', 'font-size': '13px' }"/>
                         <p-dialog *ngIf="selectedCustomer" header="Enter your comment:" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
                           <div class="flex align-items-center gap-3 mb-3">
@@ -63,7 +68,8 @@
                                       cols="20" 
                                       autocomplete="off" 
                                       [(ngModel)]="selectedCustomer.comment" 
-                                      [disabled]="!selectedCustomer || !checkCommentExist(jobId, selectedCustomer.id)">
+                                      >
+                                      <!-- [disabled]="!selectedCustomer || !checkCommentExist(jobId, selectedCustomer.id)" -->
                             </textarea>
                           </div>
                           <div class="flex justify-content-end gap-2">
@@ -123,3 +129,4 @@
         </ng-template>
     </p-table>
 </div>
+<p *ngIf="!customers || customers.length === 0" class="no-data">No data available.</p>

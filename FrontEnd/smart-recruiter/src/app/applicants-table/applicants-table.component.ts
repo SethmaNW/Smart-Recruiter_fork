@@ -23,11 +23,10 @@ export class ApplicantsTableComponent implements OnInit {
   jobId!: number;  // Declare jobId as a class property
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
-  // buttonHiddenState: { [candidateId: number]: boolean } = {};
-  // balanceFrozen: boolean = false; 
   cols: any[] = [];
   selectedColumns: any[] = [];
   visible: boolean = false;
+  candidatesWithComments: number[] = [];
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
@@ -55,6 +54,7 @@ export class ApplicantsTableComponent implements OnInit {
   //   // this.loading = this.applicantsListService.isLoading();
   // }
 
+  editableStates: { [candidateId: number]: boolean } = {};
   ngOnInit() {
     // column selection for the table
     this.cols = [      
@@ -72,11 +72,12 @@ export class ApplicantsTableComponent implements OnInit {
       // this.loadData();  
       this.loadRelevantData(this.roleId);
       // this.loadButtonState();
+      // this.preloadEditableStates(); 
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
 
     this.jobIdChange.emit(this.jobId);
-  }
+  }  
 
   loadAdminId(){
     const currentUser = this.authService.getCurrentUser();
@@ -111,18 +112,27 @@ export class ApplicantsTableComponent implements OnInit {
     });
   }
 
-  // loadButtonState() {
-  //   // Load button clicked state from local storage
-  //   const buttonState = localStorage.getItem('buttonClicked');
-  //   if (buttonState) {
-  //     this.buttonClicked = new Set<number>(JSON.parse(buttonState));
-  //   }
+  // to disable comment button   ----- no need
+  // loadCandidatesWithComments() {
+  //   this.applicantsListService.getCandidateIdsWithComments(this.jobId).subscribe(candidateIds => {
+  //     // console.log('Candidate IDs with comments:', candidateIds);
+  //     // candidateIds.forEach(candidateId => {
+  //     //   this.editableStates[candidateId] = false;
+  //     // });
+  //     this.candidatesWithComments = candidateIds;
+  //   });
   // }
 
-  // saveButtonState() {
-  //   // Save button clicked state to local storage
-  //   localStorage.setItem('buttonClicked', JSON.stringify(Array.from(this.buttonClicked)));
+  // isCommentDisabled(candidateId: number): boolean {
+  //   return this.candidatesWithComments.includes(candidateId);
   // }
+
+  getAdminIdfromEmail(email: string) {
+    this.applicantsListService.getAdminId(email).subscribe(adminId => {
+      this.adminId = adminId;
+      console.log(this.adminId);
+    });
+  }
 
   filterGlobal(event: Event, matchMode: string) {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
@@ -131,29 +141,6 @@ export class ApplicantsTableComponent implements OnInit {
 
   handleWordLimitExceeded(id:number, exceeded: boolean) {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
-  }
-
-  // checkCommentExist(jobId: number, candidateId: number) {
-  //   this.applicantsListService.existComment(jobId, candidateId).subscribe((exists) => {
-  //       const customer = this.customers.find(c => c.id === candidateId);
-  //       if (customer) {
-  //         this.isEditable = !exists;
-  //         console.log(this.isEditable);
-  //       }
-  //     }
-  //   );
-  // }
-
-  checkCommentExist(jobId: number, candidateId: number): Observable<boolean> {
-    // console.log('Reached check comment exist');
-    return this.applicantsListService.existComment(jobId, candidateId);
-  }
-
-  getAdminIdfromEmail(email: string) {
-    this.applicantsListService.getAdminId(email).subscribe(adminId => {
-      this.adminId = adminId;
-      console.log(this.adminId);
-    });
   }
 
   showDialog(customer: Applicant) {
@@ -177,6 +164,7 @@ export class ApplicantsTableComponent implements OnInit {
           const updatedCustomer = this.customers.find(c => c.id === this.selectedCustomer!.id);
           if (updatedCustomer) {
             updatedCustomer.comment = this.selectedCustomer!.comment;
+            // this.editableStates[updatedCustomer.id] = false;
           }
           this.visible = false; 
         },
@@ -243,9 +231,34 @@ export class ApplicantsTableComponent implements OnInit {
   }
   
 
-  // isButtonHidden(candidateId: number): boolean {
-  //   console.log("button clicked");
-  //   return this.buttonClicked.has(candidateId);
+  // checkCommentExist(jobId: number, candidateId: number) {
+  //   this.applicantsListService.existComment(jobId, candidateId).subscribe((exists) => {
+  //       const customer = this.customers.find(c => c.id === candidateId);
+  //       if (customer) {
+  //         this.isEditable = !exists;
+  //         console.log(this.isEditable);
+  //       }
+  //     }
+  //   );
+  // }
+
+  // preloadEditableStates() {
+  //   this.customers.forEach(customer => {
+  //     this.checkCommentExist(this.jobId, customer.id).subscribe(exists => {
+  //       this.editableStates[customer.id] = !exists;
+  //     });
+  //   });
+  // }
+
+  // checkCommentExist(jobId: number, candidateId: number): Observable<boolean> {
+  //   // console.log('Reached check comment exist');
+  //   // console.log(this.applicantsListService.existComment(jobId, candidateId));
+  //   return this.applicantsListService.existComment(jobId, candidateId);
+  // }
+
+  // isCommentEditable(customer: Applicant): Observable<boolean> {
+  //   // console.log('Checking :', this.checkCommentExist(this.jobId, customer.id));
+  //   return this.checkCommentExist(this.jobId, customer.id);
   // }
 
 }
