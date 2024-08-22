@@ -55,6 +55,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { ToastModule } from 'primeng/toast';
 import { StepperModule } from 'primeng/stepper';
+import { UserNavComponent } from './user-nav/user-nav.component';
 
  
 @NgModule({
@@ -77,7 +78,8 @@ import { StepperModule } from 'primeng/stepper';
     UserOpeningComponent,
     ShortlistedPicklistComponent,
     ApplicantsTableComponent,
-    JobDescriptionComponent
+    JobDescriptionComponent,
+    UserNavComponent
 
   ],
   imports: [
