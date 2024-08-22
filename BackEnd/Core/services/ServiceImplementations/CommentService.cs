@@ -24,4 +24,10 @@ public class CommentService : ICommentService
     {
         return await _CommentRepository.CheckApplicantComment(jobId, candidateId);
     }
+
+    // get all the candidateIds under relevant jobId
+    public async Task<List<int>> GetCandidateIdsOfJobId(int jobId)
+    {
+        return await _CommentRepository.GetCandidateIdsOfJobId(jobId);
+    }
 }

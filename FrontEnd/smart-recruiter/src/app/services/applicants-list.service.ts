@@ -25,18 +25,25 @@ export class ApplicantsListService {
   // updateCommentt(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
   //   console.log('Reached update comment service');
   //   return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
-  // }
+  // }  
 
   updateComment(jobId: number, candidateId: number, adminId: number, roleId: number, commentText: string): Observable<Comment> {
     // console.log('Reached applicant update comment service');
     return this.http.post<Comment>(`api/Comment/${jobId}/${candidateId}/${adminId}/${roleId}`, { commentText });
   }
 
+  // not used
+  getCandidateIdsWithComments(jobId: number): Observable<number[]> {
+    return this.http.get<number[]>(`api/Comment/candidateIds/${jobId}`);
+  }
+
+  // not used
   existComment(jobId: number, candidateId: number): Observable<boolean> {
     // console.log('Reached exist comment');
     // return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`).pipe(
     //   tap(response => console.log('API Response:', response))
     // );
+    // console.log(this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`));
     return this.http.get<boolean>(`api/Comment/checkcomment/${jobId}/${candidateId}`);
   }
   

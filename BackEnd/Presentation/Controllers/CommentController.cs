@@ -42,4 +42,11 @@ public class CommentController : ControllerBase
         var checkcomment = await _CommentService.CheckApplicantComment(jobId, candidateId);
         return Ok(checkcomment);
     }
+
+    [HttpGet("candidateIds/{jobId}")]
+    public async Task<IActionResult> GetCandidateIdsOfJobId(int jobId)
+    {
+        var candidateIds = await _CommentService.GetCandidateIdsOfJobId(jobId);
+        return Ok(candidateIds);
+    }
 }
