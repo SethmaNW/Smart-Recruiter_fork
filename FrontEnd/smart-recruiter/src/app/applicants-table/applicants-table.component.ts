@@ -15,6 +15,8 @@ import { ConfirmationService } from 'primeng/api';
 })
 export class ApplicantsTableComponent implements OnInit {
   customers: Applicant[] = [];
+  // selectedCustomer!: Applicant;
+  selectedCustomer: Applicant | null = null;
   loading: boolean = true;
   // commentExceeded = false;
   position: string = '';
@@ -22,7 +24,7 @@ export class ApplicantsTableComponent implements OnInit {
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
   // buttonHiddenState: { [candidateId: number]: boolean } = {};
-  balanceFrozen: boolean = false; 
+  // balanceFrozen: boolean = false; 
   cols: any[] = [];
   selectedColumns: any[] = [];
   visible: boolean = false;
@@ -54,6 +56,7 @@ export class ApplicantsTableComponent implements OnInit {
   // }
 
   ngOnInit() {
+    // column selection for the table
     this.cols = [      
       { field: 'available_Date', header: 'Available Date' },
       { field: 'experience', header: 'Experience' },
@@ -67,16 +70,12 @@ export class ApplicantsTableComponent implements OnInit {
       this.jobId = +params.get('jobId')!;    // + => converts the string to a number
       this.loadAdminId();
       // this.loadData();  
-      this.loadrelevantData(this.roleId);
+      this.loadRelevantData(this.roleId);
       // this.loadButtonState();
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
 
     this.jobIdChange.emit(this.jobId);
-  }
-
-  showDialog() {
-    this.visible = true;
   }
 
   loadAdminId(){
@@ -102,7 +101,7 @@ export class ApplicantsTableComponent implements OnInit {
   //   });
   // }
 
-  loadrelevantData(roleId: number) {
+  loadRelevantData(roleId: number) {
     this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
       this.position = position;	
     });
@@ -157,20 +156,36 @@ export class ApplicantsTableComponent implements OnInit {
     });
   }
 
-  submitComment(customer: Applicant) {
-    if (customer.id && customer.comment !== undefined) {
-      this.applicantsListService.updateComment(this.jobId, customer.id, this.adminId, customer.role_Id, customer.comment).subscribe(
+  showDialog(customer: Applicant) {
+    this.selectedCustomer = { ...customer };    // Set the selected customer
+    this.visible = true;
+  }
+
+  submitComment() {
+    if (this.selectedCustomer && this.selectedCustomer.id && this.selectedCustomer.comment !== undefined) {
+      // console.log('Comment: ', this.selectedCustomer.comment, this.selectedCustomer.id);
+      this.applicantsListService.updateComment(
+        this.jobId,
+        this.selectedCustomer.id,
+        this.adminId,
+        this.selectedCustomer.role_Id,
+        this.selectedCustomer.comment
+      ).subscribe(
         (response) => {
           console.log('Comment submitted successfully');
-          // this.buttonClicked.add(customer.id);
-          // this.saveButtonState();
+          // Update the local customer data
+          const updatedCustomer = this.customers.find(c => c.id === this.selectedCustomer!.id);
+          if (updatedCustomer) {
+            updatedCustomer.comment = this.selectedCustomer!.comment;
+          }
+          this.visible = false; 
         },
         error => {
           console.log('Error in updating comment', error);
         }
       );
     } else {
-      console.error('Missing required properties in customer object');
+      console.error('Missing required properties in selectedCustomer object');
     }
   }
 
@@ -193,8 +208,6 @@ export class ApplicantsTableComponent implements OnInit {
       }
       // this.loadData();
       this.cd.detectChanges();
-      // this.buttonClicked.add(candidateId);
-      // this.buttonHiddenState[candidateId] = true;
     },
     error => {
       console.log('Error in updating role', error);
