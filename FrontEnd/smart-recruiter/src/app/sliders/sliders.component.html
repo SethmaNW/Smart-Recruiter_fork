@@ -1,4 +1,4 @@
-<div class="p-grid p-justify-center">
+ <div class="p-grid p-justify-center">
    <div class="p-col-12 p-md-9" >
     <div class="flex flex-row">
         <h2>1 st interview Marks</h2>
@@ -13,56 +13,66 @@
                 </div>
             </p-card> 
         </div>
-    </div>
+    </div> 
 
 
 
 
-    <div class="card p-grid">
-        <div class="p-col-6 p-md-3">
-            <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
+        <div class="card w-full grid ">
+            <div class="p-col-6 px-2">
+                <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
                     <label [for]="'label'+(i)" class="p-mb-1">{{ criteria.criteria}}</label> 
                     <p-inputNumber 
-                        [(ngModel)]="criteria.value" 
-                        [showButtons]="true" 
-                        buttonLayout="horizontal" 
-                        [inputId]="'horizontal'+(i)" 
-                        spinnerMode="horizontal" 
-                        decrementButtonClass="p-button-danger"
-                        incrementButtonClass="p-button-success"
-                        incrementButtonIcon="pi pi-plus" 
-                        decrementButtonIcon="pi pi-minus" 
-                        [style]="{'width': '80%', 'height': '30px'}"
-                    />
+                         [(ngModel)]="criteria.value" 
+                         [showButtons]="true" 
+                         [min]="0"
+                         [max]="100"
+                         
+                     />
                 </div>
             </div>
+                      
             
 
     
 
-
-
-    <div class="card p-grid">
-            <div class="p-col-6 p-md-3">
+            <div class="p-col-6 px-2">
                 <div *ngFor="let criteria of criteria_value.slice(5,10);let i=index " class="flex flex-column align-items-start mb-3">
                     <label [for]="'label' + (i+5)" class="p-mb-1">{{ criteria.criteria }}</label>
                     <p-inputNumber 
-                        [(ngModel)]="criteria.value" 
-                        [showButtons]="true" 
-                        buttonLayout="horizontal" 
-                        [inputId]="'horizontal'+(i+5)" 
-                        spinnerMode="horizontal" 
-                        decrementButtonClass="p-button-danger"
-                        incrementButtonClass="p-button-success"
-                        incrementButtonIcon="pi pi-plus" 
-                        decrementButtonIcon="pi pi-minus" 
-                        [style]="{'width': '80%', 'height': '30px'}"
+                    [(ngModel)]="criteria.value" 
+                    [showButtons]="true"
+                    [min]="0"
+                    [max]="100" 
                     />
                 </div>
             </div>
         </div>
+        
+        <div class="editor-container card">
+    
+            <textarea [(ngModel)]="text" pInputTextarea rows="5 " cols="30" [autoResize]="true" placeholder="Enter a comment" ></textarea>
+        </div>
+        
+        <div class="button-container">
+        
+        
+        <button 
+           
+            pButton 
+            pRipple 
+            label="Save" 
+            class="p-button-success" rounded="true"
+            (click)="saveAll()">
+        </button>
+        </div>
     </div>
-</div>
+</div> 
+
+
+
+        
+               
 
             <!-- <button 
             pButton 
@@ -74,7 +84,9 @@
         <!-- </div> -->
 <!-- 
         <app-pie-chart></app-pie-chart> -->
-
+       
+                 
+          
         
 
 

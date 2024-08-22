@@ -34,7 +34,6 @@ import { SlidersComponent } from './sliders/sliders.component';
 import { PanelModule } from 'primeng/panel';
 import { SliderModule } from 'primeng/slider';
 import { ShortlistedCardComponent } from './shortlisted-card/shortlisted-card.component';
-import { CommentsComponent } from './comments/comments.component';
 import { EditorModule } from 'primeng/editor';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { ChartModule } from 'primeng/chart';
@@ -71,7 +70,6 @@ import { ToastModule } from 'primeng/toast';
     CandidatePersonalProfileComponent,
     SlidersComponent,
     ShortlistedCardComponent,
-    CommentsComponent,
     PieChartComponent,
     UserOpeningComponent,
     ShortlistedPicklistComponent,
