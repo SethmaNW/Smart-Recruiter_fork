@@ -15,7 +15,7 @@ public class CommentRepository: ICommentRepository
         _dbContext = dbContext;
     }
 
-    // update applicants page comment related to candidate
+    // post comment related to candidate in applicants page
     public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, string commentText)
     {
         using var connection = _dbContext.GetOpenConnection();
