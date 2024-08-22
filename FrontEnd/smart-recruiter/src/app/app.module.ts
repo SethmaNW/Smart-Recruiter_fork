@@ -54,6 +54,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
 import { JobDescriptionComponent } from './job-description/job-description.component';
 import { ToastModule } from 'primeng/toast';
+import { StepperModule } from 'primeng/stepper';
 
  
 @NgModule({
@@ -111,7 +112,8 @@ import { ToastModule } from 'primeng/toast';
     PickListModule,
     MultiSelectModule,
     TabViewModule,
-    ToastModule
+    ToastModule,
+    StepperModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), MessageService, ConfirmationService],
