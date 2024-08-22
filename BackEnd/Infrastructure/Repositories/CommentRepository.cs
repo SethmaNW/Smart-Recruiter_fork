@@ -47,4 +47,15 @@ public class CommentRepository: ICommentRepository
 
         return check_comment;
     }
+
+    // get all the candidateIds under relevant jobId
+    public async Task<List<int>> GetCandidateIdsOfJobId(int jobId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = " SELECT candidateId FROM [dbo].[comments] WHERE [jobId] = @jobId ";
+        var candidateIds = await connection.QueryAsync<int>(sql, new { jobId });
+
+        return candidateIds.ToList();
+    }
+
 }
