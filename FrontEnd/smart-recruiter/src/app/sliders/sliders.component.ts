@@ -32,7 +32,7 @@ export class SlidersComponent implements  OnInit{
     { criteria: 'Communication Skills', value: this.value6, inactive: false },
     { criteria: 'Cultrul fit', value: this.value7, inactive: false },
     { criteria: 'Family Background', value: this.value8, inactive: false },
-    { criteria: 'IQ/Craetivity/Problem Solving Skill', value: this.value9, inactive: false },
+    { criteria: 'IQ/Creativity/Problem Solving Skill', value: this.value9, inactive: false },
     { criteria: 'Management  Skills', value: this.value10, inactive: false },
   
   ];
