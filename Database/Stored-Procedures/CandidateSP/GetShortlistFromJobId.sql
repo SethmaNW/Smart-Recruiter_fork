@@ -2,7 +2,7 @@
 Author : Nilakshi Induwara
 Usage : get shortlisted candidates from a given job id
 Changes : 
-    2024-08-20 => Created
+    2024-08-21 => Created
 Example : 
 
 **************************************************************************************************/
