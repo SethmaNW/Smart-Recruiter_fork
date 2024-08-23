@@ -70,8 +70,8 @@ public class CandidateRepository : ICandidateRepository
         {
             using var connection = _dbContext.GetOpenConnection();
             var sql = "EXEC UpdateRoleId @newRoleId, @candidateId";
-            var role = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId, newRoleId });
-            return role;
+            var rowsAffected = await connection.ExecuteAsync(sql, new { candidateId, newRoleId });
+            return rowsAffected>0;
         }
         catch (Exception ex) {
             Console.WriteLine($"Error updating RoleId: {ex.Message}");
@@ -82,17 +82,33 @@ public class CandidateRepository : ICandidateRepository
     // delete a candidate by candidateId
     public async Task<bool> DeleteCandidate(int candidateId)
     {
-        using var connection = _dbContext.GetOpenConnection();
-        var sql = "EXEC DeleteCandidate @candidateId";
-        return await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId });
+        try
+        {
+            using var connection = _dbContext.GetOpenConnection();
+            var sql = "EXEC DeleteCandidate @candidateId";
+            var rowsAffected = await connection.ExecuteAsync(sql, new { candidateId });
+            return rowsAffected > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleing candidate: {ex.Message}");
+            return false;
+        }
     }
 
     // get shortlisted candidates using jobId
     public async Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId)
     {
-        using var connection = _dbContext.GetOpenConnection();
-        var shortlist = "EXEC GetShortlistFromJobId @jobId";
-        return await connection.QueryAsync<Candidate>(shortlist, new { jobId });
+        try
+        {
+            using var connection = _dbContext.GetOpenConnection();
+            var shortlist = "EXEC GetShortlistFromJobId @jobId";
+            return await connection.QueryAsync<Candidate>(shortlist, new { jobId });
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error getting shortlisted candidates: {ex.Message}");
+            return Enumerable.Empty<Candidate>();
+        }
     }
 
     public async Task<Candidate> GetCandidateById(int candidateId)

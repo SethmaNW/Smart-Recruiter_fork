@@ -30,7 +30,7 @@ public class CommentController : ControllerBase
         var comment = await _CommentService.UpdateApplicantComment(jobId, candidateId, adminId, roleId, commentRequest.CommentText);
         if (comment)
         {
-            return Ok();
+            return Ok(new { success = true });
         }
 
         return StatusCode(500, "An error occurred while updating the comment.");
