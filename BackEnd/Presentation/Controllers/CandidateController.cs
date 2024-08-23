@@ -143,4 +143,11 @@ public class CandidateController : ControllerBase
         var candidate = await _CandidateService.GetCandidateById(candidateId);
         return Ok(candidate);
     }
+
+    [HttpGet("applicantsCount/{jobId}/{roleId}")]
+    public async Task<IActionResult> GetNoOfApplicnats(int jobId, int roleId)
+    {
+        var count = await _CandidateService.GetNoOfApplicnats(jobId, roleId);
+        return Ok(count);
+    }
 }

@@ -103,9 +103,9 @@ export class ApplicantsTableComponent implements OnInit {
   // }
 
   loadRelevantData(roleId: number) {
-    this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
-      this.position = position;	
-    });
+    // this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
+    //   this.position = position;	
+    // });
     this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
       this.customers = customers.filter(customer => customer.role_Id === roleId); 
       console.log(this.customers);
