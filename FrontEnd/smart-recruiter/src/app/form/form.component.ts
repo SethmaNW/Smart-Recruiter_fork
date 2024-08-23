@@ -1,34 +1,64 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
-  fileName: string | null = null;
-  skillsTooLong = false;
-  fileUploaded: boolean = false;
-  availableDate : any;
-  minDate: Date = new Date();
+export class FormComponent implements OnInit{
 
-  onSubmit(form: NgForm) {
-    if (form.valid) {
-      // Handle the valid form submission
-      console.log('Form Submitted!', form.value);
-    }
+  skillsTooLong = false;
+  minDate: Date = new Date(); // Minimum available date for a candidate
+  CvFile: File | undefined = undefined; //Cv uploading file
+  fileName: string | undefined = undefined; //cv file name
+  fileUploaded: boolean = false;  // cv file upload status
+
+  form!: FormGroup; // create parent form group 
+  currentStep = 0;  // form steps
+
+  constructor(private fb: FormBuilder) {}
+  
+  ngOnInit(): void {
+    //define each child, form group for every step
+    this.form = this.fb.group({
+      personalInfo: this.fb.group({
+        name: [''],
+        phone : [''],
+        email: [''],
+        githubLink : [''],
+        linkedIn : ['']
+      }),
+      addressInfo: this.fb.group({
+        address: [''],
+        city: ['']
+      }),
+      paymentInfo: this.fb.group({
+        cardNumber: [''],
+        expiryDate: ['']
+      })
+    });
+  }
+
+  nextStep() {
+    this.currentStep++;
+  }
+
+  previousStep() {
+    this.currentStep--;
+  }
+
+  onSubmit() {
+    
   }
   
   // for the cv upload
   onBasicUploadAuto(event: any) {
-    const file = event.files[0];  // give the first selected file
-
-    if (file) {
-      this.fileName = file.name; 
+    this.CvFile = event.files[0];
+    this.fileName = this.CvFile?.name;
+    if (this.CvFile) {
       this.fileUploaded = true;
-      // console.log('File uploaded:', file);
+      //console.log('File uploaded');
     }
   }
 

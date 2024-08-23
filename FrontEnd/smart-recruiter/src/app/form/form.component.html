@@ -7,30 +7,30 @@
         </div>
 
         <form (ngSubmit)="onSubmit(userForm)" class="p-fluid" autocomplete="on" #userForm="ngForm">
+            {{userForm.value | json}}
             <p-stepper [linear]="true">
                 <!-- Personal Information -->
                 <p-stepperPanel header="Personal Information" class="stepper-panel" [style]="{'width': '90%'}">
                     <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
                         <!-- <div class="flex flex-column h-12rem"> -->
-                            <div class="border-1 surface-border border-round font-medium step-content">                                
+                            <div class="border-1 surface-border border-round font-medium step-content formG" formGroupName="personalInfo">                                
                             <!-- <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium stepper">                                 -->
                                 <div class="p-Name">
                                     <div class="topic">Name</div>
-                                    <input type="text" id="fname" name="fname" class="fname" placeholder="Enter full Name" ngModel #name="ngModel" required><br>
-                                    <div *ngIf="userForm.submitted || (name.invalid && name.touched)">
-                                        <small *ngIf="name.errors?.['required']">Name is required.</small>
+                                    <input type="text" id="name" name="name" class="name" placeholder="Enter full Name" formControlName="name" required><br>
+                                    <div *ngIf="userForm.submitted || (form.get('PersonalInfo.name')?.invalid && form.get('PersonalInfo.name')?.touched)">
+                                        <small *ngIf="form.get('PersonalInfo.name')?.errors?.['required']">Name is required.</small>
                                     </div>
                                 </div>
                                 <div class="Contact">
                                     <div class="topic">Contact Number</div>
-                                    <input 
+                                    <input
                                         type="text" 
                                         id="phone" 
                                         name="phone" 
                                         class="phone" 
                                         placeholder="07* *******" 
-                                        ngModel 
-                                        #phone="ngModel" 
+                                        ngModel #phone="ngModel" 
                                         required 
                                         pattern="07\d{8}$"
                                         inputmode="tel"
@@ -48,8 +48,7 @@
                                         name="email" 
                                         class="email" 
                                         placeholder="Enter your email" 
-                                        ngModel 
-                                        #email="ngModel" 
+                                        ngModel #email="ngModel" 
                                         required 
                                         email
                                     />
@@ -60,7 +59,7 @@
                                 </div>
                                 <div class="GitHub">
                                     <div class="topic">GitHub Link</div>
-                                    <input 
+                                    <!-- <input 
                                         type="url" 
                                         id="github" 
                                         name="github" 
@@ -74,11 +73,24 @@
                                     <div *ngIf="github.invalid && (github.dirty || github.touched || userForm.submitted)">
                                         <small *ngIf="github.errors?.['required']">GitHub link is required.</small>
                                         <small *ngIf="github.errors?.['pattern']">Invalid URL format.</small>
+                                    </div> -->
+                                    <input 
+                                        type="url" 
+                                        id="github" 
+                                        name="github" 
+                                        class="github" 
+                                        placeholder="Enter your GitHub profile link" 
+                                        ngModel 
+                                        #github="ngModel" 
+                                        pattern="https?://.+"
+                                    />
+                                    <div *ngIf="github.invalid && (github.dirty || github.touched || userForm.submitted)">
+                                        <small *ngIf="github.errors?.['pattern']">Invalid URL format.</small>
                                     </div>
                                 </div>
                                 <div class="LinkedIn">
                                     <div class="topic">LinkedIn URL</div>
-                                    <input 
+                                    <!-- <input 
                                         type="url" 
                                         id="linkedin" 
                                         name="linkedin" 
@@ -91,6 +103,19 @@
                                     />
                                     <div *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched || userForm.submitted)">
                                         <small *ngIf="linkedin.errors?.['required']">LinkedIn URL is required.</small>
+                                        <small *ngIf="linkedin.errors?.['pattern']">Invalid URL format.</small>
+                                    </div> -->
+                                    <input 
+                                        type="url" 
+                                        id="linkedin" 
+                                        name="linkedin" 
+                                        class="linkedin" 
+                                        placeholder="Enter your LinkedIn profile link" 
+                                        ngModel #linkedin="ngModel" 
+                                        required 
+                                        pattern="https?://.+"
+                                    />
+                                    <div *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched || userForm.submitted)">
                                         <small *ngIf="linkedin.errors?.['pattern']">Invalid URL format.</small>
                                     </div>
                                 </div>
@@ -125,12 +150,12 @@
                                             <small *ngIf="uni.errors?.['required']">University selection is required.</small>
                                         </div>
                         
-                                    <div class="deg-topic">
+                                    <!-- <div class="deg-topic">
                                         <div class="topic">
                                             <label for="Other-University">Other</label><br>
                                         </div>
                                         <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list, please type."><br>
-                                    </div>
+                                    </div> -->
                                     <!-- <label for="GPA">GPA</label><br>
                                         <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
                                 </div>
@@ -151,8 +176,8 @@
                                         class="work" 
                                         rows="3" 
                                         cols="30" 
-                                        ngModel 
-                                        #skills="ngModel" required
+                                        ngModel #skills="ngModel" 
+                                        required
                                         appMaxWords 
                                         [maxWords]="30"
                                         (wordLimitExceeded)="handleWordLimitExceeded($event)"
@@ -202,7 +227,8 @@
                                     <div class="topic avail-date">Immediate Available Date for the Position</div>
                                         <p-calendar
                                         [style]="{'width':'90%'}"
-                                        [(ngModel)]="availableDate" 
+                                        name="AvailableDate"
+                                        ngModel #AvailableDate = "ngModel" 
                                         [iconDisplay]="'input'" 
                                         [showIcon]="true" 
                                         dateFormat="dd.mm.yy"
@@ -217,8 +243,8 @@
                                         class="reason"
                                         rows="4"
                                         cols="30"
-                                        ngModel
-                                        #reason="ngModel" required
+                                        ngModel #reason ="ngModel" 
+                                        required
                                         appMaxWords
                                         [maxWords]="30"
                                         placeholder="Enter your message here (max 30 words)">
@@ -234,13 +260,13 @@
                                     </div>
                                     <div class="card-body" [style]="{'width':'90%'}">
                                         <p-fileUpload 
-                                            mode="basic" 
-                                            name="demo[]" 
-                                            chooseIcon="pi pi-upload" 
+                                            mode="advanced" 
+                                            name="cv" 
+                                            chooseIcon="pi pi-upload"
                                             url="https://www.primefaces.org/cdn/api/upload.php" 
                                             accept=".pdf" maxFileSize="1000000" 
                                             (onUpload)="onBasicUploadAuto($event)" 
-                                            [auto]="true" 
+                                            [auto]="true"
                                             chooseLabel="Browse" />
                                             <div *ngIf="fileName">
                                                 <h3>Uploaded File: {{ fileName }}</h3>
@@ -262,7 +288,7 @@
             </p-stepper>
 
             <div class="button">
-                <p-button label="Submit" type="submit" [disabled]="userForm.invalid"></p-button>
+                <p-button label="Submit" type="submit" [disabled]="userForm.invalid || !fileUploaded"></p-button>
             </div>
         </form>        
     </div>
