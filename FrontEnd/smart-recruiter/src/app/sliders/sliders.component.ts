@@ -10,23 +10,34 @@ import { Mark } from '../models/mark.model';
 })
 export class SlidersComponent implements  OnInit{
 
-  value : any = 50; //default value = 50 
+  value1 : number| null =null;
+  value2 : number| null=null;
+  value3 : number| null=null;
+  value4 : number| null=null;
+  value5 : number| null=null;
+  value6 : number| null=null;
+  value7 : number| null=null;
+  value8 : number| null=null;
+  value9 : number| null=null;
+  value10: number| null=null;
+
+  text:String='';
   isMarkSaved : boolean = false;  // confimation popup that mark is saved
   criteria_value : Mark[]=[
-    { criteria: 'Attitude and Discipline', value: this.value, inactive: false },
-    { criteria: 'Technical Knowledge', value: this.value, inactive: false },
-    { criteria: 'Education Background', value: this.value, inactive: false },
-    { criteria: 'Professional Qualification', value: this.value, inactive: false },
-    { criteria: 'Carrier Background', value: this.value, inactive: false },
-    { criteria: 'Communication Skills', value: this.value, inactive: false },
-    { criteria: 'Cultrul fit', value: this.value, inactive: false },
-    { criteria: 'Family Background', value: this.value, inactive: false },
-    { criteria: 'IQ/Craetivity/Problem Solving Skill', value: this.value, inactive: false },
-    { criteria: 'Management  Skills', value: this.value, inactive: false },
+    { criteria: 'Attitude and Discipline', value: this.value1, inactive: false },
+    { criteria: 'Technical Knowledge', value: this.value2, inactive: false },
+    { criteria: 'Education Background', value: this.value3, inactive: false },
+    { criteria: 'Professional Qualification', value: this.value4, inactive: false },
+    { criteria: 'Carrier Background', value: this.value5, inactive: false },
+    { criteria: 'Communication Skills', value: this.value6, inactive: false },
+    { criteria: 'Cultrul fit', value: this.value7, inactive: false },
+    { criteria: 'Family Background', value: this.value8, inactive: false },
+    { criteria: 'IQ/Craetivity/Problem Solving Skill', value: this.value9, inactive: false },
+    { criteria: 'Management  Skills', value: this.value10, inactive: false },
   
   ];
 
-  mark : Mark | undefined;
+ 
   
 
 
@@ -36,35 +47,34 @@ export class SlidersComponent implements  OnInit{
 
   ngOnInit(): void {}
 
-  savevalue() : void{
-  
-    if(this.mark){
-      //console.log(`Saving ${this.value} for ${this.mark.criteria}`);
-      if (this.mark.criteria && this.mark.value) {  // Mark 0 is not taking to account
-        var candidateId = 1;  //get using query parameter
-        var roleId = 0;       // get by fetching all candidate detail by candidateId
-        var jobId = 1;        // get using query parameter
-        var adminId = 1;      // get using authentication service
-        this.slidersService.saveMark(this.mark.criteria, this.mark.value, candidateId, roleId, jobId, adminId)
-        .subscribe((res) => { 
-          if (res){
-            this.isMarkSaved = true;
-
-            setTimeout(() => {
-              this.isMarkSaved = false;
-            }, 2000); // 5000 milliseconds = 5 seconds
-          }
-        });
-      } else {
-        console.log('select a criteria first');
-      }
-  
-  
-     } else {
-      console.log('select a criteria first');
+  saveComment(){
+    if(this.text){
+      console.log(`Saving comment: ${this.text}`);
     }
+
+  }
+
+  saveAll(){
+    this.savevalue();
+    this.saveComment();
+  }
+
   
+
+  savevalue() : void{
+    this.criteria_value.forEach((criteria, index) => {
+      console.log(`Value ${index + 1}: ${criteria.value}`);
+    });
+  
+  
+   
+  
+    
+     } 
+   
   
   }
 
-}
+
+
+

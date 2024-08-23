@@ -8,6 +8,9 @@ Example :
  
 **************************************************************************************************/
 
+USE SmartRecruiterDB;
+GO
+
 CREATE PROCEDURE [dbo].[getApplicantsFromJobId]
     @jobId INT
 AS
@@ -25,12 +28,5 @@ BEGIN
         INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id]
         LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId]
         WHERE cj.[JobId] = @jobId
-        AND c.[Role_Id] IN (0, 7);
-
-    -- SELECT cj.[CandidateID]
-    -- FROM [dbo].[candidates_jobs] cj
-    -- INNER JOIN [dbo].[candidates] c ON cj.[CandidateID] = c.[Id]
-    -- WHERE cj.[JobID] = @jobId
-    -- AND c.[Role_Id] IN (0, 7);
-
-END;
+        AND c.[Role_Id] IN (0, 7)
+END
