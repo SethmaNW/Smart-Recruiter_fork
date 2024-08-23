@@ -1,20 +1,17 @@
 /**************************************************************************************************
 Author : Nilakshi Induwara
-Usage : update the role id of a candidate using candidate id
+Usage : get Admin Id from Admin email
 Changes : 
-    2024-08-22 => Created
+    2024-08-21 => Created
 Example : 
 
 **************************************************************************************************/
 USE SmartRecruiterDB;
 GO
 
-CREATE PROCEDURE [dbo].[UpdateRoleId]
-    @newRoleId INT,
-    @candidateId INT
+CREATE PROCEDURE [dbo].[GetAdminEmail]
+    @email NVARCHAR(50)
 AS
 BEGIN
-    UPDATE [dbo].[candidates]
-    SET [role_Id] = @newRoleId
-    WHERE [Id] = @candidateId
+SELECT Id FROM [dbo].[admins] WHERE [email] = @email
 END
