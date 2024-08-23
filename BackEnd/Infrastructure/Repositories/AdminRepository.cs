@@ -19,9 +19,7 @@ public class AdminRepository : IAdminRepository
     public async Task<IEnumerable<int>> GetAdminEmail(string email)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = @"
-                    SELECT Id FROM [dbo].[admins] WHERE [email] = @email
-                    ";
+        var sql = "EXEC GetAdminEmail @email";
         var a_email = await connection.QueryAsync<int>(sql, new { email });
 
         return a_email;
