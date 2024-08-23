@@ -32,7 +32,7 @@
                 </div>
                 <div class="candidate-number">
                     <div class="candidate-count">
-                        <span style="opacity: 0.7;">15 Candidates Applied</span>
+                        <span style="opacity: 0.7;">{{ activeJob.id !== undefined ? (applicantsCounts[activeJob.id] | async) : 0 }} Candidates Applied</span>
                     </div>
                     <!-- <div>
                         <a [routerLink]="['/form']" ></a>

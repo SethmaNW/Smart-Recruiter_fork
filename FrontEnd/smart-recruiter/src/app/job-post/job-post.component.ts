@@ -7,7 +7,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ApplicantsListService } from '../services/applicants-list.service';
 
 
 @Component({
@@ -19,7 +21,6 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class JobPostComponent implements OnInit {
-  
 
   dropDownOptions : any = [
     { name : 'Active', value : true },
@@ -28,13 +29,24 @@ export class JobPostComponent implements OnInit {
   selectedFromDropDown! : any;
 
   @Input() job! : Job;
-  constructor(private http: HttpClient) { 
-  
-  }
+  applicantsCount$!: Observable<number>;
+
+  constructor(
+    private http: HttpClient, 
+    private applicantListServ: ApplicantsListService
+  ) { }
 
   ngOnInit(): void {
     //Assuming when a job posted it should be active at posting time
     this.selectedFromDropDown = this.job.activeStatus? this.dropDownOptions[0] : this.dropDownOptions[1];
+    if (this.job.id !== undefined) {
+      this.applicantsCount$ = combineLatest([
+        this.getApplicantsCount(this.job.id, 0),
+        this.getApplicantsCount(this.job.id, 1)
+      ]).pipe(
+        map(([count1, count2]) => count1 + count2)
+      );	
+    }
   }
 
   updateJob(job : Job) : Observable<boolean>{
@@ -50,6 +62,10 @@ export class JobPostComponent implements OnInit {
   // get dropdownOptions
   get dropdownOptions(){
     return this.dropDownOptions;
+  }
+
+  getApplicantsCount(jobId: number, roleId: number): Observable<number> {
+    return this.applicantListServ.getNoOfApplicants(jobId, roleId);
   }
 
 }

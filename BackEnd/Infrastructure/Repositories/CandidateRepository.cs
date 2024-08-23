@@ -129,4 +129,20 @@ public class CandidateRepository : ICandidateRepository
         return result;
     }
 
+    // get number of applicants for dashboard
+    public async Task<int> GetNoOfApplicnats(int jobId, int roleId)
+    {
+        try
+        {
+            using var connection = _dbContext.GetOpenConnection();
+            var sql = "EXEC GetNoOfApplicnats @jobId, @roleId";
+            var count = await connection.QuerySingleOrDefaultAsync<int>(sql, new { jobId, roleId });
+            return count;
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error getting number of candidates: {ex.Message}");
+            return 0;
+        }
+    }
+
 }

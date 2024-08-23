@@ -75,6 +75,10 @@ export class ApplicantsListService {
     return this.http.delete(`api/Candidate/delete/${candidateId}`);
   }
 
+  getNoOfApplicants(jobId: number, roleId: number): Observable<number> {
+    return this.http.get<number>(`api/Candidate/applicantsCount/${jobId}/${roleId}`);
+  }
+
   // loadDummyData() {
   //   this.customers = [
   //     {
