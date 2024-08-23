@@ -18,12 +18,18 @@ public class CommentRepository: ICommentRepository
     // post comment related to candidate in applicants page
     public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, string commentText)
     {
-        using var connection = _dbContext.GetOpenConnection();
-        var sql = "EXEC UpdateApplicantComment @candidateId, @jobId, @adminId, @roleId, @commentText";
+        try
+        {
+            using var connection = _dbContext.GetOpenConnection();
+            var sql = "EXEC UpdateApplicantComment @candidateId, @jobId, @adminId, @roleId, @commentText";
 
-        var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, roleId, commentText });
+            var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, roleId, commentText });
 
-        return rowsAffected > 0;
+            return rowsAffected > 0;
+        }
+        catch (Exception ex) { 
+            throw new Exception($"Error posting comment: {ex.Message}");
+        }
     }
 
     // check whether there is a comment under relevant candidateId and jobId

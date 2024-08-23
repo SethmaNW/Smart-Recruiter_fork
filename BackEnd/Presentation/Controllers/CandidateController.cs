@@ -97,11 +97,11 @@ public class CandidateController : ControllerBase
             var role = await _CandidateService.UpdateRoleId(candidateId, newRoleId);
             if (role)
             {
-                return Ok();
+                return Ok(new { success = true });
             }
             else
             {
-                return NotFound();
+                return NotFound(new { success = false });
             }
         }
         catch (Exception ex) {
@@ -117,11 +117,11 @@ public class CandidateController : ControllerBase
             var candidate = await _CandidateService.DeleteCandidate(candidateId);
             if (candidate)
             {
-                return Ok();
+                return Ok(new { success = true });
             }
             else
             {
-                return NotFound();
+                return NotFound(new { success = false });
             }
         }
         catch (Exception ex)
