@@ -30,4 +30,14 @@ public class CommentService : ICommentService
     {
         return await _CommentRepository.GetCandidateIdsOfJobId(jobId);
     }
+
+    public async Task<int?> GetRoleIdByCandidateIdAsync(int candidateId)
+    {
+        return await _CommentRepository.GetRoleIdByCandidateIdAsync(candidateId);
+    }
+
+     public async Task<List<Comment>> GetCommentsByCandidateAsync(int jobId,int candidateId)
+    {
+        return await _CommentRepository.GetCommentsByCandidateAsync(jobId,candidateId);
+    }
 }

@@ -55,7 +55,8 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
 import { ToastModule } from 'primeng/toast';
 import { StepperModule } from 'primeng/stepper';
 import { UserNavComponent } from './user-nav/user-nav.component';
-
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { StepsModule } from 'primeng/steps';
  
 @NgModule({
   declarations: [
@@ -113,7 +114,9 @@ import { UserNavComponent } from './user-nav/user-nav.component';
     MultiSelectModule,
     TabViewModule,
     ToastModule,
-    StepperModule
+    StepperModule,
+    ReactiveFormsModule,
+    StepsModule
   
   ],
   providers: [provideAnimations(),SlidersService, provideHttpClient(), MessageService, ConfirmationService],
