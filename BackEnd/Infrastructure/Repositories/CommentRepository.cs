@@ -52,4 +52,20 @@ public class CommentRepository: ICommentRepository
         return candidateIds.ToList();
     }
 
+    public async Task<int?> GetRoleIdByCandidateIdAsync(int candidateId)
+    {
+        using var connection= _dbContext.GetOpenConnection();
+        var sql="EXEC GetRoleIdByCandidateId @candidateId";
+        return await connection.QuerySingleOrDefaultAsync<int?>(sql, new {candidateId});
+    }
+
+    public async Task<List<Comment>> GetCommentsByCandidateAsync(int jobId,int candidateId)
+    {
+        using var connection =_dbContext.GetOpenConnection();
+        var sql="SELECT * FROM comments WHERE JobId =@jobId AND CandidateId=@candidateId";
+        return (await connection.QueryAsync<Comment>(sql ,new {jobId,candidateId})).ToList();
+    }
+
+
+
 }
