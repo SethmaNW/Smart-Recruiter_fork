@@ -19,12 +19,7 @@ public class CommentRepository: ICommentRepository
     public async Task<bool> UpdateApplicantComment(int jobId, int candidateId, int adminId, int roleId, string commentText)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = @"                    
-                    BEGIN 
-	                    INSERT INTO [dbo].[Comments] ([CandidateId], [jobId], [adminId], [roleId], [Comment])
-	                    VALUES (@candidateId, @jobId, @adminId, @roleId, @commentText )
-                    END 
-                    ";
+        var sql = "EXEC UpdateApplicantComment @candidateId, @jobId, @adminId, @roleId, @commentText";
 
         var rowsAffected = await connection.ExecuteAsync(sql, new { jobId, candidateId, adminId, roleId, commentText });
 
@@ -35,14 +30,7 @@ public class CommentRepository: ICommentRepository
     public async Task<bool> CheckApplicantComment(int jobId, int candidateId)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = @"
-                    SELECT CASE
-                    WHEN EXISTS 
-                    ( SELECT 1 FROM [dbo].[comments] WHERE [CandidateId] = @candidateId AND [jobId] = @jobId )
-                    THEN CAST (1 AS BIT)
-                    ELSE CAST (0 AS BIT)
-                    END
-                    ";
+        var sql = "EXEC CheckApplicantComment @candidateId, @jobId";
         var check_comment = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { jobId, candidateId });
 
         return check_comment;
@@ -52,7 +40,7 @@ public class CommentRepository: ICommentRepository
     public async Task<List<int>> GetCandidateIdsOfJobId(int jobId)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = " SELECT candidateId FROM [dbo].[comments] WHERE [jobId] = @jobId ";
+        var sql = "EXEC GetCandidateIdsOfJobId @jobId";
         var candidateIds = await connection.QueryAsync<int>(sql, new { jobId });
 
         return candidateIds.ToList();

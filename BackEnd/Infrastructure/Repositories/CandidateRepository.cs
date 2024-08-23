@@ -29,16 +29,7 @@ public class CandidateRepository : ICandidateRepository
     {
         using var connection = _dbContext.GetOpenConnection();
 
-        var sql = @"
-        SELECT 
-            c.[Id], c.[Name], c.[Contact], c.[CV_FilePath], 
-            c.[CV_FileName], c.[Skills], c.[Available_Date], 
-            c.[Degree], c.[Experience], c.[Reason], c.[Role_Id], com.[Comment] 
-        FROM [dbo].[candidates] c
-        INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id]
-        LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId] AND com.[jobId] = @jobId
-        WHERE cj.[JobId] = @jobId AND c.[Role_Id] IN (0, 7)";
-        //var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
+        var sql = "EXEC dbo.getApplicantsFromJobId @jobId";
 
         var candidates = await connection.QueryAsync<CandidateWithComment>(sql, new { jobId });
 
@@ -75,21 +66,24 @@ public class CandidateRepository : ICandidateRepository
     // update roleId by candidateId
     public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
     {
-        using var connection = _dbContext.GetOpenConnection();
-        var sql = @"
-                   UPDATE [dbo].[candidates]
-                   SET [role_Id] = @newRoleId
-                   WHERE [Id] = @candidateId
-                   ";
-        var role = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId, newRoleId });
-        return role;
+        try
+        {
+            using var connection = _dbContext.GetOpenConnection();
+            var sql = "EXEC UpdateRoleId @newRoleId, @candidateId";
+            var role = await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId, newRoleId });
+            return role;
+        }
+        catch (Exception ex) {
+            Console.WriteLine($"Error updating RoleId: {ex.Message}");
+            return false;
+        }
     }
 
     // delete a candidate by candidateId
     public async Task<bool> DeleteCandidate(int candidateId)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var sql = "DELETE FROM [dbo].[candidates] WHERE [Id] = @candidateId";
+        var sql = "EXEC DeleteCandidate @candidateId";
         return await connection.QuerySingleOrDefaultAsync<bool>(sql, new { candidateId });
     }
 
@@ -97,32 +91,26 @@ public class CandidateRepository : ICandidateRepository
     public async Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId)
     {
         using var connection = _dbContext.GetOpenConnection();
-        var shortlist = @"
-                        SELECT 
-                        c.[Id], c.[Name], c.[Contact], c.[CV_FilePath], 
-                        c.[CV_FileName], c.[Role_Id], c.[email]
-                        FROM [dbo].[candidates] c
-                        INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id] AND cj.[jobId] = @jobId AND c.[Role_Id] IN (1,2,3,6)
-                        ";
+        var shortlist = "EXEC GetShortlistFromJobId @jobId";
         return await connection.QueryAsync<Candidate>(shortlist, new { jobId });
     }
 
     public async Task<Candidate> GetCandidateById(int candidateId)
-{
-    using var connection = _dbContext.GetOpenConnection();
-    var sql = "GetCandidateById";
-    var result = await connection.QueryFirstOrDefaultAsync<Candidate>(
-        sql, 
-        new { candidateId }, 
-        commandType: CommandType.StoredProcedure
-    );
-
-    if (result == null)
     {
-        throw new KeyNotFoundException($"Candidate with ID {candidateId} not found.");
-    }
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = "GetCandidateById";
+        var result = await connection.QueryFirstOrDefaultAsync<Candidate>(
+            sql, 
+            new { candidateId }, 
+            commandType: CommandType.StoredProcedure
+        );
 
-    return result;
-}
+        if (result == null)
+        {
+            throw new KeyNotFoundException($"Candidate with ID {candidateId} not found.");
+        }
+
+        return result;
+    }
 
 }

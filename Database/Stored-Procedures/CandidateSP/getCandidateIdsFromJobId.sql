@@ -5,7 +5,7 @@ Changes :
     2024-08-09 => Created
 Example : 
 
- 
+not used
 **************************************************************************************************/
 
 CREATE PROCEDURE [dbo].[getCandidateIdsFromJobId]
