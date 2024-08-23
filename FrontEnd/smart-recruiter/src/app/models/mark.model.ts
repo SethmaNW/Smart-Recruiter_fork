@@ -1,5 +1,5 @@
 export interface Mark{
     criteria? : string;
-    value? : number;
+    value? : number | null;
     inactive? : boolean;
 }
