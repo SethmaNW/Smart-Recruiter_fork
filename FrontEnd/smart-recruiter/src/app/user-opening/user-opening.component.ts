@@ -51,7 +51,7 @@ export class UserOpeningComponent {
           map(([count1, count2]) => count1 + count2),
           tap(totalCount => console.log(`Job ID ${job.id}: ${totalCount} candidates`))
         );
-        //console.log(this.applicantsCounts[job.id]);
+        // console.log(this.applicantsCounts[job.id]);
       } else {
         console.log("undefined job id");
       }
