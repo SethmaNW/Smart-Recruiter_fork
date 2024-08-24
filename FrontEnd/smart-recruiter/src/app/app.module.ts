@@ -55,7 +55,7 @@ import { JobDescriptionComponent } from './job-description/job-description.compo
 import { ToastModule } from 'primeng/toast';
 import { StepperModule } from 'primeng/stepper';
 import { UserNavComponent } from './user-nav/user-nav.component';
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { ReactiveFormsModule } from '@angular/forms';
 import { StepsModule } from 'primeng/steps';
  
 @NgModule({

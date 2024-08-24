@@ -40,8 +40,8 @@ public class CandidateController : ControllerBase
         return Ok(candidates);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Save([FromForm] CandidateForm candidateForm)
+    [HttpPost("{jobId}")]
+    public async Task<IActionResult> Save([FromForm] CandidateForm candidateForm, [FromRoute] int jobId)
     {
         CandidateDTO? candidateDTO = candidateForm.Candidate != null ? JsonConvert.DeserializeObject<CandidateDTO>(candidateForm.Candidate) : null;
         if (candidateForm.CvFile == null || candidateForm.CvFile.Length == 0)
@@ -84,7 +84,7 @@ public class CandidateController : ControllerBase
         };
 
         //Save the candidate to the database
-        var savedCandidate = await _CandidateService.Save(candidate);
+        var savedCandidate = await _CandidateService.Save(candidate, jobId);
 
         return Ok(savedCandidate);
     }

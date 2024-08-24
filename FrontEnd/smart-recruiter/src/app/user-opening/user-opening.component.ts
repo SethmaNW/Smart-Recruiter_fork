@@ -27,7 +27,7 @@ export class UserOpeningComponent {
   ngOnInit(): void {
     this.http.get<Job[]>('api/Job/GetActiveJobs').subscribe(data=>{
       this.activeJobs = data;
-      console.log(this.activeJobs);
+      //console.log(this.activeJobs);
       this.calculateApplicantsCounts();
       // if (this.activeJobs.length > 0 && this.activeJobs[0].id !== undefined) {
       //   this.applicantsCount$ = combineLatest([
@@ -51,7 +51,7 @@ export class UserOpeningComponent {
           map(([count1, count2]) => count1 + count2),
           tap(totalCount => console.log(`Job ID ${job.id}: ${totalCount} candidates`))
         );
-        console.log(this.applicantsCounts[job.id]);
+        //console.log(this.applicantsCounts[job.id]);
       } else {
         console.log("undefined job id");
       }

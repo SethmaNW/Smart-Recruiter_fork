@@ -21,9 +21,9 @@ public class CandidateService : ICandidateService
     {
         return await _CandidateRepository.GetApplicantsFromJobId(jobId);
     }
-    public async Task<Candidate> Save(Candidate candidate)
+    public async Task<Candidate> Save(Candidate candidate, int jobId)
     {
-        return await _CandidateRepository.Save(candidate);
+        return await _CandidateRepository.Save(candidate, jobId);
     }
 
     public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
