@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output, Renderer2, OnDestroy, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormService } from './form.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -16,14 +18,22 @@ export class FormComponent implements OnInit, OnDestroy{
   form!: FormGroup; // create parent form group 
   currentStep = 0;  // form steps
 
+  public jobId : number | undefined = undefined;
+
   @Output() nextCallback = new EventEmitter<void>();
   @Output() prevCallback = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private fb: FormBuilder, 
+    private cdr: ChangeDetectorRef, 
+    private renderer: Renderer2, 
+    private el: ElementRef, 
+    private formSVC : FormService,
+    private route: ActivatedRoute
+  ) {}
   
   ngOnInit(): void {
     this.initializer();
-    this.renderer.addClass(this.el.nativeElement, 'specific-styles');
+    //this.renderer.addClass(this.el.nativeElement, 'specific-styles');
   }
 
   ngOnDestroy(): void {
@@ -60,6 +70,11 @@ export class FormComponent implements OnInit, OnDestroy{
 
     // Manually trigger change detection
     this.cdr.detectChanges();
+
+    //Take the query parameter
+    this.route.queryParams.subscribe(params => {    
+      this.jobId = params['jobId'];
+    });
   }
 
   nextStep() {
@@ -75,7 +90,7 @@ export class FormComponent implements OnInit, OnDestroy{
   }
 
   onSubmit() {
-    console.log(this.form);
+    this.formSVC.submitForm(this.form, this.jobId);
   }
   
   // for the cv upload

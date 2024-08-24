@@ -37,29 +37,33 @@ public class CandidateRepository : ICandidateRepository
     }
 
     // save candidate details
-    public async Task<Candidate> Save(Candidate candidate)
+    public async Task<Candidate> Save(Candidate candidate, int jobId)
     {
         using var connection = _dbContext.GetOpenConnection();
 
-        if (candidate.Id == 0)
-        {   
-            
-            var sql = @"
-                INSERT INTO Candidates (Name, Contact, Email, CV_FilePath, CV_FileName, Skills, Available_Date, GitHub_Link, LinkedIn, Degree, University, Reason, Experience, Role_Id) 
-                VALUES (@Name, @Contact, @Email, @CV_FilePath, @CV_FileName, @Skills, @Available_Date, @GitHub_Link, @LinkedIn, @Degree, @University, @Reason, @Experience, @Role_Id); 
-                SELECT CAST(SCOPE_IDENTITY() as int)";
+        int roleId = 0; // when candidate apply for a job, its' role is applicant so roleId is 1
 
-            var id = connection.Query<int>(sql, candidate).Single();
+        var parameters = new DynamicParameters();
+        parameters.Add("@Name", candidate.Name);
+        parameters.Add("@Contact", candidate.Contact);
+        parameters.Add("@Email", candidate.Email);
+        parameters.Add("@CV_FilePath", candidate.CV_FilePath);
+        parameters.Add("@CV_FileName", candidate.CV_FileName);
+        parameters.Add("@Skills", candidate.Skills);
+        parameters.Add("@Available_Date", candidate.Available_Date);
+        parameters.Add("@GitHub_Link", candidate.GitHub_Link);
+        parameters.Add("@LinkedIn", candidate.LinkedIn);
+        parameters.Add("@Degree", candidate.Degree);
+        parameters.Add("@University", candidate.University);
+        parameters.Add("@Reason", candidate.Reason);
+        parameters.Add("@Experience", candidate.Experience);
+        parameters.Add("@Role_Id", roleId);
+        parameters.Add("@jobId", jobId);
+        parameters.Add("@Id", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-            candidate.Id = id;
-            return candidate;
-        
-        }
-        else
-        {
-            await connection.UpdateAsync(candidate);
-        }
+        await connection.ExecuteAsync("SaveCandidate", parameters, commandType: CommandType.StoredProcedure);
 
+        candidate.Id = parameters.Get<int>("@Id");
         return candidate;
     }
 
