@@ -4,6 +4,7 @@ import { Job } from '../models/job.model';
 import { combineLatest, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ApplicantsListService } from '../services/applicants-list.service';
+import { JobPostService } from '../services/job-post.service';
 
 @Component({
   selector: 'app-user-opening',
@@ -13,12 +14,14 @@ import { ApplicantsListService } from '../services/applicants-list.service';
 })
 export class UserOpeningComponent {
   activeJobs : Job[] = [];
-  job:any;
-  filterGlobal: any;
+  // job:any;
+  // filterGlobal: any;
   // applicantsCount$!: Observable<number>;
   applicantsCounts: { [jobId: number]: Observable<number> } = {};
+  jobs: any[] = [];
+  filteredJobs: any[] = [];
 
-  constructor(private http : HttpClient, private applicantListServ: ApplicantsListService) { }
+  constructor(private http : HttpClient, private applicantListServ: ApplicantsListService, private jobPostSvc: JobPostService) { }
 
   // navigateToForm(){
   //   this.router. navigate (['/form']);
@@ -28,6 +31,9 @@ export class UserOpeningComponent {
     this.http.get<Job[]>('api/Job/GetActiveJobs').subscribe(data=>{
       this.activeJobs = data;
       //console.log(this.activeJobs);
+      this.jobs = data;
+      this.filteredJobs = data;
+      console.log("checkk",this.filteredJobs);
       this.calculateApplicantsCounts();
       // if (this.activeJobs.length > 0 && this.activeJobs[0].id !== undefined) {
       //   this.applicantsCount$ = combineLatest([
@@ -38,7 +44,19 @@ export class UserOpeningComponent {
       //   );	
       // }
     })
+  }
+
+  filterGlobal(event: Event){
+    const inputElement = event.target as HTMLInputElement;
+    const query = inputElement.value.toLowerCase();
     
+    this.filteredJobs = this.jobs.filter(job =>
+      job.title.toLowerCase().includes(query) ||
+      // job.description.toLowerCase().includes(query) ||
+      job.location.toLowerCase().includes(query) ||
+      job.department.toLowerCase().includes(query)
+    );
+    console.log(this.filteredJobs);
   }
 
   calculateApplicantsCounts(): void {
