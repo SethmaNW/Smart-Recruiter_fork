@@ -96,7 +96,7 @@
                         <p-button (onClick)="updateRoleId(customer.id, 1)" label="Accept" [outlined]="true" class="accept-button small-button" [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>
                         <p-button (onClick)="updateRoleId(customer.id, 7)" *ngIf="customer.role_Id===0" label="Remove" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
                         <p-toast />
-                        <p-confirmDialog #cd>
+                        <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="deleteVisible = false">
                             <ng-template pTemplate="headless" let-message>
                                 <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
                                     <span class="font-bold text-2xl block mb-2 mt-4">
@@ -122,7 +122,14 @@
                                 </div>
                             </ng-template>
                         </p-confirmDialog>
-                        <p-button (onClick)="confirmDelete(customer.id)" *ngIf="customer.role_Id===7" label="Delete" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px' }"/>
+                        <p-button 
+                        (onClick)="confirmDelete(customer.id)" 
+                        *ngIf="customer.role_Id===7" 
+                        label="Delete" 
+                        severity="danger" 
+                        [outlined]="true" 
+                        class="small-button" 
+                        [style]="{ 'font-size': '13px' }"/>
                     </div>
                 </td>
             </tr>
