@@ -1,6 +1,23 @@
 <div class="flex flex-column">
     <app-user-nav></app-user-nav>
     <div class="form-style">
+
+        <div class="grid top-overlay" *ngIf="formSVC.formSubmitted">
+            <div class="col-12">
+                <div class="ml-auto">
+                    <p-card [style]="{'background-color':'var(--green-200)', 
+                                'height':'3rem', 
+                                'width': '28%',
+                                'margin-left'  : 'auto'}">
+                    <div class="-mt-5">
+                        <i class="fa-regular fa-circle-check" style="color: #1da750;"></i>
+                        Application Saved!
+                    </div>
+                </p-card>
+                </div>
+            </div>
+        </div>
+
         <div>
             <h1 class="text-center h1-form">Join Our Team !</h1>
             <p class="text-center custom-para">Fill the following form, and we'll inform you shortly if you are shortlisted.</p>
@@ -11,113 +28,80 @@
                 <!-- Personal Information -->
                 <p-stepperPanel header="Personal Information" class="stepper-panel" [style]="{'width': '90%'}">
                     <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
-                        <!-- <div class="flex flex-column h-12rem"> -->
-                            <div class="border-1 surface-border border-round font-medium step-content formG" formGroupName="personalInfo">                                
-                            <!-- <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium stepper">                                 -->
-                                <div class="p-Name">
-                                    <div class="topic">Name</div>
-                                    <input type="text" id="name" name="name" class="name" placeholder="Enter full Name" formControlName="name" required><br>
-                                    <div *ngIf="(form.get('personalInfo.name')?.invalid && form.get('personalInfo.name')?.touched)">
-                                        <small *ngIf="form.get('personalInfo.name')?.errors?.['required']">Name is required.</small>
-                                    </div>
-                                </div>
-                                <div class="Contact">
-                                    <div class="topic">Contact Number</div>
-                                    <input
-                                        type="text" 
-                                        id="phone" 
-                                        name="phone" 
-                                        class="phone" 
-                                        placeholder="07* *******" 
-                                        formControlName="phone"
-                                        required 
-                                        pattern="07\d{8}$"
-                                        inputmode="tel"
-                                    />
-                                    <div *ngIf="form.get('personalInfo.phone')?.invalid && (form.get('personalInfo.phone')?.dirty || form.get('personalInfo.phone')?.touched)">
-                                        <small *ngIf="form.get('personalInfo.phone')?.errors?.['required']">Phone number is required.</small>
-                                        <small *ngIf="form.get('personalInfo.phone')?.errors?.['pattern']">Invalid phone number format.</small>
-                                    </div>
-                                </div>
-                                <div class="Email">
-                                    <div class="topic">Email Address</div>
-                                    <input 
-                                        type="email" 
-                                        id="email" 
-                                        name="email" 
-                                        class="email" 
-                                        placeholder="Enter your email" 
-                                        formControlName="email"
-                                        required 
-                                        email
-                                    />
-                                    <div *ngIf="form.get('personalInfo.email')?.invalid && (form.get('personalInfo.email')?.dirty || form.get('personalInfo.email')?.touched)">
-                                        <small *ngIf="form.get('personalInfo.email')?.errors?.['required']">Email address is required.</small>
-                                        <small *ngIf="form.get('personalInfo.email')?.errors?.['email']">Invalid email address format.</small>
-                                    </div>
-                                </div>
-                                <div class="GitHub">
-                                    <div class="topic">GitHub Link</div>
-                                    <!-- <input 
-                                        type="url" 
-                                        id="github" 
-                                        name="github" 
-                                        class="github" 
-                                        placeholder="Enter your GitHub profile link" 
-                                        ngModel 
-                                        #github="ngModel" 
-                                        required 
-                                        pattern="https?://.+"
-                                    />
-                                    <div *ngIf="github.invalid && (github.dirty || github.touched || userForm.submitted)">
-                                        <small *ngIf="github.errors?.['required']">GitHub link is required.</small>
-                                        <small *ngIf="github.errors?.['pattern']">Invalid URL format.</small>
-                                    </div> -->
-                                    <input 
-                                        type="url" 
-                                        id="github" 
-                                        name="github" 
-                                        class="github" 
-                                        placeholder="Enter your GitHub profile link (optional)" 
-                                        formControlName="github"
-                                        pattern="https?://.+"
-                                    />
-                                    <div>
-                                        <small *ngIf="form.get('personalInfo.github')?.errors?.['pattern']">Invalid URL format.</small>
-                                    </div>
-                                </div>
-                                <div class="LinkedIn">
-                                    <div class="topic">LinkedIn URL</div>
-                                    <!-- <input 
-                                        type="url" 
-                                        id="linkedin" 
-                                        name="linkedin" 
-                                        class="linkedin" 
-                                        placeholder="Enter your LinkedIn profile link" 
-                                        ngModel 
-                                        #linkedin="ngModel" 
-                                        required 
-                                        pattern="https?://.+"
-                                    />
-                                    <div *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched || userForm.submitted)">
-                                        <small *ngIf="linkedin.errors?.['required']">LinkedIn URL is required.</small>
-                                        <small *ngIf="linkedin.errors?.['pattern']">Invalid URL format.</small>
-                                    </div> -->
-                                    <input 
-                                        type="url" 
-                                        id="linkedin" 
-                                        name="linkedin" 
-                                        class="linkedin" 
-                                        placeholder="Enter your LinkedIn profile link (optional)" 
-                                        formControlName="linkedIn" 
-                                        pattern="https?://.+"
-                                    />
-                                    <div>
-                                        <small *ngIf="form.get('personalInfo.linkedIn')?.errors?.['pattern']">Invalid URL format.</small>
-                                    </div>
+                        <div class="border-1 surface-border border-round font-medium step-content formG" formGroupName="personalInfo">                                
+                            <div class="p-Name">
+                                <div class="topic">Name</div>
+                                <input type="text" id="name" name="name" class="name" placeholder="Enter full Name" formControlName="name" required><br>
+                                <div *ngIf="(form.get('personalInfo.name')?.invalid && form.get('personalInfo.name')?.touched)">
+                                    <small *ngIf="form.get('personalInfo.name')?.errors?.['required']">Name is required.</small>
                                 </div>
                             </div>
-                        <!-- </div> -->
+                            <div class="Contact">
+                                <div class="topic">Contact Number</div>
+                                <input
+                                    type="text" 
+                                    id="phone" 
+                                    name="phone" 
+                                    class="phone" 
+                                    placeholder="07* *******" 
+                                    formControlName="phone"
+                                    required 
+                                    pattern="07\d{8}$"
+                                    inputmode="tel"
+                                />
+                                <div *ngIf="form.get('personalInfo.phone')?.invalid && (form.get('personalInfo.phone')?.dirty || form.get('personalInfo.phone')?.touched)">
+                                    <small *ngIf="form.get('personalInfo.phone')?.errors?.['required']">Phone number is required.</small>
+                                    <small *ngIf="form.get('personalInfo.phone')?.errors?.['pattern']">Invalid phone number format.</small>
+                                </div>
+                            </div>
+                            <div class="Email">
+                                <div class="topic">Email Address</div>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="email" 
+                                    placeholder="Enter your email" 
+                                    formControlName="email"
+                                    required 
+                                    email
+                                />
+                                <div *ngIf="form.get('personalInfo.email')?.invalid && (form.get('personalInfo.email')?.dirty || form.get('personalInfo.email')?.touched)">
+                                    <small *ngIf="form.get('personalInfo.email')?.errors?.['required']">Email address is required.</small>
+                                    <small *ngIf="form.get('personalInfo.email')?.errors?.['email']">Invalid email address format.</small>
+                                </div>
+                            </div>
+                            <div class="GitHub">
+                                <div class="topic">GitHub Link</div>
+                                <input 
+                                    type="url" 
+                                    id="github" 
+                                    name="github" 
+                                    class="github" 
+                                    placeholder="Enter your GitHub profile link (optional)" 
+                                    formControlName="github"
+                                    pattern="https?://.+"
+                                />
+                                <div>
+                                    <small *ngIf="form.get('personalInfo.github')?.errors?.['pattern']">Invalid URL format.</small>
+                                </div>
+                            </div>
+                            <div class="LinkedIn">
+                                <div class="topic">LinkedIn URL</div>
+                                <input 
+                                    type="url" 
+                                    id="linkedin" 
+                                    name="linkedin" 
+                                    class="linkedin" 
+                                    placeholder="Enter your LinkedIn profile link (optional)" 
+                                    formControlName="linkedIn" 
+                                    pattern="https?://.+"
+                                />
+                                <div>
+                                    <small *ngIf="form.get('personalInfo.linkedIn')?.errors?.['pattern']">Invalid URL format.</small>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="flex pt-4 justify-content-end">
                             <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="nextStep()" />
@@ -128,86 +112,74 @@
                 <!-- Educational and Work Experience -->
                 <p-stepperPanel header="Educational and Work Experience">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
-                        <!-- <div class="flex flex-column h-12rem"> -->
-                            <div class="border-1 surface-border border-round font-medium step-content" formGroupName="educationInfo">                                
-                                <div class="Education">
-                                    <div class="topic">University</div>
-                                        <select id="University" name="University" class="University" formControlName="university" required>
-                                            <option  value="University of Colombo">University of Colombo</option>
-                                            <option  value="University of Peradeniya">University of Peradeniya</option>
-                                            <option  value="University of Moratuwa">University of Moratuwa</option>
-                                            <option  value="University of Ruhuna">University of Ruhuna</option>
-                                            <option  value="SLIIT">SLIIT</option>
-                                            <option  value="NIBM">NIBM</option>
-                                            <option  value="NSBM">NSBM</option>
-                                            <option  value="ICBT">ICBT</option>
-                                            <option  value="Other-University">Other</option>
-                                        </select><br>
-                                        <div *ngIf="form.get('educationInfo.university')?.touched">
-                                            <small *ngIf="form.get('educationInfo.university')?.errors?.['required']">University selection is required.</small>
-                                        </div>
-                        
-                                    <!-- <div class="deg-topic">
-                                        <div class="topic">
-                                            <label for="Other-University">Other</label><br>
-                                        </div>
-                                        <input type="text" id =Other-University name="Other-University" ngModel class="Other-University" placeholder="If your university doesn't exit in list, please type."><br>
-                                    </div> -->
-                                    <!-- <label for="GPA">GPA</label><br>
-                                        <input type="text" id =GPA name="GPA" class="GPA" placeholder="GPA" ngModel><br>  -->
-                                </div>
-                                <div class="deg-topic">
-                                    <div class="topic">
-                                        <label for="Degree">Degree</label><br>
+                        <div class="border-1 surface-border border-round font-medium step-content" formGroupName="educationInfo">                                
+                            <div class="Education">
+                                <div class="topic">University</div>
+                                    <select id="University" name="University" class="University" formControlName="university" required>
+                                        <option  value="University of Colombo">University of Colombo</option>
+                                        <option  value="University of Peradeniya">University of Peradeniya</option>
+                                        <option  value="University of Moratuwa">University of Moratuwa</option>
+                                        <option  value="University of Ruhuna">University of Ruhuna</option>
+                                        <option  value="SLIIT">SLIIT</option>
+                                        <option  value="NIBM">NIBM</option>
+                                        <option  value="NSBM">NSBM</option>
+                                        <option  value="ICBT">ICBT</option>
+                                        <option  value="Other-University">Other</option>
+                                    </select><br>
+                                    <div *ngIf="form.get('educationInfo.university')?.touched">
+                                        <small *ngIf="form.get('educationInfo.university')?.errors?.['required']">University selection is required.</small>
                                     </div>
-                                    <input type="text" id =Degree name="Degree" class="degree" formControlName="degree" required><br>
-                                    <div *ngIf="form.get('educationInfo.degree')?.touched">
-                                        <small *ngIf="form.get('educationInfo.degree')?.errors?.['required']">Degree is required.</small>
-                                    </div>
-                                </div>
-                                <div class="p-skills">
-                                    <div class="topic">Skills</div>
-                                    <textarea 
-                                        id="skills" 
-                                        name="skills" 
-                                        class="work" 
-                                        rows="3" 
-                                        cols="30" 
-                                        formControlName="skills"
-                                        required
-                                        appMaxWords 
-                                        [maxWords]="30"
-                                        (wordLimitExceeded)="handleWordLimitExceeded($event)"
-                                        placeholder="Enter your skills (max 30 words)"
-                                    ></textarea>
-                                    <br>
-                                    <div *ngIf="form.get('educationInfo.skills')?.touched">
-                                        <small *ngIf="form.get('educationInfo.skills')?.errors?.['required']">Skills field is required.</small>
-                                    </div>
-                                    <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div>
-                                </div>
-                                <div class="p-work">
-                                    <div class="topic">Work Experience</div>
-                                    <textarea 
-                                        name="work" 
-                                        id="work"
-                                        class="work"
-                                        rows="4"
-                                        cols="30"
-                                        formControlName="workExperience"
-                                        required
-                                        appMaxWords
-                                        [maxWords]="30"
-                                        placeholder="Enter your Work Experience (max 30 words)">
-                                        <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
-                                    </textarea>
-                                    <div *ngIf="form.get('educationInfo.workExperience')?.touched">
-                                        <small *ngIf="form.get('educationInfo.workExperience')?.errors?.['required']">Work Experience is required.</small>
-                                    </div>
-                                </div>
-
                             </div>
-                        <!-- </div> -->
+                            <div class="deg-topic">
+                                <div class="topic">
+                                    <label for="Degree">Degree</label><br>
+                                </div>
+                                <input type="text" id =Degree name="Degree" class="degree" formControlName="degree" required><br>
+                                <div *ngIf="form.get('educationInfo.degree')?.touched">
+                                    <small *ngIf="form.get('educationInfo.degree')?.errors?.['required']">Degree is required.</small>
+                                </div>
+                            </div>
+                            <div class="p-skills">
+                                <div class="topic">Skills</div>
+                                <textarea 
+                                    id="skills" 
+                                    name="skills" 
+                                    class="work" 
+                                    rows="3" 
+                                    cols="30" 
+                                    formControlName="skills"
+                                    required
+                                    appMaxWords 
+                                    [maxWords]="30"
+                                    (wordLimitExceeded)="handleWordLimitExceeded($event)"
+                                    placeholder="Enter your skills (max 30 words)"
+                                ></textarea>
+                                <br>
+                                <div *ngIf="form.get('educationInfo.skills')?.touched">
+                                    <small *ngIf="form.get('educationInfo.skills')?.errors?.['required']">Skills field is required.</small>
+                                </div>
+                                <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div>
+                            </div>
+                            <div class="p-work">
+                                <div class="topic">Work Experience</div>
+                                <textarea 
+                                    name="work" 
+                                    id="work"
+                                    class="work"
+                                    rows="4"
+                                    cols="30"
+                                    formControlName="workExperience"
+                                    required
+                                    appMaxWords
+                                    [maxWords]="30"
+                                    placeholder="Enter your Work Experience (max 30 words)">
+                                </textarea>
+                                <div *ngIf="form.get('educationInfo.workExperience')?.touched">
+                                    <small *ngIf="form.get('educationInfo.workExperience')?.errors?.['required']">Work Experience is required.</small>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="flex pt-4 justify-content-between">
                             <p-button label="Back" icon="pi pi-arrow-left" (onClick)="previousStep()" />
                             <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="nextStep()" />
@@ -218,66 +190,63 @@
                 <!-- Other -->
                 <p-stepperPanel header="Other">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
-                        <!-- <div class="flex flex-column h-12rem"> -->
-                            <div class="border-1 surface-border border-round font-medium step-content" formGroupName="otherInfo">                                
-                                <div class="p-available-date">
-                                    <div class="topic avail-date">Immediate Available Date for the Position</div>
-                                        <p-calendar
-                                        [style]="{'width':'90%'}"
-                                        name="AvailableDate"
-                                        formControlName="availableDate"
-                                        [iconDisplay]="'input'" 
-                                        [showIcon]="true" 
-                                        dateFormat="dd.mm.yy"
-                                        [minDate]="minDate"
-                                        inputId="icondisplay" />
-                                </div>
-                                <div class="p-reason">
-                                    <div class="topic">Why do you want to join LB Finance</div>
-                                    <textarea 
-                                        name="reason" 
-                                        id="reason"
-                                        class="reason"
-                                        rows="4"
-                                        cols="30"
-                                        formControlName="reason"
-                                        required
-                                        appMaxWords
-                                        [maxWords]="30"
-                                        placeholder="Enter your message here (max 30 words)">
-                                        <!-- <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div> -->
-                                    </textarea>
-                                    <div *ngIf="form.get('otherInfo.reason')?.touched">
-                                        <small *ngIf="form.get('otherInfo.reason')?.errors?.['required']">This field is required.</small>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="topic">Upload CV</div>
-                                    </div>
-                                    <div class="card-body" [style]="{'width':'90%'}">
-                                        <p-fileUpload  
-                                            name="cv"
-                                            chooseIcon="pi pi-upload"
-                                            url="https://www.primefaces.org/cdn/api/upload.php" 
-                                            accept=".pdf" maxFileSize="1000000" 
-                                            (onUpload)="onBasicUploadAuto($event)" 
-                                            [auto]="true"
-                                            chooseLabel="Browse"
-                                            required
-                                            />
-                                            <div *ngIf="fileUploaded">
-                                                <h3>Uploaded File: {{ fileName }}</h3>
-                                                <p>File uploaded successfully!</p>
-                                            </div>
-                                            <div *ngIf="!fileUploaded && form.get('otherInfo.cv')?.touched" >
-                                                <small class="error-message">Please upload a file.</small>
-                                            </div>
-                                    </div>
-                                </div>
-
+                        <div class="border-1 surface-border border-round font-medium step-content" formGroupName="otherInfo">                                
+                            <div class="p-available-date">
+                                <div class="topic avail-date">Immediate Available Date for the Position</div>
+                                    <p-calendar
+                                    [style]="{'width':'90%'}"
+                                    name="AvailableDate"
+                                    formControlName="availableDate"
+                                    [iconDisplay]="'input'" 
+                                    [showIcon]="true" 
+                                    dateFormat="dd.mm.yy"
+                                    [minDate]="minDate"
+                                    inputId="icondisplay" />
                             </div>
-                        <!-- </div> -->
+                            <div class="p-reason">
+                                <div class="topic">Why do you want to join LB Finance</div>
+                                <textarea 
+                                    name="reason" 
+                                    id="reason"
+                                    class="reason"
+                                    rows="4"
+                                    cols="30"
+                                    formControlName="reason"
+                                    required
+                                    appMaxWords
+                                    [maxWords]="30"
+                                    placeholder="Enter your message here (max 30 words)">
+                                </textarea>
+                                <div *ngIf="form.get('otherInfo.reason')?.touched">
+                                    <small *ngIf="form.get('otherInfo.reason')?.errors?.['required']">This field is required.</small>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="topic">Upload CV</div>
+                                </div>
+                                <div class="card-body" [style]="{'width':'90%'}">
+                                    <p-fileUpload  
+                                        name="cv"
+                                        chooseIcon="pi pi-upload"
+                                        url="https://www.primefaces.org/cdn/api/upload.php" 
+                                        accept=".pdf" maxFileSize="1000000" 
+                                        (onUpload)="onBasicUploadAuto($event)" 
+                                        [auto]="true"
+                                        chooseLabel="Browse"
+                                        required
+                                        />
+                                        <div *ngIf="fileUploaded">
+                                            <h3>Uploaded File: {{ fileName }}</h3>
+                                            <p>File uploaded successfully!</p>
+                                        </div>
+                                        <div *ngIf="!fileUploaded && form.get('otherInfo.cv')?.touched" >
+                                            <small class="error-message">Please upload a file.</small>
+                                        </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <div class="flex pt-4 justify-content-start">
                             <p-button label="Back" icon="pi pi-arrow-left" (onClick)="previousStep()" />
                         </div>
