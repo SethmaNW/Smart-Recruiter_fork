@@ -8,6 +8,8 @@ import { Candidate } from '../models/candidate.model';
 })
 export class FormService {
 
+  public formSubmitted : boolean = false;
+
   constructor(private http : HttpClient) { }
 
   public submitForm(form : FormGroup, jobId : number | undefined) : void{
@@ -34,7 +36,14 @@ export class FormService {
     const url = `api/Candidate/${jobId}`;
     this.http.post(url, formData).subscribe((res) => {
       //console.log(res);
-      
+      if (res){
+        window.scrollTo(0, 0);
+        this.formSubmitted = true;
+        setTimeout(() => {
+          this.formSubmitted = false;
+          window.location.reload(); // Refresh the page
+        }, 3000);
+      }
     });
   }
 }
