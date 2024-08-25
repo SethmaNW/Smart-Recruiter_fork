@@ -50,4 +50,9 @@ public class CandidateService : ICandidateService
     {
         return await _CandidateRepository.GetNoOfApplicnats(jobId, roleId);
     }
+
+    public async Task<int> GetRoleIdByCandidateId(int candidateId)
+    {
+        return await _CandidateRepository.GetRoleIdByCandidateId(candidateId);
+    }
 }

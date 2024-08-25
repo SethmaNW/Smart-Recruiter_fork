@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.IServices;
-using Microsoft.Extensions.Logging;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using DTO.DTOs;
 using Newtonsoft.Json;
 
@@ -149,5 +147,12 @@ public class CandidateController : ControllerBase
     {
         var count = await _CandidateService.GetNoOfApplicnats(jobId, roleId);
         return Ok(count);
+    }
+
+    [HttpGet("getRoleIdByCandidateId/{candidateId}")]
+    public async Task<IActionResult> GetRoleIdByCandidateId(int candidateId)
+    {
+        var roleId = await _CandidateService.GetRoleIdByCandidateId(candidateId);
+        return Ok(roleId);
     }
 }

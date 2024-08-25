@@ -12,4 +12,5 @@ public interface ICandidateRepository
     Task<IEnumerable<Candidate>> GetShortlistFromJobId(int jobId);
     Task<Candidate> GetCandidateById(int candidateId);
     Task<int> GetNoOfApplicnats(int jobId, int roleId);
+    Task<int> GetRoleIdByCandidateId(int candidateId);
 }

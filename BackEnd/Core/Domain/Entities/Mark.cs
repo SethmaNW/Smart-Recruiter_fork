@@ -9,7 +9,7 @@ namespace Domain.Entities
         public int? TechnicalKnowledge { get; set; }
         public int? EducationBackground { get; set; }
         public int? ProfessionalQualification { get; set; }
-        public int? CarrierBackground { get; set; }
+        public int? CareerBackground { get; set; }
         public int? CommunicationSkills { get; set; }
         public int? CulturalFit { get; set; }
         public int? FamilyBackground { get; set; }

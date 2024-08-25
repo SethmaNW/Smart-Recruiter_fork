@@ -1,3 +1,4 @@
+using Domain.Entities;
 using DTO.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.IServices;
@@ -16,9 +17,9 @@ public class MarkController : ControllerBase{
     }
 
     [HttpPost]
-    public async Task<IActionResult> SaveMark(MarkSaveDTO markSaveDTO)
+    public async Task<IActionResult> SaveMark(Mark mark)
     {
-        var res = await _MarkService.SaveMark(markSaveDTO);
+        var res = await _MarkService.SaveMark(mark);
         return Ok(res);
     }
     
