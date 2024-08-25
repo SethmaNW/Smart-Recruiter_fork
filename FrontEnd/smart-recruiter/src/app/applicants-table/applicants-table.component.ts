@@ -27,6 +27,7 @@ export class ApplicantsTableComponent implements OnInit {
   selectedColumns: any[] = [];
   visible: boolean = false;
   candidatesWithComments: number[] = [];
+  deleteVisible: boolean = false;
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
@@ -218,14 +219,17 @@ export class ApplicantsTableComponent implements OnInit {
   }
   
   confirmDelete(candidateId: number) {
+    this.deleteVisible = true;
     this.confService.confirm({
       message: 'Are you sure you want to delete this candidate?',
       header: 'Delete Confirmation',
       // icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteCandidate(candidateId);
+        this.deleteVisible = false;
       },
       reject: () => {
+        this.deleteVisible = false;
         console.log('Delete operation cancelled');
       }
     });
