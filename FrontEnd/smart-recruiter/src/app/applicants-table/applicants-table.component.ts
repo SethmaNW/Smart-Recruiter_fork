@@ -193,6 +193,7 @@ export class ApplicantsTableComponent implements OnInit {
       const customer = this.customers.find(c => c.id === candidateId);
       if (customer) {
         customer.role_Id = roleId;
+        this.loadRelevantData(this.roleId);
       }
       // this.loadData();
       this.cd.detectChanges();

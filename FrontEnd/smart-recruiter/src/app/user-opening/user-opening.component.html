@@ -37,14 +37,14 @@
                     <!-- <div>
                         <a [routerLink]="['/form']" ></a>
                     </div> -->
-                    <div class="ml-3">
+                    <div class="ml-3">                        
+                        <span style="opacity: 0.7;">{{ activeJob.noOfAvailablePositions }} Available positions </span>
+                    </div>
+                    <div class="candidate-available">
                         <a [routerLink]="['/job-description']" [queryParams]="{'jobId' : activeJob.id}" style="color: #22c55e; text-decoration: none;">
                             <span >See Job Description</span>
                             <i class="fa-solid fa-angle-right ml-1"></i>
                         </a>
-                    </div>
-                    <div class="candidate-available">
-                        <span style="opacity: 0.7;">{{ activeJob.noOfAvailablePositions }} Available positions </span>
                     </div>
                 </div>   
             </p-card>
