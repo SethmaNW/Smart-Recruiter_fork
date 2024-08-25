@@ -27,7 +27,7 @@ export class FormComponent implements OnInit, OnDestroy{
     private cdr: ChangeDetectorRef, 
     private renderer: Renderer2, 
     private el: ElementRef, 
-    private formSVC : FormService,
+    public formSVC : FormService,
     private route: ActivatedRoute
   ) {}
   

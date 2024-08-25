@@ -1,3 +1,4 @@
+//this specific-style class not used
 .specific-styles{
     :host ::ng-deep .p-fileupload-content {
         background-color: rgb(249, 246, 241);
@@ -143,4 +144,11 @@ small {
     display: flex;
     margin-left: auto;
     margin-right: 32rem;
+}
+
+.top-overlay {
+    width : 100%;
+    z-index: 10;
+    margin-top: -1.5rem;
+    margin-left: 0.5rem;
 }
