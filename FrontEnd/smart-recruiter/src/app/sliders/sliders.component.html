@@ -41,8 +41,15 @@
             </div>
         </div>
         <div class="grid">
-            <div class="col-12">
+            <div class="col-6">
                     <textarea [(ngModel)]="text" pInputTextarea rows="5 " cols="30" [autoResize]="true" placeholder="Enter a comment" ></textarea>
+            </div>
+            <div class="col-6">
+                <div class="comment-list">
+                    <p *ngFor="let comment of comments">{{ comment }}</p>
+                    <textarea [(ngModel)]="saveComment" ></textarea>
+                  </div>
+
             </div>
         </div>
         <div class="grid">
