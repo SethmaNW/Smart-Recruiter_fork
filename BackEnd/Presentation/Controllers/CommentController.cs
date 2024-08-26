@@ -61,4 +61,13 @@ public class CommentController : ControllerBase
 
         return NotFound("Role ID not found foor the given job and candidate.");
     }
+
+    [HttpGet("comment/{jobId}/{candidateId}")]
+    public async Task<IActionResult> GetCommentByCandidateId(int jobId, int candidateId)
+    {
+        var comment= await _CommentService.GetCommentByCandidateIdAsync(jobId,candidateId);
+        return Ok(comment);
+    }
+    
+
 }

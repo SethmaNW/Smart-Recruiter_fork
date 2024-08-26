@@ -31,13 +31,15 @@ public class CommentService : ICommentService
         return await _CommentRepository.GetCandidateIdsOfJobId(jobId);
     }
 
+    //get all the roleId under relevant CandidateId
     public async Task<int?> GetRoleIdByCandidateIdAsync(int candidateId)
     {
         return await _CommentRepository.GetRoleIdByCandidateIdAsync(candidateId);
     }
-
-     public async Task<List<Comment>> GetCommentsByCandidateAsync(int jobId,int candidateId)
+    
+    //retrieving comment 
+     public async Task<List<Comment>> GetCommentByCandidateIdAsync(int jobId,int candidateId)
     {
-        return await _CommentRepository.GetCommentsByCandidateAsync(jobId,candidateId);
+        return await _CommentRepository.GetCommentByCandidateIdAsync(jobId,candidateId);
     }
 }

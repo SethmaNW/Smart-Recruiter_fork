@@ -24,6 +24,7 @@ export class SlidersComponent implements  OnInit{
   private value10: number| null=null;
 
   public text : string | undefined= undefined;
+  comments: string[] = [];
   public criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value1, inactive: false },
     { criteria: 'Technical Knowledge', value: this.value2, inactive: false },

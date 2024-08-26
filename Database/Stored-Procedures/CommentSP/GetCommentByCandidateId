@@ -1,8 +1,8 @@
 /**************************************************************************************************
 Author : Sethma Nethmini
-Usage : Get role id for given candidate id ..
+Usage : Retrieving Comments
 Changes : 
-    2024-08-23 => Created
+    2024-08-26 => Created
 Example : 
 
 not used
@@ -11,14 +11,17 @@ not used
 USE SmartRecruiterDB;
 GO
 
-CREATE PROCEDURE [dbo].[GetRoleIdByCandidateId]
+CREATE PROCEDURE [dbo].[GetCommentByCandidateId]
 
-    @candidateId INT
+    @candidateId INT,
+    @jobId INT
+    
+
 AS
 
 BEGIN
 
-    SELECT Role_Id
-    FROM candidates
-    WHERE Id = @candidateId;
+    SELECT *
+    FROM comments
+    WHERE Id = @candidateId AND JobId=@jobId;
 END
