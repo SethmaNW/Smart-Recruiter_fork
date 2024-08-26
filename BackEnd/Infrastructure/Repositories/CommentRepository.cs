@@ -51,15 +51,18 @@ public class CommentRepository: ICommentRepository
 
         return candidateIds.ToList();
     }
-
+    
+    //get role id under relevant candidate id
+    
     public async Task<int?> GetRoleIdByCandidateIdAsync(int candidateId)
     {
         using var connection= _dbContext.GetOpenConnection();
         var sql="EXEC GetRoleIdByCandidateId @candidateId";
         return await connection.QuerySingleOrDefaultAsync<int?>(sql, new {candidateId});
     }
-
-    public async Task<List<Comment>> GetCommentsByCandidateAsync(int jobId,int candidateId)
+    
+    //retrieving comment 
+    public async Task<List<Comment>> GetCommentByCandidateIdAsync(int jobId,int candidateId)
     {
         using var connection =_dbContext.GetOpenConnection();
         var sql="SELECT * FROM comments WHERE JobId =@jobId AND CandidateId=@candidateId";
