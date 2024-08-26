@@ -149,4 +149,17 @@ public class CandidateRepository : ICandidateRepository
         }
     }
 
+    public async Task<int> GetRoleIdByCandidateId(int candidateId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        var sql = "GetRoleIdByCandidateId";
+        var roleId = await connection.QuerySingleOrDefaultAsync<int>(
+            sql,
+            new { candidateId },
+            commandType: CommandType.StoredProcedure
+        );
+
+        return roleId;
+    }
+
 }

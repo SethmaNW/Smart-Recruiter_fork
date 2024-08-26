@@ -5,5 +5,5 @@ namespace Domain.RepositoryInterfaces;
 
 public interface IMarkRepository
 {
-    Task<bool> SaveMark(MarkSaveDTO mark);
+    Task<bool> SaveMark(Mark mark);
 }

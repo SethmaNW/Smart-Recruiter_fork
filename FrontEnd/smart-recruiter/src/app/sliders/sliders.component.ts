@@ -1,6 +1,7 @@
 import { Component,Injectable,OnInit } from '@angular/core';
-import { SlidersService } from '../services/sliders.service';
 import { Mark } from '../models/mark.model';
+import { SlidersService } from './sliders.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,20 +11,20 @@ import { Mark } from '../models/mark.model';
 })
 export class SlidersComponent implements  OnInit{
 
-  value1 : number| null =null;
-  value2 : number| null=null;
-  value3 : number| null=null;
-  value4 : number| null=null;
-  value5 : number| null=null;
-  value6 : number| null=null;
-  value7 : number| null=null;
-  value8 : number| null=null;
-  value9 : number| null=null;
-  value10: number| null=null;
+  // Initialize the mark values with null
+  private value1 : number| null=null;
+  private value2 : number| null=null;
+  private value3 : number| null=null;
+  private value4 : number| null=null;
+  private value5 : number| null=null;
+  private value6 : number| null=null;
+  private value7 : number| null=null;
+  private value8 : number| null=null;
+  private value9 : number| null=null;
+  private value10: number| null=null;
 
-  text:String='';
-  isMarkSaved : boolean = false;  // confimation popup that mark is saved
-  criteria_value : Mark[]=[
+  public text : string | undefined= undefined;
+  public criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value1, inactive: false },
     { criteria: 'Technical Knowledge', value: this.value2, inactive: false },
     { criteria: 'Education Background', value: this.value3, inactive: false },
@@ -37,43 +38,41 @@ export class SlidersComponent implements  OnInit{
   
   ];
 
- 
-  
+  private jobId! : number;
+  private candidateId! : number;
 
+  constructor(public sliderSVC : SlidersService, private router : ActivatedRoute) { }
 
-
-
-  constructor(private slidersService: SlidersService) { }
-
-  ngOnInit(): void {}
-
-  saveComment(){
-    if(this.text){
-      console.log(`Saving comment: ${this.text}`);
-    }
-
+  ngOnInit(): void {
+    this.router.queryParams?.subscribe(params => {
+      this.jobId = params['jobId'];
+      this.candidateId = params['candidateId'];
+    });
   }
 
-  saveAll(){
-    this.savevalue();
+  saveMarksAndComment(){
+    this.saveMarks();
     this.saveComment();
   }
 
-  
-
-  savevalue() : void{
-    this.criteria_value.forEach((criteria, index) => {
-      console.log(`Value ${index + 1}: ${criteria.value}`);
-    });
-  
-  
-   
-  
-    
-     } 
-   
-  
+  saveComment(){
+    this.sliderSVC.saveComment(this.text, this.jobId, this.candidateId);
   }
+  
+  saveMarks() : void {
+    if (this.criteria_value) {
+      const criteriaCopy = JSON.parse(JSON.stringify(this.criteria_value));
+      this.sliderSVC.saveMarks(criteriaCopy, this.jobId, this.candidateId);
+
+      // Reset the values to null after saving
+      this.criteria_value.forEach(mark => {
+        mark.value = null;
+      });
+    }
+  } 
+   
+  
+}
 
 
 
