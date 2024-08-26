@@ -36,7 +36,7 @@ export class AdminDashboardComponent implements OnInit {
     
     this.filteredJobs = this.jobs.filter(job =>
       job.title.toLowerCase().includes(query) ||
-      job.description.toLowerCase().includes(query) ||
+      // job.description.toLowerCase().includes(query) ||
       job.location.toLowerCase().includes(query) ||
       job.department.toLowerCase().includes(query)
     );

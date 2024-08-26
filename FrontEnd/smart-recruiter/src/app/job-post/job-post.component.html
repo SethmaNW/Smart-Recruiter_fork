@@ -28,7 +28,7 @@
     </div>
     <div class="third-line">
         <div class="candidate-count">
-            <span style="opacity: 0.7;">15 Candidates Applied</span>
+            <span style="opacity: 0.7;">{{ applicantsCount$ | async }} Candidates Applied</span>
         </div>
         <div class="ml-3">
             <a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.id}" style="color: #22c55e; text-decoration: none;">
@@ -41,6 +41,9 @@
                 <span >View Shortlisted list</span>
                 <i class="fa-solid fa-angle-right ml-1"></i>
             </a>
+        </div>
+        <div class="candidate-available ml-auto">
+            <span style="opacity: 0.7;">{{ job.noOfAvailablePositions }} Available positions </span>
         </div>
     </div>
 </p-card>

@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.IServices;
-using Microsoft.Extensions.Logging;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using DTO.DTOs;
 using Newtonsoft.Json;
 
@@ -40,8 +38,8 @@ public class CandidateController : ControllerBase
         return Ok(candidates);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Save([FromForm] CandidateForm candidateForm)
+    [HttpPost("{jobId}")]
+    public async Task<IActionResult> Save([FromForm] CandidateForm candidateForm, [FromRoute] int jobId)
     {
         CandidateDTO? candidateDTO = candidateForm.Candidate != null ? JsonConvert.DeserializeObject<CandidateDTO>(candidateForm.Candidate) : null;
         if (candidateForm.CvFile == null || candidateForm.CvFile.Length == 0)
@@ -84,7 +82,7 @@ public class CandidateController : ControllerBase
         };
 
         //Save the candidate to the database
-        var savedCandidate = await _CandidateService.Save(candidate);
+        var savedCandidate = await _CandidateService.Save(candidate, jobId);
 
         return Ok(savedCandidate);
     }
@@ -142,5 +140,19 @@ public class CandidateController : ControllerBase
     {
         var candidate = await _CandidateService.GetCandidateById(candidateId);
         return Ok(candidate);
+    }
+
+    [HttpGet("applicantsCount/{jobId}/{roleId}")]
+    public async Task<IActionResult> GetNoOfApplicnats(int jobId, int roleId)
+    {
+        var count = await _CandidateService.GetNoOfApplicnats(jobId, roleId);
+        return Ok(count);
+    }
+
+    [HttpGet("getRoleIdByCandidateId/{candidateId}")]
+    public async Task<IActionResult> GetRoleIdByCandidateId(int candidateId)
+    {
+        var roleId = await _CandidateService.GetRoleIdByCandidateId(candidateId);
+        return Ok(roleId);
     }
 }

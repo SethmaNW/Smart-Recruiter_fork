@@ -1,4 +1,64 @@
- <div class="p-grid p-justify-center">
+<div class="grid">
+    <div class="col-12">
+        <div class="grid">
+            <div class="col-6">
+                <h2>1 st interview Marks</h2>
+            </div>
+            <div class="col-6" *ngIf = "sliderSVC.isMarkSaved">    
+                <p-card [style]="{'background-color':'var(--green-200)', 
+                                'height':'50%', 
+                                'width': '100%',
+                                'margin-left'  : 'auto'}">
+                    <div class="-mt-5">
+                        <i class="fa-regular fa-circle-check" style="color: #1da750; margin-right : 5px"></i>
+                        Mark Saved successfully
+                    </div>
+                </p-card>     
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-6">
+                <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
+                    <label [for]="'label'+(i)" class="p-mb-1">{{ criteria.criteria}}</label> 
+                    <p-inputNumber 
+                        [(ngModel)]="criteria.value" 
+                        [showButtons]="true" 
+                        [min]="0"
+                        [max]="100"                     
+                    />
+                </div>
+            </div>
+            <div class="col-6">
+                <div *ngFor="let criteria of criteria_value.slice(5,10);let i=index " class="flex flex-column align-items-start mb-3">
+                    <label [for]="'label' + (i+5)" class="p-mb-1">{{ criteria.criteria }}</label>
+                    <p-inputNumber 
+                    [(ngModel)]="criteria.value" 
+                    [showButtons]="true"
+                    [min]="0"
+                    [max]="100" 
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                    <textarea [(ngModel)]="text" pInputTextarea rows="5 " cols="30" [autoResize]="true" placeholder="Enter a comment" ></textarea>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <button 
+                        pButton 
+                        pRipple 
+                        label="Save" 
+                        class="p-button-success" rounded="true"
+                        (click)="saveMarksAndComment()">
+                    </button>
+            </div>
+        </div>
+    </div>
+</div> 
+ <!-- <div class="p-grid p-justify-center">
    <div class="p-col-12 p-md-9" >
     <div class="flex flex-row">
         <h2>1 st interview Marks</h2>
@@ -11,32 +71,25 @@
                     <i class="fa-regular fa-circle-check" style="color: #1da750; margin-right : 5px"></i>
                     Mark Saved successfully
                 </div>
-            </p-card> 
+            </p-card>
         </div>
     </div> 
 
-
-
-
-        <div class="card w-full grid ">
-            <div class="p-col-6 px-2">
-                <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
-                    <label [for]="'label'+(i)" class="p-mb-1">{{ criteria.criteria}}</label> 
-                    <p-inputNumber 
-                         [(ngModel)]="criteria.value" 
-                         [showButtons]="true" 
-                         [min]="0"
-                         [max]="100"
-                         
-                     />
-                </div>
+    <div class="grid ">
+        <div class="col-6 px-2">
+            <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
+                <label [for]="'label'+(i)" class="p-mb-1">{{ criteria.criteria}}</label> 
+                <p-inputNumber 
+                        [(ngModel)]="criteria.value" 
+                        [showButtons]="true" 
+                        [min]="0"
+                        [max]="100"
+                        
+                    />
             </div>
+        </div>
                       
-            
-
-    
-
-            <div class="p-col-6 px-2">
+            <div class="col-6 px-2">
                 <div *ngFor="let criteria of criteria_value.slice(5,10);let i=index " class="flex flex-column align-items-start mb-3">
                     <label [for]="'label' + (i+5)" class="p-mb-1">{{ criteria.criteria }}</label>
                     <p-inputNumber 
@@ -67,35 +120,7 @@
         </button>
         </div>
     </div>
-</div> 
-
-
-
-        
-               
-
-            <!-- <button 
-            pButton 
-            pRipple 
-            label="Save" 
-            class="p-button-success" rounded="true"
-            (click)="savevalue()"></button> -->
-       
-        <!-- </div> -->
-<!-- 
-        <app-pie-chart></app-pie-chart> -->
-       
-                 
-          
-        
-
-
-
-               
-         
-                
-         
-
+</div>  -->
 
 
         

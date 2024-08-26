@@ -27,6 +27,7 @@ export class ApplicantsTableComponent implements OnInit {
   selectedColumns: any[] = [];
   visible: boolean = false;
   candidatesWithComments: number[] = [];
+  deleteVisible: boolean = false;
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
@@ -103,9 +104,9 @@ export class ApplicantsTableComponent implements OnInit {
   // }
 
   loadRelevantData(roleId: number) {
-    this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
-      this.position = position;	
-    });
+    // this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
+    //   this.position = position;	
+    // });
     this.applicantsListService.getAllApplicants(this.jobId).subscribe(customers => {
       this.customers = customers.filter(customer => customer.role_Id === roleId); 
       console.log(this.customers);
@@ -193,6 +194,7 @@ export class ApplicantsTableComponent implements OnInit {
       const customer = this.customers.find(c => c.id === candidateId);
       if (customer) {
         customer.role_Id = roleId;
+        this.loadRelevantData(this.roleId);
       }
       // this.loadData();
       this.cd.detectChanges();
@@ -217,14 +219,17 @@ export class ApplicantsTableComponent implements OnInit {
   }
   
   confirmDelete(candidateId: number) {
+    this.deleteVisible = true;
     this.confService.confirm({
       message: 'Are you sure you want to delete this candidate?',
       header: 'Delete Confirmation',
       // icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteCandidate(candidateId);
+        this.deleteVisible = false;
       },
       reject: () => {
+        this.deleteVisible = false;
         console.log('Delete operation cancelled');
       }
     });
