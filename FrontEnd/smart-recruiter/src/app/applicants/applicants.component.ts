@@ -9,7 +9,10 @@ import { ApplicantsListService } from '../services/applicants-list.service';
 export class ApplicantsComponent {
   jobId!: number;
   position: string = '';
-
+  public isSelected: boolean = false;
+  public isRejected: boolean = false;
+  public isDeleted: boolean = false;
+  
   constructor(private applicantsListService: ApplicantsListService){}
 
   loadPosition() {
@@ -23,5 +26,17 @@ export class ApplicantsComponent {
     this.jobId = jobId; 
     // console.log('Job ID:', this.jobId);
     this.loadPosition();
+  }
+
+  onIsSelectedChange(selected: boolean) {
+    this.isSelected = selected;
+  }
+  
+  onIsRejectedChange(rejected: boolean) {
+    this.isRejected = rejected;
+  }
+
+  onIsDeletedChange(deleted: boolean) {
+    this.isDeleted = deleted;
   }
 }

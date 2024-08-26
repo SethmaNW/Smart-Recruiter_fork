@@ -6,6 +6,7 @@ import { Applicant } from '../models/applicants.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { Observable } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
+import { SlidersService } from '../sliders/sliders.service';
 
 @Component({
   selector: 'app-applicants-table',
@@ -28,9 +29,15 @@ export class ApplicantsTableComponent implements OnInit {
   visible: boolean = false;
   candidatesWithComments: number[] = [];
   deleteVisible: boolean = false;
+  public isSelected : boolean = false;
+  public isRejected: boolean = false;
+  public isDeleted: boolean = false;
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
+  @Output() isSelectedChange = new EventEmitter<boolean>();
+  @Output() isRejectedChange = new EventEmitter<boolean>();
+  @Output() isDeletedChange = new EventEmitter<boolean>();
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -39,7 +46,8 @@ export class ApplicantsTableComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private confService: ConfirmationService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    public sliderSVC : SlidersService
   ) { }
 
   // ngOnInit() {
@@ -61,10 +69,12 @@ export class ApplicantsTableComponent implements OnInit {
     this.cols = [      
       { field: 'available_Date', header: 'Available Date' },
       { field: 'experience', header: 'Experience' },
+      // { field: 'skills', header: 'Skills' },
       // { field: 'reason', header: 'Reason' },
       { field: 'comment', header: 'Comment' }
     ];
-    this.selectedColumns = this.cols;
+    // this.selectedColumns = this.cols;
+    this.selectedColumns = [];
 
     // Get the jobId from the route parameters
     this.route.queryParamMap.subscribe(params => {
@@ -72,8 +82,6 @@ export class ApplicantsTableComponent implements OnInit {
       this.loadAdminId();
       // this.loadData();  
       this.loadRelevantData(this.roleId);
-      // this.loadButtonState();
-      // this.preloadEditableStates(); 
       this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
     });
 
@@ -194,10 +202,29 @@ export class ApplicantsTableComponent implements OnInit {
       const customer = this.customers.find(c => c.id === candidateId);
       if (customer) {
         customer.role_Id = roleId;
-        this.loadRelevantData(this.roleId);
+
+        // selected flag related to select button with timeout
+        if(roleId===1){
+          this.isSelected = true;
+          this.isSelectedChange.emit(this.isSelected);    // Emit the updated isSelected value
+          setTimeout(() => {
+            this.isSelected = false;
+            this.isSelectedChange.emit(this.isSelected);
+          }, 2000);
+        }
+        else if(roleId===7){
+          this.isRejected = true;
+          this.isRejectedChange.emit(this.isRejected);   
+          setTimeout(() => {
+            this.isRejected = false;
+            this.isRejectedChange.emit(this.isRejected);
+          }, 2000);
+        }
+
+        this.loadRelevantData(this.roleId);        
       }
       // this.loadData();
-      this.cd.detectChanges();
+      // this.cd.detectChanges();
     },
     error => {
       console.log('Error in updating role', error);
@@ -227,6 +254,15 @@ export class ApplicantsTableComponent implements OnInit {
       accept: () => {
         this.deleteCandidate(candidateId);
         this.deleteVisible = false;
+
+        // Rejected flag related to select button with timeout
+        this.isDeleted = true;
+        this.isDeletedChange.emit(this.isDeleted);   
+        setTimeout(() => {
+          this.isDeleted = false;
+          this.isDeletedChange.emit(this.isDeleted);
+        }, 2000);
+        
       },
       reject: () => {
         this.deleteVisible = false;

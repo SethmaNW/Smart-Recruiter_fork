@@ -18,7 +18,7 @@
         </div>
         <div class="grid">
             <div class="col-6">
-                <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="flex flex-column align-items-start mb-3">
+                <div *ngFor="let criteria of criteria_value.slice(0,5);let i=index " class="mb-2">
                     <label [for]="'label'+(i)" class="p-mb-1">{{ criteria.criteria}}</label> 
                     <p-inputNumber 
                         [(ngModel)]="criteria.value" 
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div *ngFor="let criteria of criteria_value.slice(5,10);let i=index " class="flex flex-column align-items-start mb-3">
+                <div *ngFor="let criteria of criteria_value.slice(5,10);let i=index " class="mb-2">
                     <label [for]="'label' + (i+5)" class="p-mb-1">{{ criteria.criteria }}</label>
                     <p-inputNumber 
                     [(ngModel)]="criteria.value" 

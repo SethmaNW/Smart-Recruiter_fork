@@ -1,5 +1,33 @@
-
-   <div class="interview header">
+<div class="grid">
+    <div class="col-12">
+        <div class="grid">
+            <div class="col-12">
+                <h2 class="mb-1">Summary</h2>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <h6 class="my-1"> Displaying all the marks earned from administrators </h6>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <p-tabView>
+                    <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title" [disabled]="tab.isDisabled">
+                        <div class="grid">
+                            <div class="col-12">
+                                <div class="card flex justify-content-center">
+                                    <p-chart type="doughnut" [data]="tab.data" />
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- <div class="interview header">
     <h2>Summary </h2>
     <h6> Displaying all the marks earned from administrators </h6>
     <div> 
@@ -32,7 +60,7 @@
                 <p-knob [(ngModel)]="value" />
             </div> 
         </div>
-        <canvas #canvas></canvas>
+        <canvas #canvas></canvas> -->
     
 
     

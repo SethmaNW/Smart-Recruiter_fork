@@ -18,4 +18,9 @@ public class MarkService : IMarkService
     {
         return await _markRepository.SaveMark(mark);
     }
+
+    public async Task<MarkOutputDTO> GetMarks(int candidateId, int jobId, int roleId)
+    {
+        return await _markRepository.GetMarks(candidateId, jobId, roleId);
+    }
 }

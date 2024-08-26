@@ -5,6 +5,12 @@
         border: none;
     }
 }
+
+:host ::ng-deep .p-fileupload-content {
+    background-color: rgb(249, 246, 241);
+    border: none;
+}
+
 .p-fileupload-content{
     :host ::ng-deep .p-fileupload-content {
         background-color: rgb(249, 246, 241);
