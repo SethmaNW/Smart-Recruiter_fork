@@ -16,7 +16,7 @@
                     <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title" [disabled]="tab.isDisabled">
                         <div class="grid">
                             <div class="col-12 justify-content-center flex">
-                                <p-knob [ngModel]="tab.finalScore" valueTemplate="{value}%" [readonly]="true"/>
+                                <p-knob [ngModel]="tab.finalScore" valueTemplate="{value}%" [readonly]="true" valueColor="#4cd07d"/>
                             </div>
                         </div>
                         <div class="grid">
