@@ -1,5 +1,4 @@
 using Domain.Entities;
-using DTO.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ServiceInterfaces.IServices;
 
@@ -23,4 +22,10 @@ public class MarkController : ControllerBase{
         return Ok(res);
     }
     
+    [HttpGet("getMarks/{candidateId}/{jobId}/{roleId}")]
+    public async Task<IActionResult> GetMarks(int candidateId, int jobId, int roleId)
+    {
+        var marks = await _MarkService.GetMarks(candidateId, jobId, roleId);
+        return Ok(marks);
+    }
 }
