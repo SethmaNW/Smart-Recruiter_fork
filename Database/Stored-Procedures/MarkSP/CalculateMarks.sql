@@ -1,7 +1,7 @@
 USE SmartRecruiterDB;
 GO
 
-ALTER PROCEDURE CalculateMarks
+CREATE PROCEDURE CalculateMarks
     @CandidateId INT,
     @JobId INT,
     @RoleId INT,
@@ -74,7 +74,7 @@ BEGIN
     Declare @TotalWeightedSum DECIMAL(18, 5),
             @AdminCount DECIMAL(18, 5);
 
-    -- Calculate the number of admins (rows)
+    -- Calculate the number of admins (rows) | when one admin save 2 mark rows it counts as two admins
     SELECT @AdminCount = COUNT(*)
     FROM [dbo].[marks]
     WHERE JobId = @JobId AND CandidateId = @CandidateId AND RoleId = @RoleId;

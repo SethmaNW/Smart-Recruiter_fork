@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Http;
-using DTO.DTOs;
+
 namespace DTO.DTOs;
 public class CandidateForm
 {
