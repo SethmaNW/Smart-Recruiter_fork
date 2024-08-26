@@ -1,6 +1,4 @@
-import { Component, OnInit, AfterViewInit,ViewChild,ElementRef, ViewEncapsulation } from '@angular/core';
-import { SlidersService } from '../services/sliders.service';
-import { Chart, Legend } from 'chart.js';
+import { Component, OnInit } from '@angular/core';
 import { PieChartService } from './pie-chart.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,8 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./pie-chart.component.scss']
 })
 
 export class PieChartComponent implements OnInit {
