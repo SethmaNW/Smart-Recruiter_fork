@@ -3,8 +3,34 @@
     <div class="flex flex-row">
         <app-sidebar></app-sidebar>
         <div class="flex flex-column mx-4 mt-3 w-screen">
-            <div>
-                <div class="position-head">{{ position }}</div>
+            <div class="grid">
+                <div>
+                    <div class="position-head">{{ position }}</div>
+                </div>
+                <!-- select & reject notification card --> 
+                <div *ngIf="isSelected || isRejected" class="floating-card-container">
+                    <!-- <div class="floating-card-container"> -->
+                    <div *ngIf = "isSelected">    
+                        <p-card [style]="{'background-color':'var(--green-200)', 
+                                        'height':'65px', 
+                                        'width': '110%'}">
+                            <div class="-mt-3">
+                                <!-- <i class="fa-regular fa-circle-check" style="color: #1da750; margin-right : 5px"></i> -->
+                                Candidate is selected to the next interview.
+                            </div>
+                        </p-card>     
+                    </div>
+                    <div *ngIf = "isRejected">    
+                        <p-card [style]="{'background-color':'var(--red-400)',
+                                        'color': 'white', 
+                                        'height':'65px', 
+                                        'width': '130%'}">
+                            <div class="-mt-3">
+                                Candidate is rejected.
+                            </div>
+                        </p-card>     
+                    </div>
+                </div>                
             </div>
             <p-tabView class="ml-3">
                 <p-tabPanel header="Applicants"> 
@@ -15,7 +41,12 @@
                         </div>
                         <div>
                             <div class="mb-7">
-                                <app-applicants-table [roleId]="0" (jobIdChange)="onJobIdChange($event)"></app-applicants-table>
+                                <app-applicants-table 
+                                [roleId]="0" 
+                                (jobIdChange)="onJobIdChange($event)" 
+                                (isSelectedChange)="onIsSelectedChange($event)"
+                                (isSelectedChange)="onIsSelectedChange($event)"                                 
+                                (isDeletedChange)="onIsDeletedChange($event)"></app-applicants-table>
                                 <!-- <app-applicant-table></app-applicant-table> -->                        
                             </div>
                         </div>

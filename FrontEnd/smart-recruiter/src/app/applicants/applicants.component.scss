@@ -19,3 +19,14 @@
     color: rgb(46, 44, 44);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.floating-card-container {
+    position: fixed;
+    top: 10%;
+    right: 26rem; 
+    z-index: 1000; /* Make it appears on top of other elements */
+    display: flex;
+    flex-direction: column;
+    opacity: 0.76;
+    // gap: 1rem;
+}
