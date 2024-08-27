@@ -39,12 +39,15 @@ export class JobPostComponent implements OnInit {
   ngOnInit(): void {
     //Assuming when a job posted it should be active at posting time
     this.selectedFromDropDown = this.job.activeStatus? this.dropDownOptions[0] : this.dropDownOptions[1];
+
+    // assuming the number of applicants would be considered in the phases of applicnat, rejected and 1st interview
     if (this.job.id !== undefined) {
       this.applicantsCount$ = combineLatest([
         this.getApplicantsCount(this.job.id, 0),
-        this.getApplicantsCount(this.job.id, 1)
+        this.getApplicantsCount(this.job.id, 1),
+        this.getApplicantsCount(this.job.id, 7)
       ]).pipe(
-        map(([count1, count2]) => count1 + count2)
+        map(([count1, count2, count3]) => count1 + count2 + count3)
       );	
     }
   }
