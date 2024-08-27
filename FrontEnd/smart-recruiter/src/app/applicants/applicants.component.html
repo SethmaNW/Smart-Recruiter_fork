@@ -8,7 +8,7 @@
                     <div class="position-head">{{ position }}</div>
                 </div>
                 <!-- select & reject notification card --> 
-                <div *ngIf="isSelected || isRejected" class="floating-card-container">
+                <div *ngIf="isSelected || isRejected || isDeleted" class="floating-card-container">
                     <!-- <div class="floating-card-container"> -->
                     <div *ngIf = "isSelected">    
                         <p-card [style]="{'background-color':'var(--green-200)', 
@@ -30,10 +30,21 @@
                             </div>
                         </p-card>     
                     </div>
+                    <div *ngIf = "isDeleted">    
+                        <p-card [style]="{'background-color':'var(--red-400)',
+                                        'color': 'white', 
+                                        'height':'65px', 
+                                        'width': '130%'}">
+                            <div class="-mt-3">
+                                Candidate is deleted.
+                            </div>
+                        </p-card>     
+                    </div>
                 </div>                
             </div>
 
-            <p-tabView class="ml-3">
+            <p-tabView class="ml-3" (onChange)="isDeleted===false">
+            <!-- <p-tabView class="ml-3" (onChange)="onTabChange($event)">            -->
                 <p-tabPanel header="Applicants"> 
                     <div class="flex flex-row flex-wrap w-full">
                         <div class="mb-2 ml-2">
@@ -47,7 +58,7 @@
                                 (jobIdChange)="onJobIdChange($event)" 
                                 (isSelectedChange)="onIsSelectedChange($event)"
                                 (isSelectedChange)="onIsSelectedChange($event)"                                 
-                                (isDeletedChange)="onIsDeletedChange($event)"></app-applicants-table>
+                                ></app-applicants-table>
                                 <!-- <app-applicant-table></app-applicant-table> -->                        
                             </div>
                         </div>
@@ -61,7 +72,7 @@
                             </div>
                             <div>
                                 <div>
-                                    <app-applicants-table [roleId]="7"></app-applicants-table>
+                                    <app-applicants-table [roleId]="7" (isDeletedChange)="onIsDeletedChange($event)"></app-applicants-table>
                                 </div>
                             </div>
                         </div>

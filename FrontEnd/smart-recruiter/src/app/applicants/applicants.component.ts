@@ -12,6 +12,7 @@ export class ApplicantsComponent {
   public isSelected: boolean = false;
   public isRejected: boolean = false;
   public isDeleted: boolean = false;
+  public deleteVisible: boolean = false;
   
   constructor(private applicantsListService: ApplicantsListService){}
 
@@ -39,4 +40,13 @@ export class ApplicantsComponent {
   onIsDeletedChange(deleted: boolean) {
     this.isDeleted = deleted;
   }
+
+  // onTabChange(event: any) {
+  //   this.deleteVisible = false;
+  // }
+  onTabChange() {    /// checkkkk
+    // onTabChange(isDeleted: boolean) {    
+    this.deleteVisible = false;
+  }
+  
 }
