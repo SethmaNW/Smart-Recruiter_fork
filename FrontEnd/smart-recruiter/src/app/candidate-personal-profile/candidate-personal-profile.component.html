@@ -6,7 +6,7 @@
         </div>
         <div class="grid m-0">
             <div class="col-3 min-h-full">
-                <p-card styleClass="custom-card mt-3 h-full" *ngIf="isloaded">
+                <p-card styleClass="custom-card mt-3" *ngIf="isloaded">
                     <div class="flex -mt-2">
                         <i class="fa-brands fa-linkedin fa-2xl" style="color: #0562a8;"></i>
                         <i class="fa-brands fa-square-github fa-2xl ml-3" style="color: #000000;"></i>
@@ -51,22 +51,22 @@
                         <div class="col-6">
                             <h5 class="-mt-2">Available Date</h5>
                             <div class="opacity-reduce -mt-2">
-                                {{candidate.available_Date}}
+                                {{candidate.available_Date | slice:0:10}}
                             </div>
                         </div>
                     </div>
                     <div class="grid mt-1">
                         <div class="col-6">
-                            <p-button label="SELECT" severity="success" [rounded]="true" />
+                            <p-button label="Call Next Interview" severity="success" [rounded]="false" />
                         </div>
                         <div class="col-6">
-                            <p-button label="DELETE" severity="danger" [rounded]="true" />
+                            <p-button label="Reject" severity="danger" [rounded]="false" />
                         </div>
                     </div>
                 </p-card>
             </div>
-            <div class="col-6">
-                <app-sliders></app-sliders>    
+            <div class="col-6" *ngIf="isloaded">
+                <app-sliders [candidate] = "candidate"></app-sliders>    
             </div>
             <div class="col-3">
                 <app-pie-chart></app-pie-chart>
