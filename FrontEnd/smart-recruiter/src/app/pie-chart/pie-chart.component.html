@@ -15,9 +15,14 @@
                 <p-tabView>
                     <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title" [disabled]="tab.isDisabled">
                         <div class="grid">
+                            <div class="col-12 justify-content-center flex">
+                                <p-knob [ngModel]="tab.finalScore" valueTemplate="{value}%" [readonly]="true" valueColor="#4cd07d"/>
+                            </div>
+                        </div>
+                        <div class="grid">
                             <div class="col-12">
                                 <div class="card flex justify-content-center">
-                                    <p-chart type="doughnut" [data]="tab.data" />
+                                    <p-chart type="doughnut" [data]="tab.data" [options]="tab.options"/>
                                 </div>
                             </div>
                         </div>
@@ -27,45 +32,3 @@
         </div>
     </div>
 </div>
-   <!-- <div class="interview header">
-    <h2>Summary </h2>
-    <h6> Displaying all the marks earned from administrators </h6>
-    <div> 
-        <p-tabView >
-            <p-tabPanel header="I">
-                <h4>1st Interview Section</h4>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-           
-            </p-tabPanel>
-
-            <p-tabPanel header="II">
-                <h4>2 nd Interview Section</h4>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-            
-            </p-tabPanel>
-
-            <p-tabPanel header="III">
-                <h4>3 rd Interview Section</h4>
-                <p-chart type="pie" [data]="data" [options]="options" style="width:0.5%;" *ngIf="data && data.datasets[0].data.length > 0" />
-            
-            </p-tabPanel>
-        </p-tabView>
-
-    </div>
-
-
-
-            <div class="knob-container ">
-                <h3>Average Marks</h3><br>
-                <p-knob [(ngModel)]="value" />
-            </div> 
-        </div>
-        <canvas #canvas></canvas> -->
-    
-
-    
-
-
-
-
-

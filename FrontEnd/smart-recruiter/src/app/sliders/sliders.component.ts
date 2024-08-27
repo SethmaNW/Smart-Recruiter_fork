@@ -1,15 +1,19 @@
-import { Component,Injectable,OnInit } from '@angular/core';
+import { Component,Injectable,Input,OnInit, ViewEncapsulation } from '@angular/core';
 import { Mark } from '../models/mark.model';
 import { SlidersService } from './sliders.service';
 import { ActivatedRoute } from '@angular/router';
+import { Candidate } from '../models/candidate.model';
 
 
 @Component({
   selector: 'app-sliders',
   templateUrl: './sliders.component.html',
-  styleUrls: ['./sliders.component.scss']
+  styleUrls: ['./sliders.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SlidersComponent implements  OnInit{
+
+  @Input() public candidate! : any;
 
   // Initialize the mark values with null
   private value1 : number| null=null;

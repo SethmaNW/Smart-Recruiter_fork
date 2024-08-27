@@ -28,7 +28,7 @@ export class ApplicantsTableComponent implements OnInit {
   selectedColumns: any[] = [];
   visible: boolean = false;
   candidatesWithComments: number[] = [];
-  deleteVisible: boolean = false;
+  public deleteVisible: boolean = false;
   public isSelected : boolean = false;
   public isRejected: boolean = false;
   public isDeleted: boolean = false;
