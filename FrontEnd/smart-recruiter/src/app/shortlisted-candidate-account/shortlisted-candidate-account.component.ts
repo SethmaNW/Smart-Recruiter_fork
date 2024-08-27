@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ShortlistedListService } from '../services/shortlisted-list.service';
+import { ApplicantsListService } from '../services/applicants-list.service';
 
 @Component({
   selector: 'app-shortlisted-candidate-account',
@@ -9,6 +10,23 @@ import { ShortlistedListService } from '../services/shortlisted-list.service';
 })
 
 export class ShortlistedCandidateAccountComponent {
+  position: string = '';
+  selectedJobId!: number;
+
+  constructor(private applicantsListService: ApplicantsListService){}
+
+  handleJobIdChange(jobId: number){
+    this.selectedJobId = jobId;
+    this.loadPosition();
+  }
+
+  loadPosition() {
+    this.applicantsListService.getPositionName(this.selectedJobId).subscribe(position => {
+      this.position = position;	
+      // console.log('Position ', this.position);
+    });
+  }
+
   // shortlisted: any[] = [];
   // loading: boolean = true;
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ShortlistedListService } from '../services/shortlisted-list.service';
 import { ActivatedRoute } from '@angular/router';
 import { Applicant } from '../models/applicants.model';
@@ -10,10 +10,12 @@ import { Applicant } from '../models/applicants.model';
   encapsulation: ViewEncapsulation.None
 }) 
 
-export class ShortlistedCardComponent implements OnInit {
-  @Input() roleId: number = 1;
+export class ShortlistedCardComponent implements OnInit {  
   shortlisted: Applicant[] = [];
-  jobId!: number;  
+  jobId!: number; 
+  
+  @Input() roleId: number = 1;
+  @Output() jobIdChange = new EventEmitter<number>();
 
   constructor(
     private shortlistedListService: ShortlistedListService,
@@ -23,6 +25,8 @@ export class ShortlistedCardComponent implements OnInit {
   ngOnInit(){
     this.route.queryParamMap.subscribe(params => {
       this.jobId = +params.get('jobId')!;
+      this.jobIdChange.emit(this.jobId);
+
       this.loadShortlist();
     });    
   }
