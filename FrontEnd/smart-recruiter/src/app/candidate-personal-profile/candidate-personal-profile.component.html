@@ -17,7 +17,17 @@
                         </div>
                     </p-card>     
                 </div>
-                
+                <div class="floating-card-container" *ngIf = "isRejected">    
+                    <p-card [style]="{'background-color':'var(--red-400)',
+                                    'color': 'white', 
+                                    'height':'65px', 
+                                    'width': '130%'}">
+                        <div class="-mt-3">
+                            Candidate is rejected.
+                        </div>
+                    </p-card>     
+                </div>
+
                 <p-card styleClass="custom-card mt-3" *ngIf="isloaded">
                     <div class="flex -mt-2">
                         <i class="fa-brands fa-linkedin fa-2xl" style="color: #0562a8;"></i>
@@ -72,7 +82,7 @@
                             <p-button label="Call Next Interview" severity="success" [rounded]="false" (onClick)="updateRoleId(candidate.id, candidate.role_Id+1)"/>                            
                         </div>
                         <div class="col-6">
-                            <p-button label="Reject" severity="danger" [rounded]="false" />
+                            <p-button label="Reject" severity="danger" [rounded]="false" (onClick)="updateRoleId(candidate.id, 7)" [disabled]="candidate.role_Id === 7"/>
                         </div>
                     </div>
                 </p-card>

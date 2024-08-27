@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router'; 
 import { ApplicantsListService } from '../services/applicants-list.service';
 import { Applicant } from '../models/applicants.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-candidate-personal-profile',
@@ -15,13 +16,14 @@ export class CandidatePersonalProfileComponent implements OnInit {
   candidate: any;
   // block the loading of the card until the data is received
   isloaded: boolean = false;
-  public isSelected : boolean = false;
-  public isRejected: boolean = false;
+  isSelected : boolean = false;
+  isRejected: boolean = false;
 
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
-    private applicantsListService: ApplicantsListService
+    private applicantsListService: ApplicantsListService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class CandidatePersonalProfileComponent implements OnInit {
 
     this.http.get<any>('api/Candidate/'+this.candidateId).subscribe((data) => {
       this.candidate = data;
-      //console.log("date received", data);
+      console.log("date received", data);
       this.isloaded = true;
     }); 
   }
@@ -45,11 +47,23 @@ export class CandidatePersonalProfileComponent implements OnInit {
       this.candidate.role_Id = roleId;
 
       // selected flag related to select button with timeout
-      this.isSelected = true;
+      if(roleId===2 || roleId===3){
+        this.isSelected = true;
     
-      setTimeout(() => {
-        this.isSelected = false;
-      }, 2000);       
+        setTimeout(() => {
+          this.isSelected = false;
+          this.location.back(); // Redirect to the previous page
+        }, 2000); 
+      }
+      else if(roleId===7){
+        this.isRejected = true;
+    
+        setTimeout(() => {
+          this.isRejected = false;
+          this.location.back(); 
+        }, 2000);
+      }
+            
     },
     error => {
       console.log('Error in updating role', error);
