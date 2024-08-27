@@ -18,3 +18,14 @@
 .custome-card{
     height: 100vh;
 }
+
+.floating-card-container {
+    position: fixed;
+    top: 10%;
+    right: 25rem; 
+    z-index: 1000; /* Make it appear on top of other elements */
+    display: flex;
+    flex-direction: column;
+    opacity: 0.95;
+    // gap: 1rem;
+}
