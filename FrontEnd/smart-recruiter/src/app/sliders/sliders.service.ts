@@ -13,6 +13,11 @@ export class SlidersService {
   public isMarkSaved : boolean = false;  // confimation popup that mark is saved
 
   constructor(private http : HttpClient) { }
+  //display savedcomment
+  public getComments(jobId:number, candidateId:number):Observable<any>{
+    return this.http.get('api/Comment/comment/${jobId}/${candidateId}')
+
+ }
 
   
   public async saveComment(comment : string | undefined, jobId : number, candidateId : number) : Promise<void> {
@@ -105,4 +110,5 @@ export class SlidersService {
     }
     this.hasNonNullMark = false;
   }
+  
 }

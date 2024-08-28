@@ -1,15 +1,24 @@
 $nav-bar-height: 55px;
+$default-body-margin: 8px;
+
+.container {
+  width: 100%;
+  margin-top: $nav-bar-height;
+  padding-left: 0; 
+  padding-right: 0;
+  box-sizing: border-box;
+}
 
 #sidebarMenu {
-  min-height: calc(100vh - #{$nav-bar-height});
-  height: 100%;
-  // background-color: var(--red-100); 
-  // background-color: rgb(218, 205, 205);
+  position: fixed;
   background-color: var(--surface-200);
+  width: 13%;
     .position-sticky {
     padding-top: 2rem;
     min-height: calc(100vh - #{$nav-bar-height});
-    width: 170px;
+    //min-height: 100vh;
+    //width: 170px;
+
   
       ul {
         list-style-type: none;
