@@ -27,8 +27,8 @@ export class SlidersComponent implements  OnInit{
   private value9 : number| null=null;
   private value10: number| null=null;
 
-  public text : string | undefined= undefined;
-  comments: string[] = [];
+  public text : string ='';
+  comments: Array<{commentText:String}>=[];
   public criteria_value : Mark[]=[
     { criteria: 'Attitude and Discipline', value: this.value1, inactive: false },
     { criteria: 'Technical Knowledge', value: this.value2, inactive: false },
@@ -52,6 +52,7 @@ export class SlidersComponent implements  OnInit{
     this.router.queryParams?.subscribe(params => {
       this.jobId = params['jobId'];
       this.candidateId = params['candidateId'];
+      this.loadComments ();
     });
   }
 
@@ -62,6 +63,7 @@ export class SlidersComponent implements  OnInit{
 
   saveComment(){
     this.sliderSVC.saveComment(this.text, this.jobId, this.candidateId);
+    this.comments.push({commentText:this.text});
   }
   
   saveMarks() : void {
@@ -75,6 +77,17 @@ export class SlidersComponent implements  OnInit{
       });
     }
   } 
+
+  loadComments():void{
+    this.sliderSVC.getComments(this.jobId,this.candidateId).subscribe(
+      (data)=>{
+        this.comments=data;
+      }
+
+
+    )
+    
+  }
    
   
 }
