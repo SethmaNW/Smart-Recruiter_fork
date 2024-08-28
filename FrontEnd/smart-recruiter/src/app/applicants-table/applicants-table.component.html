@@ -2,14 +2,15 @@
     <div class="col">
         <div class="grid">
             <div class="col">
-                <div *ngIf="customers && customers.length > 0" class="table">
+                <div *ngIf="customers && customers.length > 0" class="mt-1">
                     <p-table #dt2
                     [columns]="selectedColumns" 
                     [value]="customers" 
                     [tableStyle]="{'min-width': '50rem', 'table-layout': 'fixed', 'width': '100%'}"
                     [globalFilterFields]="['name', 'contact', 'degree', 'skills', 'workExperience']">
                         <ng-template pTemplate="caption">
-                            <div class="grid flex justify-content-between align-items-center row">
+                            <div class="grid">
+                                <!-- <div class="grid flex justify-content-between align-items-center row"> -->
                                 <!-- <div>
                                     <div class="position-head">{{ position }}</div>
                                 </div> -->
@@ -19,7 +20,7 @@
                                         <input pInputText type="text" (input)="filterGlobal($event, 'contains')" placeholder="Search keyword" />
                                     </span>                                   
                                 </div>   
-                                <div class="col ml-15">
+                                <div class="col">
                                     <p-multiSelect 
                                         display="chip" 
                                         [options]="cols" 
@@ -37,13 +38,14 @@
                             <tr>
                                 <th class="column column-name">Name</th> 
                                 <th class="column column-contact">Contact</th>
-                                <th class="column column-degree" style="width: auto;">Degree</th>
-                                <th class="column column-skills" style="width: auto;">Skills</th>
+                                <th class="column column-degree">Degree</th>
+                                <th class="column column-skills">Skills</th>
+                                <!-- <th class="column column-skills" style="width: auto;">Skills</th> -->
                                 <!-- <th class="column column-skills" style="width: auto;">Available Date</th> -->
-                                <th *ngFor="let col of columns" style="width: auto;">
+                                <th *ngFor="let col of columns" class="column-muliti-select">
                                     {{col.header}}
                                 </th>
-                                <th class="column column-action" style="width: auto;">Action</th>
+                                <th class="column column-action">Action</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-customer let-columns="columns">
@@ -52,10 +54,10 @@
                                     <a 
                                     [routerLink]="['/personal-profile']"                                     
                                     [queryParams]="{'candidateId': customer.id, 'jobId': jobId}" 
-                                    style="text-decoration: none;">
+                                    class="name">
                                         {{ customer.name }}
                                     </a>
-                                    <div class="view-cv">
+                                    <div class="text-xs mt-2">
                                         <a href="{{ customer.cv }}" target="_blank">View CV</a>
                                     </div>
                                 </td>
@@ -96,7 +98,7 @@
                                     </ng-container>
                                                             
                                     <ng-container *ngIf="col.field === 'available_Date'">
-                                        {{ customer[col.field] | date:'yyyy-MM-dd' }}
+                                        <div class="text-center">{{ customer[col.field] | date:'yyyy' }} <br> {{ customer[col.field] | date:'MM-dd' }}</div> 
                                     </ng-container>
                                     <!-- <ng-container *ngIf="col.field === 'experience'; else normalCell"> -->
                                     <ng-container *ngIf="col.field === 'experience'">
@@ -111,9 +113,101 @@
                                 </td>
                                 <td>
                                     <!-- <div class="status">{{ showStatus(customer.role_Id) }} </div> -->
+                                    <!-- <div class="grid">
+                                        <div class="col-6 text-center">
+                                            <p-button 
+                                            (onClick)="updateRoleId(customer.id, 1)" 
+                                            pTooltip="Select to the first interview" 
+                                            showDelay="500" 
+                                            hideDelay="300" 
+                                            tooltipPosition="top"
+                                            label="Accept" 
+                                            [outlined]="true" 
+                                            class="accept-button small-button" 
+                                            [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>
+                                        </div>
+                                        <div class="col-6 text-center" >
+                                            <div *ngIf="customer.role_Id===0">
+                                                <p-button 
+                                                (onClick)="updateRoleId(customer.id, 7)" 
+                                                 
+                                                pTooltip="Reject the candidate" 
+                                                showDelay="500" 
+                                                hideDelay="300" 
+                                                tooltipPosition="top"
+                                                label="Reject" 
+                                                severity="danger" 
+                                                [outlined]="true" 
+                                                class="small-button" 
+                                                [style]="{ 'font-size': '13px' }"/>
+                                            </div>
+                                            <div *ngIf="customer.role_Id===7">
+                                                <p-toast />
+                                                <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="deleteVisible = false">
+                                                    <ng-template pTemplate="headless" let-message>
+                                                        <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+                                                            <span class="font-bold text-2xl block mb-2 mt-4">
+                                                                {{ message.header }}
+                                                            </span>
+                                                            <p class="mb-0">{{ message.message }}</p>
+                                                            <div class="flex align-items-center gap-2 mt-4">
+                                                                <button 
+                                                                    pButton 
+                                                                    label="Delete" 
+                                                                    (click)="cd.accept()" 
+                                                                    class="w-6rem"
+                                                                    [style]="{ 'background-color': 'var(--red-600)', 'border-color': 'var(--red-600)' }">
+                                                                </button>
+                                                                <button 
+                                                                    pButton 
+                                                                    label="Cancel" 
+                                                                    (click)="cd.reject()" 
+                                                                    class="p-button-outlined w-6rem "
+                                                                    [style]="{ 'color': 'var(--red-600)', 'border-color': 'var(--red-600)' }">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                </p-confirmDialog>
+                                                <p-button 
+                                                (onClick)="confirmDelete(customer.id)"                                              
+                                                pTooltip="Delete the candidate" 
+                                                showDelay="500" 
+                                                hideDelay="300" 
+                                                tooltipPosition="top"
+                                                label="Delete" 
+                                                severity="danger" 
+                                                [outlined]="true" 
+                                                class="small-button" 
+                                                [style]="{ 'font-size': '13px', 'width': '110%' }"/>
+                                            </div>
+                                        </div>                                        
+                                    </div> -->
+                                     
                                     <div class="button-container">                  
-                                        <p-button (onClick)="updateRoleId(customer.id, 1)" label="Accept" [outlined]="true" class="accept-button small-button" [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>                                                               
-                                        <p-button (onClick)="updateRoleId(customer.id, 7)" *ngIf="customer.role_Id===0" label="Reject" severity="danger" [outlined]="true" class="small-button" [style]="{ 'font-size': '13px', 'width': '110%' }"/>
+                                        <p-button 
+                                        (onClick)="updateRoleId(customer.id, 1)" 
+                                        pTooltip="Select to the first interview" 
+                                        showDelay="500" 
+                                        hideDelay="300" 
+                                        tooltipPosition="top"
+                                        label="Accept" 
+                                        [outlined]="true" 
+                                        class="small-button mr-1" 
+                                        [style]="{ 'font-size': '13px', 'color': '--green-400' }"/>   
+
+                                        <p-button 
+                                        (onClick)="updateRoleId(customer.id, 7)" 
+                                        *ngIf="customer.role_Id===0" 
+                                        pTooltip="Reject the candidate" 
+                                        showDelay="500" 
+                                        hideDelay="300" 
+                                        tooltipPosition="top"
+                                        label="Reject" 
+                                        severity="danger" 
+                                        [outlined]="true" 
+                                        class="small-button" 
+                                        [style]="{ 'font-size': '13px', 'width': '110%' }"/>
                                         <p-toast />
                                         <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="deleteVisible = false">
                                             <ng-template pTemplate="headless" let-message>
@@ -145,6 +239,10 @@
                                         <p-button 
                                         (onClick)="confirmDelete(customer.id)" 
                                         *ngIf="customer.role_Id===7" 
+                                        pTooltip="Delete the candidate" 
+                                        showDelay="500" 
+                                        hideDelay="300" 
+                                        tooltipPosition="top"
                                         label="Delete" 
                                         severity="danger" 
                                         [outlined]="true" 

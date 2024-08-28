@@ -1,26 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ShortlistedListService } from '../services/shortlisted-list.service';
+import { Component } from '@angular/core';
 import { ApplicantsListService } from '../services/applicants-list.service';
 
 @Component({
   selector: 'app-shortlisted-candidate-account',
   templateUrl: './shortlisted-candidate-account.component.html',
-  styleUrls: ['./shortlisted-candidate-account.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./shortlisted-candidate-account.component.scss']
 })
 
 export class ShortlistedCandidateAccountComponent {
-  position: string = '';
-  selectedJobId!: number;
+  public position: string = '';
+  private selectedJobId!: number;
 
   constructor(private applicantsListService: ApplicantsListService){}
 
-  handleJobIdChange(jobId: number){
+  handleJobIdChange(jobId: number): void{
     this.selectedJobId = jobId;
     this.loadPosition();
   }
 
-  loadPosition() {
+  loadPosition(): void {
     this.applicantsListService.getPositionName(this.selectedJobId).subscribe(position => {
       this.position = position;	
       // console.log('Position ', this.position);

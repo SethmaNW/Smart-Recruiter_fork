@@ -248,7 +248,7 @@ export class ApplicantsTableComponent implements OnInit {
   confirmDelete(candidateId: number) {
     this.deleteVisible = true;
     this.confService.confirm({
-      message: 'Are you sure you want to delete this candidate?',
+      message: 'Do you want to delete this candidate Permanently?',
       header: 'Delete Confirmation',
       // icon: 'pi pi-exclamation-triangle',
       accept: () => {
