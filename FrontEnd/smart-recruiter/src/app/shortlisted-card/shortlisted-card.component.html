@@ -1,41 +1,103 @@
-<div class="row flex flex-wrap">
-    <div class="cards">
-        <!-- <a [routerLink]="['/personal-profile']" class="card-link" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}" *ngFor="let candidate of shortlisted"> -->
-            <p-panel [toggleable]="true" class="card" [collapsed]="true" *ngFor="let candidate of shortlisted">
-                <ng-template pTemplate="header">
-                    <div class="flex align-items-center gap-2">
+<div class="grid">
+    <div class="col-12">
+        <!-- <div class="w-30rem"> -->
+            <p-panel [toggleable]="true" [collapsed]="true" class="mb-2" *ngFor="let candidate of shortlisted">
+                <ng-template pTemplate="header">                    
+                    <div>
                         <span class="font-bold">
-                            <a [routerLink]="['/personal-profile']" class="card-link" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
+                            <a [routerLink]="['/personal-profile']" class="card-link" [style]="'color'" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
                                 {{ candidate.name }}
                             </a>                             
                         </span>
-                    </div>
-                    <div>
                         <!-- <span class="font-bold">{{ candidate.interviewDate }}</span> -->
                     </div>
                 </ng-template>
-    
-                <div> 
-                    <div class="m-0 details">
-                        <div class="detail">
-                            <div class="subtopic contact">Contact:</div>
-                            <div class="subcontent">{{ candidate.contact }}</div>
-                            <!-- <div class="subcontent"><a href="tel:{{ candidate.contact }}">{{ candidate.contact }}</a></div> -->
+
+                <div class="text-sm">
+                    <div class="grid">
+                        <div class="col-4">
+                            Contact:
                         </div>
-                        <div class="detail">
-                            <div class="subtopic email">Email:</div>
-                            <div class="subcontent"><a href="mailto:{{ candidate.email }}">{{ candidate.email }}</a></div>
+                        <div class="col-8">
+                            {{ candidate.contact }}
                         </div>
-                        <div class="detail" *ngIf="candidate.role_Id===2 || candidate.role_Id ===3">
-                            <div class="subtopic marks">Avg marks:</div>
-                            <div class="subcontent">{{ candidate.testmark}}</div>
+                        <!-- <div class="subcontent"><a href="tel:{{ candidate.contact }}">{{ candidate.contact }}</a></div> -->
+                    </div>
+                    <div class="grid">
+                        <div class="col-4">
+                            Email: 
+                        </div>
+                        <!-- using ToolTip and ellipsis in CSS(in text-overflow class) -->
+                        <div class="col-8 text-overflow" pTooltip="{{ candidate.email }}" tooltipPosition="bottom">
+                            <a href="mailto:{{ candidate.email }}">{{ candidate.email }}</a>
                         </div>
                     </div>
-                    <div class="view-cv">
+                    <div class="grid" *ngIf="candidate.role_Id===2 || candidate.role_Id ===3">
+                        <div class="col-4">
+                            Avg mark: 
+                        </div>
+                        <div class="col-8">
+                            {{ candidate.testmark}}67
+                        </div>
+                    </div>
+                    <div class="grid mt-1">
+                        <div class="col-12 text-right">
+                            <button pButton class="p-button-success" label="View CV"></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div> 
+                    <div class="text-right mt-3 text-xs">
                         <a href="{{ candidate.cv }}" target="_blank">View CV</a>
                     </div>
                 </div>
+
             </p-panel>
-        <!-- </a> -->
+        <!-- </div> -->
     </div>
 </div>
+
+
+
+
+
+
+
+<!-- <div class="row flex flex-wrap">
+    <div class="cards">
+        <p-panel [toggleable]="true" class="card" [collapsed]="true" *ngFor="let candidate of shortlisted">
+            <ng-template pTemplate="header">
+                <div class="flex align-items-center gap-2">
+                    <span class="font-bold">
+                        <a [routerLink]="['/personal-profile']" class="card-link" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
+                            {{ candidate.name }}
+                        </a>                             
+                    </span>
+                </div>
+                <div>
+                </div>
+            </ng-template>
+
+            <div> 
+                <div class="m-0 details">
+                    <div class="detail">
+                        <div class="subtopic contact">Contact:</div>
+                        <div class="subcontent">{{ candidate.contact }}</div>
+                    </div>
+                    <div class="detail">
+                        <div class="subtopic email">Email:</div>
+                        <div class="subcontent"><a href="mailto:{{ candidate.email }}">{{ candidate.email }}</a></div>
+                    </div>
+                    <div class="detail" *ngIf="candidate.role_Id===2 || candidate.role_Id ===3">
+                        <div class="subtopic marks">Avg marks:</div>
+                        <div class="subcontent">{{ candidate.testmark}}</div>
+                    </div>
+                </div>
+                <div class="view-cv">
+                    <a href="{{ candidate.cv }}" target="_blank">View CV</a>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+</div> -->
