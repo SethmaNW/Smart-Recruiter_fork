@@ -56,6 +56,7 @@ import { StepperModule } from 'primeng/stepper';
 import { UserNavComponent } from './user-nav/user-nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StepsModule } from 'primeng/steps';
+import { TooltipModule } from 'primeng/tooltip';
  
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { StepsModule } from 'primeng/steps';
     ToastModule,
     StepperModule,
     ReactiveFormsModule,
-    StepsModule
+    StepsModule,
+    TooltipModule
   
   ],
   providers: [provideAnimations(), provideHttpClient(), MessageService, ConfirmationService],
