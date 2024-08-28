@@ -5,7 +5,7 @@
         <div class="flex flex-column mx-6 mt-3 w-screen">
             <div class="flex flex-row flex-wrap w-full">
                 <div class="mb-3">
-                    <h2 class="head-topic">Interview Hierarchy</h2>                
+                    <h2 class="head-topic">{{position}} - Interview Hierarchy </h2>                
                 </div>
                 <div>
                 </div>
@@ -13,7 +13,7 @@
             <div class="grid">
                 <div class="col-3 int1">
                     <div class="column-1">Interview-1</div>
-                    <app-shortlisted-card [roleId]=1></app-shortlisted-card>
+                    <app-shortlisted-card [roleId]=1 (jobIdChange)="handleJobIdChange($event)"></app-shortlisted-card>
                 </div>
 
                 <div class="col-3 int2">

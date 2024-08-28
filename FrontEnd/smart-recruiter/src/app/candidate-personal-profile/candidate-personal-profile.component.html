@@ -17,19 +17,32 @@
                         </div>
                     </p-card>     
                 </div>
-                
+                <div class="floating-card-container" *ngIf = "isRejected">    
+                    <p-card [style]="{'background-color':'var(--red-400)',
+                                    'color': 'white', 
+                                    'height':'65px', 
+                                    'width': '130%'}">
+                        <div class="-mt-3">
+                            Candidate is rejected.
+                        </div>
+                    </p-card>     
+                </div>
+
                 <p-card styleClass="custom-card mt-3" *ngIf="isloaded">
                     <div class="flex -mt-2">
-                        <i class="fa-brands fa-linkedin fa-2xl" style="color: #0562a8;"></i>
-                        <i class="fa-brands fa-square-github fa-2xl ml-3" style="color: #000000;"></i>
-                        <i class="fa-solid fa-link fa-xl ml-3" style="color: #000000;"></i>
+                        <a href="{{candidate.linkedIn}}"><i class="fa-brands fa-linkedin fa-2xl" style="color: #0562a8;"></i></a>
+                        <a href="{{candidate.gitHub_Link}}"><i class="fa-brands fa-square-github fa-2xl ml-3" style="color: #000000;"></i></a>
+                        <a href="{{candidate.cV_FilePath}}"><i class="fa-solid fa-link fa-xl ml-3" style="color: #000000;"></i></a>
                     </div>
                     <p-divider />
                     <div class="name">
                         <h1 class="text-center">{{candidate.name}}</h1>
                     </div>
                     <div>
-                        <h3 class="text-center opacity-reduce position -mt-3">Software Engineering Intern candidate</h3>
+                        <h3 class="text-center opacity-reduce position -mt-3" *ngIf="candidate.role_Id===6; else showCandidateH">Software Engineering Intern</h3>
+                        <ng-template #showCandidateH>
+                            <h3 class="text-center opacity-reduce position -mt-3">Software Engineering Intern Candidate</h3>
+                        </ng-template>                        
                     </div>
                     <div class="grid">
                         <div class="col-12 mb-3">
@@ -68,11 +81,25 @@
                         </div>
                     </div>
                     <div class="grid mt-1">
-                        <div class="col-6">
-                            <p-button label="Call Next Interview" severity="success" [rounded]="false" (onClick)="updateRoleId(candidate.id, candidate.role_Id+1)"/>                            
+                        <div class="col-6 text-right">
+                            <p-button 
+                                label="Offered" 
+                                severity="success" 
+                                [rounded]="false" 
+                                *ngIf="candidate.role_Id===3; else showOther" 
+                                (onClick)="updateRoleId(candidate.id, candidate.role_Id + 1)">
+                            </p-button>                             
+                            <ng-template #showOther>
+                                <p-button 
+                                label="Call Next Interview" 
+                                severity="success" 
+                                [rounded]="false"                                 
+                                (onClick)="updateRoleId(candidate.id, candidate.role_Id + 1)"/>
+                            </ng-template>                           
+                            <!-- <p-button #showOther label="Call Next Interview" severity="success" [rounded]="false" (onClick)="updateRoleId(candidate.id, candidate.role_Id+1)"/>                             -->
                         </div>
                         <div class="col-6">
-                            <p-button label="Reject" severity="danger" [rounded]="false" />
+                            <p-button label="Reject" severity="danger" [rounded]="false" (onClick)="updateRoleId(candidate.id, 7)" [disabled]="candidate.role_Id === 7"/>
                         </div>
                     </div>
                 </p-card>
