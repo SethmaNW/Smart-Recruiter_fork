@@ -1,58 +1,24 @@
 $side-bar-width: 170px;
 $nav-bar-height: 55px;
 
-.container{
-    margin-top: 0px;
-    width: 100%;
-}
-
-.search-input {
-    font-size: 16px; 
-    border-width: 0.5px; 
-    border-color: var(--red-50); 
-    z-index: 4;
-}
-
-.custom-search-button .pi-search {
-    color: #ffffff; /* Custom icon color */
-}
-
-// .custom-add-button {
-//     background-color: #ee3a09 !important; /* Custom background color */
-//     color: #ffffff !important; /* Custom text color */
-//     border-color: #00ccff !important; /* Custom border color */
-// }
-
-.custom-button {
-    color: #f2f4f6 !important;
-    font-weight: 700;
-    background-color: var(--red-600);
-  }
-
-.add-new-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-:ng-deep .p-dialog-header{
-    padding-bottom: 1rem;
-}
-
-.editor-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 0; 
-}
-
 .position-head{
     font-size: 34px;
     font-weight: bold;
-    // margin: 10px 10px;
-    margin-bottom: 18px;
     color: rgb(46, 44, 44);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-icon {
+    position: relative;
+    left: 1.5rem;
+    pointer-events: none; 
+}
+
+.search-container input {
+    padding-left: 35px; 
 }

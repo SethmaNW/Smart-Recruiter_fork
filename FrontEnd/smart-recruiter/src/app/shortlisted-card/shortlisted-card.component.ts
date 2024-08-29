@@ -6,13 +6,12 @@ import { Applicant } from '../models/applicants.model';
 @Component({
   selector: 'app-shortlisted-card',
   templateUrl: './shortlisted-card.component.html',
-  styleUrls: ['./shortlisted-card.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./shortlisted-card.component.scss']
 }) 
 
 export class ShortlistedCardComponent implements OnInit {  
-  shortlisted: Applicant[] = [];
-  jobId!: number; 
+  public shortlisted: Applicant[] = [];
+  public jobId!: number; 
   
   @Input() roleId: number = 1;
   @Output() jobIdChange = new EventEmitter<number>();
@@ -22,16 +21,20 @@ export class ShortlistedCardComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(){
+  ngOnInit(): void{
+    this.callInitialiizer();
+  }
+
+  callInitialiizer(): void{
     this.route.queryParamMap.subscribe(params => {
       this.jobId = +params.get('jobId')!;
       this.jobIdChange.emit(this.jobId);
 
       this.loadShortlist();
-    });    
+    }); 
   }
 
-  loadShortlist(){
+  loadShortlist(): void{
     this.shortlistedListService.getShortlistedCandidates(this.jobId).subscribe(candidates => {
       this.shortlisted = candidates.filter(candidate => candidate.role_Id === this.roleId);
       console.log(this.shortlisted);

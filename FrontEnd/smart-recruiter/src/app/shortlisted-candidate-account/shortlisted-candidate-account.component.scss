@@ -7,20 +7,23 @@
     justify-content: center;
 }
 
-.int2{
-    background-color: #EAECEC;
+.apply-height{
     height: 100%;
     min-height: 80vh;
 }
 
-.int1{
-    background-color: #dfedea;
-    height: 100%;
-    min-height: 80vh;
-    margin-bottom: 20px;
+.column-set-1{
+    background-color: #d2eae5;  // #EAECEC
 }
 
-.column-1{
+.column-set-2{
+    background-color: #dfedea;  // #dfedea
+    // height: 100%;
+    // min-height: 80vh;
+    // margin-bottom: 20px;
+}
+
+.column-title{
     font-size: 20px;
     display: flex;
     justify-content: center;
