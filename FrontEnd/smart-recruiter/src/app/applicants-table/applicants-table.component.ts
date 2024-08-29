@@ -4,7 +4,6 @@ import { ApplicantsListService } from '../services/applicants-list.service';
 import { ActivatedRoute } from '@angular/router';
 import { Applicant } from '../models/applicants.model';
 import { AuthenticationService } from '../services/authentication.service';
-import { Observable } from 'rxjs';
 import { ConfirmationService } from 'primeng/api';
 import { SlidersService } from '../sliders/sliders.service';
 
@@ -15,19 +14,19 @@ import { SlidersService } from '../sliders/sliders.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ApplicantsTableComponent implements OnInit {
-  customers: Applicant[] = [];
+  public customers: Applicant[] = [];
   // selectedCustomer!: Applicant;
-  selectedCustomer: Applicant | null = null;
-  loading: boolean = true;
+  public selectedCustomer: Applicant | null = null;
+  private loading: boolean = true;
   // commentExceeded = false;
-  position: string = '';
-  jobId!: number;  // Declare jobId as a class property
-  adminId!: number;
+  private position: string = '';
+  public jobId!: number;  // Declare jobId as a class property
+  private adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
-  cols: any[] = [];
-  selectedColumns: any[] = [];
-  visible: boolean = false;
-  candidatesWithComments: number[] = [];
+  public cols: any[] = [];
+  public selectedColumns: any[] = [];
+  public visible: boolean = false;
+  // private candidatesWithComments: number[] = [];
   public deleteVisible: boolean = false;
   public isSelected : boolean = false;
   public isRejected: boolean = false;
@@ -64,7 +63,12 @@ export class ApplicantsTableComponent implements OnInit {
   // }
 
   editableStates: { [candidateId: number]: boolean } = {};
-  ngOnInit() {
+
+  ngOnInit():void {
+    this.callInitializer();
+  }  
+
+  callInitializer():void {
     // column selection for the table
     this.cols = [      
       { field: 'available_Date', header: 'Available Date' },
@@ -86,9 +90,9 @@ export class ApplicantsTableComponent implements OnInit {
     });
 
     this.jobIdChange.emit(this.jobId);
-  }  
+  }
 
-  loadAdminId(){
+  loadAdminId():void {
     const currentUser = this.authService.getCurrentUser();
     if (currentUser) {
       this.getAdminIdfromEmail(currentUser.email);
@@ -111,7 +115,7 @@ export class ApplicantsTableComponent implements OnInit {
   //   });
   // }
 
-  loadRelevantData(roleId: number) {
+  loadRelevantData(roleId: number):void {
     // this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
     //   this.position = position;	
     // });
@@ -136,28 +140,28 @@ export class ApplicantsTableComponent implements OnInit {
   //   return this.candidatesWithComments.includes(candidateId);
   // }
 
-  getAdminIdfromEmail(email: string) {
+  getAdminIdfromEmail(email: string):void {
     this.applicantsListService.getAdminId(email).subscribe(adminId => {
       this.adminId = adminId;
       console.log(this.adminId);
     });
   }
 
-  filterGlobal(event: Event, matchMode: string) {
+  filterGlobal(event: Event, matchMode: string):void {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
     this.dt2.filterGlobal(inputElement.value, matchMode);
   }
 
-  handleWordLimitExceeded(id:number, exceeded: boolean) {
+  handleWordLimitExceeded(id:number, exceeded: boolean):void {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
   }
 
-  showDialog(customer: Applicant) {
+  showDialog(customer: Applicant):void {
     this.selectedCustomer = { ...customer };    // Set the selected customer
     this.visible = true;
   }
 
-  submitComment() {
+  submitComment():void {
     if (this.selectedCustomer && this.selectedCustomer.id && this.selectedCustomer.comment !== undefined) {
       // console.log('Comment: ', this.selectedCustomer.comment, this.selectedCustomer.id);
       this.applicantsListService.updateComment(
@@ -197,7 +201,7 @@ export class ApplicantsTableComponent implements OnInit {
     }
   }
   
-  updateRoleId(candidateId: number, roleId: number) {	
+  updateRoleId(candidateId: number, roleId: number):void {	
     this.applicantsListService.updateRole(candidateId, roleId).subscribe((response) => {
       const customer = this.customers.find(c => c.id === candidateId);
       if (customer) {
@@ -214,6 +218,7 @@ export class ApplicantsTableComponent implements OnInit {
         }
         else if(roleId===7){
           this.isRejected = true;
+          // console.log("rejected: ", this.isRejected);
           this.isRejectedChange.emit(this.isRejected);   
           setTimeout(() => {
             this.isRejected = false;
@@ -232,7 +237,7 @@ export class ApplicantsTableComponent implements OnInit {
   );
   }
 
-  deleteCandidate(candidateId: number) {
+  deleteCandidate(candidateId: number):void {
     this.applicantsListService.deleteApplicant(candidateId).subscribe(
       (response) => {
         this.customers = this.customers.filter(c => c.id !== candidateId);
@@ -245,7 +250,7 @@ export class ApplicantsTableComponent implements OnInit {
     );
   }
   
-  confirmDelete(candidateId: number) {
+  confirmDelete(candidateId: number):void {
     this.deleteVisible = true;
     this.confService.confirm({
       message: 'Do you want to delete this candidate Permanently?',
