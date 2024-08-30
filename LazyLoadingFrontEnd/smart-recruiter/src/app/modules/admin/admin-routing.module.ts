@@ -5,11 +5,6 @@ import { ApplicantsComponent } from './components/applicants/applicants.componen
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'applicants',
-    pathMatch: 'full'
-  },
-  {
     path: 'admin-dashboard',
     component: AdminDashboardComponent
   },

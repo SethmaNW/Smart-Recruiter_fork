@@ -12,6 +12,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { TabViewModule } from 'primeng/tabview';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -49,7 +50,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DialogModule,
     ToastModule,
     MultiSelectModule,
-    TabViewModule
+    TabViewModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }
