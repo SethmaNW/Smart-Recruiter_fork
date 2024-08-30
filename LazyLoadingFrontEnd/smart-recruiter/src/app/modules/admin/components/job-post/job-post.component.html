@@ -1,1 +1,47 @@
-<p>job-post works!</p>
+<p-card styleClass="customized-card">
+    <div class="grid grid-custom">
+        <div class="col-12 col-12-custom">
+            <h2>{{job.title}}</h2>
+            <div class="batch">
+                <p-tag severity="success" value="Active" [hidden]="!job.activeStatus"/>
+                <p-tag severity="danger" value="Inactive" [hidden]="job.activeStatus"/>
+            </div>
+            <div class="drop-down">
+                <p-dropdown 
+                [options]="dropDownOptions"
+                [(ngModel)]="selectedFromDropDown" 
+                optionLabel="name"
+                [autoDisplayFirst]="false"
+                placeholder="Active"
+                [checkmark]="true"
+                (onChange)="changeActiveStatus()" 
+                />
+            </div>
+        </div>
+    </div>
+    <div class="location">
+        <i class="fa-solid fa-location-dot"></i>
+        <span style="margin-left: 1rem;">{{job.location}} | &nbsp;</span>
+        <span>{{job.department}}</span>
+    </div>
+    <div class="third-line">
+        <div class="candidate-count">
+            <span style="opacity: 0.7;">{{ applicantsCount$ | async }} Candidates Applied</span>
+        </div>
+        <div class="ml-3">
+            <a [routerLink]="['/applicants']" [queryParams]="{'jobId' : job.id}" style="color: #22c55e; text-decoration: none;">
+                <span >View Applicants</span>
+                <i class="fa-solid fa-angle-right ml-1"></i>
+            </a>
+        </div>
+        <div class="ml-3">
+            <a [routerLink]="['/shortlisted']" [queryParams]="{'jobId' : job.id}" style="color: #22c55e; text-decoration: none;">
+                <span >View Shortlisted list</span>
+                <i class="fa-solid fa-angle-right ml-1"></i>
+            </a>
+        </div>
+        <div class="candidate-available ml-auto">
+            <span style="opacity: 0.7;">{{ job.noOfAvailablePositions }} Available positions </span>
+        </div>
+    </div>
+</p-card>
