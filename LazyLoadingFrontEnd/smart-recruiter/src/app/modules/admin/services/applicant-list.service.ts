@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Applicant } from '../models/applicants.model';
+import { Applicant } from 'src/app/shared/models/applicant.model';
 
 @Injectable({
   providedIn: 'root'
