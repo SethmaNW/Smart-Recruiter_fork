@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { Job } from '../models/job.model';
+import { Job } from 'src/app/shared/models';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
@@ -9,15 +9,13 @@ import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApplicantsListService } from '../services/applicants-list.service';
+import { ApplicantsListService } from '../../services/applicant-list.service';
 
 
 @Component({
   selector: 'app-job-post',
   templateUrl: './job-post.component.html',
   styleUrls: ['./job-post.component.scss'],
-  standalone : true,
-  imports: [CommonModule, CardModule, TagModule, DropdownModule, FormsModule, RouterLink],
   encapsulation: ViewEncapsulation.None
 })
 export class JobPostComponent implements OnInit {
