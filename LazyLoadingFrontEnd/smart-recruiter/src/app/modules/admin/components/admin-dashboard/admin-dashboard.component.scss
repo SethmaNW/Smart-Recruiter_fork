@@ -1,0 +1,25 @@
+$side-bar-width: 170px;
+$nav-bar-height: 55px;
+
+
+.position-head{
+    font-size: 34px;
+    font-weight: bold;
+    color: rgb(46, 44, 44);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.search-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-icon {
+    position: relative;
+    left: 1.5rem;
+    pointer-events: none; 
+}
+
+.search-container input {
+    padding-left: 35px; 
+}
