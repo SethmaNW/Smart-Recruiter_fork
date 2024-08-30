@@ -1,0 +1,44 @@
+.name{
+    text-decoration: none;    
+}
+.name:hover{
+   color: rgb(55, 53, 53);     
+}
+
+.no-data{
+    margin-top: 100px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+// without using grid to action buttons
+.button-container{
+    display: flex;
+}
+
+.small-button .p-button {
+    padding: 0.5rem 0.5rem; 
+    padding-left: 0.55rem;
+    padding-right: 0.55rem;
+    // height: auto; 
+    // width: auto; 
+}
+
+.column-name{
+    width: 180px;
+}
+.column-contact{
+    width: 135px;
+}
+.column-action{
+    width: 150px;
+}
+.column-degree {
+    width: 140px;
+}
+.column-skills {
+    width: 150px;
+}
+.column-muliti-select{
+    width: 120px
+}
