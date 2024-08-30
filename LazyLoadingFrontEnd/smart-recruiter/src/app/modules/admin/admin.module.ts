@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from 'primeng/api';
+import { ConfirmationService, SharedModule } from 'primeng/api';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
@@ -12,7 +12,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { TabViewModule } from 'primeng/tabview';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -50,8 +49,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DialogModule,
     ToastModule,
     MultiSelectModule,
-    TabViewModule,
-    HttpClientModule
-  ]
+    TabViewModule
+  ],
+  providers: [ConfirmationService],
 })
 export class AdminModule { }
