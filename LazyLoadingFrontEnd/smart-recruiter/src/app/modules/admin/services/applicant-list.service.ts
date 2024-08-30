@@ -14,19 +14,6 @@ export class ApplicantsListService {
     // this.loadDummyData();
   }
 
-  // getCustomers() {
-  //   return this.customers;
-  // }
-
-  // isLoading() {
-  //   return this.loading;
-  // }
-
-  // updateCommentt(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
-  //   console.log('Reached update comment service');
-  //   return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
-  // }  
-
   updateComment(jobId: number, candidateId: number, adminId: number, roleId: number, commentText: string): Observable<Comment> {
     // console.log('Reached applicant update comment service');
     return this.http.post<Comment>(`api/Comment/${jobId}/${candidateId}/${adminId}/${roleId}`, { commentText });
