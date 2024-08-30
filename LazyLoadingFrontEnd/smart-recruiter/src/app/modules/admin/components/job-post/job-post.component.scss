@@ -1,0 +1,48 @@
+.customized-card {
+    background-color: var(--surface-200);
+    // margin-top: 2rem;
+}
+
+.grid-custom{
+    margin-top: -3rem;
+    margin-bottom: -2rem;
+}
+
+.col-12-custom{
+    display: flex;
+    flex-direction: row;
+}
+
+.batch{
+    margin-left: 1rem;
+    padding-top: 1.5rem;
+}
+
+.location{
+    margin-top: 1rem;
+    display: flex;
+}
+
+.drop-down{
+    margin-left: auto;
+    padding-top: 0.5rem;
+}
+
+.third-line{
+    padding-top: 1rem;
+    margin-bottom: -1rem;
+    display: flex;
+}
+
+.no-underline {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.candidate-available{
+    margin-left: 34.7rem;
+}
