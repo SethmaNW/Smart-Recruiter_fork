@@ -2,7 +2,7 @@
     <div class="col">
         <div class="grid">
             <div class="col">
-                <div *ngIf="customers && customers.length > 0" class="mt-1">
+                <div *ngIf="customers && customers.length > 0">
                     <p-table #dt2
                     [columns]="selectedColumns" 
                     [value]="customers" 
@@ -113,6 +113,9 @@
                                 </td>
                                 <td>
                                     <!-- <div class="status">{{ showStatus(customer.role_Id) }} </div> -->
+
+                                    <!-- Action buttons - according to grid system
+                                    Occured an issue here when checking responsiveness -->
                                     <!-- <div class="grid">
                                         <div class="col-6 text-center">
                                             <p-button 
@@ -208,6 +211,9 @@
                                         [outlined]="true" 
                                         class="small-button" 
                                         [style]="{ 'font-size': '13px', 'width': '110%' }"/>
+                                        <!-- there is an issue in delete confirm pop-up:
+                                        when a candidate is deleted and move back to the applicants tab the delete pop-up pops 
+                                        and have to cancel it thrice -->
                                         <p-toast />
                                         <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="deleteVisible = false">
                                             <ng-template pTemplate="headless" let-message>
