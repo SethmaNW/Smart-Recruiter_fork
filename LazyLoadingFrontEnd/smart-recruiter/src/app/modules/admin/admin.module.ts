@@ -11,7 +11,10 @@ import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { SliderModule } from 'primeng/slider';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -21,7 +24,6 @@ import { ApplicantsComponent } from './components/applicants/applicants.componen
 import { ApplicantsTableComponent } from './components/applicants-table/applicants-table.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { MultiSelectModule } from 'primeng/multiselect';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DialogModule,
     ToastModule,
     MultiSelectModule,
-    TabViewModule
+    TabViewModule,
+    InputNumberModule,
+    SliderModule
   ],
   providers: [ConfirmationService],
 })
