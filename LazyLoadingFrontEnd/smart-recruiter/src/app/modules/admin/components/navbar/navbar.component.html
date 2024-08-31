@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<div class="grid-nogutter custom-cotainer">
+    <div class="col-12">
+        <nav class="custom-navbar">
+            <div class="navbar-alignment">
+                <img src="/assets/images/lb_icon.png" alt="icon" class="navbar-icon">
+                <div class="navbar-right">    <!-- change this  -->
+                <!-- <div class="navbar-right" *ngIf="isLoggedIn()"> -->
+                    <span class="profile-name">{{ getCurrentUserName() }}</span>
+                    <a class="log-out" (click)="logout()">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
