@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { JobPostService } from '../services/job-post.service';
-import { AuthenticationService } from '../services/authentication.service';
 import { Job } from 'src/app/shared/models';
+import { JobPostService } from 'src/app/shared/services/job-post.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
