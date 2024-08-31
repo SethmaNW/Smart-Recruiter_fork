@@ -15,6 +15,9 @@ import { TabViewModule } from 'primeng/tabview';
 import { RouterLink } from '@angular/router';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { InputTextModule } from 'primeng/inputtext';
+import { EditorModule } from 'primeng/editor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -56,8 +59,10 @@ import { SliderModule } from 'primeng/slider';
     TabViewModule,
     InputNumberModule,
     SliderModule,
-    MultiSelectModule
+    MultiSelectModule,
+    InputTextModule,
+    EditorModule
   ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, provideAnimations()],
 })
 export class AdminModule { }
