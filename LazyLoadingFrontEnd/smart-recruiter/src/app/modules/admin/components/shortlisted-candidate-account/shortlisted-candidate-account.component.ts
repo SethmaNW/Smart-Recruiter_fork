@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ApplicantsListService } from '../../services/applicant-list.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class ShortlistedCandidateAccountComponent {
   public position: string = '';
   private selectedJobId!: number;
 
-  constructor(private applicantsListService: ApplicantsListService){}
+  constructor(private applicantsListService: ApplicantsListService, private cdr:ChangeDetectorRef){}
 
   handleJobIdChange(jobId: number): void{
     this.selectedJobId = jobId;
@@ -21,6 +21,7 @@ export class ShortlistedCandidateAccountComponent {
   loadPosition(): void {
     this.applicantsListService.getPositionName(this.selectedJobId).subscribe(position => {
       this.position = position;	
+      // this.cdr.detectChanges();
       // console.log('Position ', this.position);
     });
   }

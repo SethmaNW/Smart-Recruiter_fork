@@ -41,7 +41,7 @@ const routes: Routes = [
     SidebarComponent
   ],
   imports: [
-    SharedModule, // Import your custom SharedModule here
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   providers: [ConfirmationService, provideAnimations(), MessageService],
