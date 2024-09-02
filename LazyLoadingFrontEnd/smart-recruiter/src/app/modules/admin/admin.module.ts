@@ -66,7 +66,6 @@ const routes: Routes = [
     TableModule,
     ButtonModule,
     ConfirmDialogModule,
-    SharedModule,
     CardModule,
     TagModule,
     DropdownModule,

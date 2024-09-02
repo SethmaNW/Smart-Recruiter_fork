@@ -1,8 +1,8 @@
-<!-- <div class="flex flex-column">
-    <app-user-nav></app-user-nav>
-    <div class="form-style"> -->
+<div class="flex flex-column">
+    <!-- <app-user-nav></app-user-nav> -->
+    <div class="form-style">
 
-        <!-- <div class="grid top-overlay" *ngIf="formSVC.formSubmitted">
+        <div class="grid top-overlay" *ngIf="formSVC.formSubmitted">
             <div class="col-12">
                 <div class="ml-auto">
                     <p-card [style]="{'background-color':'var(--green-200)', 
@@ -16,16 +16,16 @@
                 </p-card>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-        <!-- <div>
+        <div>
             <h1 class="text-center h1-form">Join Our Team !</h1>
             <p class="text-center custom-para">Fill the following form, and we'll inform you shortly if you are shortlisted.</p>
         </div>
 
         <form (ngSubmit)="onSubmit()" class="p-fluid" autocomplete="on" [formGroup]="form">
             <p-stepper [linear]="true" [(activeStep)]="currentStep">
-                Personal Information 
+                <!-- Personal Information -->
                 <p-stepperPanel header="Personal Information" class="stepper-panel" [style]="{'width': '90%'}">
                     <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
                         <div class="border-1 surface-border border-round font-medium step-content formG" formGroupName="personalInfo">                                
@@ -105,12 +105,12 @@
 
                         <div class="flex pt-4 justify-content-end">
                             <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="nextStep()" />
-                        </div> -->
-                    <!-- </ng-template>
-                </p-stepperPanel> -->
+                        </div>
+                    </ng-template>
+                </p-stepperPanel>
 
                 <!-- Educational and Work Experience -->
-                <!-- <p-stepperPanel header="Educational and Work Experience">
+                <p-stepperPanel header="Educational and Work Experience">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
                         <div class="border-1 surface-border border-round font-medium step-content" formGroupName="educationInfo">                                
                             <div class="Education">
@@ -153,16 +153,16 @@
                                     [maxWords]="30"
                                     (wordLimitExceeded)="handleWordLimitExceeded($event)"
                                     placeholder="Enter your skills (max 30 words)"
-                                ></textarea> -->
-                                <!-- <br>
+                                ></textarea>
+                                <br>
                                 <div *ngIf="form.get('educationInfo.skills')?.touched">
                                     <small *ngIf="form.get('educationInfo.skills')?.errors?.['required']">Skills field is required.</small>
                                 </div>
                                 <div *ngIf="skillsTooLong" class="error-message">You have exceeded the maximum word limit.</div>
-                            </div> -->
-                            <!-- <div class="p-work">
-                                <div class="topic">Work Experience</div>  -->
-                                <!-- <textarea 
+                            </div>
+                            <div class="p-work">
+                                <div class="topic">Work Experience</div>
+                                <textarea 
                                     name="work" 
                                     id="work"
                                     class="work"
@@ -173,8 +173,8 @@
                                     appMaxWords
                                     [maxWords]="30"
                                     placeholder="Enter your Work Experience (max 30 words)">
-                                </textarea> -->
-                                <!-- <div *ngIf="form.get('educationInfo.workExperience')?.touched">
+                                </textarea>
+                                <div *ngIf="form.get('educationInfo.workExperience')?.touched">
                                     <small *ngIf="form.get('educationInfo.workExperience')?.errors?.['required']">Work Experience is required.</small>
                                 </div>
                             </div>
@@ -185,10 +185,10 @@
                             <p-button label="Next" icon="pi pi-arrow-right" iconPos="right" (onClick)="nextStep()" />
                         </div>
                     </ng-template>
-                </p-stepperPanel> -->
+                </p-stepperPanel>
 
                 <!-- Other -->
-                <!-- <p-stepperPanel header="Other">
+                <p-stepperPanel header="Other">
                     <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
                         <div class="border-1 surface-border border-round font-medium step-content" formGroupName="otherInfo">                                
                             <div class="p-available-date">
@@ -204,8 +204,8 @@
                                     inputId="icondisplay" />
                             </div>
                             <div class="p-reason">
-                                <div class="topic">Why do you want to join LB Finance</div> -->
-                                <!-- <textarea 
+                                <div class="topic">Why do you want to join LB Finance</div>
+                                <textarea 
                                     name="reason" 
                                     id="reason"
                                     class="reason"
@@ -215,9 +215,9 @@
                                     required
                                     appMaxWords
                                     [maxWords]="30"
-                                     placeholder="Enter your message here (max 30 words)">
-                                </textarea> -->
-                                <!-- <div *ngIf="form.get('otherInfo.reason')?.touched">
+                                    placeholder="Enter your message here (max 30 words)">
+                                </textarea>
+                                <div *ngIf="form.get('otherInfo.reason')?.touched">
                                     <small *ngIf="form.get('otherInfo.reason')?.errors?.['required']">This field is required.</small>
                                 </div>
                             </div>
@@ -243,8 +243,8 @@
                                         <div *ngIf="!fileUploaded && form.get('otherInfo.cv')?.touched" >
                                             <small class="error-message">Please upload a file.</small>
                                         </div>
-                                </div> -->
-                            <!-- </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="flex pt-4 justify-content-start">
@@ -260,4 +260,3 @@
         </form>        
     </div>
 </div>
- --> 
