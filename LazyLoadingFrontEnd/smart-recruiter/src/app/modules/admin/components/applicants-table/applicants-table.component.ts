@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { ApplicantsListService } from '../../services/applicant-list.service';
 import { Applicant } from 'src/app/shared/models/applicant.model';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { SlidersService } from '../../services/sliders.service';
 
 
