@@ -74,7 +74,7 @@ export class ApplicantsTableComponent implements OnInit {
       this.loadAdminId();
       // this.loadData();  
       this.loadRelevantData(this.roleId);
-      this.cd.detectChanges();   // this doesn't work - used to manually trigger change detection in pop up dialog
+      // this.cd.detectChanges();   // to manually trigger change detection in pop up dialog - in LazyLoading
     });
 
     this.jobIdChange.emit(this.jobId);
@@ -86,6 +86,7 @@ export class ApplicantsTableComponent implements OnInit {
       this.getAdminIdfromEmail(currentUser.email);
       console.log(this.getAdminIdfromEmail(currentUser.email));
     }
+    this.cd.detectChanges();
   }
 
   loadRelevantData(roleId: number):void {
@@ -96,6 +97,7 @@ export class ApplicantsTableComponent implements OnInit {
       this.customers = customers.filter(customer => customer.role_Id === roleId); 
       console.log(this.customers);
     });
+    this.cd.detectChanges();
   }
 
   getAdminIdfromEmail(email: string):void {
@@ -103,20 +105,24 @@ export class ApplicantsTableComponent implements OnInit {
       this.adminId = adminId;
       console.log(this.adminId);
     });
+    this.cd.detectChanges();
   }
 
   filterGlobal(event: Event, matchMode: string):void {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
     this.dt2.filterGlobal(inputElement.value, matchMode);
+    this.cd.detectChanges();
   }
 
   handleWordLimitExceeded(id:number, exceeded: boolean):void {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
+    this.cd.detectChanges();
   }
 
   showDialog(customer: Applicant):void {
     this.selectedCustomer = { ...customer };    // Set the selected customer
     this.visible = true;
+    this.cd.detectChanges();
   }
 
   submitComment():void {
@@ -172,6 +178,7 @@ export class ApplicantsTableComponent implements OnInit {
           setTimeout(() => {
             this.isSelected = false;
             this.isSelectedChange.emit(this.isSelected);
+            this.cd.detectChanges();
           }, 2000);
         }
         else if(roleId===7){
@@ -181,10 +188,12 @@ export class ApplicantsTableComponent implements OnInit {
           setTimeout(() => {
             this.isRejected = false;
             this.isRejectedChange.emit(this.isRejected);
+            this.cd.detectChanges();
           }, 2000);
         }
 
-        this.loadRelevantData(this.roleId);        
+        this.loadRelevantData(this.roleId);     
+        this.cd.detectChanges();   
       }
       // this.loadData();
       // this.cd.detectChanges();
