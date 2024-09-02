@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/shared/models';
 import { JobPostService } from 'src/app/shared/services/job-post.service';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -8,8 +8,6 @@ import { AuthenticationService } from '../../services/authentication.service';
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.scss']
-  // standalone : true,
-  // imports : [CommonModule]
 })
 export class AdminDashboardComponent implements OnInit {
   visible : boolean = false;

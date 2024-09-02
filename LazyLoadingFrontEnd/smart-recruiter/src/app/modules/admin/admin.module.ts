@@ -11,10 +11,13 @@ import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
-import { MultiSelectModule } from 'primeng/multiselect';
 import { TabViewModule } from 'primeng/tabview';
+import { RouterLink } from '@angular/router';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { InputTextModule } from 'primeng/inputtext';
+import { EditorModule } from 'primeng/editor';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -24,6 +27,7 @@ import { ApplicantsComponent } from './components/applicants/applicants.componen
 import { ApplicantsTableComponent } from './components/applicants-table/applicants-table.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SliderModule } from 'primeng/slider';
 
 
 @NgModule({
@@ -39,22 +43,26 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     AdminRoutingModule,
+    TableModule,
+    ButtonModule,
+    ConfirmDialogModule,
     SharedModule,
     CardModule,
     TagModule,
     DropdownModule,
-    TableModule,
-    ButtonModule,
-    ConfirmDialogModule,
+    RouterLink,
     DialogModule,
     ToastModule,
-    MultiSelectModule,
     TabViewModule,
     InputNumberModule,
-    SliderModule
+    SliderModule,
+    MultiSelectModule,
+    InputTextModule,
+    EditorModule
   ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, provideAnimations()],
 })
 export class AdminModule { }
