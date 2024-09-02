@@ -1,1 +1,208 @@
-<p>admin-dashboard works!</p>
+<div class="container">
+    <div class="grid">
+        <div class="col-12 p-0">
+            <app-navbar></app-navbar>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-2 pl-0 pb-0">
+            <app-sidebar></app-sidebar>
+        </div>
+        <!-- add margin top for the nav bar -->
+        <div class="col-10 -ml-4" [style]="{'margin-top' : '55px'}">
+            <div class="grid">
+                <div class="col-3">
+                    <div class="grid mt-1">
+                        <div class="col-12">
+                            <div class="position-head">Recruitments</div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-12">
+                            <p class="opacity-70 -mt-1">Here are all job list</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9 pt-4">
+                    <div class="grid">
+                        <div class="col-3 col-offset-6 search-container">
+                            <i class="pi pi-search search-icon opacity-70"></i>
+                            <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" class="max-w-full"/>
+                        </div>
+                        <div class="col-3">
+                            <div class="grid">
+                                <div class="col-8 col-offset-4 pl-2">
+                                    <p-button label="+ Add New" [style]="{ 'background-color': 'var(--red-600)', 'color': 'white' }" (onClick)="showDialog()"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- dialog -->
+            <p-dialog 
+                header="Post a New Job" 
+                [(visible)]="visible" 
+                [modal]="true" 
+                [style]="{ width: '50rem' }">
+                    
+                <form class="form">
+                    <div class="grid pt-1">
+                        <div class="col-2 font-bold flex align-items-center">
+                            Title
+                        </div>
+                        <div class="col-10">
+                            <input pInputText name="title" class="w-full" autocomplete="off" [(ngModel)]="job.title" />
+                        </div>
+                    </div>
+                    <!-- <div class="grid">
+                        <div class="col-2 font-bold flex align-items-center">
+                            Description
+                        </div>
+                        <div class="col-10">
+                            <p-editor [(ngModel)]="job.description" [style]="{ height: '20rem',width:'100%'}" name="editor"/>
+                        </div>
+                    </div> -->
+                    <div class="grid">
+                        <div class="col-2 font-bold flex align-items-center">
+                            Location
+                        </div>
+                        <div class="col-10">
+                            <input pInputText name="title" class="w-full" autocomplete="off" [(ngModel)] = "job.location" />
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-2 font-bold flex align-items-center">
+                            Department
+                        </div>
+                        <div class="col-10">
+                            <input pInputText name="department" class="w-full" autocomplete="off" [(ngModel)] = "job.department" />
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-2 font-bold flex align-items-center">
+                            Available Vacancy Count
+                        </div>
+                        <div class="col-10">
+                            <p-inputNumber 
+                            [(ngModel)]="job.noOfAvailablePositions" 
+                            name="count"
+                            [showButtons]="true" 
+                            buttonLayout="horizontal" 
+                            inputId="horizontal" 
+                            spinnerMode="horizontal" 
+                            [step]="1"
+                            decrementButtonClass=""
+                            incrementButtonClass=""
+                            incrementButtonIcon="pi pi-plus" 
+                            decrementButtonIcon="pi pi-minus"
+                            [min]="1" 
+                            />
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 font-bold text-3xl pt-2">
+                            Adjust the Weight for Each Criteria
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-6">
+                            <div class="grid mt-2 mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> Attitude And Discipline </label>
+                                    <input type="text" pInputText [(ngModel)]="job.attitudeAndDiscipline" name="attitudeValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.attitudeAndDiscipline" class="w-full" [min]="0" [max]="10" name="attitudeSlider"/>
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold mb-2"> Educational Background </label>
+                                    <input type="text" pInputText [(ngModel)]="job.educationBackground" name="educationValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.educationBackground" class="w-full" [min]="0" [max]="10" name="educationSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> Career Background </label>
+                                    <input type="text" pInputText [(ngModel)]="job.careerBackground" name="careerValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.careerBackground" class="w-full" [min]="0" [max]="10" name="careerSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold block mb-2"> Cultural Fit </label>
+                                    <input type="text" pInputText [(ngModel)]="job.culturalFit" name="culturalValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.culturalFit" class="w-full" [min]="0" [max]="10" name="culturalSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> IQ/Creativity And Problem Solving </label>
+                                    <input type="text" pInputText [(ngModel)]="job.iqCreativityProblemSolvingSkills" name="iqValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.iqCreativityProblemSolvingSkills" class="w-full" [min]="0" [max]="10" name="iqSlider" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="grid mt-2 mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold block mb-2"> Technical Knowledge </label>
+                                    <input type="text" pInputText [(ngModel)]="job.technicalKnowledge" name="technicalValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.technicalKnowledge" class="w-full" [min]="0" [max]="10" name="technicalSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold block mb-2"> Professional Qualification </label>
+                                    <input type="text" pInputText [(ngModel)]="job.professionalQualification" name="professionalValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.professionalQualification" class="w-full" [min]="0" [max]="10" name="professionalSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> Communication Skills </label>
+                                    <input type="text" pInputText [(ngModel)]="job.communicationSkills" name="communicationValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.communicationSkills" class="w-full" [min]="0" [max]="10" name="communicationSlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> Family Background </label>
+                                    <input type="text" pInputText [(ngModel)]="job.familyBackground" name="familyValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.familyBackground" class="w-full" [min]="0" [max]="10" name="familySlider" />
+                                </div>
+                            </div>
+                            <div class="grid mb-4">
+                                <div class="col-12">
+                                    <label class="font-bold"> Management Skills </label>
+                                    <input type="text" pInputText [(ngModel)]="job.managementSkills" name="managementValue" class="w-full mb-3 mt-1"/>
+                                    <p-slider [(ngModel)]="job.managementSkills" class="w-full" [min]="0" [max]="10" name="managementSlider" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                    <ng-template pTemplate="footer">
+                        <p-button 
+                            label="Cancel" 
+                            [text]="true" 
+                            [outlined]="true" 
+                            severity="secondary" 
+                            (onClick)="visible = false" />
+                        <p-button 
+                            label="Save" 
+                            [outlined]="true" 
+                            severity="secondary" 
+                            (onClick)="addJob()" 
+                            />
+                    </ng-template>
+            </p-dialog> 
+            <div class="grid">
+                <div class="col-12" *ngFor="let job of filteredJobs">
+                    <app-job-post [job] = "job"></app-job-post>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

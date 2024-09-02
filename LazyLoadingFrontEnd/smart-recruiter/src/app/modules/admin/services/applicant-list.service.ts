@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Applicant } from 'src/app/shared/models/applicant.model';
 
 @Injectable({
@@ -13,19 +13,6 @@ export class ApplicantsListService {
   constructor(private http: HttpClient) {
     // this.loadDummyData();
   }
-
-  // getCustomers() {
-  //   return this.customers;
-  // }
-
-  // isLoading() {
-  //   return this.loading;
-  // }
-
-  // updateCommentt(jobId: number, candidateId: number, adminId: number,  comment: string): Observable<any> {
-  //   console.log('Reached update comment service');
-  //   return this.http.post(`api/Comment/${jobId}/${candidateId}/${adminId}`, { comment });
-  // }  
 
   updateComment(jobId: number, candidateId: number, adminId: number, roleId: number, commentText: string): Observable<Comment> {
     // console.log('Reached applicant update comment service');
