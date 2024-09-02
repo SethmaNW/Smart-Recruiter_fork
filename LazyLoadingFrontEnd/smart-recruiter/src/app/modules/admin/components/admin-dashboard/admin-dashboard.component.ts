@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/shared/models';
 import { JobPostService } from 'src/app/shared/services/job-post.service';
 import { AuthenticationService } from '../../services/authentication.service';
@@ -16,7 +16,8 @@ export class AdminDashboardComponent implements OnInit {
 
   job : Job = {title : '', description : '',noOfAvailablePositions : 1, location : '', department : '', activeStatus : true, attitudeAndDiscipline : 1, technicalKnowledge : 1, educationBackground : 1, professionalQualification : 1, careerBackground : 1, communicationSkills : 1, culturalFit : 1, familyBackground : 1, iqCreativityProblemSolvingSkills : 1, managementSkills : 1};
 
-  constructor( private jobPostSvc : JobPostService, protected AuthSvc : AuthenticationService) { }
+  
+  constructor( private jobPostSvc : JobPostService, protected AuthSvc : AuthenticationService, private cdr: ChangeDetectorRef) { }
 
 
   ngOnInit(){
@@ -25,6 +26,13 @@ export class AdminDashboardComponent implements OnInit {
   // Add New button popup control
   showDialog(){
     this.visible = true;
+    this.cdr.detectChanges();
+  }
+
+  cancelPopUp(){
+    this.visible = false;
+    this.cdr.detectChanges();
+    //console.log(this.visible);
   }
 
   filterGlobal(event: Event){
@@ -33,10 +41,10 @@ export class AdminDashboardComponent implements OnInit {
     
     this.filteredJobs = this.jobs.filter(job =>
       job.title.toLowerCase().includes(query) ||
-      // job.description.toLowerCase().includes(query) ||
       job.location.toLowerCase().includes(query) ||
       job.department.toLowerCase().includes(query)
     );
+    this.cdr.detectChanges();
   }
 
   addJob(){
@@ -46,7 +54,8 @@ export class AdminDashboardComponent implements OnInit {
       this.filteredJobs = this.jobs;
     });
     this.visible = false;
-    //console.log(this.job.description);
+    this.cdr.detectChanges();
+    //console.log(this.visible);
     // Reset the form
   }
 
