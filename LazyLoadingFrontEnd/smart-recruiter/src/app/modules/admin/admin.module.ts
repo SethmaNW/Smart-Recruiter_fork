@@ -13,6 +13,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { CandidatePersonalProfileComponent } from './components/candidate-personal-profile/candidate-personal-profile.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { SlidersComponent } from './components/sliders/sliders.component';
 
 const routes: Routes = [
   {
@@ -26,6 +29,10 @@ const routes: Routes = [
   {
     path: 'shortlisted',
     component: ShortlistedCandidateAccountComponent
+  },
+  {
+    path: 'personal-profile',
+    component: CandidatePersonalProfileComponent
   }
 ];
 
@@ -38,7 +45,10 @@ const routes: Routes = [
     ApplicantsComponent,
     ApplicantsTableComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CandidatePersonalProfileComponent,
+    PieChartComponent,
+    SlidersComponent,
   ],
   imports: [
     SharedModule,

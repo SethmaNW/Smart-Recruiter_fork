@@ -17,7 +17,11 @@ import { EditorModule } from 'primeng/editor';
 import { SliderModule } from 'primeng/slider';
 import { PanelModule } from 'primeng/panel';
 import { TooltipModule } from 'primeng/tooltip';
+import { ChartModule } from 'primeng/chart';
 import { RouterLink } from '@angular/router';
+import { KnobModule } from 'primeng/knob';
+import { DividerModule } from 'primeng/divider';
+
 
 @NgModule({
   declarations: [],
@@ -40,7 +44,10 @@ import { RouterLink } from '@angular/router';
     EditorModule,
     PanelModule,
     TooltipModule,
+    ChartModule,
     RouterLink,
+    KnobModule,
+    DividerModule,
   ],
   exports: [
     CommonModule,
@@ -61,7 +68,10 @@ import { RouterLink } from '@angular/router';
     EditorModule,
     PanelModule,
     TooltipModule,
+    ChartModule,
     RouterLink,
+    KnobModule,
+    DividerModule,
   ],
 })
 export class SharedModule { }
