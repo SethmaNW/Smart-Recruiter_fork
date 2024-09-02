@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ConfirmationService, SharedModule } from 'primeng/api';
+import { ConfirmationService, MessageService, SharedModule } from 'primeng/api';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
@@ -12,12 +12,15 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { TabViewModule } from 'primeng/tabview';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule, Routes } from '@angular/router';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextModule } from 'primeng/inputtext';
 import { EditorModule } from 'primeng/editor';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { SliderModule } from 'primeng/slider';
+import { PanelModule } from 'primeng/panel';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { JobPostComponent } from './components/job-post/job-post.component';
@@ -27,7 +30,21 @@ import { ApplicantsComponent } from './components/applicants/applicants.componen
 import { ApplicantsTableComponent } from './components/applicants-table/applicants-table.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SliderModule } from 'primeng/slider';
+
+const routes: Routes = [
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent
+  },
+  {
+    path: 'applicants',
+    component: ApplicantsComponent
+  },
+  {
+    path: 'shortlisted',
+    component: ShortlistedCandidateAccountComponent
+  }
+];
 
 
 @NgModule({
@@ -61,8 +78,11 @@ import { SliderModule } from 'primeng/slider';
     SliderModule,
     MultiSelectModule,
     InputTextModule,
-    EditorModule
+    EditorModule,
+    PanelModule,
+    TooltipModule,
+    RouterModule.forChild(routes)
   ],
-  providers: [ConfirmationService, provideAnimations()],
+  providers: [ConfirmationService, provideAnimations(), MessageService],
 })
 export class AdminModule { }
