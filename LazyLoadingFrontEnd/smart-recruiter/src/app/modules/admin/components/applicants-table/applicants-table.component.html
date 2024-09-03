@@ -52,7 +52,7 @@
                             <tr>
                                 <td>                
                                     <a 
-                                    [routerLink]="['/personal-profile']"                                     
+                                    [routerLink]="['/admin/personal-profile']"                                     
                                     [queryParams]="{'candidateId': customer.id, 'jobId': jobId}" 
                                     class="name">
                                         {{ customer.name }}
@@ -215,14 +215,18 @@
                                         when a candidate is deleted and move back to the applicants tab the delete pop-up pops 
                                         and have to cancel it thrice -->
                                         <p-toast />
-                                        <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="deleteVisible = false">
+                                        <p-confirmDialog #cd [visible]="deleteVisible" (onHide)="cancelDeletePopup()">
                                             <ng-template pTemplate="headless" let-message>
                                                 <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
                                                     <span class="font-bold text-2xl block mb-2 mt-4">
                                                     <!-- <span [style]="{'font-weight': 'bold', 'font-size': '20px'}"> -->
-                                                        {{ message.header }}
+                                                        <!-- {{ message?.header }} -->
+                                                        Delete Confirmation
                                                     </span>
-                                                    <p class="mb-0">{{ message.message }}</p>
+                                                    <p class="mb-0">
+                                                        <!-- {{ message.message }} -->
+                                                        Do you want to delete this candidate Permanently?
+                                                    </p>
                                                     <div class="flex align-items-center gap-2 mt-4">
                                                         <button 
                                                             pButton 

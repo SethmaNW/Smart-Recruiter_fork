@@ -209,6 +209,11 @@ export class ApplicantsTableComponent implements OnInit {
   );
   }
 
+  cancelDeletePopup():void {
+    this.deleteVisible = false;
+    this.cd.detectChanges();
+  }
+
   deleteCandidate(candidateId: number):void {
     this.applicantsListService.deleteApplicant(candidateId).subscribe(
       (response) => {
@@ -225,12 +230,13 @@ export class ApplicantsTableComponent implements OnInit {
   confirmDelete(candidateId: number):void {
     this.deleteVisible = true;
     this.confService.confirm({
-      message: 'Do you want to delete this candidate Permanently?',
-      header: 'Delete Confirmation',
+      // header: 'Delete Confirmation',
+      // message: 'Do you want to delete this candidate Permanently?',      
       // icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.deleteCandidate(candidateId);
         this.deleteVisible = false;
+        this.cd.detectChanges();
 
         // Rejected flag related to select button with timeout
         this.isDeleted = true;
@@ -238,16 +244,18 @@ export class ApplicantsTableComponent implements OnInit {
         setTimeout(() => {
           this.isDeleted = false;
           this.isDeletedChange.emit(this.isDeleted);
-          this.cd.detectChanges();
-        }, 2000);
-        
+          // this.cd.detectChanges();
+        }, 2000);        
       },
       reject: () => {
         this.deleteVisible = false;
+        // this.cancelDeletePopup();
         console.log('Delete operation cancelled');
-        this.cd.detectChanges();
+        // this.cd.detectChanges();
       }
     });
+    // this.loadRelevantData(this.roleId);     
+    this.cd.detectChanges();
   }
 
 }
