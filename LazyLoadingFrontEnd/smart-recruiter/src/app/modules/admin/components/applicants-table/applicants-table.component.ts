@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { ApplicantsListService } from '../../services/applicant-list.service';
 import { Applicant } from 'src/app/shared/models/applicant.model';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { SlidersService } from '../../services/sliders.service';
 
 
@@ -86,7 +86,7 @@ export class ApplicantsTableComponent implements OnInit {
       this.getAdminIdfromEmail(currentUser.email);
       console.log(this.getAdminIdfromEmail(currentUser.email));
     }
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   loadRelevantData(roleId: number):void {
@@ -97,7 +97,7 @@ export class ApplicantsTableComponent implements OnInit {
       this.customers = customers.filter(customer => customer.role_Id === roleId); 
       console.log(this.customers);
     });
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   getAdminIdfromEmail(email: string):void {
@@ -105,24 +105,24 @@ export class ApplicantsTableComponent implements OnInit {
       this.adminId = adminId;
       console.log(this.adminId);
     });
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   filterGlobal(event: Event, matchMode: string):void {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
     this.dt2.filterGlobal(inputElement.value, matchMode);
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   handleWordLimitExceeded(id:number, exceeded: boolean):void {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   showDialog(customer: Applicant):void {
     this.selectedCustomer = { ...customer };    // Set the selected customer
     this.visible = true;
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
   }
 
   submitComment():void {
@@ -144,6 +144,7 @@ export class ApplicantsTableComponent implements OnInit {
             // this.editableStates[updatedCustomer.id] = false;
           }
           this.visible = false; 
+          this.cd.detectChanges();
         },
         error => {
           console.log('Error in updating comment', error);
@@ -233,12 +234,14 @@ export class ApplicantsTableComponent implements OnInit {
         setTimeout(() => {
           this.isDeleted = false;
           this.isDeletedChange.emit(this.isDeleted);
+          this.cd.detectChanges();
         }, 2000);
         
       },
       reject: () => {
         this.deleteVisible = false;
         console.log('Delete operation cancelled');
+        this.cd.detectChanges();
       }
     });
   }

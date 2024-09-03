@@ -1,0 +1,31 @@
+<body>
+    <div class="grid"> 
+      <div class="col-12">
+        <div class="background-image"></div>
+        <div class="login-form">
+          <form class="p-fluid" autocomplete="on" (ngSubmit)="onSubmit()">
+            <div class="p-field">
+              <label for="userid">User Id</label><br>
+              <input type="text" id="userid" name="userid" placeholder="example@lbfinance.lk" class="custom-input"
+                [(ngModel)]="userId" required> <br>
+      
+            </div>
+            <div class="p-p-field">
+              <label for="password">Password</label><br>
+              <input type="password" id="password" name="password" class="custom-input" [(ngModel)]="password" required> <br>
+            </div>
+            <div class="p-field">
+              <a href="#" class="forgot-password" class="for-text">Forgot Password?</a><br>
+            </div>
+            <div class="button">
+              <p-button label="Submit" type="submit" /> <br>
+            </div>
+      
+            <!-- <div class="p-sign">
+          <p>Don't have an account? <a href="#" class="sign-up">Sign Up</a></p> -->
+            <!-- </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>

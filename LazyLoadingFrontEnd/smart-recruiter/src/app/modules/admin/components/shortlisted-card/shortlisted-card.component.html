@@ -1,11 +1,11 @@
 <div class="grid">
     <div class="col-12">
         <!-- <div class="w-30rem"> -->
-            <p-panel [toggleable]="true" [collapsed]="true" class="mt-2" *ngFor="let candidate of shortlisted">
+            <p-panel [toggleable]="true" [collapsed]="true" class="mt-2" *ngFor="let candidate of shortlisted" (collapsedChange)="toggled()" (onAfterToggle)="toggled()">
                 <ng-template pTemplate="header">                    
                     <div>
                         <span class="font-bold">
-                            <a [routerLink]="['/personal-profile']" class="card-link" [style]="'color'" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
+                            <a [routerLink]="['/admin/personal-profile']" class="card-link" [style]="'color'" [queryParams]="{'candidateId': candidate.id, 'jobId': jobId}">
                                 {{ candidate.name }}
                             </a>                             
                         </span>

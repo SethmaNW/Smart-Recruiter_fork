@@ -1,0 +1,34 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="grid">
+            <div class="col-12">
+                <h2 class="mb-1">Summary</h2>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <h6 class="my-1"> Displaying all the marks earned from administrators </h6>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <p-tabView>
+                    <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title" [disabled]="tab.isDisabled">
+                        <div class="grid">
+                            <div class="col-12 justify-content-center flex">
+                                <p-knob [ngModel]="tab.finalScore" valueTemplate="{value}%" [readonly]="true" valueColor="#4cd07d"/>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="col-12">
+                                <div class="card flex justify-content-center">
+                                    <p-chart type="doughnut" [data]="tab.data" [options]="tab.options"/>
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </div>
+        </div>
+    </div>
+</div>

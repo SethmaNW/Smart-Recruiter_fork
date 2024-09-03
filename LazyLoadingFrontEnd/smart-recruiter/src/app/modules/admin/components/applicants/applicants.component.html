@@ -8,18 +8,16 @@
         <div class="col-2 pl-0 pb-0">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col-10 -ml-4" [style]="{'margin-top' : '55px'}">
+        <div class="col-10 " [style]="{'margin-top' : '55px'}">
             <!-- content goes here -->
             <div class="grid">
-                <div class="col-12 mt-3">
-                    <div>
-                        <div class="position-head">{{ position }}</div>
-                    </div>
+                <div class="col-12 mt-3 position-head ml-0">
+                    {{ position }}
                 </div>
 
                 <!-- select, reject & remove notification card --> 
-                <div class="col-12">
-                    <div *ngIf="isSelected || isRejected || isDeleted" class="floating-card-container">
+                <div class="col-12"  *ngIf="isSelected || isRejected || isDeleted" >
+                    <div class="floating-card-container">
                         <!-- <div class="floating-card-container"> -->
                         <div *ngIf = "isSelected">    
                             <p-card [style]="{'background-color':'var(--green-200)', 
@@ -56,7 +54,6 @@
                 </div>                
             </div>
 
-            <!--////////////////////////////////////////// have to remove the margin-bottom, doesnt remove by mt-0 - have to ask Tharindu -->
             <p-tabView class="ml-3 mt-0" (onChange)="isDeleted===false">
             <!-- <p-tabView class="ml-3" (onChange)="onTabChange($event)">            -->
                 <p-tabPanel header="Applicants"> 

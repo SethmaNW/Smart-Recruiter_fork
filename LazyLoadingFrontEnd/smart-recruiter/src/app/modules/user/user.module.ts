@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormStyle } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-
 import { UserRoutingModule } from './user-routing.module';
 import { FormComponent } from './components/form/form.component';
 import { MaxWordsDirectiveDirective } from './directives/max-words.directive.directive';
@@ -14,6 +12,8 @@ import { CardModule } from 'primeng/card';
 import { StepperModule } from 'primeng/stepper';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CalendarModule } from 'primeng/calendar';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -32,8 +32,9 @@ import { CalendarModule } from 'primeng/calendar';
     StepperModule,
     FileUploadModule,
     InputTextareaModule,
-    CalendarModule 
-
+    CalendarModule,
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class UserModule { }
