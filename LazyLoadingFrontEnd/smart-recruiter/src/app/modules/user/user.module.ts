@@ -14,7 +14,14 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { CalendarModule } from 'primeng/calendar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserNavComponent } from './user-nav/user-nav.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'form',
+    component: FormComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -36,7 +43,8 @@ import { UserNavComponent } from './user-nav/user-nav.component';
     InputTextareaModule,
     CalendarModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class UserModule { }

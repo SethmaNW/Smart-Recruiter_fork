@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
@@ -7,7 +8,11 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private autheService: AuthenticationService) { }
+  constructor(
+    private autheService: AuthenticationService, 
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   isLoggedIn(): boolean {
     return this.autheService.getAuthStatus();
@@ -20,5 +25,10 @@ export class NavbarComponent {
   logout(): void {
     this.autheService.logOut();
     console.log("logout");
+    this.router.navigate(['/auth/login']).then(() => {
+      // console.log("navigated");
+      this.cdr.detectChanges();
+    });
+    
   }
 }

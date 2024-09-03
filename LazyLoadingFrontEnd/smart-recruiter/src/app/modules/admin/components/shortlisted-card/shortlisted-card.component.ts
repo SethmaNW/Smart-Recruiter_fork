@@ -45,6 +45,7 @@ export class ShortlistedCardComponent implements OnInit {
     });
   }
 
+  // to solve the toggle issue occured after applying Lazy loading  
   toggled(): void{
     this.cdr.detectChanges();
   }
