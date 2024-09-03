@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/shared/models';
 import { JobPostService } from 'src/app/shared/services/job-post.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 
 @Component({

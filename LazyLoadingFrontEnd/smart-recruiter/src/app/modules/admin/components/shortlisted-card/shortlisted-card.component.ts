@@ -45,6 +45,10 @@ export class ShortlistedCardComponent implements OnInit {
     });
   }
 
+  toggled(): void{
+    this.cdr.detectChanges();
+  }
+
 }
  
 
