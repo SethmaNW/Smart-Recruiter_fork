@@ -7,7 +7,6 @@ import { Applicant } from 'src/app/shared/models/applicant.model';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { SlidersService } from '../../services/sliders.service';
 
-
 @Component({
   selector: 'app-applicants-table',
   templateUrl: './applicants-table.component.html',
@@ -19,19 +18,19 @@ export class ApplicantsTableComponent implements OnInit {
   // selectedCustomer!: Applicant;
   public selectedCustomer: Applicant | null = null;
   private loading: boolean = true;
-  // commentExceeded = false;
   private position: string = '';
   public jobId!: number;  // Declare jobId as a class property
-  private adminId!: number;
-  // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
+  private adminId!: number;  
   public cols: any[] = [];
   public selectedColumns: any[] = [];
-  public visible: boolean = false;
-  // private candidatesWithComments: number[] = [];
+  public visible: boolean = false;  
   public deleteVisible: boolean = false;
   public isSelected : boolean = false;
   public isRejected: boolean = false;
   public isDeleted: boolean = false;
+  // commentExceeded = false;
+  // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
+  // private candidatesWithComments: number[] = [];
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
@@ -111,18 +110,23 @@ export class ApplicantsTableComponent implements OnInit {
   filterGlobal(event: Event, matchMode: string):void {
     const inputElement = event.target as HTMLInputElement;   // here event.target -> input element (treat the event target as an HTML input element)
     this.dt2.filterGlobal(inputElement.value, matchMode);
-    // this.cd.detectChanges();
+    this.cd.detectChanges();
   }
 
   handleWordLimitExceeded(id:number, exceeded: boolean):void {
     this.applicantsListService.updateCommentExceeded(id, exceeded);
-    // this.cd.detectChanges();
+    this.cd.detectChanges();
   }
 
   showDialog(customer: Applicant):void {
     this.selectedCustomer = { ...customer };    // Set the selected customer
     this.visible = true;
-    // this.cd.detectChanges();
+    this.cd.detectChanges();
+  }
+
+  cancelPopUp():void {
+    this.visible = false;
+    this.cd.detectChanges();  
   }
 
   submitComment():void {
