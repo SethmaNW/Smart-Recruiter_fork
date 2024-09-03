@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="grid">
+        <div class="col-12">
+            <app-user-nav></app-user-nav>
+        </div>
+        <div class="col-12">
+            <div class="flex flex-row">
+                <div class="ml-3 -mt-2">
+                    <h2>Welcome to LB Finance</h2>
+                    <p class="opacity-70 -mt-3">Here are all available jobs!</p>
+                </div>
+                <div class="ml-auto flex flex-row mt-3">
+                    <div>
+                        <span class="p-input-icon-left mr-3">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="filterGlobal($event)" placeholder="Search keyword" />
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div *ngFor="let activeJob of filteredJobs">
+                <!-- Card Section -->
+                <p-card styleClass="customized-card">
+                    <div class="grid grid-custom">
+                        <h2>{{activeJob.title}}</h2> 
+                    </div>
+                    <div class="location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span style="margin-left: 1rem;">{{activeJob.location}} | &nbsp;</span>
+                        <span>{{activeJob.department}}</span>
+                    </div>
+                    <div class="candidate-number">
+                        <div class="candidate-count">
+                            <span style="opacity: 0.7;">{{ activeJob.id !== undefined ? (applicantsCounts[activeJob.id] | async) : 0 }} Candidates Applied</span>
+                        </div>
+                        <!-- <div>
+                            <a [routerLink]="['/form']" ></a>
+                        </div> -->
+                        <div class="ml-3">                        
+                            <span style="opacity: 0.7;">{{ activeJob.noOfAvailablePositions }} Available positions </span>
+                        </div>
+                        <div class="pr-3 ml-auto">
+                            <a [routerLink]="['/job-description']" [queryParams]="{'jobId' : activeJob.id}" style="color: #22c55e; text-decoration: none;">
+                                <span >See Job Description</span>
+                                <i class="fa-solid fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>   
+                </p-card>
+            </div>
+        </div>
+    </div>
+</div>
