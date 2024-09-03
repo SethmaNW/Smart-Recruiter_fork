@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 import { ApplicantsListService } from '../../services/applicant-list.service';
 
 @Component({
@@ -16,7 +16,10 @@ export class ApplicantsComponent {
   public isDeleted: boolean = false;
   public deleteVisible: boolean = false;
   
-  constructor(private applicantsListService: ApplicantsListService){}
+  constructor(
+    private applicantsListService: ApplicantsListService,
+    private cdr: ChangeDetectorRef
+  ){}
 
   loadPosition():void {
     this.applicantsListService.getPositionName(this.jobId).subscribe(position => {
@@ -33,16 +36,21 @@ export class ApplicantsComponent {
 
   onIsSelectedChange(selected: boolean):void {
     this.isSelected = selected;
+    console.log("selected reached applicants page: ", this.isSelected); 
+    this.cdr.detectChanges();
   }
   
   /////////////////////////////////////////////////// doesnt reach here. have to check
   onIsRejectedChange(rejected: boolean):void {
     this.isRejected = rejected;
     console.log("rejected reached applicants page: ", this.isRejected);
+    this.cdr.detectChanges();
   }
 
   onIsDeletedChange(deleted: boolean):void {
     this.isDeleted = deleted;
+    console.log("deleted reached applicants page: ", this.isDeleted);
+    this.cdr.detectChanges();
   }
 
   ////////// this is related to the delete confirm pop-up issue when changing tab after candidaate deletion. Couldn't solve it
