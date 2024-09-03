@@ -14,12 +14,14 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { CalendarModule } from 'primeng/calendar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { UserNavComponent } from './user-nav/user-nav.component';
 
 @NgModule({
   declarations: [
     FormComponent,
-    MaxWordsDirectiveDirective
+    MaxWordsDirectiveDirective,
+    UserNavComponent
+    
   ],
   imports: [
     CommonModule,
