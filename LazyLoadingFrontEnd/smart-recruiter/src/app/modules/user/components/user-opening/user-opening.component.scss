@@ -1,17 +1,18 @@
 .customized-card {
     background-color: var(--surface-200);
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-left: 1rem;
-    margin-right: 3rem;
+    margin-right: 5.6rem;
 }
 
 .grid-custom{
-    margin-top: -3rem;
-    margin-bottom: -2rem;
+    margin-top: -1.3rem;
+    // margin-top: -3rem;
+    // margin-bottom: -2rem;
 }
 
 .location{
-    padding-top: 1rem;
+    // padding-top: 1rem;
     margin-top: 1rem;
     display: flex;
 }
@@ -22,3 +23,6 @@
     display: flex;
 }
 
+.space{
+    margin-top: 1.5rem;
+}
