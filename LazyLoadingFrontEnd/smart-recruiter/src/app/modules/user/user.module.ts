@@ -26,7 +26,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     FormComponent,
-    MaxWordsDirectiveDirective
+    MaxWordsDirectiveDirective,
+    UserNavComponent
+    
   ],
   imports: [
     CommonModule,
