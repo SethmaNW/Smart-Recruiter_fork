@@ -1,0 +1,27 @@
+.custom-navbar{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 55px;
+    // height: 70px;
+    .navbar-icon {
+        height: 55px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+}
+
+.navbar-alignment{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    // padding: 0 2rem;
+    border-bottom: 2px solid var(--surface-200);   // #dab7b7,    rgb(218, 205, 205)
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+}
