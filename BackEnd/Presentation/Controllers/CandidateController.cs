@@ -11,16 +11,13 @@ namespace Presentation.Controllers;
 public class CandidateController : ControllerBase
 {
     private readonly ICandidateService _CandidateService;
-    //private readonly ILogger<CandidateController> _logger;
 
     public CandidateController(
         // Constructor Injections
         ICandidateService candidateService
-        //ILogger<CandidateController> logger
     )
     {
         _CandidateService = candidateService;
-        //_logger = logger;
     }
 
     [HttpGet("applicants/{jobId}")]
@@ -85,6 +82,13 @@ public class CandidateController : ControllerBase
         var savedCandidate = await _CandidateService.Save(candidate, jobId);
 
         return Ok(savedCandidate);
+    }
+
+    [HttpGet("cv/{candidateId}")]
+    public async Task<IActionResult> GetCvByCandidateId([FromRoute] int candidateId)
+    {
+        CvFileDTO cv = await _CandidateService.GetCvByCandidateId(candidateId);
+        return Ok(cv);
     }
 
     [HttpPut("role/{candidateId}/{newRoleId}")]

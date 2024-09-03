@@ -2,6 +2,7 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
+using DTO.DTOs;
 using Infrastructure.DBConnection;
 using System.Data;
 using System.Linq;
@@ -65,6 +66,33 @@ public class CandidateRepository : ICandidateRepository
 
         candidate.Id = parameters.Get<int>("@Id");
         return candidate;
+    }
+
+    public async Task<CvFileDTO> GetCvByCandidateId(int candidateId)
+    {
+        using var connection = _dbContext.GetOpenConnection();
+        
+        string sql = "EXEC GetCvFileNameByCandidateId @candidateId";
+        var cvFileName = await connection.QuerySingleOrDefaultAsync<string>(sql, new { candidateId }) ?? throw new FileNotFoundException("CV file not found for the given candidate ID.");
+    
+        // Define the path to the uploads folder
+        string uploadsFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+        string filePath = Path.Combine(uploadsFolderPath, cvFileName);
+
+        // Check if the file exists
+        if (!File.Exists(filePath))
+        {
+            throw new FileNotFoundException("CV file not found in the uploads folder.", cvFileName);
+        }
+
+        // Read the file content as a byte array
+        byte[] fileContent = await File.ReadAllBytesAsync(filePath);
+
+        // Return the file as a CvFileDTO
+        return new CvFileDTO
+        {
+            CvFile = fileContent,
+        };
     }
 
     // update roleId by candidateId

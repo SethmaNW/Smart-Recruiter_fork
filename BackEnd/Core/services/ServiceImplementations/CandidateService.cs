@@ -1,5 +1,6 @@
 using Domain.Entities;
 using Domain.RepositoryInterfaces;
+using DTO.DTOs;
 using ServiceInterfaces.IServices;
 
 namespace services.ServiceImplementations;
@@ -24,6 +25,11 @@ public class CandidateService : ICandidateService
     public async Task<Candidate> Save(Candidate candidate, int jobId)
     {
         return await _CandidateRepository.Save(candidate, jobId);
+    }
+
+    public async Task<CvFileDTO> GetCvByCandidateId(int candidateId)
+    {
+        return await _CandidateRepository.GetCvByCandidateId(candidateId);
     }
 
     public async Task<bool> UpdateRoleId(int candidateId, int newRoleId)
