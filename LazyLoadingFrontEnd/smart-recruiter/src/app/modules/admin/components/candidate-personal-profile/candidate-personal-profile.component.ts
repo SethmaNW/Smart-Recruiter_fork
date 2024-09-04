@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { ActivatedRoute } from '@angular/router'; 
 import { ApplicantsListService } from '../../services/applicant-list.service';
@@ -15,33 +15,40 @@ export class CandidatePersonalProfileComponent implements OnInit {
   candidateId: number | undefined;
   candidate: any;
   // block the loading of the card until the data is received
-  isloaded: boolean = false;
-  isSelected : boolean = false;
-  isRejected: boolean = false;
+  public isloaded: boolean = false;
+  public isSelected : boolean = false;
+  public isRejected: boolean = false;
+  // Cv viewing dialog box
+  public visible: boolean = true;
+  public str : string = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
     private applicantsListService: ApplicantsListService,
-    private location: Location
+    private location: Location,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    // this.customers = [];
+    this.initializer();
+    
+  }
 
+  private initializer() : void {
     this.route.queryParams.subscribe(params => { 
       this.candidateId = params['candidateId']
     });
 
     this.http.get<any>('api/Candidate/'+this.candidateId).subscribe((data) => {
       this.candidate = data;
-      console.log("date received", data);
+      //console.log("date received", data);
       this.isloaded = true;
     }); 
   }
 
   updateRoleId(candidateId: number, roleId: number) {	
-    console.log("roleId, candidateId",roleId, candidateId);
+    //console.log("roleId, candidateId",roleId, candidateId);
     this.applicantsListService.updateRole(candidateId, roleId).subscribe((response) => {
 
       this.candidate.role_Id = roleId;
@@ -71,4 +78,12 @@ export class CandidatePersonalProfileComponent implements OnInit {
   );
   }
 
+
+  public visibleChange(){
+    this.cdr.detectChanges();
+  }
+
+  public onMaximize() {
+    this.cdr.detectChanges();
+  }
 }
