@@ -10,7 +10,8 @@ export class PdfViewComponent implements OnInit {
 
   @Input() visibility! : boolean;
   @Input() candidateId! : number;
-  public pdfSrc: Uint8Array | undefined;
+  public pdfSrc: any;
+  public pdfLoaded : boolean = false;
 
   //str : string = "./assets/ER.drawio.pdf";
   str : string = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
@@ -21,7 +22,7 @@ export class PdfViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.loadPdf();
+    this.loadPdf();
   }
 
   public visibleChange(){
@@ -33,9 +34,27 @@ export class PdfViewComponent implements OnInit {
   }
 
   loadPdf(): void {
-    this.http.get(`api/Candidate/cv/${this.candidateId}`, { responseType: 'arraybuffer' }).subscribe({
-      next: (response: ArrayBuffer) => { this.pdfSrc = new Uint8Array(response); },
-      error: (error) => { console.error('Error loading PDF file', error); },
+    this.http.get(`api/Candidate/cv/${this.candidateId}`).subscribe({
+      next: (response: any) => {
+        const cvFile = response.cvFile;
+        console.log(typeof cvFile);
+        //console.log(this.pdfSrc);
+        const byteCharacters = atob(cvFile);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const uint8Array = new Uint8Array(byteNumbers);
+
+        //console.log('Uint8Array:', uint8Array); // Log the Uint8Array to see the binary data
+        // Convert the Uint8Array to a Blob and create an object URL
+        const blob = new Blob([uint8Array], { type: 'application/pdf' });
+        this.pdfSrc = URL.createObjectURL(blob);
+        this.pdfLoaded = true;
+      },
+      error: (error) => {
+        console.error('Error loading PDF file', error);
+      }
     });
   }
 
