@@ -21,10 +21,13 @@ import { ChartModule } from 'primeng/chart';
 import { RouterLink } from '@angular/router';
 import { KnobModule } from 'primeng/knob';
 import { DividerModule } from 'primeng/divider';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoaderComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
