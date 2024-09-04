@@ -77,7 +77,9 @@ export class ApplicantsTableComponent implements OnInit {
     });
 
     this.jobIdChange.emit(this.jobId);
+    this.cd.detectChanges();
   }
+
 
   loadAdminId():void {
     const currentUser = this.authService.getCurrentUser();
