@@ -21,6 +21,7 @@ import { ChartModule } from 'primeng/chart';
 import { RouterLink } from '@angular/router';
 import { KnobModule } from 'primeng/knob';
 import { DividerModule } from 'primeng/divider';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { LoaderComponent } from './components/loader/loader.component';
 
 
@@ -51,6 +52,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     RouterLink,
     KnobModule,
     DividerModule,
+    PdfViewerModule,
   ],
   exports: [
     CommonModule,
@@ -75,6 +77,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     RouterLink,
     KnobModule,
     DividerModule,
+    PdfViewerModule,
   ],
 })
 export class SharedModule { }

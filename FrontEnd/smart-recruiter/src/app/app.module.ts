@@ -57,6 +57,8 @@ import { UserNavComponent } from './user-nav/user-nav.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StepsModule } from 'primeng/steps';
 import { TooltipModule } from 'primeng/tooltip';
+import { PdfViewComponent } from './pdf-view/pdf-view.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
  
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import { TooltipModule } from 'primeng/tooltip';
     ShortlistedPicklistComponent,
     ApplicantsTableComponent,
     JobDescriptionComponent,
-    UserNavComponent
+    UserNavComponent,
+    PdfViewComponent
 
   ],
   imports: [
@@ -117,7 +120,8 @@ import { TooltipModule } from 'primeng/tooltip';
     StepperModule,
     ReactiveFormsModule,
     StepsModule,
-    TooltipModule
+    TooltipModule,
+    PdfViewerModule
   
   ],
   providers: [provideAnimations(), provideHttpClient(), MessageService, ConfirmationService],

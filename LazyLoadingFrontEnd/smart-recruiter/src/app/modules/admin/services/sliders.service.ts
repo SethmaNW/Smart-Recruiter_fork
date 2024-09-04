@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Mark } from 'src/app/shared/models/mark.model';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom, Observable } from 'rxjs';
@@ -46,7 +46,7 @@ export class SlidersService {
     }
   }
 
-  public async saveMarks(marks : Mark[], jobId : number, candidateId : number){
+  public async saveMarks(marks : Mark[], jobId : number, candidateId : number, cdr : ChangeDetectorRef){
 
     // Take the RoleId of a candidate by Candidate Id
     const data : Observable<number> = this.http.get<number>(`api/Candidate/getRoleIdByCandidateId/${candidateId}`);
@@ -100,6 +100,7 @@ export class SlidersService {
               setTimeout(() => {
                 this.isMarkSaved = false;
               }, 2000);
+              cdr.detectChanges();
             }
           },
           error: (error) => {

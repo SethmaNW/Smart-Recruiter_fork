@@ -1,4 +1,4 @@
-import { Component,Injectable,Input,OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component,Injectable,Input,OnInit, ViewEncapsulation } from '@angular/core';
 import { Mark } from 'src/app/shared/models/mark.model';
 import { SlidersService } from '../../services/sliders.service';
 import { ActivatedRoute } from '@angular/router';
@@ -46,13 +46,13 @@ export class SlidersComponent implements  OnInit{
   private jobId! : number;
   private candidateId! : number;
 
-  constructor(public sliderSVC : SlidersService, private router : ActivatedRoute) { }
+  constructor(public sliderSVC : SlidersService, private router : ActivatedRoute, private cdr : ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.router.queryParams?.subscribe(params => {
       this.jobId = params['jobId'];
       this.candidateId = params['candidateId'];
-      this.loadComments ();
+      // this.loadComments ();
     });
   }
 
@@ -69,7 +69,7 @@ export class SlidersComponent implements  OnInit{
   saveMarks() : void {
     if (this.criteria_value) {
       const criteriaCopy = JSON.parse(JSON.stringify(this.criteria_value));
-      this.sliderSVC.saveMarks(criteriaCopy, this.jobId, this.candidateId);
+      this.sliderSVC.saveMarks(criteriaCopy, this.jobId, this.candidateId, this.cdr);
 
       // Reset the values to null after saving
       this.criteria_value.forEach(mark => {
@@ -78,16 +78,16 @@ export class SlidersComponent implements  OnInit{
     }
   } 
 
-  loadComments():void{
-    this.sliderSVC.getComments(this.jobId,this.candidateId).subscribe(
-      (data)=>{
-        this.comments=data;
-      }
+  // loadComments():void{
+  //   this.sliderSVC.getComments(this.jobId,this.candidateId).subscribe(
+  //     (data)=>{
+  //       this.comments=data;
+  //     }
 
 
-    )
+  //   )
     
-  }
+  // }
 }
 
 
