@@ -15,12 +15,22 @@ import { CalendarModule } from 'primeng/calendar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { UserNavComponent } from './user-nav/user-nav.component';
+import { UserNavComponent } from './components/user-nav/user-nav.component';
+import { UserOpeningComponent } from './components/user-opening/user-opening.component';
+import { JobDescriptionComponent } from './components/job-description/job-description.component';
 
 const routes: Routes = [
   {
     path: 'form',
     component: FormComponent
+  },
+  {
+    path: 'user-opening',
+    component: UserOpeningComponent
+  },
+  {
+    path: 'job-description',
+    component: JobDescriptionComponent
   }
   
 ];
@@ -29,7 +39,9 @@ const routes: Routes = [
   declarations: [
     FormComponent,
     MaxWordsDirectiveDirective,
-    UserNavComponent
+    UserNavComponent,
+    UserOpeningComponent,
+    JobDescriptionComponent
   ],
   imports: [
     CommonModule,

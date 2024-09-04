@@ -22,10 +22,13 @@ import { RouterLink } from '@angular/router';
 import { KnobModule } from 'primeng/knob';
 import { DividerModule } from 'primeng/divider';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoaderComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

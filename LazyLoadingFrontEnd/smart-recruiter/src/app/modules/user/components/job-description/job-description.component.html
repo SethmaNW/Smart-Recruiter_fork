@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="grid-nogutter">
+        <div class="col-12 p-0">
+            <app-user-nav></app-user-nav>        
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-12" [style]="{'margin-top' : '55px'}">
+            <div class="grid full-space">
+                <div *ngIf = "isJobLoaded">
+                    <div class="grid topic-content">
+                        <div class="col-9">
+                            <h1 class="m-0">{{job?.title}}</h1>                        
+                        </div>
+                        <div class="col-3">
+                            <p-button label="Apply for this Job" [text]="true" [raised]="true" severity="secondary" routerLink = '/user/form' [queryParams]="{'jobId' : job?.id}"/>
+                        </div>
+                    </div>
+    
+                    <div class="grid topic-content">
+                        <div class="col-12">
+                            <i class="fa-solid fa-earth-americas" style="color: #000000;"></i>
+                            <span class="ml-2">{{job?.location}} | {{job?.department}}</span>
+                            <i class="fa-solid fa-user-group ml-5 mr-2" style="color: #000000;"></i>
+                            <span>{{job?.noOfAvailablePositions}} Position Available</span>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="col-11 description">
+                            <div [innerHTML]="job?.description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
