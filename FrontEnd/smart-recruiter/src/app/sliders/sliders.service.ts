@@ -14,10 +14,10 @@ export class SlidersService {
 
   constructor(private http : HttpClient) { }
   //display savedcomment
-  public getComments(jobId:number, candidateId:number):Observable<any>{
-    return this.http.get('api/Comment/comment/${jobId}/${candidateId}')
+//   public getComments(jobId:number, candidateId:number):Observable<any>{
+//     return this.http.get('api/Comment/comment/${jobId}/${candidateId}')
 
- }
+//  }
 
   
   public async saveComment(comment : string | undefined, jobId : number, candidateId : number) : Promise<void> {

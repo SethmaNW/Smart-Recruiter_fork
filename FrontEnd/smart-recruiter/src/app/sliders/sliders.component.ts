@@ -52,7 +52,7 @@ export class SlidersComponent implements  OnInit{
     this.router.queryParams?.subscribe(params => {
       this.jobId = params['jobId'];
       this.candidateId = params['candidateId'];
-      this.loadComments ();
+      //this.loadComments ();
     });
   }
 
@@ -78,16 +78,13 @@ export class SlidersComponent implements  OnInit{
     }
   } 
 
-  loadComments():void{
-    this.sliderSVC.getComments(this.jobId,this.candidateId).subscribe(
-      (data)=>{
-        this.comments=data;
-      }
-
-
-    )
-    
-  }
+  // loadComments():void{
+  //   this.sliderSVC.getComments(this.jobId,this.candidateId).subscribe(
+  //     (data)=>{
+  //       this.comments=data;
+  //     }
+  //   ) 
+  // }
    
   
 }
