@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { PieChartService } from './pie-chart.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./pie-chart.component.scss']
 })
 
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, AfterViewInit {
   // for tab view
   public tabs: { title: string, isDisabled : boolean, data : any, options : any, finalScore : number | undefined }[] = [];
   public options: any;
@@ -17,10 +17,20 @@ export class PieChartComponent implements OnInit {
   public jobId : number | undefined;
   public candidateId : number | undefined;
 
-  constructor(private PieChartSVC : PieChartService, private route : ActivatedRoute){}
+  public pieChartDataLoaded : boolean = false;
+
+  constructor(private PieChartSVC : PieChartService, private route : ActivatedRoute, private ngZone: NgZone, private cdr : ChangeDetectorRef){}
 
   ngOnInit(): void {
     this.initializer(); 
+  }
+
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
+  }
+
+  public changeDetection() : void {
+    this.cdr.detectChanges();
   }
 
   public initializer() : void {
@@ -41,6 +51,7 @@ export class PieChartComponent implements OnInit {
 
     this.tabs.forEach((tab, index) => {
       this.PieChartSVC.getMarks(this.candidateId, this.jobId, index+1).subscribe((res) => {
+        //console.log('Marks:', res);
         if (res.finalScore === 0){
           this.tabs[index].isDisabled = true;
         }
@@ -59,7 +70,7 @@ export class PieChartComponent implements OnInit {
             res.familyBackgroundParticipation, 
             res.iqCreativityProblemSolvingSkillsParticipation, 
             res.managementSkillsParticipation
-          ].map((point: number | undefined) => point ? point * 100 : 0); // Multiply each data point by 100 if it is not undefined
+          ].map((point: number | undefined) => point ? (point * 100).toFixed(3) : 0); // Multiply each data point by 100 if it is not undefined
           const backgroundColors = ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED', '#4CAF50','#FF8A80','#FFD180','#A1887F','#90A4AE','#FF6652'];
           const hoverBackgroundColors = ['#FF6384', '#36A2EB', '#FFCE56', '#E7E9ED', '#4CAF50','#FF8A80','#FFD180','#A1887F','#90A4AE','#FF6652'];
 
@@ -112,8 +123,18 @@ export class PieChartComponent implements OnInit {
           this.tabs[index].finalScore = Math.round((res.finalScore? res.finalScore : 0) * 10) / 10;
           this.tabs[index].options = this.options;
           this.tabs[index].data = data;
+
+          // Run change detection outside Angular's default change detection cycle
+          this.ngZone.run(() => {
+            this.tabs = [...this.tabs]; // Trigger change detection by creating a new array reference
+          });
+          //console.log('Tabs:', this.tabs[index].data);
         }
       });
     });
+
+    this.pieChartDataLoaded = true;
+    //this.cdr.detectChanges();
+    console.log('Tabs:', this.tabs);
   }
 }
