@@ -96,7 +96,8 @@
                                             label="Offered" 
                                             severity="success" 
                                             [rounded]="false" 
-                                            *ngIf="candidate.role_Id===3; else showOther" 
+                                            *ngIf="candidate.role_Id===6; else showOther" 
+                                            [disabled]="candidate.role_Id === 6"
                                             (onClick)="updateRoleId(candidate.id, candidate.role_Id + 1)">
                                         </p-button>                             
                                         <ng-template #showOther>
