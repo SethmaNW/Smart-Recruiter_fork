@@ -59,8 +59,6 @@ export class CandidatePersonalProfileComponent implements OnInit {
         }, 2000); 
       }
       else if(roleId===4){
-        // this.candidate.role_Id = 6;
-
         this.applicantsListService.updateRole(candidateId, 6).subscribe((response) => {
           this.isSelected = true;
         
@@ -68,8 +66,7 @@ export class CandidatePersonalProfileComponent implements OnInit {
             this.isSelected = false;
             this.location.back(); 
           }, 2000);
-        });
-        
+        });        
       }
       else if(roleId===7){
         this.isRejected = true;
