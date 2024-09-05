@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { PieChartService } from './pie-chart.service';
 import { ActivatedRoute } from '@angular/router';
+import { Comments } from '../models/comments.model';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class PieChartComponent implements OnInit, AfterViewInit {
+  comments: Comments[] = [];
   // for tab view
   public tabs: { title: string, isDisabled : boolean, data : any, options : any, finalScore : number | undefined }[] = [];
   public options: any;
@@ -46,6 +48,8 @@ export class PieChartComponent implements OnInit, AfterViewInit {
       { title: '2nd', isDisabled : false, data : {}, options : {}, finalScore : undefined },
       { title: '3rd', isDisabled : false, data : {}, options : {}, finalScore : undefined },
     ];
+
+    this.loadComments();
 
     // fetch the marks of the candidate for all roles (1st interview, 2nd interview, etc)
 
@@ -137,4 +141,14 @@ export class PieChartComponent implements OnInit, AfterViewInit {
     //this.cdr.detectChanges();
     console.log('Tabs:', this.tabs);
   }
+
+
+  loadComments() {
+    this.PieChartSVC.getComments(this.jobId, this.candidateId).subscribe((comment) => {
+      this.comments = comment;
+      console.log('Comments:', this.comments);
+      console.log('job:', this.jobId, this.candidateId);
+    });
+  }
+
 }
