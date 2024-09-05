@@ -2,9 +2,12 @@
 bin/
 obj/
 
+# Ignore database authentication details
 BackEnd/smart-recruiter/appsettings.json
 
-# Ignore database authentication details
+# Igore cv pdf folder
+BackEnd/smart-recruiter/uploads/
+
 #.Smart-Recruiter/BackEnd/smart-recruiter/appsettings.json
 
 # Ignore user-specific files
