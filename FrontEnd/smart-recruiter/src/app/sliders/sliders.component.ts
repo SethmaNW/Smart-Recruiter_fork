@@ -1,4 +1,4 @@
-import { Component,Injectable,Input,OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component,Injectable,Input,OnInit, ViewEncapsulation } from '@angular/core';
 import { Mark } from '../models/mark.model';
 import { SlidersService } from './sliders.service';
 import { ActivatedRoute } from '@angular/router';
@@ -64,6 +64,8 @@ export class SlidersComponent implements  OnInit{
   saveComment(){
     this.sliderSVC.saveComment(this.text, this.jobId, this.candidateId);
     this.comments.push({commentText:this.text});
+    //clean the comment from the user view
+    this.text='';
   }
   
   saveMarks() : void {
