@@ -48,8 +48,14 @@
             <td>                
                 {{ customer.name }}
                 <div class="view-cv">
-                    <a href="{{ customer.cv }}" target="_blank">View CV</a>
+                    <a href="#" (click)="showCvDialog($event)">View CVlklpl</a>
                 </div>
+
+                <!-- cv dialog popup -->
+                <div>
+                    <app-pdf-view [visibility] = "visibility" [candidateId]="customer?.id" (dialogHide)="dialogHide()"></app-pdf-view>
+                </div>
+
             </td>
             <td>{{ customer.contact }}</td>
             <td>{{ customer.available_Date }}</td>
@@ -114,6 +120,7 @@
     </ng-template>
     </p-table>
 </div>
+
 
 
 

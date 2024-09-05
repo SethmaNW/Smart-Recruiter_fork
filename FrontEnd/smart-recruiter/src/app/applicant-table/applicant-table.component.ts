@@ -22,6 +22,8 @@ export class ApplicantTableComponent implements OnInit {
   adminId!: number;
   // buttonClicked: Set<number> = new Set();    // use Angular’s property binding
   // buttonHiddenState: { [candidateId: number]: boolean } = {};
+  // candidate cv dialog box
+  public visibility: boolean = false;
 
   @ViewChild('dt2') dt2!: Table; // ViewChild to access the p-table
 
@@ -195,6 +197,18 @@ export class ApplicantTableComponent implements OnInit {
         console.log('Delete operation cancelled');
       }
     });
+  }
+
+  public showCvDialog(event : Event) {
+    event.preventDefault();
+    this.visibility = true;
+    console.log("cv dialog box opened");
+  }
+
+  // hiding the cv popup
+  public dialogHide(){
+    this.visibility = false;
+    //console.log("cv dialog box closed");
   }
   
 

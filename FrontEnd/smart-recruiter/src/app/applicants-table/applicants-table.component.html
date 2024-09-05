@@ -58,8 +58,13 @@
                                         {{ customer.name }}
                                     </a>
                                     <div class="text-xs mt-2">
-                                        <a href="{{ customer.cv }}" target="_blank">View CV</a>
+                                        <a href="#" (click)="showCvDialog($event, customer?.id)">View CV</a>
                                     </div>
+
+                                    <!-- cv dialog popup -->
+                                    <!-- <div>
+                                        <app-pdf-view [visibility] = "visibility" [candidateId]="customer?.id" (dialogHide)="dialogHide()"></app-pdf-view>
+                                    </div> -->
                                 </td>
                                 <td>{{customer.contact}}</td>
                                 <td>{{customer.degree}}</td>
@@ -269,4 +274,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- cv dialog popup -->
+<div *ngIf="cVPopUpComponentMount">
+    <app-pdf-view [visibility] = "visibility" [candidateId]="candidateIdCvPopUp" (dialogHide)="dialogHide()"></app-pdf-view>
 </div>
