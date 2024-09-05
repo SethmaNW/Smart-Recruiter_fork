@@ -4,9 +4,9 @@ Usage : get all applicants from a given candidate id
 Changes : 
     2024-08-09 => Created
 Example : 
-
+    EXEC getApplicants 85
  
- not used yet
+not used yet
 **************************************************************************************************/ 
 
 CREATE PROCEDURE [dbo].[getApplicants]
@@ -26,6 +26,5 @@ BEGIN
 
         SELECT [Comment]
         FROM [dbo].[comments]
-        WHERE [CandidateId] = @CandidateId;
-
+        WHERE [CandidateId] = @CandidateId AND [roleId]=0;
 END

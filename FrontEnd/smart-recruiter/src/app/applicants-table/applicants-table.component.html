@@ -52,11 +52,13 @@
                             <tr>
                                 <td>                
                                     <a 
+                                    *ngIf="customer.role_Id===7"
                                     [routerLink]="['/personal-profile']"                                     
                                     [queryParams]="{'candidateId': customer.id, 'jobId': jobId}" 
                                     class="name">
                                         {{ customer.name }}
                                     </a>
+                                    <div *ngIf="customer.role_Id===0"> {{ customer.name }} </div>
                                     <div class="text-xs mt-2">
                                         <a href="#" (click)="showCvDialog($event, customer?.id)">View CV</a>
                                     </div>

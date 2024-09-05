@@ -53,7 +53,6 @@ public class CommentRepository: ICommentRepository
     }
     
     //get role id under relevant candidate id
-    
     public async Task<int?> GetRoleIdByCandidateIdAsync(int candidateId)
     {
         using var connection= _dbContext.GetOpenConnection();
@@ -62,13 +61,12 @@ public class CommentRepository: ICommentRepository
     }
     
     //retrieving comment 
-    public async Task<List<Comment>> GetCommentByCandidateIdAsync(int jobId,int candidateId)
+    public async Task<List<CommentWithAdmin>> GetCommentByCandidateIdAsync(int jobId, int candidateId)
     {
         using var connection =_dbContext.GetOpenConnection();
-        var sql="SELECT * FROM comments WHERE JobId =@jobId AND CandidateId=@candidateId";
-        return (await connection.QueryAsync<Comment>(sql ,new {jobId,candidateId})).ToList();
+        var sql="EXEC GetCommentByCandidateId @jobId, @candidateId";
+        var commentDetails = await connection.QueryAsync<CommentWithAdmin>(sql, new {jobId, candidateId});
+        return commentDetails.ToList();
     }
-
-
 
 }

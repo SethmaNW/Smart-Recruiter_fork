@@ -58,6 +58,16 @@ export class CandidatePersonalProfileComponent implements OnInit {
           this.location.back(); // Redirect to the previous page
         }, 2000); 
       }
+      else if(roleId===4){
+        this.applicantsListService.updateRole(candidateId, 6).subscribe((response) => {
+          this.isSelected = true;
+        
+          setTimeout(() => {
+            this.isSelected = false;
+            this.location.back(); 
+          }, 2000);
+        });        
+      }
       else if(roleId===7){
         this.isRejected = true;
     

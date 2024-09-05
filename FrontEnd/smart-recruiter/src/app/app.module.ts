@@ -59,6 +59,8 @@ import { StepsModule } from 'primeng/steps';
 import { TooltipModule } from 'primeng/tooltip';
 import { PdfViewComponent } from './pdf-view/pdf-view.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { AccordionModule } from 'primeng/accordion';
+import { FieldsetModule } from 'primeng/fieldset';
  
 @NgModule({
   declarations: [
@@ -121,8 +123,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ReactiveFormsModule,
     StepsModule,
     TooltipModule,
-    PdfViewerModule
-  
+    PdfViewerModule,
+    AccordionModule,
+    FieldsetModule
   ],
   providers: [provideAnimations(), provideHttpClient(), MessageService, ConfirmationService],
   bootstrap: [AppComponent]
