@@ -1,11 +1,13 @@
 /**************************************************************************************************
 Author : Sethma Nethmini
+         Nilakshi Induwara
 Usage : Retrieving Comments
 Changes : 
     2024-08-26 => Created
+    2024-09-05 => Updated Id as candidateId, to fetch admin name with candidate comments and roleId
 Example : 
+    EXEC GetCommentByCandidateId 1, 1   => 
 
-not used
 **************************************************************************************************/ 
 
 USE SmartRecruiterDB;
@@ -13,15 +15,14 @@ GO
 
 CREATE PROCEDURE [dbo].[GetCommentByCandidateId]
 
-    @candidateId INT,
-    @jobId INT
+    @jobId INT,
+    @candidateId INT    
     
-
 AS
 
 BEGIN
-
-    SELECT *
-    FROM comments
-    WHERE Id = @candidateId AND JobId=@jobId;
+    SELECT comment.comment, comment.roleId, admin.name
+    FROM [dbo].[comments] comment
+    INNER JOIN [dbo].[admins] admin ON comment.adminId = admin.Id
+    WHERE candidateId = @candidateId AND JobId=@jobId;
 END

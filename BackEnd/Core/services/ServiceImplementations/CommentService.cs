@@ -38,7 +38,7 @@ public class CommentService : ICommentService
     }
     
     //retrieving comment 
-     public async Task<List<Comment>> GetCommentByCandidateIdAsync(int jobId,int candidateId)
+     public async Task<List<CommentWithAdmin>> GetCommentByCandidateIdAsync(int jobId,int candidateId)
     {
         return await _CommentRepository.GetCommentByCandidateIdAsync(jobId,candidateId);
     }

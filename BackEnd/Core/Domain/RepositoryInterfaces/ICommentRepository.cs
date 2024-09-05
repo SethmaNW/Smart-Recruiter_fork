@@ -8,5 +8,5 @@ public interface ICommentRepository
     Task<bool> CheckApplicantComment(int jobId, int candidateId);
     Task<List<int>> GetCandidateIdsOfJobId(int jobId); 
     Task<int?> GetRoleIdByCandidateIdAsync(int candidateId);
-    Task<List<Comment>> GetCommentByCandidateIdAsync(int candidateId,int jobId);
+    Task<List<CommentWithAdmin>> GetCommentByCandidateIdAsync(int candidateId,int jobId);
 }

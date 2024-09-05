@@ -21,7 +21,7 @@ BEGIN
         c.[Degree], c.[Experience], c.[Reason], c.[Role_Id], com.[Comment] 
     FROM [dbo].[candidates] c
     INNER JOIN [dbo].[candidates_jobs] cj ON cj.[CandidateID] = c.[Id]
-    LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId] AND com.[jobId] = @jobId
+    LEFT JOIN [dbo].[comments] com ON c.[Id] = com.[CandidateId] AND com.[jobId] = @jobId AND com.[roleId] = 0
     WHERE cj.[JobId] = @jobId AND c.[Role_Id] IN (0, 7)
 END
 
