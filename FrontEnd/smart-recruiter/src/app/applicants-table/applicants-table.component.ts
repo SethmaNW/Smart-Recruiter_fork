@@ -31,6 +31,10 @@ export class ApplicantsTableComponent implements OnInit {
   public isSelected : boolean = false;
   public isRejected: boolean = false;
   public isDeleted: boolean = false;
+  // candidate cv dialog box
+  public visibility: boolean = false;
+  public candidateIdCvPopUp!: number;
+  public cVPopUpComponentMount : boolean = false;
 
   @Input() roleId: number = 1;
   @Output() jobIdChange: EventEmitter<number> = new EventEmitter<number>(); 
@@ -274,6 +278,21 @@ export class ApplicantsTableComponent implements OnInit {
         console.log('Delete operation cancelled');
       }
     });
+  }
+
+  public showCvDialog(event : Event, candidateId : number) {
+    this.candidateIdCvPopUp = candidateId;
+    this.cVPopUpComponentMount = true;
+    event.preventDefault();
+    this.visibility = true;
+    //console.log("cv dialog box opened");
+  }
+
+  // hiding the cv popup
+  public dialogHide(){
+    this.visibility = false;
+    this.cVPopUpComponentMount = false;
+    //console.log("cv dialog box closed");
   }
   
 

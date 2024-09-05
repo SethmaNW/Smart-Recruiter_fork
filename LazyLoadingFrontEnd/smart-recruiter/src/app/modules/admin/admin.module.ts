@@ -16,6 +16,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { CandidatePersonalProfileComponent } from './components/candidate-personal-profile/candidate-personal-profile.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { SlidersComponent } from './components/sliders/sliders.component';
+import { PdfViewComponent } from './components/pdf-view/pdf-view.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 const routes: Routes = [
   {
@@ -49,9 +51,11 @@ const routes: Routes = [
     CandidatePersonalProfileComponent,
     PieChartComponent,
     SlidersComponent,
+    PdfViewComponent,
   ],
   imports: [
     SharedModule,
+    PdfViewerModule,
     RouterModule.forChild(routes)
   ],
   providers: [ConfirmationService, provideAnimations(), MessageService],

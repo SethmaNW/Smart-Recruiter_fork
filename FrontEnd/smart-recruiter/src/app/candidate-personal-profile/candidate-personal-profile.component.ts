@@ -19,6 +19,9 @@ export class CandidatePersonalProfileComponent implements OnInit {
   isSelected : boolean = false;
   isRejected: boolean = false;
 
+  // candidate cv dialog box
+  public visibility: boolean = false;
+
   constructor(
     private http: HttpClient, 
     private route: ActivatedRoute,
@@ -35,13 +38,13 @@ export class CandidatePersonalProfileComponent implements OnInit {
 
     this.http.get<any>('api/Candidate/'+this.candidateId).subscribe((data) => {
       this.candidate = data;
-      console.log("date received", data);
+      //console.log("date received", data);
       this.isloaded = true;
     }); 
   }
 
   updateRoleId(candidateId: number, roleId: number) {	
-    console.log("roleId, candidateId",roleId, candidateId);
+    //console.log("roleId, candidateId",roleId, candidateId);
     this.applicantsListService.updateRole(candidateId, roleId).subscribe((response) => {
 
       this.candidate.role_Id = roleId;
@@ -71,4 +74,14 @@ export class CandidatePersonalProfileComponent implements OnInit {
   );
   }
 
+  public showCvDialog(event : Event) {
+    event.preventDefault();
+    this.visibility = true;
+    //console.log("cv dialog box opened");
+  }
+
+  public dialogHide(){
+    this.visibility = false;
+    //console.log("cv dialog box closed");
+  }
 }

@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { UserNavComponent } from './components/user-nav/user-nav.component';
 import { UserOpeningComponent } from './components/user-opening/user-opening.component';
+import { JobDescriptionComponent } from './components/job-description/job-description.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'user-opening',
     component: UserOpeningComponent
+  },
+  {
+    path: 'job-description',
+    component: JobDescriptionComponent
   }
   
 ];
@@ -35,7 +40,8 @@ const routes: Routes = [
     FormComponent,
     MaxWordsDirectiveDirective,
     UserNavComponent,
-    UserOpeningComponent
+    UserOpeningComponent,
+    JobDescriptionComponent
   ],
   imports: [
     CommonModule,

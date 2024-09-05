@@ -10,9 +10,9 @@
                 <h6 class="my-1"> Displaying all the marks earned from administrators </h6>
             </div>
         </div>
-        <div class="grid">
+        <div class="grid" *ngIf="pieChartDataLoaded">
             <div class="col-12">
-                <p-tabView>
+                <p-tabView (onChange)="changeDetection()">
                     <p-tabPanel *ngFor="let tab of tabs" [header]="tab.title" [disabled]="tab.isDisabled">
                         <div class="grid">
                             <div class="col-12 justify-content-center flex">
