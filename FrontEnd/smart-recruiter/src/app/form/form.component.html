@@ -175,7 +175,8 @@
                                     placeholder="Enter your Work Experience (max 30 words)">
                                 </textarea>
                                 <div *ngIf="form.get('educationInfo.workExperience')?.touched">
-                                    <small *ngIf="form.get('educationInfo.workExperience')?.errors?.['required']">Work Experience is required.</small>
+                                    <small *ngIf="form.get('educationInfo.workExperience')?.errors">Work Experience is required.</small>
+                                    <!-- <small *ngIf="form.get('educationInfo.workExperience')?.errors?.['required']">Work Experience is required.</small> -->
                                 </div>
                             </div>
 
