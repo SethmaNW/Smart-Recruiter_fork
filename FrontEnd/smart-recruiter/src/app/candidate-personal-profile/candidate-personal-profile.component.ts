@@ -77,6 +77,11 @@ export class CandidatePersonalProfileComponent implements OnInit {
   public showCvDialog(event : Event) {
     event.preventDefault();
     this.visibility = true;
-    console.log("cv dialog box opened");
+    //console.log("cv dialog box opened");
+  }
+
+  public dialogHide(){
+    this.visibility = false;
+    //console.log("cv dialog box closed");
   }
 }

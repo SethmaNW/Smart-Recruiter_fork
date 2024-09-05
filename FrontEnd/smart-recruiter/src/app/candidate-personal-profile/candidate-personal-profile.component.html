@@ -127,7 +127,7 @@
 </div>
 
 <div *ngIf="isloaded">
-    <app-pdf-view [visibility] = "visibility" [candidateId]="candidate?.id"></app-pdf-view>
+    <app-pdf-view [visibility] = "visibility" [candidateId]="candidate?.id" (dialogHide)="dialogHide()"></app-pdf-view>
 </div>
 
 

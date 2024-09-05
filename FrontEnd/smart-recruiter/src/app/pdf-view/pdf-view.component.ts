@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-pdf-view',
@@ -10,6 +10,8 @@ export class PdfViewComponent implements OnInit {
 
   @Input() visibility! : boolean;
   @Input() candidateId! : number;
+  //Emit a event when dialog hides
+  @Output() dialogHide = new EventEmitter<void>();;
   public pdfSrc: any;
   public pdfLoaded : boolean = false;
 
@@ -59,6 +61,10 @@ export class PdfViewComponent implements OnInit {
 
   afterLoadComplete(): void {
     this.cdr.detectChanges();
+  }
+
+  public hideDialog(){
+    this.dialogHide.emit();
   }
 }
 
